@@ -1,0 +1,51 @@
+[user]
+	name = Paul Danelli
+	email = prdanelli@gmail.com
+[core]
+	excludesFile = ~/.gitignore
+	editor = vim
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[color]
+	ui = auto
+	ui = true
+[alias]
+	ch = checkout
+	co = commit
+	st = status -s
+	br = branch
+	first = rev-list --max-parents=0 HEAD
+	ci = commit
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	ad = add
+	psh = push
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	bl = log -p -M --follow --stat --
+[push]
+	default = simple
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[color "diff-highlight"]
+	oldNormal = "#D08770"
+	oldHighlight = "#BF616A bold"
+	newNormal = "#8FBCBB"
+	newHighlight = "#A3BE8C"
+[color "diff"]
+	meta = "#4C566A"
+	frag = "#B48EAD bold"
+	commit = "#EBCB8B bold"
+	old = "#BF616A"
+	new = "#A3BE8C"
+	whitespace = red reverse
+[diff-so-fancy]
+	markEmptyLines = false
+	changeHunkIndicators = false
+	stripLeadingSymbols = false
+	useUnicodeRuler = false
+	rulerWidth = 80
+[merge]
+	tool = vimdiff
+[pull]
+	rebase = false
