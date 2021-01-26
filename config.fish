@@ -1,5 +1,9 @@
 source ~/.config/fish/alias.fish
 
+function tx
+    command tmuxinator $argv
+end
+
 function unset
     set --erase $argv
 end
@@ -18,10 +22,6 @@ end
 
 function git:edit
     command vim ~/.gitconfig
-end
-
-function tmux:edit
-    command vim ~/.tmux.conf
 end
 
 function vim:edit
@@ -62,6 +62,10 @@ end
 
 function bldc
     command docker-compose -f docker/docker-compose.dev.yml $argv
+end
+
+function tmux:edit
+    command vim ~/.tmux.conf
 end
 
 function tmux:reload
