@@ -16,6 +16,9 @@ set updatetime=300 " Make Vim update the swap file faster
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Look / Colours
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set 24-bit colour mode, disable if terminal not compatible
+set termguicolors
+
 " set vim-specific sequences for rgb colors - without these, vim colors don't
 " work inside of tmux.
 let &t_8f = "\<esc>[38;2;%lu;%lu;%lum"
@@ -27,6 +30,9 @@ colorscheme nord
 
 " Character line limits
 set colorcolumn=80,120
+
+" Highlight the current line
+set cursorline
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Behaviour
@@ -70,11 +76,10 @@ set signcolumn=yes
 " Line number width
 set numberwidth=3
 
-" Line number colors
-highlight LineNr term=bold cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
-
-" Highlight search results
+" Highlight search terms
 set hlsearch
+
+" Highlight terms as search is typed
 set incsearch
 
 " Swap / Persistent directories
