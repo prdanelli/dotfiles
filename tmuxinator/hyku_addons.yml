@@ -1,5 +1,7 @@
 name: hyku_addons
 root: ~/Ubiquity/hyku_addons
+# Run on project stop
+on_project_stop: docker-compose stop
 
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
 startup_window: editor
