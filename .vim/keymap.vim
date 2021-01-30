@@ -92,6 +92,8 @@ nnoremap <Leader>r :source ~/.vimrc<CR>
 " Use Del key for black hole register
 map <Del> "_x
 
+nnoremap <C-s> ggVG
+
 " # BUFFERS
 "
 " Use <Tab> to switch buffers, not ctrl+w

@@ -81,4 +81,8 @@ Plug 'justinmk/vim-sneak'
 Plug 'adelarsq/vim-matchit'
 " Indentation aware pasting
 Plug 'sickill/vim-pasta'
-
+" File explorer
+Plug 'francoiscabrol/ranger.vim'
+" Colour scheme debugging
+" Plug 'cocopon/inspecthi.vim'
+" Plug 'cocopon/colorswatch.vim'

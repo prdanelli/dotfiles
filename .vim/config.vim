@@ -12,21 +12,55 @@ set regexpengine=1
 set lazyredraw
 set synmaxcol=200
 set updatetime=300 " Make Vim update the swap file faster
+set shell=bash " Use bash by default, or ranger file explorer won't work
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Look / Colours
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 24-bit colour mode, disable if terminal not compatible
-set termguicolors
-
 " set vim-specific sequences for rgb colors - without these, vim colors don't
 " work inside of tmux.
 let &t_8f = "\<esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<esc>[48;2;%lu;%lu;%lum"
 set background=dark
 
+let g:nord_cursor_line_number_background = 1
+let g:nord_bold = 0
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+let g:nord_uniform_status_lines = 0
+
 " this line must come after the colors scheme settings above
 colorscheme nord
+
+" NOTE:
+" To edit the theme, use the colour numbers below:
+"
+" rubyConstant - nord7_term
+" rubySymbol - nord6_term
+" rubyAttribute
+" rubyBlockParameterList
+" rubyInterpolationDelimiter
+" rubyKeywordAsMethod
+" rubyLocalVariableOrMethod
+" rubyPseudoVariable
+" rubyRegexp
+"
+" nord1_term = "0"
+" nord3_term = "8"
+" nord5_term = "7"
+" nord6_term = "15"
+" nord7_term = "14"
+" nord8_term = "6"
+" nord9_term = "4"
+" nord10_term = "12"
+" nord11_term = "1"
+" nord12_term = "11"
+" nord13_term = "3"
+" nord14_term = "2"
+" nord15_term = "5"
+
+" Override symbol colours for Ruby as bold white was not distinct enough
+hi rubySymbol ctermfg=5
 
 " Character line limits
 set colorcolumn=80,120
