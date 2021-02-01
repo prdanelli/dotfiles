@@ -49,8 +49,8 @@ Plug 'junegunn/fzf.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ctag management
 Plug 'ludovicchabant/vim-gutentags'
-" Code syntax checking
-Plug 'scrooloose/syntastic'
+" Linting
+Plug 'dense-analysis/ale'
 " Code completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -71,8 +71,6 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'Raimondi/delimitMate'
 " File related functionality
 Plug 'tpope/vim-eunuch'
-" Netrw improvements
-Plug 'tpope/vim-vinegar'
 " Replace with register and don't copy
 Plug 'vim-scripts/ReplaceWithRegister'
 " Search for text
@@ -83,6 +81,9 @@ Plug 'adelarsq/vim-matchit'
 Plug 'sickill/vim-pasta'
 " File explorer
 Plug 'francoiscabrol/ranger.vim'
+" Prevent vim from changing directory when using cd
+Plug 'airblade/vim-rooter'
+
 " Colour scheme debugging
 " Plug 'cocopon/inspecthi.vim'
 " Plug 'cocopon/colorswatch.vim'

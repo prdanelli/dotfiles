@@ -1,20 +1,4 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible      " We're running Vim, not Vi!
-syntax on             " Enable syntax highlighting
-filetype on           " Enable filetype detection
-filetype indent on    " Enable filetype-specific indenting
-filetype plugin on    " Enable filetype-specific plugins
-set ttyfast           " Send more characters to the terminal at once
-set encoding=UTF-8
-set regexpengine=1
-set lazyredraw
-set synmaxcol=200
-set updatetime=300 " Make Vim update the swap file faster
-set shell=bash " Use bash by default, or ranger file explorer won't work
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Look / Colours
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set vim-specific sequences for rgb colors - without these, vim colors don't
@@ -26,7 +10,7 @@ set background=dark
 let g:nord_cursor_line_number_background = 1
 let g:nord_bold = 0
 let g:nord_italic = 1
-let g:nord_italic_comments = 1
+let g:nord_italic_comments = 0
 let g:nord_uniform_status_lines = 0
 
 " this line must come after the colors scheme settings above
@@ -69,8 +53,37 @@ set colorcolumn=80,120
 set cursorline
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible      " We're running Vim, not Vi!
+syntax on             " Enable syntax highlighting
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
+set ttyfast           " Send more characters to the terminal at once
+set encoding=UTF-8
+set fileencoding=utf-8
+set regexpengine=1
+set lazyredraw
+set synmaxcol=200
+set updatetime=300 " Make Vim update the swap file faster
+set timeoutlen=500
+set shell=bash " Use bash by default, or ranger file explorer won't work
+set ruler
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Behaviour
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set conceallevel=0
+
+" Tab / space behaviour
+set tabstop=2
+set smarttab
+set expandtab
+
+" Don't show -- INSERT--
+set noshowmode
+
 " Search recurively
 set path+=**
 
@@ -116,6 +129,9 @@ set hlsearch
 " Highlight terms as search is typed
 set incsearch
 
+set nobackup
+set nowritebackup
+
 " Swap / Persistent directories
 set swapfile
 set backupdir=.backup/,~/.vim/.backup,/tmp//
@@ -129,6 +145,7 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/vendor/**/*,*/
 " Code folding
 set foldmethod=indent
 set nofoldenable
+
 " Keep all folds open when a file is opened
 augroup OpenAllFoldsOnFileOpen
     autocmd!
@@ -152,17 +169,33 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_ruby_checkers = ['mri']
-
 " Vim Sneak
 let g:sneak#label = 1
+
+" FZF
+let g:fzf_tags_command = 'ctags -R'
+let g:fzf_layout = { 'up' :'~90%', 'window': { 'width': 0.8, 'height': 0.8, 'yoffset': 0.5, 'xoffset': 0.5 } }
+let g:fzf_colors = {
+\ 'fg':      ['fg', 'Normal'],
+\ 'bg':      ['bg', 'Normal'],
+\ 'hl':      ['fg', 'Comment'],
+\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+\ 'hl+':     ['fg', 'Statement'],
+\ 'info':    ['fg', 'PreProc'],
+\ 'border':  ['fg', 'Boolean'],
+\ 'prompt':  ['fg', 'Conditional'],
+\ 'pointer': ['fg', 'Exception'],
+\ 'marker':  ['fg', 'Keyword'],
+\ 'spinner': ['fg', 'Label'],
+\ 'header':  ['fg', 'Comment'] }
+let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
+let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
+
+" ALE
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
+
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
 

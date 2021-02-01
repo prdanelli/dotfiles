@@ -85,6 +85,9 @@
 " Set leader key
 :let mapleader = ","
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RANDOM
 "
 " Reload config
@@ -92,10 +95,12 @@ nnoremap <Leader>r :source ~/.vimrc<CR>
 " Use Del key for black hole register
 map <Del> "_x
 
+" Select all
 nnoremap <C-s> ggVG
 
-" # BUFFERS
-"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Buffers
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use <Tab> to switch buffers, not ctrl+w
 map <Tab> <C-W>W:cd %:p:h<CR>:<CR>
 
@@ -103,7 +108,6 @@ map <Tab> <C-W>W:cd %:p:h<CR>:<CR>
 nnoremap <Leader>m :bNext<CR>
 nnoremap <Leader>n :bprevious<CR>
 nnoremap <Leader>d :bdelete<CR>
-nnoremap <Leader>b :Buffers<cr>
 nnoremap gf <C-^>
 
 " Turn off arrow keys - force HJKL
@@ -114,10 +118,6 @@ noremap <RIGHT> <NOP>
 
 " Clear search highlight
 nnoremap <Leader>c :noh<return><esc>
-
-" Window Splits
-nnoremap <Leader>\ :vsplit<CR>
-nnoremap <Leader>- :split<CR>
 
 nnoremap <Leader>w :w<CR>
 nnoremap :W :w<CR>
@@ -131,6 +131,26 @@ set showmode
 "
 " Toggle current block fold Shift+Tab
 nnoremap <s-tab> za
+
+" Better Indentation
+vnoremap < <gv
+vnoremap > >gv
+
+" Easy CAPS
+inoremap <c-u> <ESC>viwUi
+nnoremap <c-u> viwU<Esc>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tab
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <Leader>\ :vsplit<CR>
+nnoremap <Leader>- :split<CR>
+
+" Use alt + hjkl to resize windows
+nnoremap <M-j>    :resize -2<CR>
+nnoremap <M-k>    :resize +2<CR>
+nnoremap <M-h>    :vertical resize -2<CR>
+nnoremap <M-l>    :vertical resize +2<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab
@@ -149,14 +169,15 @@ noremap <leader>0 :tablast<cr>
 
 noremap tn :tabnew<CR>
 
-" Go to last active tab
-au TabLeave * let g:lasttab = tabpagenr()
-nnoremap <silent> <c-l> :exe "tabn ".g:lasttab<cr>
-vnoremap <silent> <c-l> :exe "tabn ".g:lasttab<cr>
-
 " Open new tab
 nnoremap <C-t>     :tabnew<CR>
 inoremap <C-t>     <Esc>:tabnew<CR>
+
+" TAB in general mode will move to text buffer
+nnoremap <TAB> :bnext<CR>
+
+" SHIFT-TAB will go back
+nnoremap <S-TAB> :bprevious<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -176,6 +197,15 @@ let g:VM_maps['Find Subword Under'] = '<C-d>'
 " ## FZF Keybindings: https://github.com/junegunn/fzf.vim#commands
 nnoremap <Leader>p :Files<cr>
 nnoremap <Leader>g :GFiles<cr>
+nnoremap <Leader>h :History<cr>
+nnoremap <Leader>l :Lines<cr>
+nnoremap <Leader>b :Buffers<cr>
+
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
 
 " Ensure tab completion order is top to bottom
 let g:SuperTabDefaultCompletionType = "<c-n>"
@@ -183,4 +213,33 @@ let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-@> coc#refresh()
+
+" Coc Explorer - file browser
+let g:coc_explorer_global_presets = {
+\   '.vim': {
+\     'root-uri': '~/.vim',
+\   },
+\   'cocConfig': {
+\      'root-uri': '~/.config/coc',
+\   },
+\   'tab': {
+\     'position': 'tab',
+\     'quit-on-open': v:true,
+\   },
+\   'simplify': {
+\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
+\   },
+\   'buffer': {
+\     'sources': [{'name': 'buffer', 'expand': v:true}]
+\   },
+\ }
+
+nmap <Leader>e :CocCommand explorer --sources=buffer+,file+<CR>
+nmap <Leader>ev :CocCommand explorer --preset .vim<CR>
+nmap <Leader>ec :CocCommand explorer --preset cocConfig<CR>
+nmap <Leader>eb :CocCommand explorer --preset buffer<CR>
+
+" ALE
+nmap <silent> <C-e> <Plug>(ale_next_wrap)
+nmap <silent> <C-E> <Plug>(ale_previous_wrap)
 
