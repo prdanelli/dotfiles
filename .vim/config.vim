@@ -1,12 +1,35 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible      " We're running Vim, not Vi!
+set ttyfast           " Send more characters to the terminal at once
+set encoding=UTF-8
+set fileencoding=utf-8
+syntax on             " Enable syntax highlighting
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
+set regexpengine=1
+set lazyredraw
+set synmaxcol=200
+set updatetime=300 " Make Vim update the swap file faster
+set timeoutlen=500
+set shell=bash " Use bash by default, or ranger file explorer won't work
+set ruler
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Look / Colours
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" set vim-specific sequences for rgb colors - without these, vim colors don't
-" work inside of tmux.
-let &t_8f = "\<esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<esc>[48;2;%lu;%lu;%lum"
+set termguicolors
 set background=dark
 
+" Correct RGB escape codes for vim inside tmux
+if !has('nvim') && $TERM ==# 'screen-256color'
+	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
+" Customise Nord
 let g:nord_cursor_line_number_background = 1
 let g:nord_bold = 0
 let g:nord_italic = 1
@@ -43,33 +66,14 @@ colorscheme nord
 " nord14_term = "2"
 " nord15_term = "5"
 
-" Override symbol colours for Ruby as bold white was not distinct enough
-hi rubySymbol ctermfg=5
-
 " Character line limits
 set colorcolumn=80,120
 
 " Highlight the current line
 set cursorline
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible      " We're running Vim, not Vi!
-syntax on             " Enable syntax highlighting
-filetype on           " Enable filetype detection
-filetype indent on    " Enable filetype-specific indenting
-filetype plugin on    " Enable filetype-specific plugins
-set ttyfast           " Send more characters to the terminal at once
-set encoding=UTF-8
-set fileencoding=utf-8
-set regexpengine=1
-set lazyredraw
-set synmaxcol=200
-set updatetime=300 " Make Vim update the swap file faster
-set timeoutlen=500
-set shell=bash " Use bash by default, or ranger file explorer won't work
-set ruler
+" Override symbol colours for Ruby as bold white was not distinct enough
+hi rubySymbol ctermfg=5 ctermbg=NONE gui=NONE guifg=#B48EAD guibg=NONE
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Behaviour
@@ -195,7 +199,7 @@ let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
 " ALE
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
-
+let b:ale_linters = { 'ruby': ['solograph'] }
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
 

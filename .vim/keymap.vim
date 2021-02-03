@@ -200,6 +200,7 @@ nnoremap <Leader>g :GFiles<cr>
 nnoremap <Leader>h :History<cr>
 nnoremap <Leader>l :Lines<cr>
 nnoremap <Leader>b :Buffers<cr>
+nnoremap <Leader>t :Tags<cr>
 
 " This is the default extra key bindings
 let g:fzf_action = {
@@ -240,6 +241,6 @@ nmap <Leader>ec :CocCommand explorer --preset cocConfig<CR>
 nmap <Leader>eb :CocCommand explorer --preset buffer<CR>
 
 " ALE
-nmap <silent> <C-e> <Plug>(ale_next_wrap)
-nmap <silent> <C-E> <Plug>(ale_previous_wrap)
+nmap <silent> <Leader>x <Plug>(ale_next_wrap)
+nmap <silent> <Leader>z <Plug>(ale_previous_wrap)
 
