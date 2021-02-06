@@ -82,7 +82,9 @@ Plug 'sickill/vim-pasta'
 " File explorer
 Plug 'francoiscabrol/ranger.vim'
 " Prevent vim from changing directory when using cd
-Plug 'airblade/vim-rooter'
+" Plug 'airblade/vim-rooter'
+" Help closing hidden buffers
+Plug 'Asheq/close-buffers.vim'
 
 " Colour scheme debugging
 " Plug 'cocopon/inspecthi.vim'

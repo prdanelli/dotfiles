@@ -1,8 +1,3 @@
-" Actions
-"
-" > - Indent
-" < - Outdent
-"
 " Text objects
 "
 " iw - inside word
@@ -25,8 +20,8 @@
 " Ctrl+f - move screen down by 1 full screen
 " Ctrl+b - move screen up by 1 full screen
 "
-" Example:
-" Lzz - make last line on the screen centered
+" Ctrl+o - back to last location
+" Ctrl+i - forward to next location
 "
 " Inline Navigation
 "
@@ -56,7 +51,7 @@
 "
 " Folding
 "
-" za - Toggle code folding / Shift+Tab
+" za - Toggle code folding
 " zM - fold max
 " zm - fold more
 " zR - unfold max (fold reduce)
@@ -75,9 +70,13 @@
 " griw - replace current word with clipboard
 "
 " Movement
+"
 " { - Up a block
 " } - Down a block
-
+"
+" > - Indent
+" < - Outdent
+"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key bindings / mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -88,27 +87,15 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" RANDOM
-"
+
 " Reload config
 nnoremap <Leader>r :source ~/.vimrc<CR>
+
 " Use Del key for black hole register
 map <Del> "_x
 
 " Select all
 nnoremap <C-s> ggVG
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Buffers
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use <Tab> to switch buffers, not ctrl+w
-map <Tab> <C-W>W:cd %:p:h<CR>:<CR>
-
-" Remap buffer navigation
-nnoremap <Leader>m :bNext<CR>
-nnoremap <Leader>n :bprevious<CR>
-nnoremap <Leader>d :bdelete<CR>
-nnoremap gf <C-^>
 
 " Turn off arrow keys - force HJKL
 noremap <UP> <NOP>
@@ -119,6 +106,7 @@ noremap <RIGHT> <NOP>
 " Clear search highlight
 nnoremap <Leader>c :noh<return><esc>
 
+" Extra save keys
 nnoremap <Leader>w :w<CR>
 nnoremap :W :w<CR>
 
@@ -126,11 +114,6 @@ nnoremap :W :w<CR>
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
-
-" Folding
-"
-" Toggle current block fold Shift+Tab
-nnoremap <s-tab> za
 
 " Better Indentation
 vnoremap < <gv
@@ -141,20 +124,44 @@ inoremap <c-u> <ESC>viwUi
 nnoremap <c-u> viwU<Esc>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tab
+" Buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" New buffer
+nnoremap bn <C-^>
+
+" Delete buffer
+nnoremap <Leader>d :bdelete<CR>
+
+" Close hidden buffers
+nnoremap <silent> Q :Bdelete menu<CR>
+
+" Buffer navigation with ctrl+lh
+nnoremap <silent><C-l> :bnext<CR>
+nnoremap <silent><C-h> :bprevious<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Splits
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 nnoremap <Leader>\ :vsplit<CR>
 nnoremap <Leader>- :split<CR>
 
-" Use alt + hjkl to resize windows
-nnoremap <M-j>    :resize -2<CR>
-nnoremap <M-k>    :resize +2<CR>
-nnoremap <M-h>    :vertical resize -2<CR>
-nnoremap <M-l>    :vertical resize +2<CR>
+" Resize splits with alt+cursor keys
+nnoremap <M-Up> :resize -2<CR>
+nnoremap <M-Down> :resize +2<CR>
+nnoremap <M-Left> :vertical resize -2<CR>
+nnoremap <M-Right> :vertical resize +2<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tab
+" Tabs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Open new tab
+noremap tn :tabnew<CR>
+nnoremap <C-t> :tabnew<CR>
+inoremap <C-t> <Esc>:tabnew<CR>
+
 " Go to tab by number
 noremap <leader>1 1gt
 noremap <leader>2 2gt
@@ -167,27 +174,12 @@ noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
 
-noremap tn :tabnew<CR>
-
-" Open new tab
-nnoremap <C-t>     :tabnew<CR>
-inoremap <C-t>     <Esc>:tabnew<CR>
-
-" TAB in general mode will move to text buffer
-nnoremap <TAB> :bnext<CR>
-
-" SHIFT-TAB will go back
-nnoremap <S-TAB> :bprevious<CR>
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Emmet
 let g:user_emmet_leader_key='<C-a>'
-
-" Remap Omnicomplete shortcuts
-inoremap <C-,> <C-x><C-o>
-inoremap <C-@> <C-,>
 
 " Remap Multiple Cursors
 let g:VM_maps = {}
