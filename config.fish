@@ -60,8 +60,16 @@ function dce
     command docker-compose exec $argv
 end
 
-function bldc
-    command docker-compose -f docker/docker-compose.dev.yml $argv
+function dce:web:bash
+    command docker-compose exec web bash
+end
+
+function dce:web:console
+    command docker-compose exec web bundle exec rails console
+end
+
+function dce:web:rspec
+    command docker-compose exec web bundle exec rspec $argv
 end
 
 function tmux:edit

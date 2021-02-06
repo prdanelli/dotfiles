@@ -8,9 +8,9 @@ on_project_stop: docker-compose stop
 startup_window: editor
 
 windows:
+  - server: docker-compose up web workers
   - editor:
       layout: 4d27,206x51,0,0{125x51,0,0,1,80x51,126,0,2}
       panes:
         - vim
         -
-  - server: docker-compose up web workers
