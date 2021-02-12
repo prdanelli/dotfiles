@@ -10,9 +10,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'chriskempson/base16-vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
-Plug 'yggdroot/indentline'
 Plug 'vim-airline/vim-airline-themes'
-
+Plug 'yggdroot/indentline'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax Highlghting/Features
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

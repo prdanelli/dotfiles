@@ -33,6 +33,9 @@ if !has('nvim') && $TERM ==# 'screen-256color'
 	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
+" We need to set Nord first, then base-16ocean, otherwise
+" the nord airline-theme won't work and we will see errors
+colorscheme nord
 colorscheme base16-ocean
 
 highlight Normal guifg=NONE guibg=#2E3440
