@@ -54,3 +54,8 @@ disabled = true
 [openstack]
 disabled = true
 
+[nodejs]
+disabled = true
+
+[package]
+disabled = true

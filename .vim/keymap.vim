@@ -137,8 +137,8 @@ nnoremap <Leader>d :bdelete<CR>
 nnoremap <silent> Q :Bdelete menu<CR>
 
 " Buffer navigation with ctrl+lh
-nnoremap <silent><C-l> :bnext<CR>
-nnoremap <silent><C-h> :bprevious<CR>
+nnoremap <silent><C-Right> :bnext<CR>
+nnoremap <silent><C-Left> :bprevious<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Splits
@@ -236,3 +236,14 @@ nmap <Leader>eb :CocCommand explorer --preset buffer<CR>
 nmap <silent> <Leader>x <Plug>(ale_next_wrap)
 nmap <silent> <Leader>z <Plug>(ale_previous_wrap)
 
+" Ranger modal
+nnoremap <silent><Leader>f :RnvimrToggle<cr>
+let g:rnvimr_action = {
+  \ '<C-t>': 'NvimEdit tabedit',
+  \ '<C-x>': 'NvimEdit split',
+  \ '<C-v>': 'NvimEdit vsplit',
+  \ 'gw': 'JumpNvimCwd',
+  \ 'yw': 'EmitRangerCwd'
+  \ }
+
+nnoremap <Leader>s :Startify<cr>

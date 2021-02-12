@@ -7,9 +7,11 @@ Plug 'editorconfig/editorconfig-vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Look and Feel
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'chriskempson/base16-vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'yggdroot/indentline'
+Plug 'vim-airline/vim-airline-themes'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax Highlghting/Features
@@ -80,11 +82,14 @@ Plug 'adelarsq/vim-matchit'
 " Indentation aware pasting
 Plug 'sickill/vim-pasta'
 " File explorer
-Plug 'francoiscabrol/ranger.vim'
+" Plug 'francoiscabrol/ranger.vim'
+Plug 'kevinhwang91/rnvimr'
 " Prevent vim from changing directory when using cd
 " Plug 'airblade/vim-rooter'
 " Help closing hidden buffers
 Plug 'Asheq/close-buffers.vim'
+
+Plug 'mhinz/vim-startify'
 
 " Colour scheme debugging
 " Plug 'cocopon/inspecthi.vim'

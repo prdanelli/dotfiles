@@ -17,6 +17,10 @@ set timeoutlen=500
 set shell=bash " Use bash by default, or ranger file explorer won't work
 set ruler
 
+if !has('nvim')
+	set ttymouse=xterm2
+endif
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Look / Colours
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -29,42 +33,9 @@ if !has('nvim') && $TERM ==# 'screen-256color'
 	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-" Customise Nord
-let g:nord_cursor_line_number_background = 1
-let g:nord_bold = 0
-let g:nord_italic = 1
-let g:nord_italic_comments = 0
-let g:nord_uniform_status_lines = 0
+colorscheme base16-ocean
 
-" this line must come after the colors scheme settings above
-colorscheme nord
-
-" NOTE:
-" To edit the theme, use the colour numbers below:
-"
-" rubyConstant - nord7_term
-" rubySymbol - nord6_term
-" rubyAttribute
-" rubyBlockParameterList
-" rubyInterpolationDelimiter
-" rubyKeywordAsMethod
-" rubyLocalVariableOrMethod
-" rubyPseudoVariable
-" rubyRegexp
-"
-" nord1_term = "0"
-" nord3_term = "8"
-" nord5_term = "7"
-" nord6_term = "15"
-" nord7_term = "14"
-" nord8_term = "6"
-" nord9_term = "4"
-" nord10_term = "12"
-" nord11_term = "1"
-" nord12_term = "11"
-" nord13_term = "3"
-" nord14_term = "2"
-" nord15_term = "5"
+highlight Normal guifg=NONE guibg=#2E3440
 
 " Character line limits
 set colorcolumn=80,120
@@ -72,8 +43,8 @@ set colorcolumn=80,120
 " Highlight the current line
 set cursorline
 
-" Override symbol colours for Ruby as bold white was not distinct enough
-hi rubySymbol ctermfg=5 ctermbg=NONE gui=NONE guifg=#B48EAD guibg=NONE
+" Show status line always
+set laststatus=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Behaviour
@@ -159,26 +130,21 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Omnicomplete
-set omnifunc=syntaxcomplete#Complete
-set completeopt=longest,menuone
-autocmd FileType ruby compiler ruby
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
 " Airline
-let g:airlineTheme='nord'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_theme='nord'
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
 
 " Vim Sneak
 let g:sneak#label = 1
 
 " FZF
 let g:fzf_tags_command = 'ctags -R'
-let g:fzf_layout = { 'up' :'~90%', 'window': { 'width': 0.8, 'height': 0.8, 'yoffset': 0.5, 'xoffset': 0.5 } }
+let g:fzf_layout = { 'up' :'~90%', 'window': { 'width': 0.95, 'height': 0.9 } }
 let g:fzf_colors = {
 \ 'fg':      ['fg', 'Normal'],
 \ 'bg':      ['bg', 'Normal'],
@@ -200,6 +166,85 @@ let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 let b:ale_linters = { 'ruby': ['solograph'] }
-" Set this. Airline will handle the rest.
-let g:airline#extensions#ale#enabled = 1
 
+if has('nvim')
+  " Ranger
+  "
+  " Make Ranger replace Netrw and be the file explorer
+  let g:rnvimr_enable_ex = 1
+
+  " Make Ranger to be hidden after picking a file
+  let g:rnvimr_enable_picker = 1
+
+  " Disable a border for floating window
+  let g:rnvimr_draw_border = 0
+
+  " Hide the files included in gitignore
+  let g:rnvimr_hide_gitignore = 1
+
+  " Change the border's color
+  let g:rnvimr_border_attr = {'fg': 15, 'bg': -1}
+
+  " Make Neovim wipe the buffers corresponding to the files deleted by Ranger
+  let g:rnvimr_enable_bw = 1
+
+  " Add a shadow window, value is equal to 100 will disable shadow
+  let g:rnvimr_shadow_winblend = 40
+
+  " Draw border with both
+  let g:rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
+
+  " Link CursorLine into RnvimrNormal highlight in the Floating window
+  highlight link RnvimrNormal CursorLine
+  "
+  " Add views for Ranger to adapt the size of floating window
+  let g:rnvimr_ranger_views = [
+  \ {'minwidth': 90, 'ratio': []},
+  \ {'minwidth': 50, 'maxwidth': 89, 'ratio': [1,1]},
+  \ {'maxwidth': 49, 'ratio': [1]}
+  \ ]
+
+  " Customize the initial layout
+  let g:rnvimr_layout = {
+  \ 'relative': 'editor',
+  \ 'width': float2nr(round(0.7 * &columns)),
+  \ 'height': float2nr(round(0.7 * &lines)),
+  \ 'col': float2nr(round(0.15 * &columns)),
+  \ 'row': float2nr(round(0.15 * &lines)),
+  \ 'style': 'minimal'
+  \ }
+
+  " Customize multiple preset layouts
+  " '{}' represents the initial layout
+  let g:rnvimr_presets = [
+  \ {'width': 0.600, 'height': 0.600},
+  \ {},
+  \ {'width': 0.800, 'height': 0.800},
+  \ {'width': 0.950, 'height': 0.950},
+  \ {'width': 0.500, 'height': 0.500, 'col': 0, 'row': 0},
+  \ {'width': 0.500, 'height': 0.500, 'col': 0, 'row': 0.5},
+  \ {'width': 0.500, 'height': 0.500, 'col': 0.5, 'row': 0},
+  \ {'width': 0.500, 'height': 0.500, 'col': 0.5, 'row': 0.5},
+  \ {'width': 0.500, 'height': 1.000, 'col': 0, 'row': 0},
+  \ {'width': 0.500, 'height': 1.000, 'col': 0.5, 'row': 0},
+  \ {'width': 1.000, 'height': 0.500, 'col': 0, 'row': 0},
+  \ {'width': 1.000, 'height': 0.500, 'col': 0, 'row': 0.5}
+  \ ]
+endif
+
+" Startify
+function! s:gitModified()
+	let files = systemlist('git ls-files -m 2>/dev/null')
+	return map(files, "{'line': v:val, 'path': v:val}")
+endfunction
+
+let g:startify_bookmarks = ['~/.vim/config.vim', '~/.vim/plugins.vim', '~/.vim/keymap.vim']
+let g:startify_enable_special = 0
+let g:startify_lists = [
+	\ { 'type': 'bookmarks', 'header': ['   Bookmarks'] },
+	\ { 'type': 'files',     'header': ['   Recent'] },
+	\ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
+	\ { 'type': 'sessions',  'header': ['   Sessions'] },
+	\ { 'type': function('s:gitModified'),  'header': ['   Modified'] },
+	\ { 'type': 'commands',  'header': ['   Commands'] },
+	\ ]

@@ -13,23 +13,23 @@ function ls
 end
 
 function starship:edit
-    command vim ~/.config/starship.toml
+    command nvim ~/.config/starship.toml
 end
 
 function kitty:edit
-    command vim ~/.config/kitty/kitty.conf
+    command nvim ~/.config/kitty/kitty.conf
 end
 
 function git:edit
-    command vim ~/.gitconfig
+    command nvim ~/.gitconfig
 end
 
 function vim:edit
-   command vim ~/.vim/config.vim
+   command nvim ~/.vim/config.vim
 end
 
 function dory:edit
-    command vim ~/.dory.yml
+    command nvim ~/.dory.yml
 end
 
 function dory:start
@@ -72,8 +72,12 @@ function dce:web:rspec
     command docker-compose exec web bundle exec rspec $argv
 end
 
+function dce:web:rubocop
+    command docker-compose exec web bundle exec rubocop -a
+end
+
 function tmux:edit
-    command vim ~/.tmux.conf
+    command nvim ~/.tmux.conf
 end
 
 function tmux:reload
@@ -87,15 +91,15 @@ function colours
 end
 
 function fish:history
-    vim ~/.config/fish/fish_history
+    nvim ~/.config/fish/fish_history
 end
 
 function fish:edit
-    vim ~/.config/fish/config.fish
+    nvim ~/.config/fish/config.fish
 end
 
 function fish:config
-    vim ~/.config/fish/config.fish
+    nvim ~/.config/fish/config.fish
 end
 
 function fish:reload
@@ -104,7 +108,7 @@ end
 
 set -gx PATH /home/paul/Personal/dotfiles/diff-so-fancy /usr/local/bin ~/local/bin $PATH
 set -xU FZF_DEFAULT_COMMAND 'rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*}"'
-set -gx EDITOR 'vim'
+set -gx EDITOR 'nvim'
 
 set fish_greeting ""
 
@@ -112,7 +116,7 @@ set fish_greeting ""
 /usr/bin/ssh-add -A ^/dev/null
 
 # Set Bat theme, which is used for Vim FZF previews
-set -gx BAT_THEME Nord
+set -gx BAT_THEME base16
 
 # Install Starship
 starship init fish | source
