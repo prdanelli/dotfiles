@@ -137,8 +137,8 @@ nnoremap <Leader>d :bdelete<CR>
 nnoremap <silent> Q :Bdelete menu<CR>
 
 " Buffer navigation with ctrl+lh
-nnoremap <silent><C-Right> :bnext<CR>
-nnoremap <silent><C-Left> :bprevious<CR>
+nnoremap <silent><Tab> :bnext<CR>
+nnoremap <silent><S-Tab> :bprevious<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Splits
@@ -161,18 +161,6 @@ nnoremap <M-Right> :vertical resize +2<CR>
 noremap tn :tabnew<CR>
 nnoremap <C-t> :tabnew<CR>
 inoremap <C-t> <Esc>:tabnew<CR>
-
-" Go to tab by number
-noremap <leader>1 1gt
-noremap <leader>2 2gt
-noremap <leader>3 3gt
-noremap <leader>4 4gt
-noremap <leader>5 5gt
-noremap <leader>6 6gt
-noremap <leader>7 7gt
-noremap <leader>8 8gt
-noremap <leader>9 9gt
-noremap <leader>0 :tablast<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -206,27 +194,6 @@ let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-@> coc#refresh()
-
-" Coc Explorer - file browser
-let g:coc_explorer_global_presets = {
-\   '.vim': {
-\     'root-uri': '~/.vim',
-\   },
-\   'cocConfig': {
-\      'root-uri': '~/.config/coc',
-\   },
-\   'tab': {
-\     'position': 'tab',
-\     'quit-on-open': v:true,
-\   },
-\   'simplify': {
-\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
-\   },
-\   'buffer': {
-\     'sources': [{'name': 'buffer', 'expand': v:true}]
-\   },
-\ }
-
 nmap <Leader>e :CocCommand explorer --sources=buffer+,file+<CR>
 nmap <Leader>ev :CocCommand explorer --preset .vim<CR>
 nmap <Leader>ec :CocCommand explorer --preset cocConfig<CR>
@@ -236,14 +203,5 @@ nmap <Leader>eb :CocCommand explorer --preset buffer<CR>
 nmap <silent> <Leader>x <Plug>(ale_next_wrap)
 nmap <silent> <Leader>z <Plug>(ale_previous_wrap)
 
-" Ranger modal
-nnoremap <silent><Leader>f :RnvimrToggle<cr>
-let g:rnvimr_action = {
-  \ '<C-t>': 'NvimEdit tabedit',
-  \ '<C-x>': 'NvimEdit split',
-  \ '<C-v>': 'NvimEdit vsplit',
-  \ 'gw': 'JumpNvimCwd',
-  \ 'yw': 'EmitRangerCwd'
-  \ }
-
 nnoremap <Leader>s :Startify<cr>
+

@@ -80,16 +80,8 @@ Plug 'justinmk/vim-sneak'
 Plug 'adelarsq/vim-matchit'
 " Indentation aware pasting
 Plug 'sickill/vim-pasta'
-" File explorer
-" Plug 'francoiscabrol/ranger.vim'
-Plug 'kevinhwang91/rnvimr'
-" Prevent vim from changing directory when using cd
-" Plug 'airblade/vim-rooter'
 " Help closing hidden buffers
 Plug 'Asheq/close-buffers.vim'
-
+" Start up page
 Plug 'mhinz/vim-startify'
 
-" Colour scheme debugging
-" Plug 'cocopon/inspecthi.vim'
-" Plug 'cocopon/colorswatch.vim'

@@ -12,6 +12,10 @@ function ls
     command exa $argv
 end
 
+function vim
+    command nvim $argv
+end
+
 function starship:edit
     command nvim ~/.config/starship.toml
 end

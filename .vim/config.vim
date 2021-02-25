@@ -149,93 +149,52 @@ let g:sneak#label = 1
 let g:fzf_tags_command = 'ctags -R'
 let g:fzf_layout = { 'up' :'~90%', 'window': { 'width': 0.95, 'height': 0.9 } }
 let g:fzf_colors = {
-\ 'fg':      ['fg', 'Normal'],
-\ 'bg':      ['bg', 'Normal'],
-\ 'hl':      ['fg', 'Comment'],
-\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-\ 'hl+':     ['fg', 'Statement'],
-\ 'info':    ['fg', 'PreProc'],
-\ 'border':  ['fg', 'Boolean'],
-\ 'prompt':  ['fg', 'Conditional'],
-\ 'pointer': ['fg', 'Exception'],
-\ 'marker':  ['fg', 'Keyword'],
-\ 'spinner': ['fg', 'Label'],
-\ 'header':  ['fg', 'Comment'] }
+	\ 'fg':      ['fg', 'Normal'],
+	\ 'bg':      ['bg', 'Normal'],
+	\ 'hl':      ['fg', 'Comment'],
+	\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+	\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+	\ 'hl+':     ['fg', 'Statement'],
+	\ 'info':    ['fg', 'PreProc'],
+	\ 'border':  ['fg', 'Boolean'],
+	\ 'prompt':  ['fg', 'Conditional'],
+	\ 'pointer': ['fg', 'Exception'],
+	\ 'marker':  ['fg', 'Keyword'],
+	\ 'spinner': ['fg', 'Label'],
+	\ 'header':  ['fg', 'Comment'] }
 let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
 let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
 
+" Coc Explorer - file browser
+let g:coc_explorer_global_presets = {
+\   '.vim': {
+\     'root-uri': '~/.vim',
+\   },
+\   'cocConfig': {
+\      'root-uri': '~/.config/coc',
+\   },
+\   'tab': {
+\     'position': 'tab',
+\     'quit-on-open': v:true,
+\   },
+\   'simplify': {
+\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
+\   },
+\   'buffer': {
+\     'sources': [{'name': 'buffer', 'expand': v:true}]
+\   },
+\ }
+
 " ALE
+let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 let b:ale_linters = { 'ruby': ['solograph'] }
 
-if has('nvim')
-  " Ranger
-  "
-  " Make Ranger replace Netrw and be the file explorer
-  let g:rnvimr_enable_ex = 1
-
-  " Make Ranger to be hidden after picking a file
-  let g:rnvimr_enable_picker = 1
-
-  " Disable a border for floating window
-  let g:rnvimr_draw_border = 0
-
-  " Hide the files included in gitignore
-  let g:rnvimr_hide_gitignore = 1
-
-  " Change the border's color
-  let g:rnvimr_border_attr = {'fg': 15, 'bg': -1}
-
-  " Make Neovim wipe the buffers corresponding to the files deleted by Ranger
-  let g:rnvimr_enable_bw = 1
-
-  " Add a shadow window, value is equal to 100 will disable shadow
-  let g:rnvimr_shadow_winblend = 40
-
-  " Draw border with both
-  let g:rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
-
-  " Link CursorLine into RnvimrNormal highlight in the Floating window
-  highlight link RnvimrNormal CursorLine
-  "
-  " Add views for Ranger to adapt the size of floating window
-  let g:rnvimr_ranger_views = [
-  \ {'minwidth': 90, 'ratio': []},
-  \ {'minwidth': 50, 'maxwidth': 89, 'ratio': [1,1]},
-  \ {'maxwidth': 49, 'ratio': [1]}
-  \ ]
-
-  " Customize the initial layout
-  let g:rnvimr_layout = {
-  \ 'relative': 'editor',
-  \ 'width': float2nr(round(0.7 * &columns)),
-  \ 'height': float2nr(round(0.7 * &lines)),
-  \ 'col': float2nr(round(0.15 * &columns)),
-  \ 'row': float2nr(round(0.15 * &lines)),
-  \ 'style': 'minimal'
-  \ }
-
-  " Customize multiple preset layouts
-  " '{}' represents the initial layout
-  let g:rnvimr_presets = [
-  \ {'width': 0.600, 'height': 0.600},
-  \ {},
-  \ {'width': 0.800, 'height': 0.800},
-  \ {'width': 0.950, 'height': 0.950},
-  \ {'width': 0.500, 'height': 0.500, 'col': 0, 'row': 0},
-  \ {'width': 0.500, 'height': 0.500, 'col': 0, 'row': 0.5},
-  \ {'width': 0.500, 'height': 0.500, 'col': 0.5, 'row': 0},
-  \ {'width': 0.500, 'height': 0.500, 'col': 0.5, 'row': 0.5},
-  \ {'width': 0.500, 'height': 1.000, 'col': 0, 'row': 0},
-  \ {'width': 0.500, 'height': 1.000, 'col': 0.5, 'row': 0},
-  \ {'width': 1.000, 'height': 0.500, 'col': 0, 'row': 0},
-  \ {'width': 1.000, 'height': 0.500, 'col': 0, 'row': 0.5}
-  \ ]
-endif
-
 " Startify
+let g:startify_custom_header =[]
+let g:startify_change_to_dir=0
+
 function! s:gitModified()
 	let files = systemlist('git ls-files -m 2>/dev/null')
 	return map(files, "{'line': v:val, 'path': v:val}")
@@ -251,3 +210,4 @@ let g:startify_lists = [
 	\ { 'type': function('s:gitModified'),  'header': ['   Modified'] },
 	\ { 'type': 'commands',  'header': ['   Commands'] },
 	\ ]
+
