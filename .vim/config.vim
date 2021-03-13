@@ -1,6 +1,6 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible      " We're running Vim, not Vi!
 set ttyfast           " Send more characters to the terminal at once
 set encoding=UTF-8
@@ -10,7 +10,9 @@ filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 set regexpengine=1
-set lazyredraw
+
+" set lazyredraw
+
 set synmaxcol=200
 set updatetime=300 " Make Vim update the swap file faster
 set timeoutlen=500
@@ -135,12 +137,12 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Airline
+" set this. airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_theme='nord'
-" Set this. Airline will handle the rest.
-let g:airline#extensions#ale#enabled = 1
 
 " Vim Sneak
 let g:sneak#label = 1
