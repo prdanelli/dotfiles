@@ -80,6 +80,10 @@ function dce:web:rubocop
     command docker-compose exec web bundle exec rubocop -a
 end
 
+function dce:web:rails
+	command docker-compose exec web bundle exec rails $argv
+end
+
 function tmux:edit
     command nvim ~/.tmux.conf
 end

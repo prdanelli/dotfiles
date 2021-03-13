@@ -107,7 +107,8 @@ noremap <RIGHT> <NOP>
 nnoremap <Leader>c :noh<return><esc>
 
 " Extra save keys
-nnoremap <Leader>w :w<CR>
+" nnoremap <Leader>w :w<CR>
+nnoremap <C-w> :w<cr>
 nnoremap :W :w<CR>
 
 " Toggle Paste Mode
@@ -167,7 +168,7 @@ inoremap <C-t> <Esc>:tabnew<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Emmet
-let g:user_emmet_leader_key='<C-a>'
+let g:user_emmet_leader_key='<C-em>'
 
 " Remap Multiple Cursors
 let g:VM_maps = {}
@@ -204,4 +205,6 @@ nmap <silent> <Leader>x <Plug>(ale_next_wrap)
 nmap <silent> <Leader>z <Plug>(ale_previous_wrap)
 
 nnoremap <Leader>s :Startify<cr>
+
+imap <script> <silent> <Plug>SuperTabForward <c-r>=SuperTab('n')<cr>
 

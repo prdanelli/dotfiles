@@ -28,32 +28,28 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set termguicolors
 set background=dark
-
 " Correct RGB escape codes for vim inside tmux
 if !has('nvim') && $TERM ==# 'screen-256color'
 	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
-
 " We need to set Nord first, then base-16ocean, otherwise
 " the nord airline-theme won't work and we will see errors
 colorscheme nord
 colorscheme base16-ocean
-
 highlight Normal guifg=NONE guibg=#2E3440
-
 " Character line limits
 set colorcolumn=80,120
-
 " Highlight the current line
 set cursorline
-
 " Show status line always
 set laststatus=2
+" Treat .es6 as .js
+au BufNewFile,BufRead *.es6 set filetype=javascript
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Behaviour
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set conceallevel=0
 
 " Tab / space behaviour
@@ -212,4 +208,8 @@ let g:startify_lists = [
 	\ { 'type': function('s:gitModified'),  'header': ['   Modified'] },
 	\ { 'type': 'commands',  'header': ['   Commands'] },
 	\ ]
+
+" Highlight Yank
+let g:highlightedyank_highlight_duration = 250
+highlight HighlightedyankRegion cterm=reverse gui=reverse
 

@@ -12,6 +12,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'yggdroot/indentline'
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax Highlghting/Features
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -84,4 +85,5 @@ Plug 'sickill/vim-pasta'
 Plug 'Asheq/close-buffers.vim'
 " Start up page
 Plug 'mhinz/vim-startify'
-
+" Highlight yanked text
+Plug 'machakann/vim-highlightedyank'
