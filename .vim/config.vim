@@ -1,24 +1,20 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible      " We're running Vim, not Vi!
-set ttyfast           " Send more characters to the terminal at once
+set nocompatible
+set ttyfast
 set encoding=UTF-8
 set fileencoding=utf-8
-syntax on             " Enable syntax highlighting
-filetype on           " Enable filetype detection
-filetype indent on    " Enable filetype-specific indenting
-filetype plugin on    " Enable filetype-specific plugins
+syntax on
+filetype on
+filetype indent on
+filetype plugin on
 set regexpengine=1
-
-" set lazyredraw
-
 set synmaxcol=200
-set updatetime=300 " Make Vim update the swap file faster
+set updatetime=300
 set timeoutlen=500
-set shell=bash " Use bash by default, or ranger file explorer won't work
+set shell=bash
 set ruler
-
 if !has('nvim')
 	set ttymouse=xterm2
 endif
@@ -28,22 +24,28 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set termguicolors
 set background=dark
+
 " Correct RGB escape codes for vim inside tmux
 if !has('nvim') && $TERM ==# 'screen-256color'
 	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
+
 " We need to set Nord first, then base-16ocean, otherwise
 " the nord airline-theme won't work and we will see errors
 colorscheme nord
 colorscheme base16-ocean
 highlight Normal guifg=NONE guibg=#2E3440
+
 " Character line limits
 set colorcolumn=80,120
+
 " Highlight the current line
 set cursorline
+
 " Show status line always
 set laststatus=2
+
 " Treat .es6 as .js
 au BufNewFile,BufRead *.es6 set filetype=javascript
 
@@ -93,9 +95,9 @@ set shortmess+=c
 set number
 set relativenumber
 
-" Always show gutter so Gitgutter doesn't jump
+ " Always show gutter so Gitgutter doesn't jump
 set signcolumn=yes
-"
+
 " Line number width
 set numberwidth=3
 
@@ -104,15 +106,14 @@ set hlsearch
 
 " Highlight terms as search is typed
 set incsearch
-
 set nobackup
 set nowritebackup
 
 " Swap / Persistent directories
 set swapfile
-set backupdir=.backup/,~/.vim/.backup,/tmp//
-set directory=.swp/,~/.vim/.vim/.swapfiles/,/tmp//
-set undodir=.undo/,~/.vim/.undo/,/tmp//
+set backupdir=.backup/,~/.vim/.backup,/tmp/
+set directory=.swp/,~/.vim/.vim/.swapfiles/,/tmp/
+set undodir=.undo/,~/.vim/.undo/,/tmp/
 set undofile
 
 " Set universal ignore

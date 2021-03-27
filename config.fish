@@ -84,6 +84,10 @@ function dce:web:rails
 	command docker-compose exec web bundle exec rails $argv
 end
 
+function dce:web:install
+	command docker-compose exec web bundle exec rails g hyku_addons:install
+end
+
 function tmux:edit
     command nvim ~/.tmux.conf
 end
