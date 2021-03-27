@@ -128,13 +128,10 @@ augroup OpenAllFoldsOnFileOpen
     autocmd BufRead * normal zR
 augroup END
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline
-" set this. airline will handle the rest.
-let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
@@ -188,16 +185,15 @@ let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 let b:ale_linters = { 'ruby': ['solograph'] }
+let g:airline#extensions#ale#enabled = 1
 
 " Startify
 let g:startify_custom_header =[]
 let g:startify_change_to_dir=0
-
 function! s:gitModified()
 	let files = systemlist('git ls-files -m 2>/dev/null')
 	return map(files, "{'line': v:val, 'path': v:val}")
 endfunction
-
 let g:startify_bookmarks = ['~/.vim/config.vim', '~/.vim/plugins.vim', '~/.vim/keymap.vim']
 let g:startify_enable_special = 0
 let g:startify_lists = [
@@ -212,4 +208,3 @@ let g:startify_lists = [
 " Highlight Yank
 let g:highlightedyank_highlight_duration = 250
 highlight HighlightedyankRegion cterm=reverse gui=reverse
-

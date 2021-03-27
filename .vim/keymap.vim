@@ -77,16 +77,16 @@
 " > - Indent
 " < - Outdent
 "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key bindings / mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Set leader key
 :let mapleader = ","
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Reload config
 nnoremap <Leader>r :source ~/.vimrc<CR>
@@ -107,9 +107,10 @@ noremap <RIGHT> <NOP>
 nnoremap <Leader>c :noh<return><esc>
 
 " Extra save keys
-" nnoremap <Leader>w :w<CR>
+nnoremap <Leader>w :w<CR>
 nnoremap <C-w> :w<cr>
 nnoremap :W :w<CR>
+vnoremap :W :w<CR>
 
 " Toggle Paste Mode
 nnoremap <F2> :set invpaste paste?<CR>
@@ -124,13 +125,17 @@ vnoremap > >gv
 inoremap <c-u> <ESC>viwUi
 nnoremap <c-u> viwU<Esc>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Copy current buffers file path
+command! Bpath let @+ = expand('%:p')
+nnoremap <Leader>yp :let @+=expand('%:p')<CR>
+
+" Copy current buffer file name
+command! Bname let @+=expand("%:t")
+nmap<Leader>yn :let @+=expand("%:t")<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Buffers
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" New buffer
-nnoremap bn <C-^>
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Delete buffer
 nnoremap <Leader>d :bdelete<CR>
 
@@ -144,7 +149,6 @@ nnoremap <silent><S-Tab> :bprevious<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Splits
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 nnoremap <Leader>\ :vsplit<CR>
 nnoremap <Leader>- :split<CR>
 
@@ -157,7 +161,6 @@ nnoremap <M-Right> :vertical resize +2<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tabs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " Open new tab
 noremap tn :tabnew<CR>
 nnoremap <C-t> :tabnew<CR>
@@ -166,7 +169,6 @@ inoremap <C-t> <Esc>:tabnew<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " Emmet
 let g:user_emmet_leader_key='<C-em>'
 
@@ -203,8 +205,6 @@ nmap <Leader>eb :CocCommand explorer --preset buffer<CR>
 " ALE
 nmap <silent> <Leader>x <Plug>(ale_next_wrap)
 nmap <silent> <Leader>z <Plug>(ale_previous_wrap)
-
 nnoremap <Leader>s :Startify<cr>
-
 imap <script> <silent> <Plug>SuperTabForward <c-r>=SuperTab('n')<cr>
 
