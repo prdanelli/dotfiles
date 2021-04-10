@@ -7,6 +7,13 @@
 " a" - around " marks
 " as - around sentence
 "
+" Buffers
+"
+" :new - will create a split window with an unnamed buffer.
+" :enew - will open one in the current window.
+" :vnew - will open one in a vertically split window.
+" :tabnew - will open one in a new tab.
+"
 " File Navigation
 "
 " H - top of screen (high)
@@ -63,6 +70,7 @@
 " cs'" - change ' to "
 " ysw[ - surround word: [ test_word ]
 " ysw] - surround word: [test_word]
+" ysg@<div>j>> - surround line with div tag
 "
 " Replace with register
 "
@@ -183,7 +191,6 @@ nnoremap <Leader>g :GFiles<cr>
 nnoremap <Leader>h :History<cr>
 nnoremap <Leader>l :Lines<cr>
 nnoremap <Leader>b :Buffers<cr>
-nnoremap <Leader>t :Tags<cr>
 
 " This is the default extra key bindings
 let g:fzf_action = {

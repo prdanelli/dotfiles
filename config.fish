@@ -88,6 +88,10 @@ function dce:web:install
 	command docker-compose exec web bundle exec rails g hyku_addons:install
 end
 
+function dce:web:attach
+	command docker-compose up -d web; docker attach hyku_addons_web_1
+end
+
 function tmux:edit
     command nvim ~/.tmux.conf
 end

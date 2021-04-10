@@ -6,3 +6,4 @@ tags
 .vim/.cache
 diff-so-fancy
 plug.vim.old
+.solargraph.yml

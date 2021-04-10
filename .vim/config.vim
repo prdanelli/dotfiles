@@ -185,8 +185,12 @@ let g:coc_explorer_global_presets = {
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
-let b:ale_linters = { 'ruby': ['solograph'] }
+let b:ale_linters = { 'ruby': ['solargraph'] }
 let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_error = '✖✖'
+let g:ale_sign_warning = '--'
+highlight ALEError guibg=#343d46 guifg=#EBCB8B
+highlight ALEWarning guibg=#343d46 guifg=#BF616A
 
 " Startify
 let g:startify_custom_header =[]
