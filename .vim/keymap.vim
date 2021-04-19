@@ -1,3 +1,20 @@
+" Tmux
+"
+" Keybindings
+"
+" <prefix>: - enter commands
+" <prefix>w - list windows
+" <prefix>& - kill window
+" <prefix>x - kill pane
+" <prefix>$ - rename session
+"
+" Commands
+"
+" swap-window -s <old_index> -t <new_index>
+" new-window -a <index>
+"
+" VIM
+"
 " Text objects
 "
 " iw - inside word
@@ -71,6 +88,7 @@
 " ysw[ - surround word: [ test_word ]
 " ysw] - surround word: [test_word]
 " ysg@<div>j>> - surround line with div tag
+" S" - surround highlighted text
 "
 " Replace with register
 "
@@ -204,7 +222,7 @@ let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-@> coc#refresh()
-nmap <Leader>e :CocCommand explorer --sources=buffer+,file+<CR>
+nmap <silent><Leader>e :CocCommand explorer --sources=file+<CR>
 nmap <Leader>ev :CocCommand explorer --preset .vim<CR>
 nmap <Leader>ec :CocCommand explorer --preset cocConfig<CR>
 nmap <Leader>eb :CocCommand explorer --preset buffer<CR>
