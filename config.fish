@@ -1,19 +1,11 @@
 source ~/.config/fish/alias.fish
 
-function tx
-    command tmuxinator $argv
-end
-
 function unset
     set --erase $argv
 end
 
 function ls
     command exa $argv
-end
-
-function vim
-    command nvim $argv
 end
 
 function starship:edit
@@ -89,7 +81,7 @@ function dce:web:install
 end
 
 function dce:web:attach
-	command docker-compose up -d web; docker attach hyku_addons_web_1
+	command docker-compose up -d web workers; docker attach hyku_addons_web_1
 end
 
 function tmux:edit
