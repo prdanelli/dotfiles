@@ -6,13 +6,15 @@ on_project_stop: docker-compose stop
 
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
 startup_window: editor
+startup_pane: 2
 
 windows:
-  - _: # Because its annoying having to use 0 and 1 because of their position on the keyboard
+  - ctop: # Because its annoying having to use 0 and 1 because of their position on the keyboard
       - ctop
   - editor:
-      layout: 8c7f,204x51,0,0{126x51,0,0,1,77x51,127,0[77x24,127,0,2,77x26,127,25,3]}
+      layout: 8806,262x61,0,0{112x61,0,0[112x30,0,0,2,112x30,0,31,6],149x61,113,0,5}
       panes:
-        - nvim
         - dce:web:attach
         -
+        - nvim
+  - misc:
