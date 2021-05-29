@@ -17,4 +17,6 @@ windows:
         - dce:web:attach
         -
         - nvim
+  - git:
+    - lazygit
   - misc:

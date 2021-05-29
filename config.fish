@@ -114,7 +114,7 @@ function fish:reload
     source ~/.config/fish/config.fish
 end
 
-set -gx PATH /home/paul/Personal/dotfiles/diff-so-fancy /usr/local/bin ~/local/bin $PATH
+set -gx PATH /home/paul/Personal/dotfiles/diff-so-fancy /usr/local/bin /usr/local/go/bin ~/local/bin $PATH
 set -xU FZF_DEFAULT_COMMAND 'rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*}"'
 set -gx EDITOR 'nvim'
 

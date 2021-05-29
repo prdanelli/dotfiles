@@ -35,13 +35,13 @@ endif
 " the nord airline-theme won't work and we will see errors
 colorscheme nord
 colorscheme base16-ocean
-highlight Normal guifg=NONE guibg=#2E3440
+" highlight Normal guifg=NONE guibg=#2E3440
 
 " Character line limits
 set colorcolumn=80,120
 
 " Highlight the current line
-set cursorline
+" set cursorline
 
 " Show status line always
 set laststatus=2
@@ -188,6 +188,8 @@ let g:ale_sign_error = '✖✖'
 let g:ale_sign_warning = '--'
 highlight ALEError guibg=#343d46 guifg=#EBCB8B
 highlight ALEWarning guibg=#343d46 guifg=#BF616A
+
+set completeopt+=noinsert
 
 " Startify
 let g:startify_custom_header =[]
