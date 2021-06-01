@@ -1,0 +1,96 @@
+[colors]
+	background = "#2E3440"
+	foreground = "#ECEFF4"
+
+[global]
+    ### Display ###
+
+    monitor = 0
+    follow = mouse
+
+    geometry = "475x20-28+36"
+    indicate_hidden = yes
+    shrink = no
+    transparency = 10
+    notification_height = 0
+    separator_height = 20
+    padding = 20
+    horizontal_padding = 20
+    frame_width = 3
+
+    frame_color = "#3B4252"
+    separator_color = auto
+    sort = yes
+    idle_threshold = 120
+    mouse_right_click = close_all
+
+    ### Text ###
+    font = SF Pro Display 7
+    line_height = 4
+
+    markup = full
+
+    # The format of the message.  Possible variables are:
+    #   %a  appname
+    #   %s  summary
+    #   %b  body
+    #   %i  iconname (including its path)
+    #   %I  iconname (without its path)
+    #   %p  progress value if set ([  0%] to [100%]) or nothing
+    #   %n  progress value if set without any extra characters
+    #   %%  Literal %
+    # Markup is allowed
+    format = "<b>%s </b>\n%b"
+    alignment = left
+    vertical_alignment = center
+    show_age_threshold = 60
+    word_wrap = yes
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = yes
+
+    ### Icons ###
+    icon_position = left
+    max_icon_size = 64
+
+    ### History ###
+    sticky_history = yes
+    history_length = 50
+
+    ### Misc/Advanced ###
+    dmenu = /usr/bin/rofi -show run -p dunst:
+    browser = /usr/bin/google-chrome
+    always_run_script = true
+    title = Dunst
+    class = Dunst
+    startup_notification = false
+    force_xinerama = false
+    verbosity = mesg
+
+[experimental]
+    per_monitor_dpi = false
+
+[shortcuts]
+    close = ctrl+shift+space
+    history = ctrl+space
+    #close_all = ctrl+shift+space
+    context = ctrl+shift+period
+
+[urgency_low]
+    background = colors.background
+    foreground = colors.foreground
+    timeout = 10
+
+[urgency_normal]
+    background = colors.background
+    foreground = colors.foreground
+    timeout = 10
+
+[urgency_critical]
+    background = colors.background
+    foreground = colors.foreground
+    frame_color = "#8C3D45"
+    timeout = 10
+
