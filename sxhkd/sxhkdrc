@@ -6,9 +6,6 @@
 super + Return
 	kitty
 
-# super + t
-# 	/usr/bin/kitty
-
 # program launcher
 super + @space
 	rofi -modi run,drun,window -show drun -show-icons -sidebar-mode
@@ -16,23 +13,6 @@ super + @space
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
-
-super + alt + p
-	~/.config/polybar/./launch.sh
-
-##Volume Control
-#XF86AudioLowerVolume
-#	amixer set Master 5%-
-#XF86AudioRaiseVolume
-#	amixer set Master 5%+
-#XF86AudioMute
-#	amixer set Master toggle
-
-##Brightness control
-#XF86MonBrightnessDown
-#	xbacklight -dec 5
-#XF86MonBrightnessUp
-#	xbacklight -inc 5
 
 #
 # bspwm hotkeys
