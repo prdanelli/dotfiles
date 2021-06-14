@@ -81,12 +81,12 @@
 [urgency_low]
     background = colors.background
     foreground = colors.foreground
-    timeout = 10
+    timeout = 5
 
 [urgency_normal]
     background = colors.background
     foreground = colors.foreground
-    timeout = 10
+    timeout = 5
 
 [urgency_critical]
     background = colors.background

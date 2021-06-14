@@ -2,23 +2,31 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc monitor -d I II III IV V
+bspc monitor -d 1 2 3 4 5
 
 bspc config border_width 5
 bspc config window_gap 16
 bspc config border_radius 15
 bspc config split_ratio 0.50
 bspc config borderless_monocle true
-bspc config gapless_monocle true
+bspc config gapless_monocle false
 bspc config click_to_focus true
+bspc config apply_floating_atom    true
+bspc config history_aware_focus    true
 bspc config normal_border_color "#2E3440"
 bspc config focused_border_color "#4C566A"
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+bspc config merge_overlapping_monitors true
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
+
+# Setup monitors
+~/.config/bspwm/monitors
 
 # Desktop icon
 xsetroot -cursor_name left_ptr &
@@ -27,12 +35,17 @@ xsetroot -cursor_name left_ptr &
 picom --experimental-backends &
 feh --bg-fill gsettings $HOME/.config/bspwm/desktop.png
 $HOME/.config/polybar/launch.sh &
+greenclip daemon &
 
 # Misc Apps
 dropbox &
 
 # Touchpad
+##hides mouse when you are not using it
+unclutter &
+
 xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Natural Scrolling Enabled" 1
 xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Click Method Enabled" 0 1
 xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Tapping Enabled" 1
 xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Disable While Typing Enabled" 0
+xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Accel Profile Enabled" 1, 0

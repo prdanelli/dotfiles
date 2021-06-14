@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 #
 # wm independent hotkeys
 #
@@ -7,12 +9,26 @@ super + Return
 	kitty
 
 # program launcher
-super + @space
-	rofi -modi run,drun,window -show drun -show-icons -sidebar-mode
+super + space
+	$HOME/.config/polybar/shapes/scripts/launcher.sh
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
+
+# https://github.com/erebe/greenclip
+super + alt + s
+	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+
+# Monitors
+super + alt + e
+	autorandr external; bspc wm -r
+
+super + alt + d
+	autorandr default; bspc wm -r
+
+super + alt + m
+	~/.config/bspwm/monitors; bspc wm -r
 
 #
 # bspwm hotkeys

@@ -120,6 +120,9 @@ set -gx EDITOR 'nvim'
 
 set fish_greeting ""
 
+# set -U SXHKD_SHELL /usr/bin/bash
+# set -U SXHKD_SHELL sh
+
 # Load all saved ssh keys
 /usr/bin/ssh-add -A ^/dev/null
 
