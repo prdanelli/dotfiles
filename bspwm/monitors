@@ -1,29 +1,26 @@
 #!/bin/bash
 
-# https://github.com/phillipberndt/autorandr
-# xrandr --output eDP-1 --primary --auto --output DP-1 --auto --dpi 192 --fbmm 621x341
-# xrandr --output eDP-1 --off --output DP-1 --primary --auto --dpi 192 --fbmm 621x341
-
-current=$(xrandr --listactivemonitors | grep -v Monitors | grep -Eo '[^ ]+$')
-nmonitors=$(xrandr -q | grep " connected " | wc -l)
-
-# echo $current
-# echo $nmonitors
-
 external() {
-	autorandr external
+	xrandr --output eDP-1 --off --output DP-1 --primary --mode 3840x2160 --dpi 192 --fbmm 621x341 --scale 0.75x0.75
+	bspc monitor -g 2880x1615+0+0
 }
 
 default() {
-	autorandr default
+	xrandr --output eDP-1 --primary --auto --output DP-1 --off
 }
 
-if [ $nmonitors == 1 ]
+if [ $GDMSESSION == "bspwm" ]
 then
-	default
-elif [ $current == "DP-1" ] && [ $nmonitors == 2 ]
-then
-	external
-else
-	default
+	current=$(xrandr --listactivemonitors | grep -v Monitors | grep -Eo '[^ ]+$')
+	nmonitors=$(xrandr -q | grep " connected " | wc -l)
+
+	if [ $nmonitors == 1 ]
+	then
+		default
+	elif [ $current == "DP-1" ] && [ $nmonitors == 2 ]
+	then
+		external
+	else
+		default
+	fi
 fi

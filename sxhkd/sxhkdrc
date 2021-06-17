@@ -21,14 +21,34 @@ super + alt + s
 	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 # Monitors
+# Without the bash -c, fish wont execute the command
 super + alt + e
-	autorandr external; bspc wm -r
+	bash -c 'source /home/paul/Personal/dotfiles/bspwm/monitors; external'; bspc wm -r
 
 super + alt + d
-	autorandr default; bspc wm -r
+	bash -c 'source /home/paul/Personal/dotfiles/bspwm/monitors; default'; bspc wm -r
 
 super + alt + m
 	~/.config/bspwm/monitors; bspc wm -r
+
+#
+# Brightness / Volume
+#
+XF86AudioRaiseVolume
+	pamixer -i 10
+
+XF86AudioLowerVolume
+	pamixer -d 10
+
+XF86AudioMute
+	pamixer -t
+
+XF86MonBrightnessDown
+	xbacklight -dec 10
+
+XF86MonBrightnessUp
+	xbacklight -inc 10
+
 
 #
 # bspwm hotkeys
@@ -93,6 +113,13 @@ super + bracket{left,right}
 # focus the last node/desktop
 super + {grave,Tab}
 	bspc {node,desktop} -f last
+
+# # focus the last node/desktop
+# alt + Tab
+# 	bspc node -f last
+
+# alt + shift + Tab
+# 	bspc desktop -f last
 
 # focus the older or newer node in the focus history
 super + {o,i}

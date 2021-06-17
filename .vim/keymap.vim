@@ -159,6 +159,10 @@ nnoremap <Leader>yp :let @+=expand('%:p')<CR>
 command! Bname let @+=expand("%:t")
 nmap<Leader>yn :let @+=expand("%:t")<CR>
 
+" Insert lines above/below without leaving normal mode
+nnoremap <silent> oo :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
+nnoremap <silent> OO :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Buffers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
