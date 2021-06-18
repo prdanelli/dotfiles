@@ -34,23 +34,17 @@ super + alt + m
 #
 # Brightness / Volume
 #
-XF86AudioRaiseVolume
-	pamixer -i 10
-
-XF86AudioLowerVolume
-	pamixer -d 10
-
 XF86AudioMute
-	pamixer -t
+	amixer -D pulse sset Master toggle
+
+# Change volume
+XF86Audio{Raise,Lower}Volume
+	amixer -D pulse sset Master 10%{+,-}
 
 # To adjust the brightness the user must be added to the video group:
 # sudo gpasswd -a $USER video
-XF86MonBrightnessUp
-	bash -c 'brightnessctl set +10%'
-
-XF86MonBrightnessDown
-	bash -c 'brightnessctl set 10%-'
-
+XF86MonBrightness{Up,Down}
+	brightnessctl set 10%{+,-}
 
 #
 # bspwm hotkeys
