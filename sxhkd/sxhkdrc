@@ -23,10 +23,10 @@ super + alt + s
 # Monitors
 # Without the bash -c, fish wont execute the command
 super + alt + e
-	bash -c 'source /home/paul/Personal/dotfiles/bspwm/monitors; external'; bspc wm -r
+	bash -c 'source ~/.config/bspwm/monitors; external'; bspc wm -r
 
 super + alt + d
-	bash -c 'source /home/paul/Personal/dotfiles/bspwm/monitors; default'; bspc wm -r
+	bash -c 'source ~/.config/bspwm/monitors; default'; bspc wm -r
 
 super + alt + m
 	~/.config/bspwm/monitors; bspc wm -r
@@ -43,11 +43,13 @@ XF86AudioLowerVolume
 XF86AudioMute
 	pamixer -t
 
-XF86MonBrightnessDown
-	xbacklight -dec 10
-
+# To adjust the brightness the user must be added to the video group:
+# sudo gpasswd -a $USER video
 XF86MonBrightnessUp
-	xbacklight -inc 10
+	bash -c 'brightnessctl set +10%'
+
+XF86MonBrightnessDown
+	bash -c 'brightnessctl set 10%-'
 
 
 #
