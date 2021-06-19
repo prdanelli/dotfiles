@@ -10,7 +10,7 @@ super + Return
 
 # program launcher
 super + space
-	$HOME/.config/polybar/shapes/scripts/launcher.sh
+	rofi -no-lazy-grab -show drun -modi drun -config ~/.config/rofi/config.rasi
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -18,7 +18,7 @@ super + Escape
 
 # https://github.com/erebe/greenclip
 super + alt + s
-	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' -config ~/.config/rofi/clipboard.rasi
 
 # Monitors
 # Without the bash -c, fish wont execute the command

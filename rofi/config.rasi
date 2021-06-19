@@ -1,10 +1,14 @@
 configuration {
-	width: 20;
-	columns: 1;
-	font: "Source Code Pro for Powerline Regular 11";
-	padding: 15;
+	width: 500;
 	show-icons: true;
 	terminal: "kitty";
-	auto-select: true;
+	auto-select: false;
 	theme: "nord";
+	display-run: " ";
+	display-drun: "  ";
+	display-window: "  ";
+	drun-display-format: "{icon} {name}";
+	font: "Source Code Pro for Powerline Medium 11";
+	modi: "window,run,drun";
+	show-icons: true;
 }

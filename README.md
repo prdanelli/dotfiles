@@ -10,3 +10,6 @@ My development environment dotfiles
 + Tmux
 + Vim
 
+## alttab
+
+Requires `libxrandr-dev` and `xmp` before it can be installed

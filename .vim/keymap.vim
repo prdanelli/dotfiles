@@ -176,6 +176,8 @@ nnoremap <silent> Q :Bdelete menu<CR>
 nnoremap <silent><Tab> :bnext<CR>
 nnoremap <silent><S-Tab> :bprevious<CR>
 
+" Close a buffer without closing the split
+nnoremap <silent> <leader>bc :lclose<bar>b#<bar>bd #<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Splits
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

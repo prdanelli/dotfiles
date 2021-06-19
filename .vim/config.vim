@@ -51,6 +51,7 @@ set laststatus=2
 
 " Treat .es6 as .js
 au BufNewFile,BufRead *.es6 set filetype=javascript
+au BufNewFile,BufRead *.rasi set filetype=css
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Behaviour
