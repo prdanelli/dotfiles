@@ -1,10 +1,16 @@
-# Brightness:
+# Todo
 
-brightnessctl
+## Rofi
 
-https://www.reddit.com/r/bspwm/comments/jk63te/managing_display_brightness_wifi_and_volume/
++ Rofi for windows (alt-tab?)
++ Rofi configs with shared theme, but over riding aspects, like with and number of items shown
 
-# Volume
+## Menus
 
++ Log off menu
 
+## General
+
++ Bluetooth
++ VPN
 
