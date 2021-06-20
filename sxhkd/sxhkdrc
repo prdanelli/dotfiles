@@ -31,6 +31,8 @@ super + alt + d
 super + alt + m
 	~/.config/bspwm/monitors; bspc wm -r
 
+super + alt + p
+	~/.config/polybar/shapes/scripts/powermenu.sh
 #
 # Brightness / Volume
 #
@@ -107,15 +109,12 @@ super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
-super + {grave,Tab}
-	bspc {node,desktop} -f last
+super + Tab
+	bspc node -f last
 
-# # focus the last node/desktop
-# alt + Tab
-# 	bspc node -f last
-
-# alt + shift + Tab
-# 	bspc desktop -f last
+# Show window menu
+super + grave
+	rofi -no-lazy-grab -show window -config ~/.config/rofi/window.rasi
 
 # focus the older or newer node in the focus history
 super + {o,i}

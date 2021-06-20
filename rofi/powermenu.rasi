@@ -1,0 +1,87 @@
+configuration {
+	font: "Source Code Pro for Powerline medium 11";
+	show-icons: false;
+	icon-theme: 	"Papirus";
+	display-drun: "";
+	drun-display-format: "{name}";
+	disable-history: false;
+	fullscreen: false;
+	hide-scrollbar: true;
+	sidebar-mode: false;
+}
+
+@import "nord.rasi"
+
+window {
+	transparency: "real";
+	background-color: @polar-1;
+	text-color: @snow-1;
+	border-radius: 5px;
+	width: 791px;
+	location: center;
+}
+
+prompt {
+	enabled: false;
+}
+
+/* Text search bar */
+entry {
+	text-color: @snow-1;
+	expand: false;
+}
+
+inputbar {
+	children: [ textbox-prompt-colon, prompt ];
+	text-color: @snow-3;
+	expand: false;
+}
+
+listview {
+	background-color: @polar-1;
+	columns: 1;
+	lines: 5;
+	cycle: true;
+	dynamic: true;
+	layout: horizontal;
+	padding: 15px;
+	border-radius: 5px;
+	spacing: 10px;
+}
+
+mainbox {
+	background-color: @polar-1;
+	border:	0px;
+	border-radius: 5px;
+	border-color:	@polar-1;
+	children: [ listview ];
+}
+
+element {
+	background-color: @polar-1;
+	text-color: @fg;
+	orientation: horizontal;
+	border-radius: 0px;
+	padding: 20px;
+	spacing: 10px;
+	text-color: @polar-4;
+}
+
+element-icon {
+	enabled: false;
+}
+
+element-text {
+	enabled: true;
+	expand: true;
+	horizontal-align: 0;
+	vertical-align: 0;
+	font: "Source Code Pro for Powerline medium 15";
+}
+
+element selected {
+	background-color: @polar-3;
+	text-color: @snow-1;
+	border-color: @polar-1;
+	border-radius: 5px;
+}

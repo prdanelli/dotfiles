@@ -12,3 +12,6 @@ configuration {
 	modi: "window,run,drun";
 	show-icons: true;
 }
+
+@import "nord"
+

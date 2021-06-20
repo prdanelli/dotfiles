@@ -87,3 +87,5 @@ Plug 'Asheq/close-buffers.vim'
 Plug 'mhinz/vim-startify'
 " Highlight yanked text
 Plug 'machakann/vim-highlightedyank'
+" Toggle boolean values
+Plug 'https://github.com/sagarrakshe/toggle-bool'
