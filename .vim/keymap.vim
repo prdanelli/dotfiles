@@ -167,7 +167,10 @@ nnoremap <silent> OO :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
 " Buffers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Delete buffer
-nnoremap <Leader>d :bdelete<CR>
+nnoremap <Leader>bd :bdelete<CR>
+
+" Close a buffer without closing the split
+nnoremap <silent> <leader>d :lclose<bar>b#<bar>bd #<CR>
 
 " Close hidden buffers
 nnoremap <silent> Q :Bdelete menu<CR>
@@ -175,9 +178,6 @@ nnoremap <silent> Q :Bdelete menu<CR>
 " Buffer navigation with ctrl+lh
 nnoremap <silent><Tab> :bnext<CR>
 nnoremap <silent><S-Tab> :bprevious<CR>
-
-" Close a buffer without closing the split
-nnoremap <silent> <leader>bc :lclose<bar>b#<bar>bd #<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Splits
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -239,3 +239,5 @@ nmap <silent> <Leader>z <Plug>(ale_previous_wrap)
 nnoremap <Leader>s :Startify<cr>
 imap <script> <silent> <Plug>SuperTabForward <c-r>=SuperTab('n')<cr>
 
+" Toggle booleans
+noremap <leader>t :ToggleBool<CR>

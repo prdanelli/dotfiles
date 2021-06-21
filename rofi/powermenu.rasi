@@ -31,12 +31,6 @@ entry {
 	expand: false;
 }
 
-inputbar {
-	children: [ textbox-prompt-colon, prompt ];
-	text-color: @snow-3;
-	expand: false;
-}
-
 listview {
 	background-color: @polar-1;
 	columns: 1;

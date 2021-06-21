@@ -10,7 +10,7 @@ super + Return
 
 # program launcher
 super + space
-	rofi -no-lazy-grab -show drun -modi drun -config ~/.config/rofi/config.rasi
+	~/.config/rofi/launcher.sh
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -27,6 +27,9 @@ super + alt + e
 
 super + alt + d
 	bash -c 'source ~/.config/bspwm/monitors; default'; bspc wm -r
+
+super + alt + n
+	bash -c '~/.config/polybar/networks.sh';
 
 super + alt + m
 	~/.config/bspwm/monitors; bspc wm -r
@@ -114,7 +117,7 @@ super + Tab
 
 # Show window menu
 super + grave
-	rofi -no-lazy-grab -show window -config ~/.config/rofi/window.rasi
+	rofi -no-fixed-num-lines -no-lazy-grab -show window -config ~/.config/rofi/window.rasi
 
 # focus the older or newer node in the focus history
 super + {o,i}

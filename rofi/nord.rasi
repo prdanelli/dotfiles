@@ -1,3 +1,6 @@
+/* The shared configuration, which can be overridden in configuration files */
+
+/* Import the colour scheme */
 @import "theme"
 
 /** The search bar **/

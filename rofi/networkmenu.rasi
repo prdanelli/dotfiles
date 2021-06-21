@@ -1,4 +1,3 @@
-/* The default configuration incase none is specified */
 configuration {
 	width: 500;
 	show-icons: true;
