@@ -5,7 +5,7 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 bspc monitor -d 1 2 3 4 5
 
 bspc config border_width 5
-bspc config window_gap 16
+bspc config window_gap 20
 bspc config border_radius 5
 bspc config split_ratio 0.50
 bspc config borderless_monocle true
