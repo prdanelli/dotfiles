@@ -6,71 +6,16 @@ configuration {
 	fullscreen: false;
 	hide-scrollbar: true;
 	dynamic: true;
+	width: 600;
+	yoffset: -100;
 }
 
 @import "nord.rasi"
 
-window {
-	transparency: "real";
-	background-color: @polar-1;
-	text-color: @snow-1;
-	border-radius: 5px;
-	dynamic: true;
-	location: center;
+inputbar {
+	enabled: false;
 }
 
 listview {
-	background-color: @polar-1;
 	cycle: true;
-	dynamic: true;
-	layout: horizontal;
-	padding: 15px;
-	border-radius: 5px;
-	spacing: 10px;
-	children: [element];
-}
-
-mainbox {
-	dynamic: true;
-	background-color: @polar-1;
-	border:	0px;
-	border-radius: 5px;
-	border-color:	@polar-1;
-	children: [listview];
-}
-
-element {
-	background-color: @polar-1;
-	dynamic: true;
-	text-color: @fg;
-	orientation: vertical;
-	border-radius: 0px;
-	padding: 20px 10px 20px 20px;
-	spacing: 10px;
-	text-color: @polar-4;
-	children: [element-icon, element-text];
-}
-
-element-icon {
-	size: 80px;
-	dynamic: true;
-	border: 0px;
-	expand: true;
-	horizontal-align: 1;
-	vertical-align: 1;
-}
-
-element-text {
-	enabled: false;
-	expand: false;
-	horizontal-align: 0;
-	vertical-align: 0;
-	font: "Source Code Pro for Powerline medium 9";
-}
-
-element selected {
-	background-color: @polar-3;
-	text-color: @snow-1;
-	border-color: @polar-1;
-	border-radius: 5px;
 }

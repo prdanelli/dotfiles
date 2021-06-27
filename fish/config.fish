@@ -1,5 +1,9 @@
 source ~/.config/fish/alias.fish
 
+function mkfile
+	mkdir -p (dirname $argv) && touch $argv
+end
+
 function unset
     set --erase $argv
 end
@@ -82,6 +86,10 @@ end
 
 function dce:web:attach
 	command docker-compose up -d web workers; docker attach hyku_addons_web_1
+end
+
+function ha:rspec
+	bash -c 'bundle exec rspec `find spec -name "*_spec.rb" | grep -v internal_test_hyrax`'
 end
 
 function tmux:edit

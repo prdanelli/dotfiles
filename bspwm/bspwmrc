@@ -6,15 +6,15 @@ bspc monitor -d 1 2 3 4 5
 
 bspc config border_width 5
 bspc config window_gap 16
-bspc config border_radius 15
+bspc config border_radius 5
 bspc config split_ratio 0.50
 bspc config borderless_monocle true
 bspc config gapless_monocle false
 bspc config click_to_focus true
-bspc config apply_floating_atom    true
-bspc config history_aware_focus    true
+bspc config apply_floating_atom true
+bspc config history_aware_focus true
 bspc config normal_border_color "#2E3440"
-bspc config focused_border_color "#4C566A"
+bspc config focused_border_color "#747f94"
 bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 bspc config merge_overlapping_monitors true
@@ -33,7 +33,8 @@ xsetroot -cursor_name left_ptr &
 
 # BSPWM Related Apps
 picom --experimental-backends &
-feh --bg-fill gsettings $HOME/.config/bspwm/desktop.png
+# feh --bg-fill gsettings $HOME/.config/bspwm/desktop.png
+feh --bg-fill gsettings $HOME/.config/bspwm/blue.png
 $HOME/.config/polybar/launch.sh &
 greenclip daemon &
 

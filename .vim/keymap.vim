@@ -114,9 +114,6 @@
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Reload config
-nnoremap <Leader>r :source ~/.vimrc<CR>
-
 " Use Del key for black hole register
 map <Del> "_x
 
@@ -215,6 +212,7 @@ nnoremap <Leader>g :GFiles<cr>
 nnoremap <Leader>h :History<cr>
 nnoremap <Leader>l :Lines<cr>
 nnoremap <Leader>b :Buffers<cr>
+nnoremap <Leader>r :Rg<CR>
 
 " This is the default extra key bindings
 let g:fzf_action = {

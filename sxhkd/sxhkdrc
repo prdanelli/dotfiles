@@ -8,34 +8,49 @@
 super + Return
 	kitty
 
-# program launcher
-super + space
-	~/.config/rofi/launcher.sh
-
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
+
+#
+# Menus
+#
+
+# program launcher
+super + space
+	~/.config/rofi/launcher.sh
 
 # https://github.com/erebe/greenclip
 super + alt + s
 	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' -config ~/.config/rofi/clipboard.rasi
 
+super + alt + n
+	bash -c '~/.config/rofi/networks.sh';
+
+super + alt + p
+	~/.config/rofi/powermenu.sh
+
+# Show window menu
+super + grave
+	rofi -no-fixed-num-lines -no-lazy-grab -show window -config ~/.config/rofi/window.rasi
+
+#
 # Monitors
+#
+
+# Automaticaly work out which monitor setup should be used and refresh
+super + alt + m
+	~/.config/bspwm/monitors; bspc wm -r
+
+# Switch to external monitor
 # Without the bash -c, fish wont execute the command
 super + alt + e
 	bash -c 'source ~/.config/bspwm/monitors; external'; bspc wm -r
 
+# Switch to default monitor
 super + alt + d
 	bash -c 'source ~/.config/bspwm/monitors; default'; bspc wm -r
 
-super + alt + n
-	bash -c '~/.config/polybar/networks.sh';
-
-super + alt + m
-	~/.config/bspwm/monitors; bspc wm -r
-
-super + alt + p
-	~/.config/polybar/shapes/scripts/powermenu.sh
 #
 # Brightness / Volume
 #
@@ -64,7 +79,7 @@ super + alt + {q,r}
 	bspc {quit,wm -r}
 
 # close and kill
-super + {_,shift + }w
+super + {_,shift + }q
 	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
@@ -114,10 +129,6 @@ super + bracket{left,right}
 # focus the last node/desktop
 super + Tab
 	bspc node -f last
-
-# Show window menu
-super + grave
-	rofi -no-fixed-num-lines -no-lazy-grab -show window -config ~/.config/rofi/window.rasi
 
 # focus the older or newer node in the focus history
 super + {o,i}

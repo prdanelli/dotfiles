@@ -40,7 +40,7 @@ endif
 colorscheme nord
 colorscheme base16-ocean
 
-" highlight Normal guifg=NONE guibg=#2E3440
+highlight Normal guifg=NONE guibg=#2E3440
 hi Search guibg=#4C566A guifg=#D8DEE9 ctermbg=blue ctermfg=grey
 hi QuickFixLine guibg=#4C566A guifg=#D8DEE9 ctermbg=blue ctermfg=grey
 

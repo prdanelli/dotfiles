@@ -1,3 +1,5 @@
+# killall dunst; notify-send "Hello!" "This is a test notification as seen in dunst.
+
 [colors]
 	background = "#2E3440"
 	foreground = "#ECEFF4"
@@ -25,8 +27,8 @@
     mouse_right_click = close_all
 
     ### Text ###
-    font = SF Pro Display 7
-    line_height = 4
+    font = SF Pro Display 10
+    line_height = 9
 
     markup = full
 
@@ -40,6 +42,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
+		# format = "<span font="SF Pro Display 12">%s</span>\n<span size="13">%b</span>"
     format = "<b>%s </b>\n%b"
     alignment = left
     vertical_alignment = center
