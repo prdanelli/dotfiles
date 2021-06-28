@@ -7,13 +7,12 @@
 
 ## Rofi
 
-+ Rofi for windows (alt-tab?)
-+ Rofi configs with shared theme, but over riding aspects, like with and number of items shown
++ Power menu
+	- Icons
++ https://github.com/svenstaro/rofi-calc
 
 ## Polybar / Menu
 
-+ Log off menu
-+ Swap disk usage
 + Open applications
 + System Updates: https://www.ubuntuopenbox.com/tips/Debian-update-polybar-module-with-python/
 + Workspace icon name? https://github.com/aerosol/bspi
