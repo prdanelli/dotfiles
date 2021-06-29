@@ -149,10 +149,10 @@ device_paired() {
 toggle_paired() {
     if device_paired $1; then
         bluetoothctl remove $1
-        device_menu "$device"
+        device_menu "$device "
     else
         bluetoothctl pair $1
-        device_menu "$device"
+        device_menu "$device "
     fi
 }
 
@@ -193,9 +193,9 @@ print_status() {
                 device_alias=$(bluetoothctl info $device | grep "Alias" | cut -d ' ' -f 2-)
 
                 if [ $counter -gt 0 ]; then
-                    printf ", %s" "$device_alias"
+                    printf ", %s" "$device_alias "
                 else
-                    printf " %s" "$device_alias"
+                    printf " %s" "$device_alias "
                 fi
 
                 ((counter++))
