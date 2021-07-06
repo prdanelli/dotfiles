@@ -52,6 +52,19 @@ super + alt + d
 	bash -c 'source ~/.config/bspwm/monitors; default'; bspc wm -r
 
 #
+# Print Screen - Requires maim
+#
+Print
+	bash -c 'source ~/Personal/dotfiles/scripts/screenshots.sh; full'
+
+ctrl + Print
+	bash -c 'source ~/Personal/dotfiles/scripts/screenshots.sh; copy_selection'
+
+shift + ctrl + Print
+	bash -c 'source ~/Personal/dotfiles/scripts/screenshots.sh; save_selection'
+
+
+#
 # Brightness / Volume
 #
 XF86AudioMute
