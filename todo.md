@@ -1,8 +1,9 @@
 # Todo
 
+## Important
+
 ## General
 
-+ Bluetooth
 + VPN
 
 ## Rofi
@@ -12,6 +13,12 @@
 + https://github.com/svenstaro/rofi-calc
 
 ## Polybar / Menu
+
+### Bugs
+
++ Temperature not working all the time after restartt
+
+### Todo
 
 + Open applications
 + System Updates: https://www.ubuntuopenbox.com/tips/Debian-update-polybar-module-with-python/
