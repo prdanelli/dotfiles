@@ -164,10 +164,10 @@ nnoremap <silent> OO :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
 " Buffers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Delete buffer
-nnoremap <Leader>bd :bdelete<CR>
+nnoremap <Leader>d :bdelete<CR>
 
 " Close a buffer without closing the split
-nnoremap <silent> <leader>d :lclose<bar>b#<bar>bd #<CR>
+nnoremap <silent> <leader>bd :lclose<bar>b#<bar>bd #<CR>
 
 " Close hidden buffers
 nnoremap <silent> Q :Bdelete menu<CR>

@@ -131,8 +131,10 @@ set fish_greeting ""
 # set -U SXHKD_SHELL /usr/bin/bash
 # set -U SXHKD_SHELL sh
 
-# Load all saved ssh keys
-/usr/bin/ssh-add -A ^/dev/null
+# Ensure we start the auth daemon as bspwm doesn't seem to do this automatically
+if test -n "$DESKTOP_SESSION"
+    set -x (gnome-keyring-daemon --start | string split "=")
+end
 
 # Set Bat theme, which is used for Vim FZF previews
 set -gx BAT_THEME base16
