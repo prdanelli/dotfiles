@@ -27,6 +27,9 @@ super + alt + s
 super + alt + n
 	bash -c '~/.config/rofi/networks.sh';
 
+super + alt + b
+	bash -c '~/.config/rofi/bluetooth.sh';
+
 super + alt + p
 	~/.config/rofi/powermenu.sh
 
@@ -57,10 +60,10 @@ super + alt + d
 Print
 	bash -c 'source ~/Personal/dotfiles/scripts/screenshots.sh; full'
 
-ctrl + Print
+shift + ctrl + Print
 	bash -c 'source ~/Personal/dotfiles/scripts/screenshots.sh; copy_selection'
 
-shift + ctrl + Print
+ctrl + Print
 	bash -c 'source ~/Personal/dotfiles/scripts/screenshots.sh; save_selection'
 
 

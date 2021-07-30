@@ -38,7 +38,7 @@ picom --experimental-backends &
 # feh --bg-fill gsettings $HOME/.config/bspwm/desktop.png
 feh --bg-fill gsettings $HOME/.config/bspwm/blue.png
 $HOME/.config/polybar/launch.sh &
-greenclip daemon &
+killall greenclip; greenclip daemon &
 
 # Misc Apps
 dropbox &
@@ -50,5 +50,5 @@ unclutter &
 xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Natural Scrolling Enabled" 1
 xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Click Method Enabled" 0 1
 xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Tapping Enabled" 1
-xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Disable While Typing Enabled" 0
+xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Disable While Typing Enabled" 1
 xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Accel Profile Enabled" 1, 0
