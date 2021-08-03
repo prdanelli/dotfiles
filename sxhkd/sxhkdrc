@@ -68,15 +68,23 @@ ctrl + Print
 
 
 #
-# Brightness / Volume
+# Volume
 #
 XF86AudioMute
 	amixer -D pulse sset Master toggle
 
-# Change volume
 XF86Audio{Raise,Lower}Volume
 	amixer -D pulse sset Master 10%{+,-}
 
+#
+# Media Controls
+#
+XF86Audio{Play,Prev,Next}
+	playerctl --player=vlc,spotify {play-pause,previous,next}
+
+#
+# Brightness
+#
 # To adjust the brightness the user must be added to the video group:
 # sudo gpasswd -a $USER video
 XF86MonBrightness{Up,Down}
