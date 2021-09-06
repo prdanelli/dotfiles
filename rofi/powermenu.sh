@@ -4,11 +4,17 @@ dir="~/.config/rofi"
 rofi_command="rofi -theme $dir/powermenu.rasi"
 
 # Options
-shutdown=" Shutdown"
-reboot=" Restart"
-lock=" Lock"
-suspend=" Sleep"
-logout=" Logout"
+# shutdown=" Shutdown"
+# reboot=" Restart"
+# lock=" Lock"
+# suspend=" Sleep"
+# logout=" Logout"
+
+shutdown=""
+reboot=""
+lock=""
+suspend=""
+logout=""
 
 # Variable passed to rofi
 options="$suspend\n$logout\n$lock\n$reboot\n$shutdown"

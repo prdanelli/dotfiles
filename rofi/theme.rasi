@@ -19,6 +19,21 @@
 	aurora-4: #A3BE8C;
 	aurora-5: #B48EAD;
 
+	/* ; Nord colourful */
+	grad-1: #bfc3cb;
+	grad-2: #BF616A;
+	grad-3: #D08770;
+	grad-4: #EBCB8B;
+	grad-5: #A3BE8C;
+	grad-6: #8ca0be;
+	grad-7: #B48EAD;
+	grad-8: #4C566A;
+
+	transparent: #002E3440;
+	background: #0c121a;
+	foreground: #ECEFF4;
+	foreground-alt: #ECEFF4;
+
 	border: 0;
 	margin: 0;
 	padding: 0;

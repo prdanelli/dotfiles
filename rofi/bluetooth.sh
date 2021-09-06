@@ -207,6 +207,14 @@ print_status() {
     fi
 }
 
+print_short_status() {
+		if power_on; then
+				printf ''
+		else
+				echo ""
+		fi
+}
+
 # A submenu for a specific device that allows connecting, pairing, and trusting
 device_menu() {
     device=$1
@@ -302,6 +310,9 @@ show_menu() {
 rofi_command="rofi -dmenu -no-fixed-num-lines -yoffset -200 -i -p"
 
 case "$1" in
+  	--short-status)
+  			print_short_status
+			;;
     --status)
         print_status
         ;;
