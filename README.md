@@ -18,6 +18,10 @@ My development environment dotfiles
 
 + VPN
 
+## Setup
+
++ sudo ln -s ~/Personal/dotfiles/NordicNautilusGTK/ /usr/share/themes/NordNautilusGTK
+
 ## Rofi
 
 + Power menu

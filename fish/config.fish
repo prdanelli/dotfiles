@@ -1,5 +1,9 @@
 source ~/.config/fish/alias.fish
 
+function cclip
+	xclip -selection clipboard
+end
+
 function mkfile
 	mkdir -p (dirname $argv) && touch $argv
 end
@@ -125,6 +129,7 @@ end
 set -gx PATH /home/paul/Personal/dotfiles/diff-so-fancy /usr/local/bin /usr/local/go/bin ~/local/bin $PATH
 set -xU FZF_DEFAULT_COMMAND 'rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*}"'
 set -gx EDITOR 'nvim'
+set -gx GTK_THEME 'NordNautilusGTK:gtk-dark'
 
 set fish_greeting ""
 
