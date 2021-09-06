@@ -113,6 +113,9 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Source ~/.vimrc
+nnoremap <Leader>0 :source ~/.config/nvim/init.vim<CR> <bar> :echom 'Sourced init.vim' <CR>
+
 
 " Use Del key for black hole register
 map <Del> "_x
@@ -175,6 +178,7 @@ nnoremap <silent> Q :Bdelete menu<CR>
 " Buffer navigation with ctrl+lh
 nnoremap <silent><Tab> :bnext<CR>
 nnoremap <silent><S-Tab> :bprevious<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Splits
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -200,6 +204,9 @@ inoremap <C-t> <Esc>:tabnew<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Emmet
 let g:user_emmet_leader_key='<C-em>'
+
+" a list of groups can be found at `:help nvim_tree_highlight`
+highlight NvimTreeFolderIcon guibg=blue
 
 " Remap Multiple Cursors
 let g:VM_maps = {}
@@ -232,10 +239,91 @@ nmap <Leader>ec :CocCommand explorer --preset cocConfig<CR>
 nmap <Leader>eb :CocCommand explorer --preset buffer<CR>
 
 " ALE
-nmap <silent> <Leader>x <Plug>(ale_next_wrap)
-nmap <silent> <Leader>z <Plug>(ale_previous_wrap)
-nnoremap <Leader>s :Startify<cr>
-imap <script> <silent> <Plug>SuperTabForward <c-r>=SuperTab('n')<cr>
+" nmap <silent> <Leader>x <Plug>(ale_next_wrap)
+" nmap <silent> <Leader>z <Plug>(ale_previous_wrap)
+" nnoremap <Leader>s :Startify<cr>
+" imap <script> <silent> <Plug>SuperTabForward <c-r>=SuperTab('n')<cr>
 
 " Toggle booleans
 noremap <leader>t :ToggleBool<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" LSP Saga
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" lsp provider to find the cursor word definition and reference
+nnoremap <silent> gh :Lspsaga lsp_finder<CR>
+
+" code action
+nnoremap <silent><leader>ca :Lspsaga code_action<CR>
+vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
+
+" hover docs
+nnoremap <silent>K :Lspsaga hover_doc<CR>
+
+" scroll down hover doc or scroll in definition preview
+nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
+" scroll up hover doc
+nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
+
+" Signature help
+nnoremap <silent> gs :Lspsaga signature_help<CR>
+
+" reName
+nnoremap <silent> gn :Lspsaga rename<CR>
+
+" preview definition
+nnoremap <silent> gd :Lspsaga preview_definition<CR>
+
+" diagnostics
+nnoremap <silent> <leader>cd :Lspsaga show_line_diagnostics<CR>
+" only show diagnostic if cursor is over the area
+nnoremap <silent><leader>cc <cmd>lua
+
+" Jump diagnostics
+nnoremap <silent> [e :Lspsaga diagnostic_jump_next<CR>
+nnoremap <silent> ]e :Lspsaga diagnostic_jump_prev<CR>
+
+" float terminal also you can pass the cli command in open_float_terminal function
+nnoremap <silent> <A-d> :Lspsaga open_floaterm<CR>
+tnoremap <silent> <A-d> <C-\><C-n>:Lspsaga close_floaterm<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Nvim Tree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
+" NvimTreeOpen, NvimTreeClose and NvimTreeFocus are also available if you need them
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Nvim trouble
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+nnoremap gR <cmd>TroubleToggle lsp_references<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Telescope
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" File/vim functions
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fr <cmd>Telescope registers<cr>
+nnoremap <leader>fk <cmd>Telescope keymaps<cr>
+
+" LSP funtions
+nnoremap <leader>ls <cmd>lsp_document_symbols<cr>
+nnoremap <leader>la <cmd>lsp_code_actions<cr>
+nnoremap <leader>ld <cmd>lsp_definitions<cr>
+
+" Git functions
+nnoremap <leader>gc <cmd>git_commits<cr>
+nnoremap <leader>gs <cmd>git_status<cr>
+nnoremap <leader>gt <cmd>git_stash<cr>
+
+
