@@ -1,8 +1,8 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'tpope/vim-sensible'
-Plug 'editorconfig/editorconfig-vim'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Plug 'tpope/vim-sensible'
+"Plug 'editorconfig/editorconfig-vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Look and Feel
@@ -12,17 +12,29 @@ Plug 'EdenEast/nightfox.nvim'
 Plug 'shadmansaleh/lualine.nvim'
 Plug 'akinsho/bufferline.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'kyazdani42/nvim-tree.lua'
+Plug 'weirongxu/coc-explorer'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Code
+" LSP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/lsp-status.nvim' " Used by other plugin for basic lsp info
 Plug 'kabouzeid/nvim-lspinstall'
-Plug 'nvim-lua/lsp-status.nvim'
-Plug 'folke/trouble.nvim'
-Plug 'glepnir/lspsaga.nvim'
+
+" Plug 'folke/trouble.nvim'
+" Plug 'glepnir/lspsaga.nvim'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Completion
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'hrsh7th/nvim-cmp' " Completion engine
+Plug 'hrsh7th/cmp-nvim-lsp' " vim-cmp source for neovim builtin LSP client
+Plug 'hrsh7th/vim-vsnip' " Install snippet engine 
+Plug 'hrsh7th/cmp-buffer' " Install the buffer completion source
+Plug 'L3MON4D3/LuaSnip' " Snippets
+Plug 'saadparwaiz1/cmp_luasnip' " Snippet source for CMP
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Telescope
@@ -62,7 +74,7 @@ Plug 'junegunn/fzf.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Utilities
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'ervandew/supertab' " Tab complete
+" Plug 'ervandew/supertab' " Tab complete
 Plug 'tpope/vim-commentary' " Comment out line / block
 Plug 'tpope/vim-endwise' " Automatic end and closing brackets
 Plug 'tpope/vim-surround' " Wrap text

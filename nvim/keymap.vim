@@ -214,96 +214,81 @@ let g:VM_maps['Find Under']         = '<C-d>'
 let g:VM_maps['Find Subword Under'] = '<C-d>'
 
 " ## FZF Keybindings: https://github.com/junegunn/fzf.vim#commands
-nnoremap <Leader>p :Files<cr>
-nnoremap <Leader>g :GFiles<cr>
-nnoremap <Leader>h :History<cr>
-nnoremap <Leader>l :Lines<cr>
-nnoremap <Leader>b :Buffers<cr>
-nnoremap <Leader>r :Rg<CR>
+" nnoremap <Leader>p :Files<cr>
+" nnoremap <Leader>g :GFiles<cr>
+" nnoremap <Leader>h :History<cr>
+" nnoremap <Leader>l :Lines<cr>
+" nnoremap <Leader>b :Buffers<cr>
+" nnoremap <Leader>r :Rg<CR>
 
 " This is the default extra key bindings
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
+" let g:fzf_action = {
+"   \ 'ctrl-t': 'tab split',
+"   \ 'ctrl-x': 'split',
+"   \ 'ctrl-v': 'vsplit' }
 
+" Super tab
 " Ensure tab completion order is top to bottom
-let g:SuperTabDefaultCompletionType = "<c-n>"
-let g:SuperTabContextDefaultCompletionType = "<c-n>"
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-@> coc#refresh()
-nmap <silent><Leader>e :CocCommand explorer --sources=file+<CR>
-nmap <Leader>ev :CocCommand explorer --preset .vim<CR>
-nmap <Leader>ec :CocCommand explorer --preset cocConfig<CR>
-nmap <Leader>eb :CocCommand explorer --preset buffer<CR>
-
-" ALE
-" nmap <silent> <Leader>x <Plug>(ale_next_wrap)
-" nmap <silent> <Leader>z <Plug>(ale_previous_wrap)
-" nnoremap <Leader>s :Startify<cr>
-" imap <script> <silent> <Plug>SuperTabForward <c-r>=SuperTab('n')<cr>
+" let g:SuperTabDefaultCompletionType = "<c-n>"
+" let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
 " Toggle booleans
 noremap <leader>t :ToggleBool<CR>
 
+" Trigger Startify
+nnoremap <silent><Leader>s :Startify<cr>
+
+" File manager CoC Explorer
+nnoremap <leader>e :CocCommand explorer --toggle --sources=file+<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LSP Saga
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" lsp provider to find the cursor word definition and reference
-nnoremap <silent> gh :Lspsaga lsp_finder<CR>
+"" lsp provider to find the cursor word definition and reference
+"nnoremap <silent> gh :Lspsaga lsp_finder<CR>
 
-" code action
-nnoremap <silent><leader>ca :Lspsaga code_action<CR>
-vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
+"" code action
+"nnoremap <silent><leader>ca :Lspsaga code_action<CR>
+"vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
 
-" hover docs
-nnoremap <silent>K :Lspsaga hover_doc<CR>
+"" hover docs
+"nnoremap <silent>K :Lspsaga hover_doc<CR>
 
-" scroll down hover doc or scroll in definition preview
-nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
-" scroll up hover doc
-nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
+"" scroll down hover doc or scroll in definition preview
+"nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
+"" scroll up hover doc
+"nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
 
-" Signature help
-nnoremap <silent> gs :Lspsaga signature_help<CR>
+"" Signature help
+"nnoremap <silent> gs :Lspsaga signature_help<CR>
 
-" reName
-nnoremap <silent> gn :Lspsaga rename<CR>
+"" reName
+"nnoremap <silent> gn :Lspsaga rename<CR>
 
-" preview definition
-nnoremap <silent> gd :Lspsaga preview_definition<CR>
+"" preview definition
+"nnoremap <silent> gd :Lspsaga preview_definition<CR>
 
-" diagnostics
-nnoremap <silent> <leader>cd :Lspsaga show_line_diagnostics<CR>
-" only show diagnostic if cursor is over the area
-nnoremap <silent><leader>cc <cmd>lua
+"" diagnostics
+"nnoremap <silent> <leader>cd :Lspsaga show_line_diagnostics<CR>
+"" only show diagnostic if cursor is over the area
+"nnoremap <silent><leader>cc <cmd>lua
 
-" Jump diagnostics
-nnoremap <silent> [e :Lspsaga diagnostic_jump_next<CR>
-nnoremap <silent> ]e :Lspsaga diagnostic_jump_prev<CR>
+"" Jump diagnostics
+"nnoremap <silent> [e :Lspsaga diagnostic_jump_next<CR>
+"nnoremap <silent> ]e :Lspsaga diagnostic_jump_prev<CR>
 
-" float terminal also you can pass the cli command in open_float_terminal function
-nnoremap <silent> <A-d> :Lspsaga open_floaterm<CR>
-tnoremap <silent> <A-d> <C-\><C-n>:Lspsaga close_floaterm<CR>
+"" float terminal also you can pass the cli command in open_float_terminal function
+"nnoremap <silent> <A-d> :Lspsaga open_floaterm<CR>
+"tnoremap <silent> <A-d> <C-\><C-n>:Lspsaga close_floaterm<CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Nvim Tree
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <C-n> :NvimTreeToggle<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
-nnoremap <leader>n :NvimTreeFindFile<CR>
-" NvimTreeOpen, NvimTreeClose and NvimTreeFocus are also available if you need them
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Nvim trouble
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>xx <cmd>TroubleToggle<cr>
-nnoremap <leader>xw <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
-nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
-nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
-nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
-nnoremap gR <cmd>TroubleToggle lsp_references<cr>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Nvim trouble
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"nnoremap <leader>xx <cmd>TroubleToggle<cr>
+"nnoremap <leader>xw <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
+"nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
+"nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+"nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+"nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Telescope
@@ -325,5 +310,59 @@ nnoremap <leader>ld <cmd>lsp_definitions<cr>
 nnoremap <leader>gc <cmd>git_commits<cr>
 nnoremap <leader>gs <cmd>git_status<cr>
 nnoremap <leader>gt <cmd>git_stash<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" nvim-cmp setup
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" lua << EOF
+" 	-- Set completeopt to have a better completion experience
+" 	vim.o.completeopt = 'menuone,noselect'
+
+" 	-- luasnip setup
+" 	local luasnip = require 'luasnip'
+
+" 	local cmp = require 'cmp'
+" 	cmp.setup {
+" 		snippet = {
+" 			expand = function(args)
+" 				require('luasnip').lsp_expand(args.body)
+" 			end,
+" 		},
+" 		mapping = {
+" 			['<C-p>'] = cmp.mapping.select_prev_item(),
+" 			['<C-n>'] = cmp.mapping.select_next_item(),
+" 			['<C-d>'] = cmp.mapping.scroll_docs(-4),
+" 			['<C-f>'] = cmp.mapping.scroll_docs(4),
+" 			['<C-Space>'] = cmp.mapping.complete(),
+" 			['<C-e>'] = cmp.mapping.close(),
+" 			['<CR>'] = cmp.mapping.confirm {
+" 				behavior = cmp.ConfirmBehavior.Replace,
+" 				select = true,
+" 			},
+" 			['<Tab>'] = function(fallback)
+" 				if vim.fn.pumvisible() == 1 then
+" 					vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-n>', true, true, true), 'n')
+" 				elseif luasnip.expand_or_jumpable() then
+" 					vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '')
+" 				else
+" 					fallback()
+" 				end
+" 			end,
+" 			['<S-Tab>'] = function(fallback)
+" 				if vim.fn.pumvisible() == 1 then
+" 					vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-p>', true, true, true), 'n')
+" 				elseif luasnip.jumpable(-1) then
+" 					vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '')
+" 				else
+" 					fallback()
+" 				end
+" 			end,
+" 		},
+" 		sources = {
+" 			{ name = 'nvim_lsp' },
+" 			{ name = 'luasnip' },
+" 		},
+" 	}
+" EOF
 
 
