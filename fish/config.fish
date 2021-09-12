@@ -28,34 +28,6 @@ function git:edit
     command nvim ~/.gitconfig
 end
 
-function vim:edit
-   command nvim ~/.vim/config.vim
-end
-
-function dory:edit
-    command nvim ~/.dory.yml
-end
-
-function dory:start
-    command dory up
-end
-
-function dory:stop
-    command dory stop
-end
-
-function solr:start
-    systemctl start solr
-end
-
-function solr:stop
-    systemctl stop solr
-end
-
-function solr:status
-   systemctl status solr
-end
-
 function dc
     command docker-compose $argv
 end
@@ -92,16 +64,22 @@ function dce:web:attach
 	command docker-compose up -d web workers; docker attach hyku_addons_web_1
 end
 
+function deploy:ah
+	bash -c "gcloud config configurations activate ubiquityrepo-ah; gcloud container clusters get-credentials cluster-ah --zone europe-west4-a;"
+	bash -c "helm repo update; helm upgrade hyku ubiquity-charts-hyku/hyku"
+end
+
+function deploy:us
+	bash -c "gcloud config configurations activate ubiquityrepo-us; gcloud container clusters get-credentials cluster-us --zone us-central1-a;"
+	bash -c "helm repo update; helm upgrade hyku ubiquity-charts-hyku/hyku"
+end
+
 function ha:rspec
 	bash -c 'bundle exec rspec `find spec -name "*_spec.rb" | grep -v internal_test_hyrax`'
 end
 
 function tmux:edit
     command nvim ~/.tmux.conf
-end
-
-function tmux:reload
-    command tmux source-file ~/.tmux.conf
 end
 
 function colours
@@ -132,9 +110,6 @@ set -gx EDITOR 'nvim'
 set -gx GTK_THEME 'NordNautilusGTK:gtk-dark'
 
 set fish_greeting ""
-
-# set -U SXHKD_SHELL /usr/bin/bash
-# set -U SXHKD_SHELL sh
 
 # Ensure we start the auth daemon as bspwm doesn't seem to do this automatically
 if test -n "$DESKTOP_SESSION"
