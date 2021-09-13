@@ -2,7 +2,7 @@
 	name = Paul Danelli
 	email = prdanelli@gmail.com
 [core]
-	excludesFile = ~/.gitignore
+	excludesfile = /home/paul/.gitignore_global
 	editor = nvim
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	fileMode = false
