@@ -16,8 +16,8 @@ My development environment dotfiles.
 
 ## Screenshots
 
-[Desktop](https://raw.githubusercontent.com/prdanelli/dotfiles/main/screenshots/nvim.jpg)
-[Neovim](https://raw.githubusercontent.com/prdanelli/dotfiles/main/screenshots/nvim.jpg)
+![Desktop](https://raw.githubusercontent.com/prdanelli/dotfiles/main/screenshots/nvim.jpg)
+![Neovim](https://raw.githubusercontent.com/prdanelli/dotfiles/main/screenshots/nvim.jpg)
 
 # Todo
 
