@@ -1,6 +1,6 @@
 # dotfiles
 
-My development environment dotfiles
+My development environment dotfiles. 
 
 ## Applications
 
@@ -8,11 +8,17 @@ My development environment dotfiles
 + Kitty Terminal
 + Starship Prompt
 + Tmux
-+ Vim
++ Neovim
++ BSPWM
++ Polybar
++ Rofi
++ Dunst
+
+## Screenshots
+
+
 
 # Todo
-
-## Important
 
 ## General
 
