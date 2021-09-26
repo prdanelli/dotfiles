@@ -1,12 +1,16 @@
 #!/bin/bash
 
+tv() {
+	xrandr --output eDP-1 --off --output DP-3 --primary --mode 1920x1080
+}
+
 external() {
 	xrandr --output eDP-1 --off --output DP-1 --primary --mode 3840x2160 --dpi 192 --fbmm 621x341 --scale 0.75x0.75
 	bspc monitor -g 2880x1615+0+0
 }
 
 default() {
-	xrandr --output eDP-1 --primary --auto --output DP-1 --off
+	xrandr --output eDP-1 --primary --auto --output DP-1 --off --output DP-3 --off
 }
 
 if [ $GDMSESSION == "bspwm" ]
@@ -20,6 +24,9 @@ then
 	elif [ $current == "DP-1" ] && [ $nmonitors == 2 ]
 	then
 		external
+	elif [ $current == "DP-3" ] && [ $nmonitors == 2 ]
+	then
+		tv
 	else
 		default
 	fi
