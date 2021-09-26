@@ -20,6 +20,10 @@ super + {_,shift + }q
 super + Escape
 	pkill -USR1 -x sxhkd
 
+
+super + alt + a
+	spicetify apply
+
 #
 # Menus
 #
@@ -47,14 +51,17 @@ super + grave
 
 #
 # Monitors
+# Automaticaly work out which monitor setup should be used and refresh
 #
 
-# Automaticaly work out which monitor setup should be used and refresh
 super + alt + m
 	~/.config/bspwm/monitors; bspc wm -r
 
-# Switch to external monitor
 # Without the bash -c, fish wont execute the command
+super + alt + t
+	bash -c 'source ~/.config/bspwm/monitors; tv'; bspc wm -r
+
+# Switch to external monitor
 super + alt + e
 	bash -c 'source ~/.config/bspwm/monitors; external'; bspc wm -r
 
