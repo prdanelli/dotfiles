@@ -37,9 +37,10 @@ set colorcolumn=80,120 " Character line limits
 set cursorline " Highlight the current line
 set laststatus=2 " Show status line always
 set conceallevel=0
-set tabstop=2 " Tab / space behaviour
-set smarttab
-set expandtab
+set expandtab " On pressing tab, insert 2 spaces
+set tabstop=2 " show existing tab with 2 spaces width
+set softtabstop=2
+set shiftwidth=2 " when indenting with '>', use 2 spaces width
 set noshowmode " Don't show -- INSERT--
 set path+=** " Search recurively
 set wildmenu " Menu autocomplete
@@ -99,6 +100,9 @@ set fillchars=fold:-
 
 " Vim Sneak
 let g:sneak#label = 1
+
+" Make Ranger replace netrw and be the file explorer
+let g:rnvimr_ex_enable = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set colorscheme nightfox
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -130,13 +134,20 @@ EOF
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua << EOF
 require'nvim-treesitter.configs'.setup({
-	ensure_installed = "maintained",
+  ensure_installed = { "ruby", "javascript", "html", "css", "lua", "dockerfile", "bash" },
 	ignore_install = {},
 	highlight = {
 		enable = true,
-		disable = { "c", "rust" },
-		additional_vim_regex_highlighting = false,
-	}
+		additional_vim_regex_highlighting = true,
+	},
+  indent = {
+    enable = true
+  },
+  query_linter = {
+    enable = enabled,
+    use_virtual_text = true,
+    lint_events = {"BufWrite", "CursorHold"},
+  },
 })
 EOF
 
@@ -198,20 +209,19 @@ let g:startify_lists = [
 	\ ]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" LuaLine
+" Lualine
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua << EOF
   require'lualine'.setup({
    options = {
-    lower = true,
     icons_enabled = true,
     theme = 'auto',
-    component_separators = { '\\', '/' },
-    section_separators = { '', '' },
+    component_separators = { left = '\\', right = '/' },
+    section_separators = { left = '', right = '' },
     disabled_filetypes = {}
    },
    sections = {
-    lualine_a = { { 'mode', lower = false } },
+    lualine_a = { { 'mode' } },
     lualine_b = { 'branch' },
     lualine_c = { require'lsp-status'.status },
     lualine_x = { 'filename', 'encoding', 'filetype' },
@@ -244,21 +254,23 @@ require('telescope').setup{
       '--with-filename',
       '--line-number',
       '--column',
-      '--smart-case'
+      '--smart-case',
+      '--hidden'
     },
     prompt_prefix = "> ",
     selection_caret = "> ",
     entry_prefix = "  ",
     initial_mode = "insert",
     selection_strategy = "reset",
-    sorting_strategy = "descending",
+    sorting_strategy = "ascending",
     layout_strategy = "horizontal",
     layout_config = {
+      prompt_position = 'top',
       horizontal = {
         mirror = false,
       },
       vertical = {
-        mirror = true,
+        mirror = false,
       },
     },
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
@@ -274,8 +286,18 @@ require('telescope').setup{
     file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
     grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
     qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+    extensions = {
+      fzf = {
+        override_generic_sorter = false,
+        override_file_sorter = true,
+        case_mode = "smart_case"
+      }
+    }
   }
 }
+
+-- require fzf extension for better fzf sorting algorithm
+require('telescope').load_extension('fzf')
 EOF
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -315,13 +337,19 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+  -- Set some keybinds conditional on server capabilities
+  if client.resolved_capabilities.document_formatting then
+    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  elseif client.resolved_capabilities.document_range_formatting then
+    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  end
+
+  -- print(vim.inspect(client))
+  print("Attached to " .. client.name)
 end
 
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
--- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.documentationFormat = { 'markdown', 'plaintext' }
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -336,24 +364,54 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 }
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-require'lspinstall'.setup()
-local servers = require'lspinstall'.installed_servers()
+local handlers = {
+  ["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+      virtual_text = true
+    }
+  )
+}
+
+require('lspinstall').setup()
+local servers = require('lspinstall').installed_servers()
 for _, server in pairs(servers) do
-  nvim_lsp[server].setup{
+  nvim_lsp[server].setup {
     on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    },
+    flags = { debounce_text_changes = 150 },
     capabilities = capabilities,
+    root_dir = nvim_lsp.util.root_pattern(".git", "."),
+    handlers = handlers
   }
 end
+
+nvim_lsp.solargraph.setup {
+  cmd = { "solargraph", "stdio" },
+  filetypes = { "ruby" },
+  flags = { debounce_text_changes = 150 },
+  on_attach = on_attach,
+  root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git", "."),
+  capabilities = capabilities,
+  handlers = handlers,
+  settings = {
+    solargraph = {
+      autoformat = false,
+      completion = true,
+      diagnostic = true,
+      folding = true,
+      references = true,
+      rename = true,
+      symbols = true
+    }
+  }
+}
 EOF
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CMP Completion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua << EOF
-local luasnip = require 'luasnip'
+local luasnip = require('luasnip')
+local nvim_lsp = require('lspconfig')
 
 local cmp = require 'cmp'
 cmp.setup {
@@ -399,3 +457,14 @@ cmp.setup {
 }
 EOF
 
+lua << EOF
+  require("trouble").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
+
+" lua << EOF
+" require 'lspsaga'.init_lsp_saga()
+" EOF
