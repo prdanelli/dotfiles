@@ -114,7 +114,7 @@
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Source ~/.vimrc
-nnoremap <Leader>0 :source ~/.config/nvim/init.vim<CR> <bar> :echom 'Sourced init.vim' <CR>
+nnoremap <Leader>0 :source ~/.config/nvim/init.vim<CR> <bar> :echom 'Sourced init.vim' <CR> :noh <CR>
 
 
 " Use Del key for black hole register
@@ -133,8 +133,8 @@ noremap <RIGHT> <NOP>
 nnoremap <Leader>c :noh<return><esc>
 
 " Extra save keys
-nnoremap <Leader>w :w<CR>
-nnoremap <C-w> :w<cr>
+" nnoremap <Leader>w :w<CR>
+" nnoremap <C-w> :w<cr>
 nnoremap :W :w<CR>
 vnoremap :W :w<CR>
 
@@ -210,20 +210,6 @@ let g:VM_maps = {}
 let g:VM_maps['Find Under']         = '<C-d>'
 let g:VM_maps['Find Subword Under'] = '<C-d>'
 
-" ## FZF Keybindings: https://github.com/junegunn/fzf.vim#commands
-" nnoremap <Leader>p :Files<cr>
-" nnoremap <Leader>g :GFiles<cr>
-" nnoremap <Leader>h :History<cr>
-" nnoremap <Leader>l :Lines<cr>
-" nnoremap <Leader>b :Buffers<cr>
-" nnoremap <Leader>r :Rg<CR>
-
-" This is the default extra key bindings
-" let g:fzf_action = {
-"   \ 'ctrl-t': 'tab split',
-"   \ 'ctrl-x': 'split',
-"   \ 'ctrl-v': 'vsplit' }
-
 " Toggle booleans
 noremap <leader>t :ToggleBool<CR>
 
@@ -254,7 +240,7 @@ nnoremap <silent><Leader>s :Startify<cr>
  nnoremap <silent> <leader>cd :Lspsaga show_line_diagnostics<CR>
  " only show diagnostic if cursor is over the area
  nnoremap <silent><leader>cc <cmd>lua
- 
+
  " Jump diagnostics
  nnoremap <silent> [e :Lspsaga diagnostic_jump_next<CR>
  nnoremap <silent> ]e :Lspsaga diagnostic_jump_prev<CR>
@@ -276,9 +262,8 @@ noremap gR <cmd>TroubleToggle lsp_references<cr>
 " Telescope
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File/vim functions
-nnoremap <leader>p <cmd>Telescope find_files<cr>
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>p <cmd>Telescope find_files hidden=true layout_config={"prompt_position":"top"}<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep <cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fr <cmd>Telescope registers<cr>
@@ -297,5 +282,9 @@ nnoremap <leader>gt <cmd>git_stash<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ranger
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>r :RangerWorkingDirectory<CR>
-nmap <leader>e :RnvimrToggle<CR>
+nnoremap <silent> <leader>e :RnvimrToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Lazy Git
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <leader>g :LazyGit<CR>

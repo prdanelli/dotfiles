@@ -49,7 +49,7 @@ set backspace=indent,eol,start " How should backspace be used
 set mouse=niv " Enable mouse selection
 set linebreak " Word wrap but don't cut words
 set wrap
-set smartindent " Indentation
+" set smartindent " Indentation
 set autoindent
 set shortmess+=c " Don't pass messages to |ins-completion-menu|.
 set number " Turn line numbers on by default
@@ -101,8 +101,34 @@ set fillchars=fold:-
 " Vim Sneak
 let g:sneak#label = 1
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Rnvimr
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Make Ranger replace netrw and be the file explorer
 let g:rnvimr_ex_enable = 1
+" Make Ranger to be hidden after picking a file
+let g:rnvimr_enable_picker = 1
+" Border for floating window
+let g:rnvimr_draw_border = 1
+" Hide the files included in gitignore
+let g:rnvimr_hide_gitignore = 1
+" Change the border's color
+let g:rnvimr_border_attr = {'fg': 14, 'bg': -1}
+" Make Neovim wipe the buffers corresponding to the files deleted by Ranger
+let g:rnvimr_enable_bw = 1
+" Add a shadow window, value is equal to 100 will disable shadow
+let g:rnvimr_shadow_winblend = 70
+" Draw border with both
+let g:rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
+" Link CursorLine into RnvimrNormal highlight in the Floating window
+highlight link RnvimrNormal CursorLine
+
+let g:rnvimr_ranger_views = [
+	\ {'minwidth': 90, 'ratio': []},
+	\ {'minwidth': 90, 'maxwidth': 89, 'ratio': [1,1]},
+	\ {'maxwidth': 90, 'ratio': [1]}
+\ ]
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set colorscheme nightfox
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -155,15 +181,15 @@ EOF
 " Bufferline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua << EOF
-  require('bufferline').setup {
-    options = {
-      diagnostics = "nvim_lsp",
-      diagnostics_update_in_insert = false,
-      show_buffer_icons = false,
-      show_tab_indicators = true,
-      separator_style = "thin"
-    }
-  }
+require('bufferline').setup {
+	options = {
+		diagnostics = "nvim_lsp",
+		diagnostics_update_in_insert = false,
+		show_buffer_icons = false,
+		show_tab_indicators = true,
+		separator_style = "thin"
+	}
+}
 EOF
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -212,32 +238,32 @@ let g:startify_lists = [
 " Lualine
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua << EOF
-  require'lualine'.setup({
-   options = {
-    icons_enabled = true,
-    theme = 'auto',
-    component_separators = { left = '\\', right = '/' },
-    section_separators = { left = '', right = '' },
-    disabled_filetypes = {}
-   },
-   sections = {
-    lualine_a = { { 'mode' } },
-    lualine_b = { 'branch' },
-    lualine_c = { require'lsp-status'.status },
-    lualine_x = { 'filename', 'encoding', 'filetype' },
-    lualine_y = { 'progress' },
-    lualine_z = { 'location' }
-   },
-   inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = { 'filename' },
-    lualine_x = { 'location' },
-    lualine_y = {},
-    lualine_z = {}
-   },
-   tabline = {},
-   extensions = {}
+require'lualine'.setup({
+	options = {
+		icons_enabled = true,
+		theme = 'auto',
+		component_separators = { left = '\\', right = '/' },
+		section_separators = { left = '', right = '' },
+		disabled_filetypes = {}
+		},
+	sections = {
+		lualine_a = { { 'mode' } },
+		lualine_b = { 'branch' },
+		lualine_c = { require'lsp-status'.status },
+		lualine_x = { 'filename', 'encoding', 'filetype' },
+		lualine_y = { 'progress' },
+		lualine_z = { 'location' }
+		},
+	inactive_sections = {
+		lualine_a = {},
+		lualine_b = {},
+		lualine_c = { 'filename' },
+		lualine_x = { 'location' },
+		lualine_y = {},
+		lualine_z = {}
+		},
+	tabline = {},
+	extensions = {}
 })
 EOF
 
@@ -245,17 +271,19 @@ EOF
 " Telescope
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua << EOF
-require('telescope').setup{
+require('telescope').setup({
   defaults = {
+    mappings = {
+      i = {
+        ["<esc>"] = require('telescope.actions').close,
+      },
+    },
     vimgrep_arguments = {
       'rg',
-      '--color=never',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
+      '--vimgrep',
+      '--hidden',
       '--smart-case',
-      '--hidden'
+      '--trim'
     },
     prompt_prefix = "> ",
     selection_caret = "> ",
@@ -273,9 +301,9 @@ require('telescope').setup{
         mirror = false,
       },
     },
-    file_sorter =  require'telescope.sorters'.get_fuzzy_file,
+    file_sorter =  require('telescope.sorters').get_fuzzy_file,
     file_ignore_patterns = {},
-    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
+    generic_sorter =  require('telescope.sorters').get_generic_fuzzy_sorter,
     winblend = 0,
     border = {},
     borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
@@ -283,9 +311,9 @@ require('telescope').setup{
     use_less = true,
     path_display = {},
     set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
-    file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
-    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
-    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+    file_previewer = require('telescope.previewers').vim_buffer_cat.new,
+    grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
+    qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
     extensions = {
       fzf = {
         override_generic_sorter = false,
@@ -294,7 +322,7 @@ require('telescope').setup{
       }
     }
   }
-}
+})
 
 -- require fzf extension for better fzf sorting algorithm
 require('telescope').load_extension('fzf')
@@ -394,6 +422,7 @@ nvim_lsp.solargraph.setup {
   handlers = handlers,
   settings = {
     solargraph = {
+			formatting = false,
       autoformat = false,
       completion = true,
       diagnostic = true,
@@ -457,6 +486,9 @@ cmp.setup {
 }
 EOF
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Lsp Trouble
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua << EOF
   require("trouble").setup {
     -- your configuration comes here
@@ -465,6 +497,11 @@ lua << EOF
   }
 EOF
 
-" lua << EOF
-" require 'lspsaga'.init_lsp_saga()
-" EOF
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Lazy Git
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:lazygit_floating_window_winblend = 0 " transparency of floating window
+let g:lazygit_floating_window_scaling_factor = 0.9 " scaling factor for floating window
+let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
+let g:lazygit_floating_window_use_plenary = 0 " use plenary.nvim to manage floating window if available
+let g:lazygit_use_neovim_remote = 1 " fallback to 0 if neovim-remote is not installed

@@ -1,9 +1,3 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'tpope/vim-sensible'
-Plug 'editorconfig/editorconfig-vim'
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Look and Feel
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -59,6 +53,7 @@ Plug 'tpope/vim-bundler'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'kdheepak/lazygit.nvim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tmux
@@ -90,4 +85,7 @@ Plug 'sickill/vim-pasta' " Indentation aware pasting
 Plug 'Asheq/close-buffers.vim' " Help closing hidden buffers
 Plug 'mhinz/vim-startify' " Start up page
 Plug 'machakann/vim-highlightedyank' " Highlight yanked text
-Plug 'https://github.com/sagarrakshe/toggle-bool' " Toggle boolean values
+Plug 'sagarrakshe/toggle-bool' " Toggle boolean values
+Plug 'jghauser/mkdir.nvim'
+Plug 'tpope/vim-sensible'
+Plug 'editorconfig/editorconfig-vim'
