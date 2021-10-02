@@ -1,6 +1,6 @@
 # dotfiles
 
-My development environment dotfiles. 
+My development environment dotfiles.
 
 ## Applications
 
@@ -27,6 +27,7 @@ My development environment dotfiles.
 ## Setup
 
 + sudo ln -s ~/Personal/dotfiles/NordicNautilusGTK/ /usr/share/themes/NordNautilusGTK
++ The apply the setting within Gnome Tweaks
 
 ## Rofi
 
