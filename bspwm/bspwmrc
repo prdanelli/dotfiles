@@ -34,8 +34,8 @@ eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh) ex
 # Desktop icon
 xsetroot -cursor_name left_ptr &
 
-# Compositor 
-# For some reason, using compton affects the external monitor... 
+# Compositor
+# For some reason, using compton affects the external monitor...
 picom --experimental-backends &
 
 # Set wallpaper
@@ -46,6 +46,9 @@ $HOME/.config/polybar/launch.sh &
 
 # Clipboard manager
 killall greenclip; greenclip daemon &
+
+# Dropbox
+dropbox start &
 
 # Touchpad
 # Hides mouse when you are not using it
