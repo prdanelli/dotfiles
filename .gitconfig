@@ -7,7 +7,6 @@
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	fileMode = false
 [color]
-	ui = auto
 	ui = true
 [alias]
 	ch = checkout
@@ -20,8 +19,8 @@
 	last = log -1 HEAD
 	ad = add
 	psh = push
+	pll = pull
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	bl = log -p -M --follow --stat --
 [push]
 	default = simple
 [filter "lfs"]
@@ -52,3 +51,5 @@
 	rebase = false
 [init]
 	defaultBranch = main
+[interactive]
+	diffFilter = diff-so-fancy --patch

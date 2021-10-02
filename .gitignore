@@ -7,3 +7,5 @@ tags
 diff-so-fancy
 plug.vim.old
 .solargraph.yml
+lazygit/*
+!lazygit/config.yml
