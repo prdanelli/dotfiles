@@ -1,5 +1,9 @@
 source ~/.config/fish/alias.fish
 
+function spicetify:apply
+  command spicetify config current_theme $argv; spicetify apply
+end
+
 function cclip
 	xclip -selection clipboard
 end
@@ -64,14 +68,26 @@ function dce:web:attach
 	command docker-compose up -d web workers; docker attach hyku_addons_web_1
 end
 
-function deploy:ah
+function gcloud:deploy:ah
 	bash -c "gcloud config configurations activate ubiquityrepo-ah; gcloud container clusters get-credentials cluster-ah --zone europe-west4-a;"
 	bash -c "helm repo update; helm upgrade hyku ubiquity-charts-hyku/hyku"
 end
 
-function deploy:us
+function gcloud:deploy:us
 	bash -c "gcloud config configurations activate ubiquityrepo-us; gcloud container clusters get-credentials cluster-us --zone us-central1-a;"
 	bash -c "helm repo update; helm upgrade hyku ubiquity-charts-hyku/hyku"
+end
+
+function gcloud:hyku:bash
+	kubectl exec -it (gcloud:hyku:pod) -- /bin/bash
+end
+
+function gcloud:hyku:pod
+	gcloud:hyku:pods | head -n 1 | awk '{print $1;}'
+end
+
+function gcloud:hyku:pods
+	kubectl get pods | grep hyku
 end
 
 function ha:rspec
@@ -104,7 +120,7 @@ function fish:reload
     source ~/.config/fish/config.fish
 end
 
-set -gx PATH /home/paul/Personal/dotfiles/diff-so-fancy /usr/local/bin /usr/local/go/bin ~/local/bin $PATH
+set -gx PATH ~/Personal/dotfiles/diff-so-fancy /usr/local/bin /usr/local/go/bin ~/local/bin ~/.gem/ruby/2.7.0/bin $PATH
 set -xU FZF_DEFAULT_COMMAND 'rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*}"'
 set -gx EDITOR 'nvim'
 set -gx GTK_THEME 'NordNautilusGTK:gtk-dark'
