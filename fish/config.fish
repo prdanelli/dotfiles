@@ -1,5 +1,22 @@
 source ~/.config/fish/alias.fish
 
+function sleep:disable
+	sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+end
+
+function sleep:enable
+	sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target
+end
+
+# Remove any old Kernals that are left by upgrades
+function linux:purge_kernals
+	dpkg -l 'linux-*' | awk '/^ii/{ print $2}' | grep -v -e (uname -r | cut -f1,2 -d "-") | grep -e [0-9] | grep -E "(image|headers)" | xargs sudo apt -y purge
+end
+
+function linux:purge_kernals:test
+	dpkg -l 'linux-*' | awk '/^ii/{ print $2}' | grep -v -e (uname -r | cut -f1,2 -d "-") | grep -e [0-9] | grep -E "(image|headers)" | xargs sudo apt --dry-run remove
+end
+
 function spicetify:apply
   command spicetify config current_theme $argv; spicetify apply
 end
