@@ -4,15 +4,18 @@ My development environment dotfiles.
 
 ## Applications
 
-+ Fish shell
-+ Kitty Terminal
-+ Starship Prompt
++ bspwm
++ sxhkd
++ Fish
++ Kitty
++ Starship
 + Tmux
 + Neovim
-+ BSPWM
 + Polybar
 + Rofi
 + Dunst
++ Duplicity
++ Spicetify
 
 ## Screenshots
 
@@ -38,14 +41,9 @@ My development environment dotfiles.
 
 ## Polybar / Menu
 
-### Bugs
-
-+ Temperature not working all the time after restartt
-
 ### Todo
 
 + Open applications
-+ System Updates: https://www.ubuntuopenbox.com/tips/Debian-update-polybar-module-with-python/
 + Workspace icon name? https://github.com/aerosol/bspi
 
 Tutorials: https://arcolinux.com/all-modules-that-are-available-for-polybar-any-desktop/

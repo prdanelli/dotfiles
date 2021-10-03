@@ -9,3 +9,7 @@ plug.vim.old
 .solargraph.yml
 lazygit/*
 !lazygit/config.yml
+duplicity/credentials
+duplicity/passphrase
+duplicity/client_secrets.json
+duplicity/username

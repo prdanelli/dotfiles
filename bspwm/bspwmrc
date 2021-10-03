@@ -41,7 +41,7 @@ picom --experimental-backends &
 # Set wallpaper
 feh --bg-fill gsettings $HOME/.config/bspwm/backgrounds/alena-aenami-portal.jpg
 
-# Top bar
+# Polybar
 $HOME/.config/polybar/launch.sh &
 
 # Clipboard manager
