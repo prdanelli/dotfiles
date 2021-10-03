@@ -19,7 +19,6 @@ Plug 'kabouzeid/nvim-lspinstall'
 Plug 'folke/lsp-colors.nvim' " Add missing LSP highlight groups
 
 Plug 'folke/trouble.nvim'
-Plug 'glepnir/lspsaga.nvim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Completion

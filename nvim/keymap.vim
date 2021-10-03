@@ -217,38 +217,6 @@ noremap <leader>t :ToggleBool<CR>
 nnoremap <silent><Leader>s :Startify<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" LSP Saga
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
- " lsp provider to find the cursor word definition and reference
- nnoremap <silent> mh :Lspsaga lsp_finder<CR>
- " code action
- nnoremap <silent><leader>ca :Lspsaga code_action<CR>
- vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
- " hover docs
- nnoremap <silent>K :Lspsaga hover_doc<CR>
- " scroll down hover doc or scroll in definition preview
- nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
- " scroll up hover doc
- nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
- " Signature help
- nnoremap <silent> ms :Lspsaga signature_help<CR>
- " reName
- nnoremap <silent> mn :Lspsaga rename<CR>
- " preview definition
- nnoremap <silent> md :Lspsaga preview_definition<CR>
- " diagnostics
- nnoremap <silent> <leader>cd :Lspsaga show_line_diagnostics<CR>
- " only show diagnostic if cursor is over the area
- nnoremap <silent><leader>cc <cmd>lua
-
- " Jump diagnostics
- nnoremap <silent> [e :Lspsaga diagnostic_jump_next<CR>
- nnoremap <silent> ]e :Lspsaga diagnostic_jump_prev<CR>
- " float terminal also you can pass the cli command in open_float_terminal function
- nnoremap <silent> <A-d> :Lspsaga open_floaterm<CR>
- tnoremap <silent> <A-d> <C-\><C-n>:Lspsaga close_floaterm<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Nvim trouble
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
