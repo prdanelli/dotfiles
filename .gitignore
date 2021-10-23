@@ -12,3 +12,5 @@ lazygit/*
 duplicity/*
 !duplicity/backup.sh
 !duplicity/excludes.conf
+openvpn/credentials.conf
+openvpn/uk.protonvpn.com.udp.ovpn
