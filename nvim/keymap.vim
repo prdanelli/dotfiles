@@ -103,6 +103,8 @@
 " > - Indent
 " < - Outdent
 "
+" Convert tabs to spaces:
+" :set tabstop=2 shiftwidth=2 expandtab | retab
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key bindings / mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -114,7 +116,7 @@
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Source ~/.vimrc
-nnoremap <Leader>0 :source ~/.config/nvim/init.vim<CR> <bar> :echom 'Sourced init.vim' <CR> :noh <CR>
+nnoremap <Leader>0 :source ~/.config/nvim/init.vim<CR> <bar> :echom 'Sourced init.vim' <CR> <silent> :noh <CR>
 
 
 " Use Del key for black hole register
@@ -130,7 +132,7 @@ noremap <LEFT> <NOP>
 noremap <RIGHT> <NOP>
 
 " Clear search highlight
-nnoremap <Leader>c :noh<return><esc>
+nnoremap <silent><Leader>c :noh<return><esc>
 
 " Extra save keys
 " nnoremap <Leader>w :w<CR>
@@ -255,4 +257,4 @@ nnoremap <silent> <leader>e :RnvimrToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Lazy Git
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <leader>g :LazyGit<CR>
+nnoremap <silent> <leader>gl :LazyGit<CR>
