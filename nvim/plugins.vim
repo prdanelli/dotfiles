@@ -10,6 +10,7 @@ Plug 'kevinhwang91/rnvimr'
 Plug 'ap/vim-css-color'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LSP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -17,18 +18,20 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/lsp-status.nvim' " Used by other plugin for basic lsp info
 Plug 'kabouzeid/nvim-lspinstall'
 Plug 'folke/lsp-colors.nvim' " Add missing LSP highlight groups
-
 Plug 'folke/trouble.nvim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Completion
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'hrsh7th/nvim-cmp' " Completion engine
-Plug 'hrsh7th/cmp-nvim-lsp' " vim-cmp source for neovim builtin LSP client
-Plug 'hrsh7th/vim-vsnip' " Install snippet engine
 Plug 'hrsh7th/cmp-buffer' " Install the buffer completion source
+Plug 'hrsh7th/cmp-path' " Install the buffer completion source
+Plug 'hrsh7th/cmp-nvim-lua' " vim-cmp source for neovim builtin LSP client
+Plug 'hrsh7th/cmp-nvim-lsp' " vim-cmp source for neovim builtin LSP client
+
 Plug 'L3MON4D3/LuaSnip' " Snippets
 Plug 'saadparwaiz1/cmp_luasnip' " Snippet source for CMP
+Plug 'onsails/lspkind-nvim' " Pictograms and type of completion
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Telescope
