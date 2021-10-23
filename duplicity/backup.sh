@@ -24,12 +24,6 @@ EXCLUDE_FILELIST=$TARGET/.duplicity/excludes.conf
 # Backup location with OS prepended
 DEST="pydrive+gdocs://developer.gserviceaccount.com/$(uname -n)_duplicity_backup"
 
-# You can specify a different offsite-specific exclude filelist here
-EXCLUDE_FILELIST=$EXCLUDE_FILELIST
-
-# You can specify an offsite-specific exclude-if-present filename here
-EXCLUDE_IF_PRESENT=$EXCLUDE_IF_PRESENT
-
 # You should print out the contents of this file, in case you
 # need to restore from off-site backups after a major disaster.
 export GOOGLE_DRIVE_SETTINGS=$TARGET/.duplicity/pydrive.yaml
