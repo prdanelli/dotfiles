@@ -111,6 +111,9 @@ function gcloud:hyku:bash
 	kubectl exec -it (gcloud:hyku:pod) -- /bin/bash
 end
 
+function gcloud:hyku:console
+	kubectl exec -it (gcloud:hyku:pod) -- bundle exec rails console
+end
 function gcloud:hyku:pod
 	gcloud:hyku:pods | head -n 1 | awk '{print $1;}'
 end
