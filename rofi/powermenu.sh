@@ -3,6 +3,10 @@
 dir="~/.config/rofi"
 rofi_command="rofi -theme $dir/powermenu.rasi"
 
+disconnect_vpn() {
+	/home/paul/Personal/dotfiles/openvpn/./vpn.sh --disconnect
+}
+
 # Options
 # shutdown=" Shutdown"
 # reboot=" Restart"
@@ -28,6 +32,7 @@ case $chosen in
 			systemctl reboot
 			;;
     $suspend)
+			disconnect_vpn
 			mpc -q pause
 			systemctl suspend
 			;;
