@@ -50,7 +50,7 @@ function connect() {
 function disconnect() {
 	if [[ $(openvpn_id) ]]
 	then
-		sudo kill $(openvpn_id)
+		sudo pkill openvpn
 
 		notify-send "OpenVPN" "Disconnected from VPN"
 	fi
