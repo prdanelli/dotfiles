@@ -160,7 +160,6 @@ EOF
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua << EOF
 require'nvim-treesitter.configs'.setup({
-  ensure_installed = { "ruby", "javascript", "html", "css", "lua", "dockerfile", "bash", "yaml" },
 	highlight = {
 		enable = true,
 		additional_vim_regex_highlighting = false
@@ -168,11 +167,39 @@ require'nvim-treesitter.configs'.setup({
   indent = {
     enable = false
   },
-  query_linter = {
-    enable = true,
-    use_virtual_text = true,
-    lint_events = { "BufWrite", "CursorHold" }
-  },
+	textobjects = {
+		select = {
+			enable = true,
+			lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+			keymaps = {
+				-- You can use the capture groups defined in textobjects.scm
+				['af'] = '@function.outer',
+				['if'] = '@function.inner',
+				['ac'] = '@class.outer',
+				['ic'] = '@class.inner',
+			},
+		},
+		move = {
+			enable = true,
+			set_jumps = true, -- whether to set jumps in the jumplist
+			goto_next_start = {
+				[']m'] = '@function.outer',
+				[']]'] = '@class.outer',
+			},
+			goto_next_end = {
+				[']M'] = '@function.outer',
+				[']['] = '@class.outer',
+			},
+			goto_previous_start = {
+				['[m'] = '@function.outer',
+				['[['] = '@class.outer',
+			},
+			goto_previous_end = {
+				['[M'] = '@function.outer',
+				['[]'] = '@class.outer',
+			},
+		},
+	},
 })
 EOF
 
@@ -246,10 +273,10 @@ require'lualine'.setup({
 		disabled_filetypes = {}
 		},
 	sections = {
-		lualine_a = { { 'mode' } },
+		lualine_a = { 'mode' },
 		lualine_b = { 'branch' },
 		lualine_c = { require'lsp-status'.status },
-		lualine_x = { 'filename', 'encoding', 'filetype' },
+		lualine_x = { 'filename', 'filetype' },
 		lualine_y = { 'progress' },
 		lualine_z = { 'location' }
 		},
@@ -284,9 +311,10 @@ require('telescope').setup({
       '--smart-case',
       '--trim'
     },
-    prompt_prefix = "> ",
-    selection_caret = "> ",
+    prompt_prefix = " ",
+    selection_caret = " ",
     entry_prefix = "  ",
+    set_env = { ["COLORTERM"] = "truecolor" },
     initial_mode = "insert",
     selection_strategy = "reset",
     sorting_strategy = "ascending",
@@ -343,95 +371,100 @@ local on_attach = function(client, bufnr)
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   --Enable completion triggered by <c-x><c-o>
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   local opts = { noremap=true, silent=true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'gK', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gt', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gK', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gt', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
+  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 
-  -- Set some keybinds conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  elseif client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  end
-
-  -- print(vim.inspect(client))
   print("Attached to " .. client.name)
 end
 
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.documentationFormat = { 'markdown', 'plaintext' }
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.preselectSupport = true
-capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
-capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
-capabilities.textDocument.completion.completionItem.deprecatedSupport = true
-capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
-capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = { 'documentation', 'detail', 'additionalTextEdits' }
-}
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-local handlers = {
-  ["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-      virtual_text = true
-    }
-  )
+local lsp_installer = require("nvim-lsp-installer")
+local servers = {
+  "bash",
+  "cssls",
+  "dockerls",
+  "html",
+  "jsonls",
+  "lua",
+  "solargraph@0.39.17",
+  "tsserver",
+  "lemminx",
+  "yamlls",
 }
 
-require('lspinstall').setup()
-local servers = require('lspinstall').installed_servers()
-for _, server in pairs(servers) do
-  nvim_lsp[server].setup {
-    on_attach = on_attach,
-    flags = { debounce_text_changes = 150 },
-    capabilities = capabilities,
-    root_dir = nvim_lsp.util.root_pattern(".git", "."),
-    handlers = handlers
-  }
+for _, name in pairs(servers) do
+	local ok, server = lsp_installer.get_server(name)
+	if ok then
+		if not server:is_installed() then
+			print("Installing " .. name)
+			server:install()
+		end
+	end
 end
 
-nvim_lsp.solargraph.setup {
-  cmd = { "solargraph", "stdio" },
-  filetypes = { "ruby" },
-  flags = { debounce_text_changes = 150 },
-  on_attach = on_attach,
-  root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git", "."),
-  capabilities = capabilities,
-  handlers = handlers,
-  settings = {
-    solargraph = {
-			formatting = false,
-      autoformat = false,
-      completion = true,
-      diagnostic = true,
-      folding = true,
-      references = true,
-      rename = true,
-      symbols = true
-    }
-  }
-}
+lsp_installer.on_server_ready(function(server)
+	-- Note: These are automatically setup from nvim-lspconfig. See https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
+	local default_opts = {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    flags = { debounce_text_changes = 150 },
+    root_dir = nvim_lsp.util.root_pattern(".git", "."),
+	}
+
+	-- Now we'll create a server_opts table where we'll specify our custom LSP server configuration
+	local server_opts = {
+		["solargraph"] = function()
+      default_opts.cmd = { "solargraph", "stdio" }
+      default_opts.filetypes = { "ruby", "eruby" }
+
+      default_opts.settings = {
+        solargraph = {
+          autoformat = false,
+          checkGemVersion = false,
+          completion = true,
+          definitions = true,
+          diagnostics = true,
+          folding = true,
+          formatting = true,
+          hover = true,
+          references = true,
+          rename = true,
+          symbols = true,
+        }
+      }
+
+			return default_opts
+		end,
+	}
+
+	-- We check to see if any custom server_opts exist for the LSP server, if so, load them, if not, use our default_opts
+	server:setup(server_opts[server.name] and server_opts[server.name]() or default_opts)
+	vim.cmd([[ do User LspAttachBuffers ]])
+end)
 EOF
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

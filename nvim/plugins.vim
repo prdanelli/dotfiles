@@ -9,15 +9,19 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kevinhwang91/rnvimr'
 Plug 'ap/vim-css-color'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Treesitter
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LSP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/lsp-status.nvim' " Used by other plugin for basic lsp info
-Plug 'kabouzeid/nvim-lspinstall'
+Plug 'williamboman/nvim-lsp-installer'
 Plug 'folke/lsp-colors.nvim' " Add missing LSP highlight groups
+Plug 'nvim-lua/lsp-status.nvim' " Used by other plugin for basic lsp info
 Plug 'folke/trouble.nvim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
