@@ -49,7 +49,7 @@ set backspace=indent,eol,start " How should backspace be used
 set mouse=niv " Enable mouse selection
 set linebreak " Word wrap but don't cut words
 set wrap
-" set smartindent " Indentation
+set smartindent " Indentation
 set autoindent
 set shortmess+=c " Don't pass messages to |ins-completion-menu|.
 set number " Turn line numbers on by default
@@ -160,19 +160,18 @@ EOF
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua << EOF
 require'nvim-treesitter.configs'.setup({
-  ensure_installed = { "ruby", "javascript", "html", "css", "lua", "dockerfile", "bash" },
-	ignore_install = {},
+  ensure_installed = { "ruby", "javascript", "html", "css", "lua", "dockerfile", "bash", "yaml" },
 	highlight = {
 		enable = true,
-		additional_vim_regex_highlighting = true,
+		additional_vim_regex_highlighting = false
 	},
   indent = {
-    enable = true
+    enable = false
   },
   query_linter = {
-    enable = enabled,
+    enable = true,
     use_virtual_text = true,
-    lint_events = {"BufWrite", "CursorHold"},
+    lint_events = { "BufWrite", "CursorHold" }
   },
 })
 EOF
