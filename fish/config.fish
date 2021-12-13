@@ -1,5 +1,13 @@
 source ~/.config/fish/alias.fish
 
+function vpn:uk:start
+	bash -c "sudo ~/Personal/dotfiles/openvpn/vpn.sh --connect"
+end
+
+function vpn:stop
+	bash -c "sudo ~/Personal/dotfiles/openvpn/vpn.sh --disconnect"
+end
+
 function sleep:disable
 	sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 end
