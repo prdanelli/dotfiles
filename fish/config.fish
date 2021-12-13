@@ -122,12 +122,13 @@ end
 function gcloud:hyku:console
 	kubectl exec -it (gcloud:hyku:pod) -- bundle exec rails console
 end
+
 function gcloud:hyku:pod
 	gcloud:hyku:pods | head -n 1 | awk '{print $1;}'
 end
 
 function gcloud:hyku:pods
-	kubectl get pods | grep hyku
+	kubectl get pods | grep hyku | grep Running
 end
 
 function gcloud:notes:ah
