@@ -133,28 +133,30 @@ let g:rnvimr_ranger_views = [
 " set colorscheme nightfox
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua << EOF
-local nightfox = require('nightfox')
-
-nightfox.setup({
-	fox = "nordfox", -- change the colorscheme to use nordfox
-	styles = {
-		comments = "italic", -- change style of comments to be italic
-		keywords = "bold", -- change style of keywords to be bold
-		functions = "italic,bold" -- styles can be a comma separated list
-	},
-	colors = {
-		red = "#FF000", -- Override the red color for MAX POWER
-		bg_alt = "#000000",
-	},
-	hlgroups = {
-		TSPunctDelimiter = { fg = "#BF616A" }, -- Override a highlight group with the color red
-		LspCodeLens = { bg = "#000000", style = "italic" },
-	}
+require('onenord').setup({
+  borders = true,
+  italics = {
+    comments = true,
+    strings = false,
+    keywords = true,
+    functions = false,
+    variables = false,
+  },
+  disable = {
+    background = false,
+    cursorline = false,
+    eob_lines = true,
+  },
+  custom_highlights = {},
 })
-
-nightfox.load()
 EOF
 
+" highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
+" highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6
+" highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
+" highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
+" highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
+" highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tree Sitter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

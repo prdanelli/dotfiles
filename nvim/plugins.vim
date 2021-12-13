@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Look and Feel
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'EdenEast/nightfox.nvim'
+Plug 'rmehri01/onenord.nvim', { 'branch': 'main' }
 Plug 'yggdroot/indentline'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'akinsho/bufferline.nvim'
