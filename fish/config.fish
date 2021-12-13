@@ -90,7 +90,7 @@ function dce:web:install
 end
 
 function dce:web:attach
-	command docker-compose up -d web workers; docker attach hyku_addons_web_1
+	command docker-compose up -d; docker attach hyku_addons_web_1
 end
 
 function gcloud:cluster:ah
