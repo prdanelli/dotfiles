@@ -170,6 +170,15 @@ require'nvim-treesitter.configs'.setup({
     enable = false
   },
 	textobjects = {
+		swap = {
+      enable = true,
+      swap_next = {
+        ["<leader>a"] = "@parameter.inner",
+      },
+      swap_previous = {
+        ["<leader>A"] = "@parameter.inner",
+      },
+    },
 		select = {
 			enable = true,
 			lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
@@ -179,6 +188,8 @@ require'nvim-treesitter.configs'.setup({
 				['if'] = '@function.inner',
 				['ac'] = '@class.outer',
 				['ic'] = '@class.inner',
+				['ab'] = '@block.outer',
+				['ib'] = '@block.inner',
 			},
 		},
 		move = {
