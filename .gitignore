@@ -14,3 +14,5 @@ duplicity/*
 !duplicity/excludes.conf
 openvpn/credentials.conf
 openvpn/uk.protonvpn.com.udp.ovpn
+nvim.appimage
+
