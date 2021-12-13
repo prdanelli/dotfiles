@@ -77,8 +77,7 @@ Plug 'junegunn/fzf.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Utilities
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plug 'ervandew/supertab' " Tab complete
-Plug 'tpope/vim-commentary' " Comment out line / block
+Plug 'terrortylor/nvim-comment' " Comment out line / block
 Plug 'tpope/vim-endwise' " Automatic end and closing brackets
 Plug 'tpope/vim-surround' " Wrap text
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} " Multiple cursors
