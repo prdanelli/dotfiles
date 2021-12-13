@@ -39,7 +39,7 @@ xsetroot -cursor_name left_ptr &
 picom --experimental-backends &
 
 # Set wallpaper
-feh --bg-fill gsettings $HOME/.config/bspwm/backgrounds/alena-aenami-portal.jpg
+feh --bg-fill gsettings $HOME/Pictures/Wallpapers/1732259.jpg
 
 # Polybar
 $HOME/.config/polybar/launch.sh &
