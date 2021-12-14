@@ -4,7 +4,7 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 
 bspc monitor -d 1 2 3 4 5
 
-bspc config border_width 5
+bspc config border_width 3
 bspc config window_gap 20
 bspc config border_radius 5
 bspc config split_ratio 0.50
@@ -35,7 +35,8 @@ eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh) ex
 xsetroot -cursor_name left_ptr &
 
 # Compositor
-# For some reason, using compton affects the external monitor...
+# Using the Forked version of Picom with rounded corner support (https://github.com/ibhagwan/picom) will break polybar
+killall -q picom
 picom --experimental-backends &
 
 # Set wallpaper
@@ -45,7 +46,8 @@ feh --bg-fill gsettings $HOME/Pictures/Wallpapers/1732259.jpg
 $HOME/.config/polybar/launch.sh &
 
 # Clipboard manager
-killall greenclip; greenclip daemon &
+killall -q greenclip
+greenclip daemon &
 
 # Dropbox
 dropbox start &
