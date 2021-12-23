@@ -36,8 +36,9 @@ xsetroot -cursor_name left_ptr &
 
 # Compositor
 # Using the Forked version of Picom with rounded corner support (https://github.com/ibhagwan/picom) will break polybar
-killall -q picom
-picom --experimental-backends &
+# killall -q picom
+# picom --experimental-backends &
+picom &
 
 # Set wallpaper
 feh --bg-fill gsettings $HOME/Pictures/Wallpapers/1732259.jpg
@@ -52,9 +53,9 @@ greenclip daemon &
 # Dropbox
 dropbox start &
 
-# Touchpad
+# https://github.com/jcs/xbanish
 # Hides mouse when you are not using it
-unclutter &
+xbanish &
 
 xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Natural Scrolling Enabled" 1
 xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Click Method Enabled" 0 1
