@@ -105,6 +105,13 @@
 "
 " Convert tabs to spaces:
 " :set tabstop=2 shiftwidth=2 expandtab | retab
+
+" Move blocks of code
+" <A-k> - Move current line/selection up
+" <A-j> - Move current line/selection down
+" <A-h> - Move current character/selection left
+" <A-l> - Move current character/selection right
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key bindings / mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -238,6 +245,19 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fr <cmd>Telescope registers<cr>
 nnoremap <leader>fk <cmd>Telescope keymaps<cr>
+
+" <C-f>/f	Toggle between file and folder browser
+" <C-y>/y	Copy (multi-selected) files or folders to cwd
+" <C-d>/dd	Delete (multi-selected) files or folders
+" <C-r>/r	Rename (multi-selected) files
+" <C-e>/e	Add File/Folder at cwd; trailing / creates folder
+" --/m	Move multi-selected files to cwd
+" <C-h>/h	Toggle hidden files
+" <C-o>/o	Open file with default system application
+" <C-g>/g	Go to parent directory
+" <C-w>/w	Go to current working directory
+" <A-e>/--	Toggle all entires ignoring ./ and ../
+nnoremap <leader>ff <cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>
 
 " LSP funtions
 nnoremap <leader>ls <cmd>lsp_document_symbols<cr>

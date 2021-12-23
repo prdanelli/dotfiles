@@ -32,10 +32,10 @@ Plug 'hrsh7th/cmp-buffer' " Install the buffer completion source
 Plug 'hrsh7th/cmp-path' " Install the buffer completion source
 Plug 'hrsh7th/cmp-nvim-lua' " vim-cmp source for neovim builtin LSP client
 Plug 'hrsh7th/cmp-nvim-lsp' " vim-cmp source for neovim builtin LSP client
-
-Plug 'L3MON4D3/LuaSnip' " Snippets
-Plug 'saadparwaiz1/cmp_luasnip' " Snippet source for CMP
 Plug 'onsails/lspkind-nvim' " Pictograms and type of completion
+
+Plug 'saadparwaiz1/cmp_luasnip' " Snippets source for nvim-cmp
+Plug 'L3MON4D3/LuaSnip' " Snippets plugin
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Telescope
@@ -43,6 +43,7 @@ Plug 'onsails/lspkind-nvim' " Pictograms and type of completion
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-telescope/telescope-file-browser.nvim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax Highlghting/Features
@@ -81,8 +82,6 @@ Plug 'terrortylor/nvim-comment' " Comment out line / block
 Plug 'tpope/vim-endwise' " Automatic end and closing brackets
 Plug 'tpope/vim-surround' " Wrap text
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} " Multiple cursors
-Plug 'Raimondi/delimitMate' " Automatically close quotes/brackets
-Plug 'tpope/vim-eunuch' " File related functionality
 Plug 'vim-scripts/ReplaceWithRegister' " Replace with register and don't copy
 Plug 'justinmk/vim-sneak' " Search for text
 Plug 'adelarsq/vim-matchit' " Expand % so that tags are included, not just brackets
@@ -92,5 +91,4 @@ Plug 'mhinz/vim-startify' " Start up page
 Plug 'machakann/vim-highlightedyank' " Highlight yanked text
 Plug 'sagarrakshe/toggle-bool' " Toggle boolean values
 Plug 'jghauser/mkdir.nvim'
-Plug 'tpope/vim-sensible'
 Plug 'editorconfig/editorconfig-vim'

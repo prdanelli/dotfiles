@@ -11,10 +11,8 @@ let g:ruby_host_prog = '/home/paul/.rvm/rubies/ruby-2.7.3/bin/ruby'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible
 set ttyfast
 set encoding=UTF-8
-set fileencoding=utf-8
 syntax on
 filetype on
 filetype indent on
@@ -27,6 +25,7 @@ set shell=bash
 set ruler
 set hidden " Enable Hidden Buffers - means you can switch between buffers without saving
 set clipboard+=unnamedplus " Use System Clipboard
+set noswapfile
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Look / Colours
@@ -51,7 +50,6 @@ set linebreak " Word wrap but don't cut words
 set wrap
 set smartindent " Indentation
 set autoindent
-set shortmess+=c " Don't pass messages to |ins-completion-menu|.
 set number " Turn line numbers on by default
 set relativenumber " Set relative numbers
 set signcolumn=yes " Always show gutter so Gitgutter doesn't jump
@@ -62,11 +60,11 @@ set nobackup
 set nowritebackup
 
 " Swap / Persistent directories
-set swapfile
+set noswapfile
+set undofile
 set backupdir=.backup/,~/.vim/.backup,/tmp/
 set directory=.swp/,~/.vim/.vim/.swapfiles/,/tmp/
 set undodir=.undo/,~/.vim/.undo/,/tmp/
-set undofile
 
 " Set universal ignore
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/vendor/**/*,*/.cache,*/node_modules/**/*,*/docker/**/*
@@ -85,15 +83,15 @@ set foldmethod=indent
 
 " Keep all folds open when a file is opened
 augroup OpenAllFoldsOnFileOpen
-	autocmd!
-	autocmd BufRead * normal zR
+  autocmd!
+  autocmd BufRead * normal zR
 augroup END
 
 " Change the default fold lines
 function! MyFoldText()
-		let line = getline(v:foldstart)
-		let foldedlinecount = v:foldend - v:foldstart + 1
-		return ' + '. foldedlinecount . line
+    let line = getline(v:foldstart)
+    let foldedlinecount = v:foldend - v:foldstart + 1
+    return ' + '. foldedlinecount . line
 endfunction
 set foldtext=MyFoldText()
 set fillchars=fold:-
@@ -124,14 +122,15 @@ let g:rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
 highlight link RnvimrNormal CursorLine
 
 let g:rnvimr_ranger_views = [
-	\ {'minwidth': 90, 'ratio': []},
-	\ {'minwidth': 90, 'maxwidth': 89, 'ratio': [1,1]},
-	\ {'maxwidth': 90, 'ratio': [1]}
+  \ {'minwidth': 90, 'ratio': []},
+  \ {'minwidth': 90, 'maxwidth': 89, 'ratio': [1,1]},
+  \ {'maxwidth': 90, 'ratio': [1]}
 \ ]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set colorscheme nightfox
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
 lua << EOF
 require('onenord').setup({
   borders = true,
@@ -157,20 +156,21 @@ EOF
 " highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
 " highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
 " highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tree Sitter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua << EOF
 require'nvim-treesitter.configs'.setup({
-	highlight = {
-		enable = true,
-		additional_vim_regex_highlighting = false
-	},
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false
+  },
   indent = {
     enable = false
   },
-	textobjects = {
-		swap = {
+  textobjects = {
+    swap = {
       enable = true,
       swap_next = {
         ["<leader>a"] = "@parameter.inner",
@@ -179,40 +179,40 @@ require'nvim-treesitter.configs'.setup({
         ["<leader>A"] = "@parameter.inner",
       },
     },
-		select = {
-			enable = true,
-			lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-			keymaps = {
-				-- You can use the capture groups defined in textobjects.scm
-				['af'] = '@function.outer',
-				['if'] = '@function.inner',
-				['ac'] = '@class.outer',
-				['ic'] = '@class.inner',
-				['ab'] = '@block.outer',
-				['ib'] = '@block.inner',
-			},
-		},
-		move = {
-			enable = true,
-			set_jumps = true, -- whether to set jumps in the jumplist
-			goto_next_start = {
-				[']m'] = '@function.outer',
-				[']]'] = '@class.outer',
-			},
-			goto_next_end = {
-				[']M'] = '@function.outer',
-				[']['] = '@class.outer',
-			},
-			goto_previous_start = {
-				['[m'] = '@function.outer',
-				['[['] = '@class.outer',
-			},
-			goto_previous_end = {
-				['[M'] = '@function.outer',
-				['[]'] = '@class.outer',
-			},
-		},
-	},
+    select = {
+      enable = true,
+      lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ['af'] = '@function.outer',
+        ['if'] = '@function.inner',
+        ['ac'] = '@class.outer',
+        ['ic'] = '@class.inner',
+        ['ab'] = '@block.outer',
+        ['ib'] = '@block.inner',
+      },
+    },
+    move = {
+      enable = true,
+      set_jumps = true, -- whether to set jumps in the jumplist
+      goto_next_start = {
+        [']m'] = '@function.outer',
+        [']]'] = '@class.outer',
+      },
+      goto_next_end = {
+        [']M'] = '@function.outer',
+        [']['] = '@class.outer',
+      },
+      goto_previous_start = {
+        ['[m'] = '@function.outer',
+        ['[['] = '@class.outer',
+      },
+      goto_previous_end = {
+        ['[M'] = '@function.outer',
+        ['[]'] = '@class.outer',
+      },
+    },
+  },
 })
 EOF
 
@@ -221,13 +221,13 @@ EOF
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua << EOF
 require('bufferline').setup {
-	options = {
-		diagnostics = "nvim_lsp",
-		diagnostics_update_in_insert = false,
-		show_buffer_icons = false,
-		show_tab_indicators = true,
-		separator_style = "thin"
-	}
+  options = {
+    diagnostics = "nvim_lsp",
+    diagnostics_update_in_insert = false,
+    show_buffer_icons = false,
+    show_tab_indicators = true,
+    separator_style = "thin"
+  }
 }
 EOF
 
@@ -237,19 +237,19 @@ EOF
 let g:fzf_tags_command = 'ctags -R'
 let g:fzf_layout = { 'up' :'~90%', 'window': { 'width': 0.95, 'height': 0.9 } }
 let g:fzf_colors = {
-	\ 'fg':      ['fg', 'Normal'],
-	\ 'bg':      ['bg', 'Normal'],
-	\ 'hl':      ['fg', 'Comment'],
-	\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-	\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-	\ 'hl+':     ['fg', 'Statement'],
-	\ 'info':    ['fg', 'PreProc'],
-	\ 'border':  ['fg', 'Boolean'],
-	\ 'prompt':  ['fg', 'Conditional'],
-	\ 'pointer': ['fg', 'Exception'],
-	\ 'marker':  ['fg', 'Keyword'],
-	\ 'spinner': ['fg', 'Label'],
-	\ 'header':  ['fg', 'Comment'] }
+  \ 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Boolean'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
 let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
 
@@ -259,50 +259,50 @@ let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
 let g:startify_custom_header =[]
 let g:startify_change_to_dir=0
 function! s:gitModified()
-	let files = systemlist('git ls-files -m 2>/dev/null')
-	return map(files, "{'line': v:val, 'path': v:val}")
+  let files = systemlist('git ls-files -m 2>/dev/null')
+  return map(files, "{'line': v:val, 'path': v:val}")
 endfunction
 let g:startify_bookmarks = ['~/.config/nvim/config.vim', '~/.config/nvim/plugins.vim', '~/.config/nvim/keymap.vim']
 let g:startify_enable_special = 0
 let g:startify_lists = [
-	\ { 'type': 'bookmarks', 'header': ['   Bookmarks'] },
-	\ { 'type': 'files',     'header': ['   Recent'] },
-	\ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
-	\ { 'type': 'sessions',  'header': ['   Sessions'] },
-	\ { 'type': function('s:gitModified'),  'header': ['   Modified'] },
-	\ { 'type': 'commands',  'header': ['   Commands'] },
-	\ ]
+  \ { 'type': 'bookmarks', 'header': ['   Bookmarks'] },
+  \ { 'type': 'files',     'header': ['   Recent'] },
+  \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
+  \ { 'type': 'sessions',  'header': ['   Sessions'] },
+  \ { 'type': function('s:gitModified'),  'header': ['   Modified'] },
+  \ { 'type': 'commands',  'header': ['   Commands'] },
+  \ ]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Lualine
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua << EOF
 require'lualine'.setup({
-	options = {
-		icons_enabled = true,
-		theme = 'auto',
-		component_separators = { left = '\\', right = '/' },
-		section_separators = { left = '', right = '' },
-		disabled_filetypes = {}
-		},
-	sections = {
-		lualine_a = { 'mode' },
-		lualine_b = { 'branch' },
-		lualine_c = { require'lsp-status'.status },
-		lualine_x = { 'filename', 'filetype' },
-		lualine_y = { 'progress' },
-		lualine_z = { 'location' }
-		},
-	inactive_sections = {
-		lualine_a = {},
-		lualine_b = {},
-		lualine_c = { 'filename' },
-		lualine_x = { 'location' },
-		lualine_y = {},
-		lualine_z = {}
-		},
-	tabline = {},
-	extensions = {}
+  options = {
+    icons_enabled = true,
+    theme = 'auto',
+    component_separators = { left = '\\', right = '/' },
+    section_separators = { left = '', right = '' },
+    disabled_filetypes = {}
+    },
+  sections = {
+    lualine_a = { 'mode' },
+    lualine_b = { 'branch' },
+    lualine_c = { require'lsp-status'.status },
+    lualine_x = { 'filename', 'filetype' },
+    lualine_y = { 'progress' },
+    lualine_z = { 'location' }
+    },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = { 'filename' },
+    lualine_x = { 'location' },
+    lualine_y = {},
+    lualine_z = {}
+    },
+  tabline = {},
+  extensions = {}
 })
 EOF
 
@@ -342,7 +342,7 @@ require('telescope').setup({
       },
     },
     file_sorter =  require('telescope.sorters').get_fuzzy_file,
-    file_ignore_patterns = {},
+    file_ignore_patterns = { "node_modules", ".git" },
     generic_sorter =  require('telescope.sorters').get_generic_fuzzy_sorter,
     winblend = 0,
     border = {},
@@ -360,18 +360,28 @@ require('telescope').setup({
         override_file_sorter = true,
         case_mode = "smart_case"
       }
-    }
+    },
+		file_browser = {
+      mappings = {
+        ["i"] = {
+          -- your custom insert mode mappings
+        },
+        ["n"] = {
+          -- your custom normal mode mappings
+        },
+      },
+    },
   }
 })
 
--- require fzf extension for better fzf sorting algorithm
 require('telescope').load_extension('fzf')
+require("telescope").load_extension('file_browser')
 EOF
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LSP Install
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" <c-x> <c-o> -	Complete
+" <c-x> <c-o> - Complete
 " gd - Jump to definition
 " K  - Show hover documentation
 " gt - Open quickfix with all references to method
@@ -384,16 +394,14 @@ local on_attach = function(client, bufnr)
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   --Enable completion triggered by <c-x><c-o>
-	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   local opts = { noremap=true, silent=true }
-
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gK', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-m>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
@@ -401,172 +409,122 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gt', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'ge', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>fs', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 
   print("Attached to " .. client.name)
 end
 
--- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 local lsp_installer = require("nvim-lsp-installer")
 local servers = {
+  "solargraph",
   "bash",
   "cssls",
   "dockerls",
   "html",
   "jsonls",
   "lua",
-  "solargraph@0.39.17",
   "tsserver",
   "lemminx",
   "yamlls",
 }
 
 for _, name in pairs(servers) do
-	local ok, server = lsp_installer.get_server(name)
-	if ok then
-		if not server:is_installed() then
-			print("Installing " .. name)
-			server:install()
-		end
-	end
+  local ok, server = lsp_installer.get_server(name)
+  if ok then
+    if not server:is_installed() then
+      print("Installing " .. name)
+      server:install()
+    end
+  end
 end
 
 lsp_installer.on_server_ready(function(server)
-	-- Note: These are automatically setup from nvim-lspconfig. See https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
-	local default_opts = {
+  local default_opts = {
     capabilities = capabilities,
     on_attach = on_attach,
     flags = { debounce_text_changes = 150 },
     root_dir = nvim_lsp.util.root_pattern(".git", "."),
-	}
+  }
 
-	-- Now we'll create a server_opts table where we'll specify our custom LSP server configuration
-	local server_opts = {
-		["solargraph"] = function()
-      default_opts.cmd = { "solargraph", "stdio" }
-      default_opts.filetypes = { "ruby", "eruby" }
-
-      default_opts.settings = {
-        solargraph = {
-          autoformat = false,
-          checkGemVersion = false,
-          completion = true,
-          definitions = true,
-          diagnostics = true,
-          folding = true,
-          formatting = true,
-          hover = true,
-          references = true,
-          rename = true,
-          symbols = true,
-        }
-      }
-
-			return default_opts
-		end,
-	}
-
-	-- We check to see if any custom server_opts exist for the LSP server, if so, load them, if not, use our default_opts
-	server:setup(server_opts[server.name] and server_opts[server.name]() or default_opts)
-	vim.cmd([[ do User LspAttachBuffers ]])
+  server:setup(default_opts)
+  vim.cmd([[ do User LspAttachBuffers ]])
 end)
-EOF
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CMP Completion
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-lua << EOF
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
-
--- Don't show the dumb matching stuff.
+-- CMP
+vim.o.completeopt = 'menuone,noselect'
 vim.opt.shortmess:append "c"
-
-local lspkind = require("lspkind")
-lspkind.init()
 
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-local cmp = require "cmp"
-local luasnip = require "luasnip"
+local cmp = require 'cmp'
+local lspkind = require 'lspkind'
+local luasnip = require 'luasnip'
 
 cmp.setup {
 	mapping = {
-    ["<C-p>"] = cmp.mapping.select_prev_item(),
-    ["<C-n>"] = cmp.mapping.select_next_item(),
-    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-e>"] = cmp.mapping.close(),
-    ["<CR>"] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
-
-    ["<Tab>"] = cmp.mapping(function(fallback)
+		["<C-p>"] = cmp.mapping.select_prev_item(),
+		["<C-n>"] = cmp.mapping.select_next_item(),
+		["<C-d>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-e>"] = cmp.mapping.close(),
+		["<CR>"] = cmp.mapping.confirm {
+			behavior = cmp.ConfirmBehavior.Replace,
+			select = true,
+		},
+    ['<Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      elseif has_words_before() then
-        cmp.complete()
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '')
       else
         fallback()
       end
-    end, { "i", "s" }),
-
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
+    end,
+    ['<S-Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '')
       else
         fallback()
       end
-    end, { "i", "s" }),
-	},
-
-  sources = {
-    { name = "nvim_lua" },
-    { name = "nvim_lsp" },
-    { name = "path" },
-    { name = "luasnip" },
-    { name = "buffer", keyword_length = 5 },
-  },
-
-  snippet = {
-    expand = function(args)
-      require("luasnip").lsp_expand(args.body)
     end,
-  },
-
+	},
+	sources = {
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+		{ name = "path" }, -- This seems to cause nvim to infinate loop and use 100% cpu
+		{ name = "buffer", keyword_length = 5 },
+	},
 	formatting = {
 		format = lspkind.cmp_format({
-      with_text = false,
-      maxwidth = 50,
-      menu = {
-        buffer = "[buf]",
-        nvim_lsp = "[LSP]",
-        nvim_lua = "[api]",
-        path = "[path]",
-        luasnip = "[snip]",
-      },
-    }),
+			with_text = false,
+			maxwidth = 50,
+			menu = {
+				buffer = "[buf]",
+				nvim_lsp = "[LSP]",
+				nvim_lua = "[api]",
+				path = "[path]",
+				luasnip = "[snip]",
+			},
+		}),
 	},
-  experimental = {
-    native_menu = false,
-    ghost_text = true,
-  }
+	experimental = {
+		native_menu = false,
+		ghost_text = false,
+	}
 }
 
 vim.cmd([[
@@ -581,11 +539,11 @@ EOF
 " Lsp Trouble
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua << EOF
-  require("trouble").setup {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-  }
+require("trouble").setup {
+  -- your configuration comes here
+  -- or leave it empty to use the default settings
+  -- refer to the configuration section below
+}
 EOF
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
