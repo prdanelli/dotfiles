@@ -8,13 +8,12 @@ if not snip_status_ok then
   return
 end
 
-local lspkind = require 'lspkind'
-require("luasnip/loaders/from_vscode").lazy_load()
-
 local check_backspace = function()
   local col = vim.fn.col "." - 1
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
+
+local kind_icons = require("lua.user.lsp_kind_icons")
 
 cmp.setup {
   snippet = {
@@ -59,22 +58,24 @@ cmp.setup {
       end
     end, { "i", "s" }),
   },
-  format = lspkind.cmp_format({
-    with_text = false,
-    maxwidth = 50,
-    menu = {
-      nvim_lsp = "[LSP]",
-      nvim_lua = "[API]",
-      luasnip = "[Snippet]",
-      buffer = "[Buffer]",
-      path = "[Path]",
-    },
-  }),
+  formatting = {
+    format = function(entry, vim_item)
+      vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+      vim_item.menu = ({
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        luasnip = "[LuaSnip]",
+        nvim_lua = "[Lua]",
+        latex_symbols = "[LaTeX]",
+      })[entry.source.name]
+      return vim_item
+    end
+  },
 	sources = {
     { name = 'nvim_lsp' },
     { name = "nvim_lua" },
     { name = 'luasnip' },
-		{ name = "path" }, 
+		{ name = "path" },
 		{ name = "buffer", keyword_length = 5 },
 	},
   confirm_opts = {

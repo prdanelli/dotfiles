@@ -1,16 +1,25 @@
-require('telescope').setup({
+local trouble = require("trouble.providers.telescope")
+local actions = require("telescope.actions")
+local telescope = require("telescope")
+telescope.load_extension("fzf") -- require fzf extension for better fzf sorting algorithm
+
+telescope.setup({
   defaults = {
     mappings = {
       i = {
-        ["<esc>"] = require('telescope.actions').close,
+        ["<esc>"] = actions.close,
+				["<c-t>"] = trouble.open_with_trouble,
       },
+			n = {
+				["<c-t>"] = trouble.open_with_trouble
+			},
     },
     vimgrep_arguments = {
-      'rg',
-      '--vimgrep',
-      '--hidden',
-      '--smart-case',
-      '--trim'
+      "rg",
+      "--vimgrep",
+      "--hidden",
+      "--smart-case",
+      "--trim"
     },
     prompt_prefix = " ",
     selection_caret = " ",
@@ -21,7 +30,7 @@ require('telescope').setup({
     sorting_strategy = "ascending",
     layout_strategy = "horizontal",
     layout_config = {
-      prompt_position = 'top',
+      prompt_position = "top",
       horizontal = {
         mirror = false,
       },
@@ -29,19 +38,18 @@ require('telescope').setup({
         mirror = false,
       },
     },
-    file_sorter =  require('telescope.sorters').get_fuzzy_file,
+    file_sorter =  require("telescope.sorters").get_fuzzy_file,
     file_ignore_patterns = {},
-    generic_sorter =  require('telescope.sorters').get_generic_fuzzy_sorter,
+    generic_sorter =  require("telescope.sorters").get_generic_fuzzy_sorter,
     winblend = 0,
     border = {},
-    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+    borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
     color_devicons = true,
     use_less = true,
     path_display = {},
-    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
-    file_previewer = require('telescope.previewers').vim_buffer_cat.new,
-    grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
-    qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
+    file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+    grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+    qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
     extensions = {
       fzf = {
         override_generic_sorter = false,
@@ -51,9 +59,6 @@ require('telescope').setup({
     }
   }
 })
-
--- require fzf extension for better fzf sorting algorithm
-require('telescope').load_extension('fzf')
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap

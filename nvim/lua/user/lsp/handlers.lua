@@ -12,11 +12,11 @@ M.setup = function()
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
   end
 
-  local config = {
+  vim.diagnostic.config({
     virtual_text = false,
     signs = { active = signs },
     update_in_insert = true,
-    underline = true,
+    underline = false,
     severity_sort = true,
     float = {
       focusable = false,
@@ -26,9 +26,8 @@ M.setup = function()
       header = "",
       prefix = "",
     },
-  }
+  })
 
-  vim.diagnostic.config(config)
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "rounded",
   })
@@ -38,24 +37,8 @@ M.setup = function()
   })
 end
 
-local function lsp_highlight_document(client)
-  -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec(
-      [[
-        augroup lsp_document_highlight
-          autocmd! * <buffer>
-          autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-          autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-        augroup END
-      ]],
-      false
-    )
-  end
-end
-
 local function lsp_keymaps(bufnr)
-  local opts = { noremap=true, silent=true }
+  local opts = { noremap = true, silent = true }
 
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
@@ -67,15 +50,15 @@ local function lsp_keymaps(bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>fs', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
+	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
-
-  print("Attached to " .. client.name)
 end
 
-M.on_attach = function(client, bufnr)
-  lsp_highlight_document(client)
+-- _ is the client being passed in
+M.on_attach = function(_, bufnr)
   lsp_keymaps(bufnr)
+  -- print("Attached to " .. client.name)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

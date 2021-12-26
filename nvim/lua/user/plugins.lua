@@ -3,14 +3,7 @@ local fn = vim.fn
 -- Automatically install packer
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system {
-    "git",
-    "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
-  }
+  PACKER_BOOTSTRAP = fn.system { "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path }
   print "Installing packer close and reopen Neovim..."
   vim.cmd [[packadd packer.nvim]]
 end
@@ -40,7 +33,7 @@ packer.init {
 
 return packer.startup(function(use)
   -- Make packer manage itself
-  use "wbthomason/packer.nvim" 
+  use "wbthomason/packer.nvim"
 
   -----------------------------------------------------------------------------
   -- Look & feel
@@ -64,7 +57,7 @@ return packer.startup(function(use)
   use "williamboman/nvim-lsp-installer"
   use "folke/lsp-colors.nvim" -- Add missing LSP highlight groups
   use "nvim-lua/lsp-status.nvim" -- Used by other plugin for basic lsp info
-  use "folke/trouble.nvim"
+  use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }
 
   -----------------------------------------------------------------------------
   -- Completions
@@ -75,14 +68,11 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-cmdline" -- Cmdline completions
   use "hrsh7th/cmp-nvim-lua" -- vim-cmp source for neovim builtin LSP client
   use "hrsh7th/cmp-nvim-lsp" -- vim-cmp source for neovim builtin LSP client
-  use "saadparwaiz1/cmp_luasnip" -- snippet completions
 
   -- snippets
+  use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "L3MON4D3/LuaSnip" --snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
-
-  -- CMP Menu additions
-  use "onsails/lspkind-nvim" -- Pictograms and type of completion
 
   -----------------------------------------------------------------------------
   -- Treesitter
@@ -131,6 +121,7 @@ return packer.startup(function(use)
   use "sagarrakshe/toggle-bool" -- Toggle boolean values
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  use "editorconfig/editorconfig-vim"
 
   -----------------------------------------------------------------------------
   -- Automatically set up your configuration after cloning packer.nvim
