@@ -15,4 +15,4 @@ duplicity/*
 openvpn/credentials.conf
 openvpn/uk.protonvpn.com.udp.ovpn
 nvim.appimage
-packer/packer_compiled.lua
+nvim/plugin/packer_compiled.lua
