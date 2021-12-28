@@ -3,7 +3,7 @@ require('bufferline').setup {
 		diagnostics = "nvim_lsp",
 		diagnostics_update_in_insert = false,
 		show_buffer_icons = false,
-		show_tab_indicators = true,
-		separator_style = "thin"
+		show_tab_indicators = false,
+		separator_style = "none"
 	}
 }

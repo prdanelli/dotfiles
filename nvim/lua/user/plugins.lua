@@ -41,7 +41,7 @@ return packer.startup(function(use)
   use "rmehri01/onenord.nvim"
   use "kyazdani42/nvim-web-devicons"
   use "yggdroot/indentline"
-  use "ap/vim-css-color"
+	use { "norcalli/nvim-colorizer.lua", config = function() require("colorizer").setup() end }
 
   -----------------------------------------------------------------------------
   -- Navigation
@@ -49,6 +49,7 @@ return packer.startup(function(use)
   use "nvim-lualine/lualine.nvim"
   use { "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" }
   use "kevinhwang91/rnvimr"
+	use { "nacro90/numb.nvim", config = function() require("numb").setup() end }
 
   -----------------------------------------------------------------------------
   -- LSP
@@ -63,16 +64,21 @@ return packer.startup(function(use)
   -- Completions
   -----------------------------------------------------------------------------
   use "hrsh7th/nvim-cmp" -- The completion plugin
+
+	-- Completions
   use "hrsh7th/cmp-buffer" -- Buffer completions
   use "hrsh7th/cmp-path" -- Path completions
   use "hrsh7th/cmp-cmdline" -- Cmdline completions
-  use "hrsh7th/cmp-nvim-lua" -- vim-cmp source for neovim builtin LSP client
-  use "hrsh7th/cmp-nvim-lsp" -- vim-cmp source for neovim builtin LSP client
+  use "hrsh7th/cmp-nvim-lua" -- API completions
+  use "hrsh7th/cmp-nvim-lsp" -- LSP completions
 
-  -- snippets
+  -- Snippets
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "L3MON4D3/LuaSnip" --snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+
+	-- Misc
+	use "lukas-reineke/cmp-under-comparator" -- Tweak completion order
 
   -----------------------------------------------------------------------------
   -- Treesitter
@@ -99,8 +105,7 @@ return packer.startup(function(use)
   -----------------------------------------------------------------------------
   -- Git
   -----------------------------------------------------------------------------
-  use "airblade/vim-gitgutter"
-  use "tpope/vim-fugitive"
+	use { "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } }
 
   -----------------------------------------------------------------------------
   -- Tmux
@@ -112,7 +117,7 @@ return packer.startup(function(use)
   -----------------------------------------------------------------------------
   -- Misc
   -----------------------------------------------------------------------------
-  use "terrortylor/nvim-comment" -- Comment out line / block
+  use { "terrortylor/nvim-comment", config = function() require('nvim_comment').setup() end } -- Comment out line / block
   use "tpope/vim-surround" -- Wrap text
   use "mg979/vim-visual-multi" -- Multiple cursors
   use "vim-scripts/ReplaceWithRegister" -- Replace with register and don"t copy
@@ -122,6 +127,8 @@ return packer.startup(function(use)
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use "editorconfig/editorconfig-vim"
+	use "chentau/marks.nvim" -- Better marks
+	use { 'lewis6991/spellsitter.nvim', config = function() require('spellsitter').setup() end } -- Spell checking with Treesitter
 
   -----------------------------------------------------------------------------
   -- Automatically set up your configuration after cloning packer.nvim
