@@ -56,9 +56,9 @@ local function lsp_keymaps(bufnr)
 end
 
 -- _ is the client being passed in
-M.on_attach = function(_, bufnr)
+M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
-  -- print("Attached to " .. client.name)
+  print("Attached to " .. client.name)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
