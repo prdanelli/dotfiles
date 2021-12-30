@@ -38,7 +38,7 @@ local options = {
   ttimeoutlen = 300,
   undofile = true,                         -- enable persistent undo
   updatetime = 300,                        -- faster completion (4000ms default)
-  wrap = false,                            -- display lines as one long line
+  wrap = true,                            -- display lines as one long line
   writebackup = false,                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 }
 
