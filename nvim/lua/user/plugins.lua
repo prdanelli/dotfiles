@@ -72,11 +72,6 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-nvim-lua" -- API completions
   use "hrsh7th/cmp-nvim-lsp" -- LSP completions
 
-  -- Snippets
-  use "saadparwaiz1/cmp_luasnip" -- snippet completions
-  use "L3MON4D3/LuaSnip" --snippet engine
-  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
-
 	-- Misc
 	use "lukas-reineke/cmp-under-comparator" -- Tweak completion order
 
