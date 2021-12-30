@@ -20,28 +20,19 @@ bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 bspc config merge_overlapping_monitors true
 
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
-
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh) export SSH_AUTH_SOCK
 
 # Setup monitors
 ~/.config/bspwm/monitors
 
-# Desktop icon
+# Desktop curser
 xsetroot -cursor_name left_ptr &
 
 # Compositor
-# Using the Forked version of Picom with rounded corner support (https://github.com/ibhagwan/picom) will break polybar
-# killall -q picom
-# picom --experimental-backends &
 picom &
 
 # Set wallpaper
-feh --bg-fill gsettings $HOME/Pictures/Wallpapers/1732259.jpg
+feh --bg-fill gsettings $HOME/Personal/dotfiles/bspwm/backgrounds/1732259.jpg
 
 # Polybar
 $HOME/.config/polybar/launch.sh &
