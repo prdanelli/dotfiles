@@ -2,7 +2,13 @@
 
 My development environment dotfiles.
 
-## Applications
+# Installation
+
+The repo uses [Dotbot](https://github.com/anishathalye/dotbot) to manage placement of files from this repo into the correct config locations on the host machine.
+
+Run `./install` from this directory.
+
+# Applications
 
 + bspwm
 + sxhkd
@@ -17,33 +23,14 @@ My development environment dotfiles.
 + Duplicity
 + Spicetify
 
-## Screenshots
+# Screenshots
 
 ![Desktop](https://raw.githubusercontent.com/prdanelli/dotfiles/main/screenshots/desktop.jpg)
 ![Neovim](https://raw.githubusercontent.com/prdanelli/dotfiles/main/screenshots/nvim.jpg)
 
-# Todo
+# Notes
 
-## General
-
-+ VPN
-
-## Setup
-
++ Fonts will not be automatically installed.
 + sudo ln -s ~/Personal/dotfiles/NordicNautilusGTK/ /usr/share/themes/NordNautilusGTK
 + The apply the setting within Gnome Tweaks
 
-## Rofi
-
-+ Power menu
-	- Icons
-+ https://github.com/svenstaro/rofi-calc
-
-## Polybar / Menu
-
-### Todo
-
-+ Open applications
-+ Workspace icon name? https://github.com/aerosol/bspi
-
-Tutorials: https://arcolinux.com/all-modules-that-are-available-for-polybar-any-desktop/

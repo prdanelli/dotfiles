@@ -1,0 +1,39 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- create:
+    - ~/.config/spicetify
+    - ~/.config/kitty
+    - ~/.config/ranger
+
+# Requires 4 space indentation or it will fail
+- link:
+    ~/.config/bspwm: bspwm
+    ~/.config/dunst: dunst
+    ~/.config/greenclip.toml: greenclip.toml
+    ~/.config/kitty/kitty.conf: kitty.conf
+    ~/.config/lazygit: lazygit
+    ~/.config/networkmanager-dmenu: networkmanager-dmenu
+    ~/.config/nvim: nvim
+    ~/.config/picom: picom
+    ~/.config/polybar: polybar
+    ~/.config/ranger/rc.conf: rc.conf
+    ~/.config/rofi: rofi
+    ~/.config/spicetify/Themes: spicetify/Themes
+    ~/.config/starship.toml: starship.toml
+    ~/.config/sxhkd: sxhkd
+    ~/.config/tmuxinator: tmuxinator
+    ~/.duplicity: duplicity
+    ~/.editorconfig: editorconfig
+    ~/.gitconfig: gitconfig
+    ~/.gitignore_global: gitignore_global
+    ~/.irbrc: irbrc
+    ~/.tmux.conf: tmux.conf
+    ~/.xinitrc: xinitrc
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
+
