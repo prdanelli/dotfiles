@@ -5,7 +5,6 @@
 - clean: ['~']
 
 - create:
-    - ~/.config/spicetify
     - ~/.config/kitty
     - ~/.config/ranger
 
@@ -13,6 +12,7 @@
 - link:
     ~/.config/bspwm: bspwm
     ~/.config/dunst: dunst
+    ~/.config/fish/config.fish: fish.config
     ~/.config/greenclip.toml: greenclip.toml
     ~/.config/kitty/kitty.conf: kitty.conf
     ~/.config/lazygit: lazygit
@@ -20,9 +20,8 @@
     ~/.config/nvim: nvim
     ~/.config/picom: picom
     ~/.config/polybar: polybar
-    ~/.config/ranger/rc.conf: rc.conf
+    ~/.config/ranger/rc.conf: ranger.conf
     ~/.config/rofi: rofi
-    ~/.config/spicetify/Themes: spicetify/Themes
     ~/.config/starship.toml: starship.toml
     ~/.config/sxhkd: sxhkd
     ~/.config/tmuxinator: tmuxinator
