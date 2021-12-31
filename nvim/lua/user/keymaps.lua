@@ -4,15 +4,15 @@
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
+-- Set the leader key
 keymap("", ",", "<Nop>", opts)
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
 keymap("n", "<Leader>0", ":source ~/.config/nvim/init.lua<CR> <bar> :echom 'Sourced init.lua' <CR> <silent> :noh <CR>", opts)
 
--- TODO: Fix me. 
 -- Use Del key for black hole register
--- keymap("", "<Del>", '"_x', opts)
+keymap("", "<Del>", '"_x', { silent = true })
 
 keymap("v", "p", '"_dP', opts)
 
