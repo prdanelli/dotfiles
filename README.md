@@ -2,13 +2,13 @@
 
 My development environment dotfiles.
 
-# Installation
+## Installation
 
 The repo uses [Dotbot](https://github.com/anishathalye/dotbot) to manage placement of files from this repo into the correct config locations on the host machine.
 
 Run `./install` from this directory.
 
-# Applications
+## Applications
 
 + bspwm
 + sxhkd
@@ -23,12 +23,12 @@ Run `./install` from this directory.
 + Duplicity
 + Spicetify
 
-# Screenshots
+## Screenshots
 
 ![Desktop](https://raw.githubusercontent.com/prdanelli/dotfiles/main/screenshots/desktop.jpg)
 ![Neovim](https://raw.githubusercontent.com/prdanelli/dotfiles/main/screenshots/nvim.jpg)
 
-# Notes
+## Notes
 
 + Fonts will not be automatically installed.
 + sudo ln -s ~/Personal/dotfiles/NordicNautilusGTK/ /usr/share/themes/NordNautilusGTK
