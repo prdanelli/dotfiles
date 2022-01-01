@@ -2,8 +2,8 @@
 
 # Simple script to instll Nvim from the required release channel
 
-URL="https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
-# URL="https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage"
+# URL="https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
+URL="https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage"
 
 RESPONSE=$(curl --write-out '%{http_code}' --silent --output /dev/null $URL)
 TARGET="$HOME/.local/bin/nvim"
