@@ -11,5 +11,7 @@ require "user.cmp"
 require "user.rnvimr"
 require "user.startify"
 require "user.highlightedyank"
-require "user.marks"
+-- require "user.marks" -- Adds mark to Rnvim
 require "user.gitsigns"
+require "user.alpha"
+require "user.togglebool"

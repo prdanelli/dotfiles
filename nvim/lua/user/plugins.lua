@@ -42,6 +42,7 @@ return packer.startup(function(use)
   use "kyazdani42/nvim-web-devicons"
   use "yggdroot/indentline"
 	use { "norcalli/nvim-colorizer.lua", config = function() require("colorizer").setup() end }
+	use { "goolord/alpha-nvim", requires = { "kyazdani42/nvim-web-devicons" } }
 
   -----------------------------------------------------------------------------
   -- Navigation
@@ -116,14 +117,13 @@ return packer.startup(function(use)
   use "tpope/vim-surround" -- Wrap text
   use "mg979/vim-visual-multi" -- Multiple cursors
   use "vim-scripts/ReplaceWithRegister" -- Replace with register and don"t copy
-  use "mhinz/vim-startify" -- Start up page
   use "machakann/vim-highlightedyank" -- Highlight yanked text
   use "sagarrakshe/toggle-bool" -- Toggle boolean values
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use "editorconfig/editorconfig-vim"
 	use "chentau/marks.nvim" -- Better marks
-	use { 'lewis6991/spellsitter.nvim', config = function() require('spellsitter').setup() end } -- Spell checking with Treesitter
+	use { "lewis6991/spellsitter.nvim", config = function() require("spellsitter").setup() end } -- Spell checking with Treesitter
 
   -----------------------------------------------------------------------------
   -- Automatically set up your configuration after cloning packer.nvim
