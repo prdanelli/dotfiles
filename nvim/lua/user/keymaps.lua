@@ -37,6 +37,7 @@ keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 keymap("n", "oo", "o<Esc>k", opts)
 keymap("n", "OO", "O<Esc>j", opts)
 
+-- Remove highlighting
 keymap("n", "<leader>c", "<cmd>noh<cr>", opts)
 
 -------------------------------------------------------------------------------

@@ -9,7 +9,6 @@ require "user.bufferline"
 require "user.trouble"
 require "user.cmp"
 require "user.rnvimr"
-require "user.startify"
 require "user.highlightedyank"
 -- require "user.marks" -- Adds mark to Rnvim
 require "user.gitsigns"

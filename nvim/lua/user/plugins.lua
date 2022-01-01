@@ -50,7 +50,7 @@ return packer.startup(function(use)
   use "nvim-lualine/lualine.nvim"
   use { "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" }
   use "kevinhwang91/rnvimr"
-	use { "nacro90/numb.nvim", config = function() require("numb").setup() end }
+	use { "nacro90/numb.nvim", config = function() require("numb").setup() end } -- Peak lines during page number nav
 
   -----------------------------------------------------------------------------
   -- LSP
