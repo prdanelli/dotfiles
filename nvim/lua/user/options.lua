@@ -52,3 +52,15 @@ end
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 
+-- Custom fold text
+vim.cmd [[
+	function! MyFoldText()
+			let line = getline(v:foldstart)
+			let foldedlinecount = v:foldend - v:foldstart + 1
+
+			return ' + ' . foldedlinecount . ' --- ' . line
+	endfunction
+
+	set foldtext=MyFoldText()
+	set fillchars=fold:-
+]]

@@ -43,6 +43,7 @@ return packer.startup(function(use)
   use "yggdroot/indentline"
 	use { "norcalli/nvim-colorizer.lua", config = function() require("colorizer").setup() end }
 	use { "goolord/alpha-nvim", requires = { "kyazdani42/nvim-web-devicons" } }
+	use { "nvim-neo-tree/neo-tree.nvim", branch = "v1.x", requires = { "MunifTanjim/nui.nvim" } }
 
   -----------------------------------------------------------------------------
   -- Navigation

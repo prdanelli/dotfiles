@@ -4,6 +4,8 @@ if not status_ok then
 	return
 end
 
+local colors = require("onenord.colors")
+
 onenord.setup({
   borders = true,
   italics = {
@@ -13,10 +15,15 @@ onenord.setup({
     functions = false,
     variables = false,
   },
+  styles = {
+    comments = "italic",
+	},
   disable = {
     background = false,
     cursorline = false,
     eob_lines = true,
   },
-  custom_highlights = {},
+  custom_highlights = {
+		Folded = { fg = colors.gray },
+	},
 })
