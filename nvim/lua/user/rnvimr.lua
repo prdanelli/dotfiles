@@ -1,3 +1,4 @@
+
 -- Make Ranger replace netrw and be the file explorer
 vim.g["rnvimr_ex_enable"] = 1
 
@@ -32,4 +33,4 @@ vim.g["rnvimr_ranger_views"] = [[
 ]
 ]]
 
-vim.api.nvim_set_keymap("n", "<leader>e", ":RnvimrToggle<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>RnvimrToggle<CR>", { noremap = true, silent = true })
