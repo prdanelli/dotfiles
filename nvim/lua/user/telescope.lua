@@ -1,6 +1,8 @@
 local trouble = require("trouble.providers.telescope")
 local actions = require("telescope.actions")
 local telescope = require("telescope")
+
+telescope.load_extension("file_browser", { grouped = true })
 telescope.load_extension("fzf") -- require fzf extension for better fzf sorting algorithm
 
 telescope.setup({
@@ -39,7 +41,7 @@ telescope.setup({
       },
     },
     file_sorter =  require("telescope.sorters").get_fuzzy_file,
-    file_ignore_patterns = {},
+    file_ignore_patterns = { "node_modules", ".git" },
     generic_sorter =  require("telescope.sorters").get_generic_fuzzy_sorter,
     winblend = 0,
     border = {},
@@ -55,7 +57,10 @@ telescope.setup({
         override_generic_sorter = false,
         override_file_sorter = true,
         case_mode = "smart_case"
-      }
+      },
+			file_browser = {
+				files = false,
+			}
     }
   }
 })
@@ -81,3 +86,18 @@ keymap("n", "<leader>gc", "<cmd>git_commits<cr>", opts)
 keymap("n", "<leader>gs", "<cmd>git_status<cr>", opts)
 keymap("n", "<leader>gt", "<cmd>git_stash<cr>", opts)
 
+-- Filemanager shortcuts
+-- <A-c>/c	Create file/folder at current path (trailing path separator creates folder)
+-- <A-r>/r	Rename multi-selected files/folders
+-- <A-m>/m	Move multi-selected files/folders to current path
+-- <A-y>/y	Copy (multi-)selected files/folders to current path
+-- <A-d>/d	Delete (multi-)selected files/folders
+-- <C-o>/o	Open file/folder with default system application
+-- <C-g>/g	Go to parent directory
+-- <C-e>/e	Go to home directory
+-- <C-w>/w	Go to current working directory (cwd)
+-- <C-t>/t	Change nvim's cwd to selected folder/file(parent)
+-- <C-f>/f	Toggle between file and folder browser
+-- <C-h>/h	Toggle hidden files/folders
+-- <C-s>/s	Toggle all entries ignoring ./ and ../
+vim.api.nvim_set_keymap("n", "<leader>ff", ":Telescope file_browser grouped=true<cr>", { noremap = true, silent = true })

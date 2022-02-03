@@ -45,11 +45,11 @@ gitsigns.setup {
     follow_files = true
   },
   attach_to_untracked = true,
-  current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+  current_line_blame = false,
   current_line_blame_opts = {
     virt_text = true,
-    virt_text_pos = "eol", -- "eol" | "overlay" | "right_align"
-    delay = 2000,
+    virt_text_pos = "eol",
+    delay = 500,
     ignore_whitespace = true,
   },
   current_line_blame_formatter_opts = {
@@ -57,7 +57,7 @@ gitsigns.setup {
   },
   sign_priority = 6,
   update_debounce = 100,
-  status_formatter = nil, -- Use default
+  status_formatter = nil,
   max_file_length = 40000,
   preview_config = {
     border = "single",

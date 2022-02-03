@@ -39,11 +39,13 @@ return packer.startup(function(use)
   -- Look & feel
   -----------------------------------------------------------------------------
   use "rmehri01/onenord.nvim"
+	use "RRethy/nvim-base16"
   use "kyazdani42/nvim-web-devicons"
   use "yggdroot/indentline"
 	use { "norcalli/nvim-colorizer.lua", config = function() require("colorizer").setup() end }
 	use { "goolord/alpha-nvim", requires = { "kyazdani42/nvim-web-devicons" } }
 	use { "kyazdani42/nvim-tree.lua", requires = { "kyazdani42/nvim-web-devicons" } }
+	use "mtdl9/vim-log-highlighting"
 
   -----------------------------------------------------------------------------
   -- Navigation
@@ -93,6 +95,7 @@ return packer.startup(function(use)
   -----------------------------------------------------------------------------
   use { "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } }
   use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+	use { "nvim-telescope/telescope-file-browser.nvim" }
 
   -----------------------------------------------------------------------------
   -- Syntax & code
@@ -103,7 +106,7 @@ return packer.startup(function(use)
   use "vim-ruby/vim-ruby"
   use "keith/rspec.vim"
   use "tpope/vim-bundler"
-
+	use "dag/vim-fish"
   -----------------------------------------------------------------------------
   -- Git
   -----------------------------------------------------------------------------

@@ -1,5 +1,12 @@
 #!/usr/bin/env sh
 
+
+alt + {a,f}
+   ~/.config/bspwm/resize.sh {-p,-n} -x -s 2
+
+alt + {s,d}
+   ~/.config/bspwm/resize.sh {-p,-n} -y -s 20
+
 #
 # wm independent hotkeys
 #
@@ -65,7 +72,7 @@ super + Tab
 	bspc node -f last.!hidden.window
 
 # focus the older or newer node in the focus history
-super + {o,i}
+super + {i,o}
 	bspc wm -h off; \
 	bspc node {older,newer} -f; \
 	bspc wm -h on
@@ -74,6 +81,8 @@ super + {o,i}
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
+super + ctrl + {j, k}
+    bspc node -f {next, prev}.local
 #
 # state/flags
 #
@@ -104,6 +113,12 @@ super + alt + {h,j,k,l}
 	bspc node @parent/second -z top 0 -20, \
 	bspc node @parent/first -z right +20 0; \
 	bspc node @parent/second -z left +20 0}
+
+# super + button{2-3}
+# 	bspc pointer -g resize_side,resize_corner}
+#
+# super + !button1
+# 	bspc pointer -t %i %i
 
 #
 # Menus

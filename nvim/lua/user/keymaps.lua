@@ -9,11 +9,13 @@ keymap("", ",", "<Nop>", opts)
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
-keymap("n", "<Leader>0", ":source ~/.config/nvim/init.lua<CR> <bar> :echom 'Sourced init.lua' <CR> <silent> :noh <CR>", opts)
+-- Map jj to esc
+keymap("i", "jj", "<esc>", { silent = true})
 
 -- Use Del key for black hole register
 keymap("", "<Del>", '"_x', { silent = true })
 
+-- Paste over selected text
 keymap("v", "p", '"_dP', opts)
 
 -- Select all
@@ -39,6 +41,9 @@ keymap("n", "OO", "O<Esc>j", opts)
 
 -- Remove highlighting
 keymap("n", "<leader>c", "<cmd>noh<cr>", opts)
+
+-- Alternatives to :w, because I constantly typo it
+keymap("n", "<C-w>", "<cmd>w<cr>", opts)
 
 -------------------------------------------------------------------------------
 -- Buffers
