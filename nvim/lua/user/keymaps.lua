@@ -9,8 +9,17 @@ keymap("", ",", "<Nop>", opts)
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
+-- Turn off arrow keys - force HJKL
+keymap("n", "<UP>", "<NOP>", opts)
+keymap("n", "<DOWN>", "<NOP>", opts)
+keymap("n", "<LEFT>", "<NOP>", opts)
+keymap("n", "<RIGHT>", "<NOP>", opts)
+
 -- Map jj to esc
-keymap("i", "jj", "<esc>", { silent = true})
+keymap("i", "jj", "<esc>", { silent = true })
+--
+-- Map ctrl-c to esc
+keymap("i", "<C-c>", "<esc>", { silent = true })
 
 -- Use Del key for black hole register
 keymap("", "<Del>", '"_x', { silent = true })
@@ -20,12 +29,6 @@ keymap("v", "p", '"_dP', opts)
 
 -- Select all
 keymap("n", "<C-s>", "ggVG", opts)
-
--- Turn off arrow keys - force HJKL
-keymap("n", "<UP>", "<NOP>", opts)
-keymap("n", "<DOWN>", "<NOP>", opts)
-keymap("n", "<LEFT>", "<NOP>", opts)
-keymap("n", "<RIGHT>", "<NOP>", opts)
 
 -- Better Indentation
 keymap("v", "<", "<gv", opts)
@@ -44,6 +47,12 @@ keymap("n", "<leader>c", "<cmd>noh<cr>", opts)
 
 -- Alternatives to :w, because I constantly typo it
 keymap("n", "<C-w>", "<cmd>w<cr>", opts)
+
+-- Remap V to highlight the remainder of the line
+-- keymap("n", "V", "vg_", { silent = true })
+
+-- vv to highlight entire line
+-- keymap("n", "vv", "0v$", opts)
 
 -------------------------------------------------------------------------------
 -- Buffers

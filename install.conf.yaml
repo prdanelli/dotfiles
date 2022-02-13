@@ -5,7 +5,6 @@
 - clean: ['~']
 
 - create:
-    - ~/.config/kitty
     - ~/.config/ranger
 
 # Requires 4 space indentation or it will fail
@@ -14,7 +13,7 @@
     ~/.config/dunst: dunst
     ~/.config/fish/config.fish: fish.config
     ~/.config/greenclip.toml: greenclip.toml
-    ~/.config/kitty/kitty.conf: kitty.conf
+    ~/.config/kitty: kitty
     ~/.config/lazygit: lazygit
     ~/.config/networkmanager-dmenu: networkmanager-dmenu
     ~/.config/nvim: nvim
