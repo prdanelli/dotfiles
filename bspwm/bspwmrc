@@ -32,7 +32,7 @@ xsetroot -cursor_name left_ptr &
 picom &
 
 # Set wallpaper
-feh --bg-fill gsettings $HOME/Personal/dotfiles/bspwm/backgrounds/1732259.jpg
+feh --bg-fill gsettings $HOME/Personal/dotfiles/bspwm/backgrounds/forest.jpg
 
 # Polybar
 $HOME/.config/polybar/launch.sh &

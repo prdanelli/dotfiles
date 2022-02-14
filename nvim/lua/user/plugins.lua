@@ -38,8 +38,7 @@ return packer.startup(function(use)
   -----------------------------------------------------------------------------
   -- Look & feel
   -----------------------------------------------------------------------------
-  use "rmehri01/onenord.nvim"
-	use "RRethy/nvim-base16"
+	use "luisiacc/gruvbox-baby"
   use "kyazdani42/nvim-web-devicons"
   use "yggdroot/indentline"
 	use { "norcalli/nvim-colorizer.lua", config = function() require("colorizer").setup() end }
