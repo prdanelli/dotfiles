@@ -16,3 +16,4 @@ openvpn/credentials.conf
 openvpn/uk.protonvpn.com.udp.ovpn
 nvim.appimage
 nvim/plugin/packer_compiled.lua
+nvim/spell/*
