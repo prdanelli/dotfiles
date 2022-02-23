@@ -31,6 +31,22 @@ Run `./install` from this directory.
 ## Notes
 
 + Fonts will not be automatically installed.
-+ sudo ln -s ~/Personal/dotfiles/NordicNautilusGTK/ /usr/share/themes/NordNautilusGTK
-+ The apply the setting within Gnome Tweaks
 
+## Nautilus
+
+To install themes for Gnome Nautilus, copy the theme folder as below:
+
+```bash
+sudo ln -s ~/Personal/dotfiles/NordicNautilusGTK/ /usr/share/themes/NordNautilusGTK
+# Or...
+sudo ln -s ~/Personal/dotfiles/gruvbox-material-gtk/themes/Gruvbox-Material-Dark /usr/share/
+themes/gruvbox-material-gtk
+
+```
+
+Then set the theme name in the fish.config:
+
+```fish
+# set -gx GTK_THEME "your-theme-name"
+set -gx GTK_THEME "gruvbox-material-gtk"
+```

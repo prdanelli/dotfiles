@@ -6,7 +6,7 @@
 # 8.8.8.8, 8.8.4.4
 
 
-yellow=#EBCB8B
+color=#9b765f
 dir=/home/paul
 
 function openvpn_id() {
@@ -82,7 +82,7 @@ print() {
 		icon=""
 	fi
 
-	echo %{u"$yellow"}%{T1}%{F"$yellow"}"$icon"%{T-}%{F-}
+	echo %{u"$color"}%{T1}%{F"$color"}"$icon"%{T-}%{F-}
 }
 
 case "$1" in

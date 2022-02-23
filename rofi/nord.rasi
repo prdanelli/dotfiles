@@ -6,14 +6,14 @@
 /** The search bar **/
 inputbar {
   border: 0 0 1px 0;
-	border-color: @polar-2;
+	border-color: @polar-3;
   children: [prompt, entry];
 }
 
 /* Text search bar */
 entry {
   padding: 16px;
-	text-color: @snow-1;
+	text-color: @entry-text;
 	font: "Source Code Pro for Powerline Bold 14";
 }
 
@@ -22,7 +22,7 @@ prompt {
 	enabled: true;
 	font: "FontAwesome 13";
 	padding: 18 10 15 15;
-	text-color: @polar-2;
+	text-color: @prompt-text;
 }
 
 listview {
@@ -32,7 +32,7 @@ listview {
 }
 
 #scrollbar {
-	handle-color: @polar-2;
+	handle-color: @scroll-handle;
 	handle-width: 10px;
 }
 
@@ -44,8 +44,8 @@ element {
 }
 
 element selected {
-  text-color: @snow-3;
-	background-color: @polar-2;
+  text-color: @element-selected-text;
+	background-color: @element-selected-bg;
 }
 
 element-icon {

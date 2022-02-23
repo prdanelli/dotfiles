@@ -13,8 +13,8 @@ bspc config gapless_monocle false
 bspc config click_to_focus true
 bspc config apply_floating_atom true
 bspc config history_aware_focus true
-bspc config normal_border_color "#2E3440"
-bspc config focused_border_color "#B48EAD"
+bspc config normal_border_color "#2F2F2B"
+bspc config focused_border_color "#E7D7AD"
 
 bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
@@ -32,7 +32,7 @@ xsetroot -cursor_name left_ptr &
 picom &
 
 # Set wallpaper
-feh --bg-fill gsettings $HOME/Personal/dotfiles/bspwm/backgrounds/forest.jpg
+feh --bg-fill gsettings $HOME/Personal/dotfiles/bspwm/backgrounds/ss2.jpg
 
 # Polybar
 $HOME/.config/polybar/launch.sh &
@@ -53,3 +53,4 @@ xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Click Method Enabled"
 xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Tapping Enabled" 1
 xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Disable While Typing Enabled" 1
 xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Accel Profile Enabled" 1, 0
+

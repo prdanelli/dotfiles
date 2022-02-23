@@ -30,15 +30,29 @@
 	grad-8: #4C566A;
 
 	transparent: #002E3440;
-	background: #0c121a;
-	foreground: #ECEFF4;
-	foreground-alt: #ECEFF4;
+	background: #3f3b38;
+	foreground: #c2b7a9;
+	foreground-alt: #c2b7a9;
+
+	/* These are the variables used for the elements */
+	/* @entry-text @snow-1;
+	@prompt-text @polar-3;
+	@scroll-handle @polar-3;
+	@element-selected-text @snow-3;
+	@element-selected-bg @polar-3;
+	*/
+
+	entry-text: #c2b7a9;
+	prompt-text: #262626;
+	scroll-handle: #bdd0ad;
+	element-selected-text: #363432;
+	element-selected-bg: #9c846c;
 
 	border: 0;
 	margin: 0;
 	padding: 0;
 	spacing: 0;
-	background-color: @polar-1;
-	text-color: @frost-3;
+	background-color: @background;
+	text-color: @entry-text;
 }
 

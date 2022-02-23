@@ -1,18 +1,3 @@
-/*
- * Theming:
- *
- * https://github.com/davatorium/rofi/blob/next/doc/rofi-theme.5.markdown
- *
- * Supported Properties:
- *
- * https://github.com/davatorium/rofi/blob/next/doc/rofi-theme.5.markdown?utm_source=pocket_mylist#supported-properties
- *
- * Supported Elements:
- *
- * https://github.com/davatorium/rofi/blob/next/doc/rofi-theme.5.markdown?utm_source=pocket_mylist#supported-element-path
- *
- */
-
 configuration {
 	show-icons: false;
 }
@@ -29,7 +14,7 @@ mainbox {
 
 /* Background area wrapper icon boxes */
 listview {
-	background-color: @polar-3;
+	background-color: @background;
 	position: center;
 	cycle: true;
 	layout: horizontal;
@@ -39,26 +24,28 @@ listview {
 }
 
 element {
-	background-color: @polar-3;
+	background-color: @background;
 	border-radius: 5px;
 	position: center;
 	children: [ element-text ];
 }
 
 element-text {
-	/* padding: 10px 24px 10px 15px; */
 	width: 60px;
 	height: 80px;
 	position: center;
 	horizontal-align: 0.35;
-	text-color: @grad-6;
+	text-color: @element-text;
 	font:	"FantasqueSansMono Nerd Font 30";
 }
 
-element.selected element-text {
-	background-color: @polar-1;
-	text-color: @grad-7;
+element selected {
+  text-color: @element-selected-text;
+	background-color: @element-selected-bg;
 }
 
-
+element.selected element-text {
+  text-color: @element-selected-text;
+	background-color: @element-selected-bg;
+}
 
