@@ -1,4 +1,3 @@
-/* The default configuration incase none is specified */
 configuration {
 	width: 500;
 	show-icons: true;
@@ -10,7 +9,6 @@ configuration {
 	display-window: "  ";
 	drun-display-format: "{icon} {name}";
 	font: "Source Code Pro for Powerline Medium 11";
-	modi: "window,run,drun";
 	show-icons: true;
 }
 

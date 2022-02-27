@@ -3,7 +3,10 @@ configuration {
 }
 
 window {
-	width: 501px;
+	width: 123px;
+	height: 410px;
+	location: east;
+	x-offset: -24px;
 	children: [ mainbox ];
 }
 
@@ -17,7 +20,7 @@ listview {
 	background-color: @background;
 	position: center;
 	cycle: true;
-	layout: horizontal;
+	layout: vertical;
 	padding: 20px;
 	border-radius: 5px;
 	spacing: 10px;
@@ -31,8 +34,8 @@ element {
 }
 
 element-text {
-	width: 60px;
-	height: 80px;
+	width: 70px;
+	height: 84px;
 	position: center;
 	horizontal-align: 0.35;
 	text-color: @element-text;

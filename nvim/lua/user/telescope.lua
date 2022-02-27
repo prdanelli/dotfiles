@@ -41,7 +41,7 @@ telescope.setup({
       },
     },
     file_sorter =  require("telescope.sorters").get_fuzzy_file,
-    file_ignore_patterns = { "node_modules", ".git", "pdf_viewer" },
+    file_ignore_patterns = { "gruvbox-material-gtk", "node_modules", ".git", "pdf_viewer" },
     generic_sorter =  require("telescope.sorters").get_generic_fuzzy_sorter,
     winblend = 0,
     border = {},
