@@ -5,6 +5,7 @@
 - clean: ['~']
 
 - create:
+    - ~/.local/bin
     - ~/.config/ranger
 
 # Requires 4 space indentation or it will fail
@@ -16,6 +17,7 @@
     ~/.config/kitty: kitty
     ~/.config/lazygit: lazygit
     ~/.config/networkmanager-dmenu: networkmanager-dmenu
+    ~/.local/bin/networkmanager_dmenu: bin/networkmanager_dmenu
     ~/.config/nvim: nvim
     ~/.config/picom: picom
     ~/.config/polybar: polybar
@@ -31,6 +33,7 @@
     ~/.irbrc: irbrc
     ~/.tmux.conf: tmux.conf
     ~/.xinitrc: xinitrc
+    ~/.local/bin/greenclip: bin/greenclip
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
