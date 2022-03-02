@@ -39,8 +39,7 @@ To install themes for Gnome Nautilus, copy the theme folder as below:
 ```bash
 sudo ln -s ~/Personal/dotfiles/NordicNautilusGTK/ /usr/share/themes/NordNautilusGTK
 # Or...
-sudo ln -s ~/Personal/dotfiles/gruvbox-material-gtk/themes/Gruvbox-Material-Dark /usr/share/
-themes/gruvbox-material-gtk
+sudo ln -s ~/Personal/dotfiles/gtk/gruvbox-material-gtk/themes/Gruvbox-Material-Dark /usr/share/themes/gruvbox-material-gtk
 
 ```
 
