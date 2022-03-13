@@ -4,7 +4,7 @@ configuration {
 
 window {
 	width: 123px;
-	height: 410px;
+	height: 334px;
 	location: east;
 	x-offset: -24px;
 	children: [ mainbox ];

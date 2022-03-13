@@ -139,7 +139,7 @@ super + alt + b
 	bash -c '~/.config/rofi/bluetooth.sh';
 
 super + alt + p
-	~/.config/rofi/powermenu.sh
+	ruby ~/.config/rofi/powermenu.rb
 
 # Show window menu
 super + grave
