@@ -9,8 +9,9 @@ configuration {
 	display-window: "  ";
 	drun-display-format: "{icon} {name}";
 	font: "Source Code Pro for Powerline Medium 11";
+	modi: "window,run,drun";
 	show-icons: true;
 }
 
-@import "nord"
+@import "theme"
 

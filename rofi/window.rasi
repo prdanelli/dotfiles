@@ -10,7 +10,7 @@ configuration {
 	yoffset: -100;
 }
 
-@import "nord.rasi"
+@import "theme"
 
 inputbar {
 	enabled: false;

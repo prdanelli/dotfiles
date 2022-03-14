@@ -1,58 +1,54 @@
-* {
-	polar-1: #2E3440;
-	polar-2: #3B4252;
-	polar-3: #434C5E;
-	polar-4: #4C566A;
+/* The shared configuration, which can be overridden in configuration files */
 
-	snow-1: #D8DEE9;
-	snow-2: #E5E9F0;
-	snow-3: #ECEFF4;
+/* Import the colour scheme */
+@import "base"
 
-	frost-1: #8FBCBB;
-	frost-2: #88C0D0;
-	frost-3: #81A1C1;
-	frost-4: #5E81AC;
-
-	aurora-1: #BF616A;
-	aurora-2: #D08770;
-	aurora-3: #EBCB8B;
-	aurora-4: #A3BE8C;
-	aurora-5: #B48EAD;
-
-	/* ; Nord colourful */
-	grad-1: #bfc3cb;
-	grad-2: #BF616A;
-	grad-3: #D08770;
-	grad-4: #EBCB8B;
-	grad-5: #A3BE8C;
-	grad-6: #8ca0be;
-	grad-7: #B48EAD;
-	grad-8: #4C566A;
-
-	transparent: #002E3440;
-	background: #3f3b38;
-	foreground: #c2b7a9;
-	foreground-alt: #c2b7a9;
-
-	/* These are the variables used for the elements */
-	/* @entry-text @snow-1;
-	@prompt-text @polar-3;
-	@scroll-handle @polar-3;
-	@element-selected-text @snow-3;
-	@element-selected-bg @polar-3;
-	*/
-
-	entry-text: #c2b7a9;
-	prompt-text: #262626;
-	scroll-handle: #bdd0ad;
-	element-selected-text: #363432;
-	element-selected-bg: #9c846c;
-
-	border: 0;
-	margin: 0;
-	padding: 0;
-	spacing: 0;
-	background-color: @background;
-	text-color: @entry-text;
+/** The search bar **/
+inputbar {
+  border: 0 0 1px 0;
+	border-color: @polar-3;
+  children: [prompt, entry];
 }
 
+/* Text search bar */
+entry {
+  padding: 16px;
+	text-color: @entry-text;
+	font: "Source Code Pro for Powerline Bold 14";
+}
+
+/* The area to the left of the text search box */
+prompt {
+	enabled: true;
+	font: "FontAwesome 13";
+	padding: 18 10 15 15;
+	text-color: @prompt-text;
+}
+
+listview {
+  cycle: false;
+	lines: 10;
+	scrollbar: false;
+}
+
+#scrollbar {
+	handle-color: @scroll-handle;
+	handle-width: 10px;
+}
+
+element {
+	font: "Source Code Pro for Powerline Normal 20";
+  border: 0 0 1px 0;
+  padding: 12px;
+	spacing: 10px;
+}
+
+element selected {
+  text-color: @element-selected-text;
+	background-color: @element-selected-bg;
+}
+
+element-icon {
+	size: 20px;
+	padding: 0 12px 0 0;
+}

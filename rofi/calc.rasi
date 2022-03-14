@@ -1,5 +1,6 @@
 configuration {
-	width: 1000;
+	width: 500;
+	height: 200;
 	show-icons: false;
 	auto-select: false;
 	display-clipboard: "  ";
@@ -7,3 +8,7 @@ configuration {
 }
 
 @import "theme"
+
+listview {
+	enabled: false;
+}

@@ -71,6 +71,9 @@ super + bracket{left,right}
 super + Tab
 	bspc node -f last.!hidden.window
 
+{alt,super} + Tab
+	bspc {window,monitor} --focus next
+
 # focus the older or newer node in the focus history
 super + {i,o}
 	bspc wm -h off; \
@@ -140,6 +143,13 @@ super + alt + b
 
 super + alt + p
 	ruby ~/.config/rofi/powermenu.rb
+
+super + alt + m
+	~/.config/rofi/screenshot.sh
+
+# https://github.com/svenstaro/rofi-calc
+super + alt + c
+	rofi -show calc -modi calc -no-show-match -no-sort -terse -no-persist-history -no-history -calc-command "echo -n '{result}' | xclip" -config ~/.config/rofi/calc.rasi
 
 # Show window menu
 super + grave

@@ -307,7 +307,7 @@ show_menu() {
 }
 
 # Rofi command to pipe into, can add any options here
-rofi_command="rofi -dmenu -no-fixed-num-lines -yoffset -200 -i -p"
+rofi_command="rofi -dmenu -no-fixed-num-lines -yoffset -200 -i -p -theme ~/.config/rofi/simple_text.rasi"
 
 case "$1" in
   	--short-status)

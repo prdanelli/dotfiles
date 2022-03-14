@@ -5,10 +5,7 @@ configuration {
 @import "theme"
 
 window {
-	width: 123px;
-	height: 334px;
-	location: east;
-	x-offset: -24px;
+	width: 313px;
 	children: [ mainbox ];
 }
 
@@ -20,9 +17,9 @@ mainbox {
 /* Background area wrapper icon boxes */
 listview {
 	background-color: @background;
-	position: center;
+	position: north;
 	cycle: true;
-	layout: vertical;
+	layout: horizontal;
 	padding: 20px;
 	border-radius: 5px;
 	spacing: 10px;
@@ -36,10 +33,11 @@ element {
 }
 
 element-text {
-	width: 70px;
-	height: 84px;
+	width: 60px;
+	height: 80px;
 	position: center;
 	horizontal-align: 0.35;
+	vertical-align: -0.35;
 	text-color: @element-text;
 	font:	"FantasqueSansMono Nerd Font 30";
 }
@@ -50,7 +48,8 @@ element selected {
 }
 
 element.selected element-text {
-  text-color: @element-selected-text;
-	background-color: @element-selected-bg;
+	background-color: @polar-2;
+	text-color: @grad-7;
 }
+
 

@@ -8,7 +8,7 @@ rofi_args = {
 }
 
 options = {
-  suspend: { text: "", command: "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause; systemctl suspend" },
+  sleep: { text: "", command: "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause; systemctl suspend" },
   shutdown: { text: "", command: "systemctl poweroff" },
   reboot: { text: "", command: "systemctl reboot" },
   logout: { text: "", command: "bspc quit" },
