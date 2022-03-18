@@ -46,6 +46,7 @@ return packer.startup(function(use)
 	use { "goolord/alpha-nvim", requires = { "kyazdani42/nvim-web-devicons" } }
 	use { "kyazdani42/nvim-tree.lua", requires = { "kyazdani42/nvim-web-devicons" } }
 	use "mtdl9/vim-log-highlighting"
+	use { "mvllow/modes.nvim", config = function() vim.opt.cursorline = true require("modes").setup() end }
 
 	-----------------------------------------------------------------------------
 	-- Navigation
@@ -53,7 +54,6 @@ return packer.startup(function(use)
 	use "nvim-lualine/lualine.nvim"
 	use { "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" }
 	use "kevinhwang91/rnvimr"
-	use { "nacro90/numb.nvim", config = function() require("numb").setup() end } -- Peak lines during page number nav
 
 	-----------------------------------------------------------------------------
 	-- LSP
