@@ -41,6 +41,7 @@ local options = {
   undofile = true,                         -- enable persistent undo
   wrap = true,                             -- display lines as one long line
   writebackup = false,                     -- if a file is being edited by another program
+  laststatus = 3,
 }
 
 vim.opt.shortmess:append "c"
@@ -64,3 +65,5 @@ vim.cmd [[
 	set foldtext=MyFoldText()
 	set fillchars=fold:-
 ]]
+
+vim.api.nvim_command([[ autocmd BufRead,BufNewFile *.arb setfiletype ruby ]])

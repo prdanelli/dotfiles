@@ -65,26 +65,24 @@ telescope.setup({
   }
 })
 
-local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
+local opts = { silent = true }
 
--- File/vim functions
-keymap("n", "<leader>p", "<cmd>Telescope find_files hidden=true layout_config={'prompt_position':'top'}<cr>", opts)
-keymap("n", "<leader>fg", ":Telescope live_grep<cr>", opts)
-keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
-keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)
-keymap("n", "<leader>fr", "<cmd>Telescope registers<cr>", opts)
-keymap("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opts)
+vim.keymap.set("n", "<leader>p", "<cmd>Telescope find_files hidden=true layout_config={'prompt_position':'top'}<cr>", opts)
+vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<cr>", opts)
+vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
+vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)
+vim.keymap.set("n", "<leader>fr", "<cmd>Telescope registers<cr>", opts)
+vim.keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opts)
 
 -- LSP funtions
-keymap("n", "<leader>ls", "<cmd>lsp_document_symbols<cr>", opts)
-keymap("n", "<leader>la", "<cmd>lsp_code_actions<cr>", opts)
-keymap("n", "<leader>ld", "<cmd>lsp_definitions<cr>", opts)
+vim.keymap.set("n", "<leader>ls", "<cmd>lsp_document_symbols<cr>", opts)
+vim.keymap.set("n", "<leader>la", "<cmd>lsp_code_actions<cr>", opts)
+vim.keymap.set("n", "<leader>ld", "<cmd>lsp_definitions<cr>", opts)
 
 -- Git functions
-keymap("n", "<leader>gc", "<cmd>git_commits<cr>", opts)
-keymap("n", "<leader>gs", "<cmd>git_status<cr>", opts)
-keymap("n", "<leader>gt", "<cmd>git_stash<cr>", opts)
+vim.keymap.set("n", "<leader>gc", "<cmd>git_commits<cr>", opts)
+vim.keymap.set("n", "<leader>gs", "<cmd>git_status<cr>", opts)
+vim.keymap.set("n", "<leader>gt", "<cmd>git_stash<cr>", opts)
 
 -- Filemanager shortcuts
 -- <A-c>/c	Create file/folder at current path (trailing path separator creates folder)
@@ -100,4 +98,5 @@ keymap("n", "<leader>gt", "<cmd>git_stash<cr>", opts)
 -- <C-f>/f	Toggle between file and folder browser
 -- <C-h>/h	Toggle hidden files/folders
 -- <C-s>/s	Toggle all entries ignoring ./ and ../
-vim.api.nvim_set_keymap("n", "<leader>ff", ":Telescope file_browser grouped=true<cr>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>ff", ":Telescope file_browser grouped=true<cr>", { silent = true })
+
