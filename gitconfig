@@ -2,7 +2,7 @@
 	name = Paul Danelli
 	email = prdanelli@gmail.com
 [core]
-	excludesfile = /home/paul/.gitignore_global
+	excludesfile = /Users/paul/.gitignore_global
 	editor = nvim
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	fileMode = false
@@ -28,17 +28,18 @@
 	smudge = git-lfs smudge %f
 	required = true
 [color "diff-highlight"]
-	oldNormal = "#D08770"
-	oldHighlight = "#BF616A bold"
-	newNormal = "#8FBCBB"
-	newHighlight = "#A3BE8C"
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
 [color "diff"]
-	meta = "#4C566A"
-	frag = "#B48EAD bold"
-	commit = "#EBCB8B bold"
-	old = "#BF616A"
-	new = "#A3BE8C"
+	meta = 11
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
 	whitespace = red reverse
+	func = 146 bold
 [diff-so-fancy]
 	markEmptyLines = false
 	changeHunkIndicators = false
