@@ -38,22 +38,20 @@ return packer.startup(function(use)
 	-----------------------------------------------------------------------------
 	-- Look & feel
 	-----------------------------------------------------------------------------
-	-- use "luisiacc/gruvbox-baby"
-	use "sainnhe/gruvbox-material"
+	-- use "sainnhe/gruvbox-material"
+	use "EdenEast/nightfox.nvim"
 	use "kyazdani42/nvim-web-devicons"
 	use "yggdroot/indentline"
 	use { "norcalli/nvim-colorizer.lua", config = function() require("colorizer").setup() end }
 	use { "goolord/alpha-nvim", requires = { "kyazdani42/nvim-web-devicons" } }
 	use { "kyazdani42/nvim-tree.lua", requires = { "kyazdani42/nvim-web-devicons" } }
-	use "mtdl9/vim-log-highlighting"
-	use { "mvllow/modes.nvim", config = function() vim.opt.cursorline = true require("modes").setup() end }
 
 	-----------------------------------------------------------------------------
 	-- Navigation
 	-----------------------------------------------------------------------------
 	use "nvim-lualine/lualine.nvim"
 	use { "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" }
-	use "kevinhwang91/rnvimr"
+  use "francoiscabrol/ranger.vim"
 
 	-----------------------------------------------------------------------------
 	-- LSP
@@ -107,6 +105,7 @@ return packer.startup(function(use)
 	use "keith/rspec.vim"
 	use "tpope/vim-bundler"
 	use "dag/vim-fish"
+	use "mtdl9/vim-log-highlighting"
 
 	-----------------------------------------------------------------------------
 	-- Git
@@ -128,13 +127,12 @@ return packer.startup(function(use)
 	use "mg979/vim-visual-multi" -- Multiple cursors
 	use "vim-scripts/ReplaceWithRegister" -- Replace with register and don"t copy
 	use "machakann/vim-highlightedyank" -- Highlight yanked text
-	use "sagarrakshe/toggle-bool" -- Toggle boolean values
 	use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
 	use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
 	use "editorconfig/editorconfig-vim"
-	use "chentau/marks.nvim" -- Better marks
 	use { "lewis6991/spellsitter.nvim", config = function() require("spellsitter").setup() end } -- Spell checking with Treesitter
 	use "rmagatti/auto-session"
+	use "famiu/bufdelete.nvim"
 
 	-----------------------------------------------------------------------------
 	-- Automatically set up your configuration after cloning packer.nvim
