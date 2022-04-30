@@ -51,7 +51,7 @@ return packer.startup(function(use)
 	-----------------------------------------------------------------------------
 	use "nvim-lualine/lualine.nvim"
 	use { "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" }
-  use "francoiscabrol/ranger.vim"
+  use "kevinhwang91/rnvimr"
 
 	-----------------------------------------------------------------------------
 	-- LSP
@@ -102,9 +102,6 @@ return packer.startup(function(use)
 	use "cespare/vim-toml"
 	use "tpope/vim-rails"
 	use "vim-ruby/vim-ruby"
-	use "keith/rspec.vim"
-	use "tpope/vim-bundler"
-	use "dag/vim-fish"
 	use "mtdl9/vim-log-highlighting"
 
 	-----------------------------------------------------------------------------
@@ -127,10 +124,7 @@ return packer.startup(function(use)
 	use "mg979/vim-visual-multi" -- Multiple cursors
 	use "vim-scripts/ReplaceWithRegister" -- Replace with register and don"t copy
 	use "machakann/vim-highlightedyank" -- Highlight yanked text
-	use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-	use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
 	use "editorconfig/editorconfig-vim"
-	use { "lewis6991/spellsitter.nvim", config = function() require("spellsitter").setup() end } -- Spell checking with Treesitter
 	use "rmagatti/auto-session"
 	use "famiu/bufdelete.nvim"
 

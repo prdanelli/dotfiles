@@ -4,11 +4,11 @@ if not status_ok then
 end
 
 bufferline.setup({
-	options = {
-		diagnostics = "nvim_lsp",
-		diagnostics_update_in_insert = false,
-		show_buffer_icons = true,
-		show_tab_indicators = false,
+  options = {
+    diagnostics = "nvim_lsp",
+    diagnostics_update_in_insert = false,
+    show_buffer_icons = true,
+    show_tab_indicators = false,
     show_buffer_close_icons = false,
     show_close_icon = false,
     persist_buffer_sort = true,
@@ -17,10 +17,10 @@ bufferline.setup({
     max_name_length = 30,
     max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
     tab_size = 21,
-		separator_style = "thin",
-		indicator_icon = "│",
-		offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
-	},
+    separator_style = "thin",
+    indicator_icon = "│",
+    offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
+  },
 })
 
 local opts = { silent = true }

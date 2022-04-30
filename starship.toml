@@ -26,7 +26,7 @@ disabled = false
 # configure directory
 [directory]
 truncation_length = 10
-truncate_to_repo = false
+truncate_to_repo = true
 style = "bold #4C566A"
 
 [cmd_duration]

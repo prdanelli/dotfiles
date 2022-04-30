@@ -14,9 +14,6 @@ vim.keymap.set("n", "<DOWN>", "<NOP>", opts)
 vim.keymap.set("n", "<LEFT>", "<NOP>", opts)
 vim.keymap.set("n", "<RIGHT>", "<NOP>", opts)
 
--- Map jj to esc
-vim.keymap.set("i", "jj", "<esc>", opts)
---
 -- Map ctrl-c to esc
 vim.keymap.set("i", "<C-c>", "<esc>", opts)
 
@@ -47,14 +44,10 @@ vim.keymap.set("n", "<leader>c", "<cmd>noh<cr>", opts)
 -- Alternatives to :w, because I constantly typo it
 vim.keymap.set("n", "<C-w>", "<cmd>w<cr>", opts)
 
--- Remap V to highlight the remainder of the line
--- vim.keymap.set("n", "V", "vg_", { silent = true })
-
--- vv to highlight entire line
--- vim.keymap.set("n", "vv", "0v$", opts)
-
+-- Map jj to esc
+vim.keymap.set("i", "jj", "<esc>", opts)
+-- Ctrl-c to esc
 vim.keymap.set("i", "<C-c>", "<esc>", opts)
-vim.keymap.set("n", "<leader>y", '"+y', opts)
 
 -------------------------------------------------------------------------------
 -- Buffers

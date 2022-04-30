@@ -1,9 +1,14 @@
-require("trouble").setup({
+local status_ok, trouble = pcall(require, "trouble")
+if not status_ok then
+  return
+end
+
+trouble.setup({
   position = "bottom", -- position of the list can be: bottom, top, left, right
-  height = 10, -- height of the trouble list when position is top or bottom
+  height = 15, -- height of the trouble list when position is top or bottom
   width = 50, -- width of the list when position is left or right
   icons = true, -- use devicons for filenames
-  mode = "workspace_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
+  mode = "document_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
   fold_open = "", -- icon used for open folds
   fold_closed = "", -- icon used for closed folds
   group = true, -- group results by file
@@ -38,7 +43,6 @@ require("trouble").setup({
 })
 
 local opts = { silent = true }
-
 vim.keymap.set("n", "<leader>xx", "<cmd>Trouble<cr>", opts)
 vim.keymap.set("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", opts)
 vim.keymap.set("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", opts)

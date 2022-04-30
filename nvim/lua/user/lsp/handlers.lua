@@ -1,22 +1,27 @@
 local M  = {}
 
-local function lsp_keymaps(bufnr)
-  local opts = { noremap = true, silent = true }
-	local keymap = vim.api.nvim_buf_set_keymap
+M.on_attach = function(client)
+  local opts = { buffer = 0 }
 
-	keymap(bufnr, 'n', 'gn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-	keymap(bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-	keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-	keymap(bufnr, 'n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-	keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-	keymap(bufnr, 'n', '<C-m>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-	keymap(bufnr, 'n', 'gt', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-	keymap(bufnr, 'n', 'gl', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>', opts)
-	keymap(bufnr, 'n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-	keymap(bufnr, 'n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
-	keymap(bufnr, 'n', '<leader>fs', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
+  -- Generate LSP functionality
+  vim.keymap.set('n', 'K',  vim.lsp.buf.hover, opts)
+  vim.keymap.set('n', 'gn', vim.lsp.buf.rename, opts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+  vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, opts)
+
+  -- Navigate diagnotis errors/mesages
+  vim.keymap.set('n', 'gk', vim.diagnostic.goto_next, opts)
+  vim.keymap.set('n', 'gj', vim.diagnostic.goto_prev, opts)
+
+  -- Telescope helpers for listing symbols and diagnostics
+  vim.keymap.set('n', '<leader>fs', '<cmd>Telescope lsp_document_symbols<cr>', opts)
+  vim.keymap.set('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>', opts)
 
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+
+  print("Attached to " .. client.name)
 end
 
 M.setup = function()
@@ -54,12 +59,6 @@ M.setup = function()
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
     border = "rounded",
   })
-end
-
--- _ is the client being passed in
-M.on_attach = function(client, bufnr)
-  lsp_keymaps(bufnr)
-  print("Attached to " .. client.name)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

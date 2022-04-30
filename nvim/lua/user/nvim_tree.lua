@@ -76,10 +76,6 @@ nvim_tree.setup({
     "dashboard",
     "alpha",
   },
-  update_to_buf_dir = {
-    enable = true,
-    auto_open = true,
-  },
   diagnostics = {
     enable = true,
     icons = {
@@ -102,7 +98,6 @@ nvim_tree.setup({
     dotfiles = false,
     custom = {}
   },
-	git_hl = 1,
   git = {
     enable = true,
     ignore = true,
@@ -113,7 +108,6 @@ nvim_tree.setup({
     height = 30,
     hide_root_folder = false,
     side = "left",
-    auto_resize = false,
     mappings = {
       custom_only = false,
       list = {
@@ -129,13 +123,6 @@ nvim_tree.setup({
   trash = {
     cmd = "trash",
     require_confirm = true
-  },
-	show_icons = {
-    git = 1,
-    folders = 1,
-    files = 1,
-    folder_arrows = 1,
-    tree_width = 30,
   },
 })
 
