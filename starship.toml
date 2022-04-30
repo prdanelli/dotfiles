@@ -4,15 +4,9 @@ add_newline = true
 # Wait 10 milliseconds for starship to check files under the current directory.
 scan_timeout = 10
 
-[line_break]
-disabled = true
-
 # Replace the "❯" symbol in the prompt with "➟"
 [character]      # The name of the module we are configuring is "character"
-use_symbol_for_status = true
 error_symbol = "❯"
-style_success = "bold #4C566A"
-style_failure = "bold #BF616A"
 
 # Hide the username. The username will only show in certain scenarios
 [username]
@@ -25,8 +19,8 @@ disabled = false
 
 # configure directory
 [directory]
-truncation_length = 10
-truncate_to_repo = true
+truncation_length = 0
+truncate_to_repo = false
 style = "bold #4C566A"
 
 [cmd_duration]
@@ -42,9 +36,6 @@ style = "#5E81AC"
 [git_status]
 style = "bold #4C566A"
 
-[docker]
-disabled = true
-
 [aws]
 disabled = true
 
@@ -58,4 +49,7 @@ disabled = true
 disabled = true
 
 [package]
+disabled = true
+
+[lua]
 disabled = true
