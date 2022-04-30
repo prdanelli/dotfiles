@@ -10,42 +10,8 @@ Run `./install` from this directory.
 
 ## Applications
 
-+ bspwm
-+ sxhkd
-+ Fish
 + Kitty
 + Starship
 + Tmux
 + Neovim
-+ Polybar
-+ Rofi
-+ Dunst
-+ Duplicity
-+ Spicetify
 
-## Screenshots
-
-![Desktop](https://raw.githubusercontent.com/prdanelli/dotfiles/main/screenshots/desktop.jpg)
-![Neovim](https://raw.githubusercontent.com/prdanelli/dotfiles/main/screenshots/nvim.jpg)
-
-## Notes
-
-+ Fonts will not be automatically installed.
-
-## Nautilus
-
-To install themes for Gnome Nautilus, copy the theme folder as below:
-
-```bash
-sudo ln -s ~/Personal/dotfiles/NordicNautilusGTK/ /usr/share/themes/NordNautilusGTK
-# Or...
-sudo ln -s ~/Personal/dotfiles/gtk/gruvbox-material-gtk/themes/Gruvbox-Material-Dark /usr/share/themes/gruvbox-material-gtk
-
-```
-
-Then set the theme name in the fish.config:
-
-```fish
-# set -gx GTK_THEME "your-theme-name"
-set -gx GTK_THEME "gruvbox-material-gtk"
-```

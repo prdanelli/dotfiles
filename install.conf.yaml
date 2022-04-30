@@ -10,30 +10,17 @@
 
 # Requires 4 space indentation or it will fail
 - link:
-    ~/.config/bspwm: bspwm
-    ~/.config/dunst: dunst
-    ~/.config/fish/config.fish: fish.config
-    ~/.config/greenclip.toml: greenclip.toml
     ~/.config/kitty: kitty
     ~/.config/lazygit: lazygit
-    ~/.config/networkmanager-dmenu: networkmanager-dmenu
-    ~/.local/bin/networkmanager_dmenu: bin/networkmanager_dmenu
     ~/.config/nvim: nvim
-    ~/.config/picom: picom
-    ~/.config/polybar: polybar
-    ~/.config/ranger/rc.conf: ranger.conf
-    ~/.config/rofi: rofi
+    ~/.config/ranger: ranger
     ~/.config/starship.toml: starship.toml
-    ~/.config/sxhkd: sxhkd
     ~/.config/tmuxinator: tmuxinator
-    ~/.duplicity: duplicity
     ~/.editorconfig: editorconfig
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
     ~/.irbrc: irbrc
     ~/.tmux.conf: tmux.conf
-    ~/.xinitrc: xinitrc
-    ~/.local/bin/greenclip: bin/greenclip
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
