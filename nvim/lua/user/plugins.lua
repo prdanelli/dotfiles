@@ -61,6 +61,7 @@ return packer.startup(function(use)
 	use "folke/lsp-colors.nvim" -- Add missing LSP highlight groups
 	use "nvim-lua/lsp-status.nvim" -- Used by other plugin for basic lsp info
 	use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }
+  use { "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } }
 
 	-----------------------------------------------------------------------------
 	-- Completions
