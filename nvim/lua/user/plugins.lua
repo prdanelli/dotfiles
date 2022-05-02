@@ -62,6 +62,7 @@ return packer.startup(function(use)
 	use "nvim-lua/lsp-status.nvim" -- Used by other plugin for basic lsp info
 	use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }
   use { "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } }
+  use { "j-hui/fidget.nvim", config = function() require("fidget").setup() end } -- LSP progress indicator
 
 	-----------------------------------------------------------------------------
 	-- Completions
@@ -121,7 +122,7 @@ return packer.startup(function(use)
 	-----------------------------------------------------------------------------
 	-- Misc
 	-----------------------------------------------------------------------------
-	use { "terrortylor/nvim-comment", config = function() require('nvim_comment').setup() end } -- Comment out line / block
+	use { "terrortylor/nvim-comment", config = function() require("nvim_comment").setup() end } -- Comment out line / block
 	use "tpope/vim-surround" -- Wrap text
 	use "mg979/vim-visual-multi" -- Multiple cursors
 	use "vim-scripts/ReplaceWithRegister" -- Replace with register and don"t copy
