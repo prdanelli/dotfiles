@@ -3,7 +3,6 @@ local M = {}
 local utils = require("utils")
 local nls_utils = require("null-ls.utils")
 local nls_sources = require("null-ls.sources")
-
 local method = require("null-ls").methods.FORMATTING
 
 M.autoformat = true
@@ -20,7 +19,7 @@ end
 
 function M.format()
   if M.autoformat then
-    vim.lsp.buf.formatting_sync(nil, 2000)
+    vim.lsp.buf.formatting(nil, 5000)
   end
 end
 
