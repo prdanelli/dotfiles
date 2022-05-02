@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-local lspconfig = require("lspconfig")
+local utils = require("utils")
 local servers = {
   "bashls",
   "cssls",
@@ -14,24 +14,35 @@ local servers = {
   "solargraph",
   "sqlls",
   "sumneko_lua",
+  "taplo",
   "tsserver",
   "yamlls",
 }
 
-lsp_installer.setup {
-	ensure_installed = servers
-}
+for _, server_name in pairs(servers) do
+  local server_available, server = lsp_installer.get_server(server_name)
 
-for _, server in pairs(servers) do
-	local opts = {
-		on_attach = require("user.lsp.handlers").on_attach,
-		capabilities = require("user.lsp.handlers").capabilities,
-	}
+  if server_available then
+    server:on_ready(function()
+      local opts = {
+        on_attach = require("user.lsp.handlers").on_attach(),
+        capabilities = require("user.lsp.handlers").capabilities,
+      }
 
-	local has_custom_opts, server_custom_opts = pcall(require, "user.lsp.settings." .. server)
-	if has_custom_opts then
-	 	opts = vim.tbl_deep_extend("force", server_custom_opts, opts)
-	end
+      local language_settings_exist, settings = pcall(require, "user.lsp.settings." .. server.name)
+      if language_settings_exist then
+        opts = vim.tbl_deep_extend("force", settings, opts)
+      end
 
-	lspconfig[server].setup(opts)
+      server:setup(opts)
+    end)
+
+    if not server:is_installed() then
+      utils.info("Installing " .. server_name)
+      server:install()
+    end
+  else
+    utils.error(server)
+  end
 end
+
