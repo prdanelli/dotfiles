@@ -38,6 +38,9 @@ function M.setup(client, buf)
   client.resolved_capabilities.document_formatting = enable
   client.resolved_capabilities.document_range_formatting = enable
   if client.resolved_capabilities.document_formatting then
+
+    vim.cmd [[ command! Format execute "lua vim.lsp.buf.formatting(nil, 2000)" ]]
+
     vim.cmd([[
     augroup LspFormat
     autocmd! * <buffer>

@@ -64,8 +64,6 @@ end
 
 M.on_attach = function(_, bufnr)
   lsp_keymaps(bufnr)
-
-  vim.cmd [[ command! Format execute "lua vim.lsp.buf.formatting_sync()" ]]
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
