@@ -74,6 +74,7 @@ return packer.startup(function(use)
 	use "hrsh7th/cmp-cmdline" -- Cmdline completions
 	use "hrsh7th/cmp-nvim-lua" -- API completions
 	use "hrsh7th/cmp-nvim-lsp" -- LSP completions
+  use "hrsh7th/cmp-nvim-lsp-document-symbol" -- For textDocument/documentSymbol
 	--
 	-- Snippets
 	use "saadparwaiz1/cmp_luasnip" -- snippet completions

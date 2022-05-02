@@ -128,7 +128,7 @@ cmp.setup {
     },
   },
   experimental = {
-    ghost_text = true,
+    ghost_text = false,
     native_menu = false,
   },
   enabled = function()
@@ -140,6 +140,21 @@ cmp.setup {
     return not(context.in_treesitter_capture("comment") == true or context.in_syntax_group("Comment"))
   end
 }
+
+require("cmp").setup.cmdline(":", {
+  sources = {
+    { name = "cmdline" }
+  }
+})
+
+require("cmp").setup.cmdline("/", {
+  sources = cmp.config.sources({
+    { name = "nvim_lsp_document_symbol" }
+  },
+  {
+    { name = "buffer" }
+  })
+})
 
 vim.cmd([[
 augroup NvimCmp
