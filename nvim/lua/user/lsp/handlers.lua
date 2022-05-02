@@ -5,11 +5,15 @@ M.on_attach = function(client)
 
   -- Generate LSP functionality
   vim.keymap.set('n', 'K',  vim.lsp.buf.hover, opts)
-  vim.keymap.set('n', 'gn', vim.lsp.buf.rename, opts)
+  vim.keymap.set('n', 'ge', vim.lsp.buf.rename, opts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
   vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, opts)
+
+  -- Navigate quicklist items
+  vim.keymap.set("n", "gn", "<cmd>cnext<cr>")
+  vim.keymap.set("n", "gp", "<cmd>cprev<cr>")
 
   -- Navigate diagnotis errors/mesages
   vim.keymap.set('n', 'gk', vim.diagnostic.goto_next, opts)
@@ -19,7 +23,7 @@ M.on_attach = function(client)
   vim.keymap.set('n', '<leader>fs', '<cmd>Telescope lsp_document_symbols<cr>', opts)
   vim.keymap.set('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>', opts)
 
-  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting_sync()' ]]
 
   print("Attached to " .. client.name)
 end
@@ -63,12 +67,10 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_ok then
-  return
+local cmp_lsp_loaded, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if cmp_lsp_loaded then
+  M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 end
-
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
 return M
 

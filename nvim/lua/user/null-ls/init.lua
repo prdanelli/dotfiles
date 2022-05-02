@@ -7,7 +7,7 @@ local nls_utils = require("null-ls.utils")
 local b = nls.builtins
 
 local sources = {
-	-- formatting
+	-- Formatting
 	b.formatting.prettierd,
 	b.formatting.shfmt,
 	b.formatting.fixjson,
@@ -15,18 +15,18 @@ local sources = {
 	b.formatting.rubocop,
 	b.formatting.stylua,
 
-	-- diagnostics
+	-- Diagnostics
 	-- b.diagnostics.write_good,
 	-- b.diagnostics.markdownlint,
 	-- b.diagnostics.eslint_d,
 	-- b.diagnostics.flake8,
 	-- b.diagnostics.tsc,
 
-	-- code actions
+	-- Code actions
 	b.code_actions.gitsigns,
 	b.code_actions.gitrebase,
 
-	-- hover
+	-- Hover
 	b.hover.dictionary,
 }
 
