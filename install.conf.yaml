@@ -21,6 +21,7 @@
     ~/.gitignore_global: gitignore_global
     ~/.irbrc: irbrc
     ~/.tmux.conf: tmux.conf
+    ~/.zshrc: zshrc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
