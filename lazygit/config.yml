@@ -9,9 +9,9 @@ gui:
   theme:
     lightTheme: false # For terminals with a light background
     activeBorderColor:
-      - magenta
+      - green
     inactiveBorderColor:
-      - black
+      - blue
     optionsTextColor:
       - black
     selectedLineBgColor:
@@ -28,7 +28,7 @@ gui:
   skipUnstageLineWarning: false
   skipStashWarning: true
   showFileTree: false # for rendering changes files in a tree format
-  showListFooter: true # for seeing the '5 of 20' message in list panels
+  showListFooter: false # for seeing the '5 of 20' message in list panels
   showRandomTip: false
   showCommandLog: false
   commandLogSize: 8
