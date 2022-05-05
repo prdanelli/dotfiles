@@ -46,8 +46,12 @@ vim.keymap.set("n", "<C-w>", "<cmd>w<cr>", opts)
 
 -- Map jj to esc
 vim.keymap.set("i", "jj", "<esc>", opts)
+
 -- Ctrl-c to esc
 vim.keymap.set("i", "<C-c>", "<esc>", opts)
+
+-- Copy the current file path
+vim.keymap.set("n", "yp", '<cmd>let @+ = expand("%:p")<cr>', opts)
 
 -------------------------------------------------------------------------------
 -- Buffers
