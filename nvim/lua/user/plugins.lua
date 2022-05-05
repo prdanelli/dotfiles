@@ -45,7 +45,7 @@ return packer.startup(function(use)
   use { "norcalli/nvim-colorizer.lua", config = function() require("colorizer").setup() end }
   use { "goolord/alpha-nvim", requires = { "kyazdani42/nvim-web-devicons" } }
   use { "kyazdani42/nvim-tree.lua", requires = { "kyazdani42/nvim-web-devicons" } }
-  use { "rcarriga/nvim-notify", event = "VimEnter", config = function() vim.notify = require "notify" end }
+  use { "rcarriga/nvim-notify", config = function() vim.notify = require("notify") end }
 
   -----------------------------------------------------------------------------
   -- Navigation
@@ -62,7 +62,6 @@ return packer.startup(function(use)
   use "folke/lsp-colors.nvim" -- Add missing LSP highlight groups
   use "nvim-lua/lsp-status.nvim" -- Used by other plugin for basic lsp info
   use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }
-  use { "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } }
   use { "j-hui/fidget.nvim", config = function() require("fidget").setup() end } -- LSP progress indicator
 
   -----------------------------------------------------------------------------
