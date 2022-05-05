@@ -1,9 +1,3 @@
-# Path to your oh-my-zsh installation.
-# export ZSH="$HOME/.oh-my-zsh"
-
-# Uncomment one of the following lines to change the auto-update behavior
-zstyle ':omz:update' mode auto      # update automatically without asking
-
 # Uncomment the following line to disable auto-setting terminal title.
 DISABLE_AUTO_TITLE="true"
 
@@ -25,9 +19,10 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git asdf ruby rails)
 
-source $ZSH/oh-my-zsh.sh
-
 # User configuration
+#
+# Worlds most annoying feature!
+unsetopt correct_all
 
 source ~/.asdf/asdf.sh
 
@@ -49,7 +44,10 @@ alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias ls="exa"
 alias vim="nvim"
+alias rspec="bundle exec rspec"
+alias lazygit="lazygit -ucd ~/.config/lazygit/"
 
+# Additions to the PATH
 export PATH=~/.cargo/bin/:$PATH
 export PATH="$HOME/.bin:$PATH"
 export PATH="/usr/local/bin:$PATH" # Recommended by brew doctor
