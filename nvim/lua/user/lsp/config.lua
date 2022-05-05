@@ -14,7 +14,6 @@ local servers = {
   "solargraph",
   "sqlls",
   "sumneko_lua",
-  "taplo",
   "tsserver",
   "yamlls",
 }
