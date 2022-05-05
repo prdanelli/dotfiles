@@ -35,6 +35,19 @@ vim.keymap.set("n", "<leader>ff", ":Telescope file_browser grouped=true<cr>", { 
 telescope.load_extension("file_browser", { grouped = true })
 telescope.load_extension("fzf") -- require fzf extension for better fzf sorting algorithm
 telescope.setup({
+  pickers = {
+    buffers = {
+      show_all_buffers = true,
+      sort_lastused = true,
+      theme = "dropdown",
+      previewer = false,
+      mappings = {
+        i = {
+          ["<c-d>"] = "delete_buffer",
+        }
+      }
+    }
+  },
   defaults = {
     mappings = {
       i = {
