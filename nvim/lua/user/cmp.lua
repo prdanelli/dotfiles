@@ -112,6 +112,7 @@ cmp.setup {
   },
   sorting = {
     comparators = {
+      function(...) return require("cmp_buffer"):compare_locality(...) end,
       cmp.config.compare.offset,
       cmp.config.compare.exact,
       cmp.config.compare.score,
@@ -141,19 +142,25 @@ cmp.setup {
   end
 }
 
-require("cmp").setup.cmdline(":", {
+cmp.setup.cmdline(":", {
+  completion = { autocomplete = false },
   sources = {
     { name = "cmdline" }
-  }
+  },
+  mapping = cmp.mapping.preset.cmdline({}),
 })
 
-require("cmp").setup.cmdline("/", {
-  sources = cmp.config.sources({
-    { name = "nvim_lsp_document_symbol" }
-  },
-  {
-    { name = "buffer" }
-  })
+cmp.setup.cmdline("/", {
+  completion = { autocomplete = false },
+  sources = cmp.config.sources(
+    {
+      { name = "buffer" }
+    },
+    {
+      { name = "nvim_lsp_document_symbol" }
+    }
+  ),
+  mapping = cmp.mapping.preset.cmdline({}),
 })
 
 vim.cmd([[
