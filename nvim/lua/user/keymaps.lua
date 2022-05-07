@@ -57,7 +57,8 @@ vim.keymap.set("n", "yp", '<cmd>let @+ = expand("%:p")<cr>', opts)
 -- Buffers
 -------------------------------------------------------------------------------
 -- Delete buffer
-vim.keymap.set("n", "<Leader>d", ":Bdelete<CR>", opts)
+vim.keymap.set("n", "<Leader>bd", ":Bdelete<CR>", opts)
+vim.keymap.set("n", "<Leader>d", ":bd<CR>", opts)
 
 -- Close a buffer without closing the split
 vim.keymap.set("n", "<leader>bd", ":lclose<bar>b#<bar>bd #<CR>", opts)
