@@ -208,10 +208,9 @@ return packer.startup(function(use)
       }
     end
   }
-
   use {
-    "terrortylor/nvim-comment",
-    config = function() require("nvim_comment").setup() end,
+    'numToStr/Comment.nvim',
+    config = function() require('Comment').setup() end
   } -- Comment out line / block
 
   -----------------------------------------------------------------------------
