@@ -24,11 +24,11 @@ for _, server_name in pairs(servers) do
   if server_available then
     server:on_ready(function()
       local opts = {
-        on_attach = require("user.lsp.handlers").on_attach(),
-        capabilities = require("user.lsp.handlers").capabilities,
+        on_attach = require("lsp.handlers").on_attach(),
+        capabilities = require("lsp.handlers").capabilities,
       }
 
-      local language_settings_exist, settings = pcall(require, "user.lsp.settings." .. server.name)
+      local language_settings_exist, settings = pcall(require, "lsp.settings." .. server.name)
       if language_settings_exist then
         opts = vim.tbl_deep_extend("force", settings, opts)
       end

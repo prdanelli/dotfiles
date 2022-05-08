@@ -1,14 +1,9 @@
-_G.dump = function(...)
-  print(vim.inspect(...))
+local plugin_loaded, notify = pcall(require, "notify")
+if not plugin_loaded then
+	return
 end
-
-_G.prequire = function(...)
-  local status, lib = pcall(require, ...)
-  if status then
-    return lib
-  end
-  return nil
-end
+_G.vim.notify = require("notify")
+vim.notify = require("notify")
 
 local M = {}
 
@@ -32,6 +27,21 @@ end
 
 function M.info(msg, name)
   vim.notify(msg, vim.log.levels.INFO, { title = name })
+end
+
+_G.dump = function(...)
+  print(vim.inspect(...))
+end
+
+_G.prequire = function(...)
+  local status, lib = pcall(require, ...)
+
+  if status then
+    M.error("Plugin not installed", ...)
+
+    return lib
+  end
+  return nil
 end
 
 return M

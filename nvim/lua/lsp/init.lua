@@ -3,5 +3,5 @@ if not status_ok then
   return
 end
 
-require("user.lsp.config")
-require("user.lsp.handlers").setup()
+require("lsp.config")
+require("lsp.handlers").setup()

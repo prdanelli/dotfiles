@@ -15,7 +15,7 @@ lualine.setup({
   },
   sections = {
     lualine_a = { "mode" },
-    lualine_b = { 'branch', require("auto-session-library").current_session_name },
+    lualine_b = { 'branch' },
     lualine_c = { 'diff', ("lsp-status").status },
     lualine_x = { "filename", "filetype" },
     lualine_y = { "progress" },

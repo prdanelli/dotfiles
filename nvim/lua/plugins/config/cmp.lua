@@ -8,6 +8,16 @@ if not snip_status_ok then
   return
 end
 
+local cmp_buffer_ok, cmp_buffer = pcall(require, "cmp_buffer")
+if not cmp_buffer_ok then
+  return
+end
+
+local cmp_under_comparator_ok, cmp_under_comparator = pcall(require, "cmp-under-comparator")
+if not cmp_under_comparator_ok then
+  return
+end
+
 -- Required or snippets will not be added to the completion options
 require("luasnip/loaders/from_vscode").lazy_load()
 
@@ -112,11 +122,11 @@ cmp.setup {
   },
   sorting = {
     comparators = {
-      function(...) return require("cmp_buffer"):compare_locality(...) end,
+      function(...) return cmp_buffer:compare_locality(...) end,
       cmp.config.compare.offset,
       cmp.config.compare.exact,
       cmp.config.compare.score,
-      require("cmp-under-comparator").under,
+      cmp_under_comparator.under,
       cmp.config.compare.kind,
       cmp.config.compare.sort_text,
       cmp.config.compare.length,

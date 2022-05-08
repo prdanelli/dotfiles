@@ -3,8 +3,25 @@ if not status_ok then
   return
 end
 
+local colors = require("plugins.config.theme").colors
+local languages = {
+  "bash",
+  "comment",
+  "dockerfile",
+  "html",
+  "javascript",
+  "json",
+  "lua",
+  "markdown",
+  "regex",
+  "ruby",
+  "scss",
+  "toml",
+  "yaml",
+}
+
 configs.setup({
-  ensure_installed = "maintained",
+  ensure_installed = languages,
   sync_install = true,
   highlight = {
     enable = true,
@@ -55,6 +72,20 @@ configs.setup({
         ['[]'] = '@class.outer',
       },
     },
+  },
+  rainbow = {
+    colors = {
+      colors.red,
+      colors.orange,
+      colors.yellow,
+      colors.green,
+      colors.magenta,
+      colors.cyan,
+      colors.blue,
+    },
+    enable = true,
+    extended_mode = true,
+    max_file_lines = nil,
   },
 })
 
