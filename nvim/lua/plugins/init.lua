@@ -194,7 +194,7 @@ return packer.startup(function(use)
   use "vim-scripts/ReplaceWithRegister" -- Replace with register and don"t copy
   use {
     "machakann/vim-highlightedyank",
-    config = require("plugins.config.highlighted_yank")
+    config = function() require("plugins.config.highlighted_yank") end,
   } -- Highlight yanked text
   use "editorconfig/editorconfig-vim" -- Editor config integration
   use {
