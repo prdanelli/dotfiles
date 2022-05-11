@@ -59,6 +59,10 @@ vim.keymap.set("n", "yp", '<cmd>let @+ = expand("%:p")<cr>', opts)
 -- Toggle booleans
 vim.keymap.set("n", "<c-t>", "<cmd>lua require('user.toggle_term').toggle()<cr>", opts)
 
+-- Navigate quicklist items
+vim.keymap.set("n", "gn", "<cmd>cnext<cr>")
+vim.keymap.set("n", "gp", "<cmd>cprev<cr>")
+
 -------------------------------------------------------------------------------
 -- Buffers
 -------------------------------------------------------------------------------

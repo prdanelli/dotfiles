@@ -49,10 +49,6 @@ local function lsp_keymaps(bufnr)
   vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
   vim.keymap.set('n', 'lhs', function() print("real lua function") end)
 
-  -- Navigate quicklist items
-  vim.keymap.set("n", "gn", "<cmd>cnext<cr>")
-  vim.keymap.set("n", "gp", "<cmd>cprev<cr>")
-
   -- Navigate diagnotis errors/mesages
   vim.keymap.set("n", "gk", vim.diagnostic.goto_next, opts)
   vim.keymap.set("n", "gj", vim.diagnostic.goto_prev, opts)
