@@ -19,6 +19,12 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git asdf ruby rails)
 
+# Persist history
+HISTFILE=${ZDOTDIR:-$HOME}/.config/zsh/history
+
+# Auto CD into directories without `cd`
+setopt AUTO_CD
+
 # User configuration
 #
 # Worlds most annoying feature!
@@ -38,6 +44,11 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='nvim'
 fi
+
+# Command Completions
+zstyle ':completion:*' completer _complete
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
+autoload -Uz compinit && compinit
 
 # Aliases
 alias zshconfig="nvim ~/.zshrc"
