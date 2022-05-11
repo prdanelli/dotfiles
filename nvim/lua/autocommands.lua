@@ -1,4 +1,7 @@
--- autocmd! remove all autocommands, if entered under a group it will clear that group
+vim.api.nvim_command([[
+  autocmd BufRead,BufNewFile *.arb setfiletype ruby
+]])
+
 vim.cmd [[
   augroup _general_settings
     autocmd!
@@ -30,3 +33,51 @@ vim.cmd [[
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
 ]]
+
+local opts = { clear = true }
+vim.api.nvim_create_augroup("_bufcheck", opts)
+
+-- start git messages in insert mode
+-- vim.api.nvim_create_autocmd('FileType', {
+--   group    = '_bufcheck',
+--   pattern  = { 'gitcommit', 'gitrebase', },
+--   command  = 'startinsert | 1'
+-- })
+
+-- Return to last edit position when opening files
+vim.api.nvim_create_autocmd('BufReadPost', {
+  group    = '_bufcheck',
+  pattern  = '*',
+  callback = function()
+    if vim.fn.line("'\"") > 0 and vim.fn.line("'\"") <= vim.fn.line("$") then
+      vim.fn.setpos('.', vim.fn.getpos("'\""))
+      -- vim.cmd('normal zz') -- how do I center the buffer in a sane way??
+      vim.cmd('silent! foldopen')
+    end
+  end
+})
+
+-- Extending/overriding a colorscheme.
+vim.api.nvim_create_autocmd('ColorScheme', {
+  pattern = 'onedark',
+  desc = 'extend / override onedark',
+  callback = function()
+    local h = function(...) vim.api.nvim_set_hl(0, ...) end
+
+    h('String', { fg = '#FFEB95' })
+    h('TelescopeMatching', { link = 'Boolean' })
+  end
+})
+
+-- Strip trailing whitespaces on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  command = "%s/\\s\\+$//e"
+})
+
+-- Enable spell checking for certain file types
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*.txt", "*.md", "*.tex" },
+  command = "setlocal spell"
+})
+
