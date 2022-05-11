@@ -14,9 +14,8 @@ vim.keymap.set("n", "<DOWN>", "<NOP>", opts)
 vim.keymap.set("n", "<LEFT>", "<NOP>", opts)
 vim.keymap.set("n", "<RIGHT>", "<NOP>", opts)
 
--- Experiment as esc is in a wierd place and I miss it a lot
-vim.keymap.set("i", "<esc>", "<cmd>lua vim.notify('Use C-c or jj dumbass', 'info')<cr><esc>", opts)
-
+-- Reload the config
+vim.keymap.set("n", "<leader>r", "<cmd>source ~/.config/nvim/init.lua<cr> <cmd>lua vim.notifier.info('Sourced init.lua')<cr>", opts)
 
 -- Map ctrl-c to esc
 vim.keymap.set("i", "<C-c>", "<esc>", opts)
