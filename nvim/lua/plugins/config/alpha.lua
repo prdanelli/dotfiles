@@ -3,7 +3,7 @@ if not plugin_loaded then
 	return
 end
 
-alpha.setup(require("alpha.themes.startify").opts)
+alpha.setup(require("alpha.themes.startify").config)
 
 -- Show the dashboard
 vim.keymap.set("n", "<leader>s", "<cmd>Alpha<cr>", { silent = true })
