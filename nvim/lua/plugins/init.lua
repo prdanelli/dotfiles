@@ -59,7 +59,7 @@ return packer.startup(function(use)
   use "yggdroot/indentline"
   use {
     "norcalli/nvim-colorizer.lua",
-    config = function() require("colorizer").setup() end
+    config = function() require("plugins.config.colorizer") end
   }
   use {
     "goolord/alpha-nvim",
@@ -103,7 +103,7 @@ return packer.startup(function(use)
   }
   use {
     "j-hui/fidget.nvim",
-    config = function() require("fidget").setup() end,
+    config = function() require("plugins.config.fidget") end,
   } -- LSP progress indicator
   use {
     "folke/trouble.nvim",
@@ -189,7 +189,7 @@ return packer.startup(function(use)
   -----------------------------------------------------------------------------
   -- Misc
   -----------------------------------------------------------------------------
-  use {'kevinhwang91/nvim-bqf'}
+  use { "kevinhwang91/nvim-bqf", ft = "qf" }
   use "tpope/vim-surround" -- Wrap text
   use "vim-scripts/ReplaceWithRegister" -- Replace with register and don"t copy
   use {
@@ -197,20 +197,14 @@ return packer.startup(function(use)
     config = function() require("plugins.config.highlighted_yank") end,
   } -- Highlight yanked text
   use "editorconfig/editorconfig-vim" -- Editor config integration
-  use {
-    "rmagatti/auto-session",
-    config = function() require("plugins.config.auto_session") end,
-  } -- Record open files etc in sessions
+  -- use {
+  --   "rmagatti/auto-session",
+  --   config = function() require("plugins.config.auto_session") end,
+  -- } -- Record open files etc in sessions
   use "famiu/bufdelete.nvim" -- Delete buffers but maintain layout
   use {
     "rcarriga/nvim-notify",
-    config = function ()
-      require("notify").setup {
-        stages = "fade",
-        background_colour = 'FloatShadow',
-        timeout = 2000,
-      }
-    end
+    config = function () require("plugins.config.notify") end
   }
   use {
     'numToStr/Comment.nvim',
