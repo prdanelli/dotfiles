@@ -8,17 +8,14 @@ local options = {
   conceallevel = 0, -- so that `` is visible in markdown files
   cursorline = true, -- highlight the current line
   expandtab = true, -- convert tabs to spaces
-  fileencoding = "utf-8", -- the encoding written to a file
-  foldmethod = "indent",
   foldlevelstart = 20,
-  guifont = "monospace:h17", -- the font used in graphical neovim applications
-  hlsearch = true, -- highlight all matches on previous search pattern
-  ignorecase = true, -- ignore case in search patterns
+  foldmethod = "indent",
+  ignorecase = false, -- ignore case in search patterns
+  laststatus = 3, -- Universal status bar
   lbr = true,
   mouse = "niv", -- allow the mouse to be used in neovim
   number = true, -- set numbered lines
-  numberwidth = 4, -- set number column width to 2 {default 4}
-  pumheight = 10, -- pop up menu height
+  numberwidth = 4, -- set number column width to 4
   relativenumber = true, -- set relative numbered lines
   scrolloff = 8, -- is one of my fav
   shiftwidth = 2, -- the number of spaces inserted for each indentation
@@ -37,10 +34,8 @@ local options = {
   timeoutlen = 300, -- time to wait for a mapped sequence to complete (in milliseconds)
   ttimeoutlen = 250,
   updatetime = 100, -- faster completion (4000ms default)
-  undofile = true, -- enable persistent undo
   wrap = true, -- display lines as one long line
   writebackup = false, -- if a file is being edited by another program
-  laststatus = 3, -- Universal status bar
 }
 
 vim.opt.shortmess:append "c"
@@ -52,17 +47,14 @@ end
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 
 -- Custom fold text
-vim.cmd [[
-function! MyFoldText()
-let line = getline(v:foldstart)
-let foldedlinecount = v:foldend - v:foldstart + 1
+vim.cmd([[
+  function! MyFoldText()
+    let line = getline(v:foldstart)
+    let foldedlinecount = v:foldend - v:foldstart + 1
 
-return ' + ' . foldedlinecount . ' --- ' . line
-endfunction
+    return ' + ' . foldedlinecount . ' --- ' . line
+  endfunction
 
-set foldtext=MyFoldText()
-set fillchars=fold:-
-]]
-
-vim.api.nvim_command([[ autocmd BufRead,BufNewFile *.arb setfiletype ruby ]])
-
+  set foldtext=MyFoldText()
+  set fillchars=fold:-
+]])
