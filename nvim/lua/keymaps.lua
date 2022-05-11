@@ -57,6 +57,9 @@ vim.keymap.set("i", "<C-c>", "<esc>", opts)
 -- Copy the current file path
 vim.keymap.set("n", "yp", '<cmd>let @+ = expand("%:p")<cr>', opts)
 
+-- Toggle booleans
+vim.keymap.set("n", "<c-t>", "<cmd>lua require('user.toggle_term').toggle()<cr>", opts)
+
 -------------------------------------------------------------------------------
 -- Buffers
 -------------------------------------------------------------------------------

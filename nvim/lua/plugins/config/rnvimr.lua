@@ -3,7 +3,7 @@ vim.keymap.set("n", "<leader>e", "<cmd>RnvimrToggle<CR>", { noremap = true, sile
 local options = {
   rnvimr_enable_ex = 1, -- Make Ranger replace netrw and be the file explorer
   rnvimr_enable_picker = 1, -- Make Ranger to be hidden after picking a file
-  rnvimr_draw_border = 0, -- Border for floating window
+  rnvimr_draw_border = 1, -- Border for floating window
   rnvimr_hide_gitignore = 1, -- Hide the files included in gitignore
   rnvimr_enable_bw = 1, -- Make Neovim wipe the buffers corresponding to the files deleted by Ranger
   rnvimr_shadow_winblend = 50, -- Add a shadow window, value is equal to 100 will disable shadow
@@ -11,7 +11,6 @@ local options = {
   rnvimr_ranger_views = [[
     [ \	{'minwidth': 90, 'ratio': []}, \	{'minwidth': 90, 'maxwidth': 89, 'ratio': [1,1]}, \	{'maxwidth': 90, 'ratio': [1]} ]
   ]],
-  rnvimr_border_attr = [[ { 'fg': 67, 'bg': 191 } ]],
 }
 
 for k, v in pairs(options) do

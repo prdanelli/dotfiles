@@ -33,7 +33,7 @@ augroup end
 packer.init {
   display = {
     open_fn = function()
-      return require("packer.util").float { border = "single" }
+      return require("packer.util").float({ border = "rounded" })
     end,
     prompt_border = "single"
   },
@@ -41,6 +41,7 @@ packer.init {
     clone_timeout = 600,
   },
   auto_clean = true,
+  ensure_dependencies = true,
 }
 
 return packer.startup(function(use)
@@ -191,7 +192,10 @@ return packer.startup(function(use)
   use {'kevinhwang91/nvim-bqf'}
   use "tpope/vim-surround" -- Wrap text
   use "vim-scripts/ReplaceWithRegister" -- Replace with register and don"t copy
-  use "machakann/vim-highlightedyank" -- Highlight yanked text
+  use {
+    "machakann/vim-highlightedyank",
+    config = require("plugins.config.highlighted_yank")
+  } -- Highlight yanked text
   use "editorconfig/editorconfig-vim" -- Editor config integration
   use {
     "rmagatti/auto-session",
@@ -204,13 +208,17 @@ return packer.startup(function(use)
       require("notify").setup {
         stages = "fade",
         background_colour = 'FloatShadow',
-        timeout = 3000,
+        timeout = 2000,
       }
     end
   }
   use {
     'numToStr/Comment.nvim',
-    config = function() require('Comment').setup() end
+    config = function() require("plugins.config.comment") end,
+    requires = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+      "nvim-treesitter/nvim-treesitter",
+    },
   } -- Comment out line / block
 
   -----------------------------------------------------------------------------

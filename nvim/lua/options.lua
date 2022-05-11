@@ -34,7 +34,7 @@ local options = {
   synmaxcol = 500,
   tabstop = 2, -- insert 2 spaces for a tab
   termguicolors = true, -- set term gui colors (most terminals support this)
-  timeoutlen = 250, -- time to wait for a mapped sequence to complete (in milliseconds)
+  timeoutlen = 300, -- time to wait for a mapped sequence to complete (in milliseconds)
   ttimeoutlen = 250,
   updatetime = 100, -- faster completion (4000ms default)
   undofile = true, -- enable persistent undo
@@ -65,8 +65,4 @@ set fillchars=fold:-
 ]]
 
 vim.api.nvim_command([[ autocmd BufRead,BufNewFile *.arb setfiletype ruby ]])
-
--- Highlight yanked
--- vim.g["highlightedyank_highlight_duration"] = 250
--- vim.cmd [[highlight HighlightedyankRegion cterm=reverse gui=reverse]]
 

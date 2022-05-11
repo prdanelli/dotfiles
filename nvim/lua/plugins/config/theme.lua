@@ -70,8 +70,8 @@ if onenord_loaded then
         comments = "italic",
         strings = "NONE",
         keywords = "NONE",
-        functions = "italic",
-        variables = "bold",
+        functions = "NONE",
+        variables = "NONE",
         diagnostics = "underline",
       },
       disable = {
