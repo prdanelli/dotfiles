@@ -58,15 +58,19 @@ export EDITOR='nvim'
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 autoload -Uz compinit && compinit
+_comp_options+=(globdots)
+
+# Colors
+autoload -Uz colors && colors
 
 # Aliases
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
-alias ls="exa"
-alias vim="nvim"
-alias rspec="bundle exec rspec"
+alias ls="exa $*"
+alias vim="nvim $*"
+alias rspec="bundle exec rspec $*"
 alias lazygit="lazygit -ucd ~/.config/lazygit/"
-alias grep="grep --color=auto"
+alias grep="grep --color=auto $*"
 alias cat="bat $*"
 
 # Additions to the PATH
