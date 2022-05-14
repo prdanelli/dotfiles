@@ -67,6 +67,7 @@ alias vim="nvim"
 alias rspec="bundle exec rspec"
 alias lazygit="lazygit -ucd ~/.config/lazygit/"
 alias grep="grep --color=auto"
+alias cat="bat $*"
 
 # Additions to the PATH
 export PATH=~/.cargo/bin/:$PATH

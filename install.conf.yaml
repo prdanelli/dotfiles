@@ -22,6 +22,7 @@
     ~/.irbrc: irbrc
     ~/.tmux.conf: tmux.conf
     ~/.zshrc: zshrc
+    ~/.config/bat: bat
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
