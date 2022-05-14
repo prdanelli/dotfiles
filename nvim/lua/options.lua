@@ -33,6 +33,7 @@ local options = {
   termguicolors = true, -- set term gui colors (most terminals support this)
   timeoutlen = 300, -- time to wait for a mapped sequence to complete (in milliseconds)
   ttimeoutlen = 250,
+  undofile = true, -- enable persistent undo
   updatetime = 100, -- faster completion (4000ms default)
   wrap = true, -- display lines as one long line
   writebackup = false, -- if a file is being edited by another program
