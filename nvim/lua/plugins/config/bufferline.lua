@@ -18,12 +18,11 @@ bufferline.setup({
     max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
     tab_size = 21,
     separator_style = "none",
-    indicator_icon = "|",
-    offsets = { { filetype = "NvimTree", text = "File Explorer" } },
+    indicator_icon = "│",
+    offsets = { { filetype = "NvimTree", text = "" } },
     sort_by = "id",
   },
 })
-
 
 local opts = { silent = true }
 
