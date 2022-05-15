@@ -55,7 +55,7 @@ return packer.startup(function(use)
   -----------------------------------------------------------------------------
   use {
     "rmehri01/onenord.nvim",
-    config = function() require("plugins.config.theme").init() end,
+    config = function() require("plugins.config.theme") end,
   }
   use "kyazdani42/nvim-web-devicons"
   use "yggdroot/indentline"
