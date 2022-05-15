@@ -200,10 +200,10 @@ return packer.startup(function(use)
     config = function() require("plugins.config.highlighted_yank") end,
   } -- Highlight yanked text
   use "editorconfig/editorconfig-vim" -- Editor config integration
-  -- use {
-  --   "rmagatti/auto-session",
-  --   config = function() require("plugins.config.auto_session") end,
-  -- } -- Record open files etc in sessions
+  use {
+    "rmagatti/auto-session",
+    config = function() require("plugins.config.auto_session") end,
+  } -- Record open files etc in sessions
   use "famiu/bufdelete.nvim" -- Delete buffers but maintain layout
   use {
     "rcarriga/nvim-notify",
