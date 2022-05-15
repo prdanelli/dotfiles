@@ -27,6 +27,20 @@ unsetopt correct_all BEEP
 # Colors
 autoload -Uz colors && colors
 
+################################################################################
+# Command Completions
+################################################################################
+
+autoload -Uz compinit
+zstyle ':completion:*' completer _complete
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+
+# Include hidden files
+_comp_options+=(globdots)
+
+compinit
 
 ################################################################################
 # Plugins and packages
@@ -48,21 +62,6 @@ zsh_add_config "config/vim-mode.sh"
 
 zsh_add_file "$HOME/.asdf/asdf.sh"
 zsh_add_file "$HOME/.config/zsh/olio_aws.sh" # Don't commit secrets
-
-################################################################################
-# Command Completions
-################################################################################
-
-autoload -Uz compinit
-zstyle ':completion:*' completer _complete
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
-zstyle ':completion:*' menu select
-zmodload zsh/complist
-
-# Include hidden files
-_comp_options+=(globdots)
-
-compinit
 
 ################################################################################
 # Prompt
