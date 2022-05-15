@@ -19,3 +19,6 @@ nvim/plugin/packer_compiled.lua
 nvim/spell/*
 ranger/plugins
 ranger/devicons
+zsh/olio_aws.sh
+zsh/.zsh_history
+zsh/.zcompdump

@@ -16,13 +16,14 @@
     ~/.config/ranger: ranger
     ~/.config/starship.toml: starship.toml
     ~/.config/tmuxinator: tmuxinator
+    ~/.zshenv: zshenv
+    ~/.config/zsh: zsh
+    ~/.config/bat: bat
     ~/.editorconfig: editorconfig
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
     ~/.irbrc: irbrc
     ~/.tmux.conf: tmux.conf
-    ~/.zshrc: zshrc
-    ~/.config/bat: bat
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

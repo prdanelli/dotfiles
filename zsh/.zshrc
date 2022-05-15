@@ -2,39 +2,23 @@
 # General configuration
 ################################################################################
 
-# Uncomment the following line to disable auto-setting terminal title.
-DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true" # Disable auto-setting terminal title.
+COMPLETION_WAITING_DOTS="true" # Display red dots whilst waiting for completion.
+DISABLE_UNTRACKED_FILES_DIRTY="true" # Disable marking untracked files
+INC_APPEND_HISTORY="true"
+SAVEHIST=10000
+HISTFILE=${ZDOTDIR:-$HOME}/history # Persist history
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-COMPLETION_WAITING_DOTS="true"
+################################################################################
+# Imports
+################################################################################
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Persist history
-HISTFILE=${ZDOTDIR:-$HOME}/.config/zsh/history
-
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
-
-# Import Oh My ZSH
-source $ZSH/oh-my-zsh.sh
+[ -f ~/.asdf/asdf.sh ] && source ~/.asdf/asdf.sh
+[ -f ~/.config/zsh/olio_aws.sh ] && source ~/.config/zsh/olio_aws.sh # Don't commit secrets
 
 ################################################################################
 # User configuration
 ################################################################################
-
-# Which plugins would you like to load?
-plugins=(asdf colored-man-pages git rails ripgrep tmux vi-mode)
-
-# Imports
-[ -f ~/.asdf/asdf.sh ] && source ~/.asdf/asdf.sh
-[ -f ~/.config/zsh/olio_aws.sh ] && source ~/.config/zsh/olio_aws.sh # Don't commit secrets
 
 # Disable highlight of pastes text
 zle_highlight=('paste:none')
@@ -63,9 +47,12 @@ _comp_options+=(globdots)
 # Colors
 autoload -Uz colors && colors
 
+################################################################################
 # Aliases
-alias zshconfig="nvim ~/.zshrc"
-alias ohmyzsh="nvim ~/.oh-my-zsh"
+################################################################################
+
+alias zshsource="source $ZDOTDIR/.zshrc"
+alias zshconfig="nvim $ZDOTDIR/.zshrc"
 alias ls="exa $*"
 alias vim="nvim $*"
 alias rspec="bundle exec rspec $*"
@@ -73,17 +60,22 @@ alias lazygit="lazygit -ucd ~/.config/lazygit/"
 alias grep="grep --color=auto $*"
 alias cat="bat $*"
 
+################################################################################
 # Additions to the PATH
-export PATH=~/.cargo/bin/:$PATH
-export PATH=$HOME/.bin:$PATH
+################################################################################
+
+export PATH=/opt/homebrew/bin:$PATH # Brew is first as everything else uses that
 export PATH=/usr/local/bin:$PATH # Recommended by brew doctor
-export PATH=$(brew --prefix python):$PATH
-export LIBRARY_PATH=$LIBRARY_PATH:$(brew --prefix zstd)/lib/ # Fix for MySQL2 gem not compiling
-export PATH=$(brew --prefix openssl):$PATH
-export PATH=$(brew --prefix yarn):$PATH
-export PATH=./bin:$PATH
-export PATH=$(yarn global bin):$PATH
+export PATH=$HOME/.cargo/bin/:$PATH
+export PATH=$HOME/.bin:$PATH
+export PATH=/opt/homebrew/opt/python@3.9:$PATH
+export PATH=/opt/homebrew/opt/openssl@3:$PATH
+export PATH=/opt/homebrew/opt/yarn:$PATH
+# export PATH=$(yarn global bin):$PATH
+export PATH=./bin:$PATH # Rails binstubs
 
-# Use Starship prompt
+export LIBRARY_PATH=$LIBRARY_PATH:/opt/homebrew/opt/zstd/lib/ # Fix for MySQL2 gem not compiling
+
+# # Use Starship prompt
 eval "$(starship init zsh)"
-
+#
