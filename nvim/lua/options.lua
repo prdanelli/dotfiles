@@ -16,6 +16,7 @@ local options = {
   mouse = "niv", -- allow the mouse to be used in neovim
   number = true, -- set numbered lines
   numberwidth = 4, -- set number column width to 4
+
   relativenumber = true, -- set relative numbered lines
   scrolloff = 8, -- is one of my fav
   shiftwidth = 2, -- the number of spaces inserted for each indentation
@@ -39,13 +40,12 @@ local options = {
   writebackup = false, -- if a file is being edited by another program
 }
 
-vim.opt.shortmess:append "c"
-
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
+vim.opt.shortmess:append "c"
 
 -- Custom fold text
 vim.cmd([[
