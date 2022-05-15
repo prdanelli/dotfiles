@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-local colors = require("plugins.config.theme").colors
+local colors = require("colors").colors
 local languages = {
   "bash",
   "comment",
