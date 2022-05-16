@@ -27,7 +27,7 @@ vim.keymap.set("", "<Del>", '"_x', opts)
 vim.keymap.set("v", "p", '"_dP', opts)
 
 -- Select all
-vim.keymap.set("n", "<C-s>", "ggVG", opts)
+vim.keymap.set("n", "<C-a>", "ggVG", opts)
 
 -- Better Indentation
 vim.keymap.set("v", "<", "<gv", opts)
@@ -45,7 +45,7 @@ vim.keymap.set("n", "OO", "O<Esc>j", opts)
 vim.keymap.set("n", "<leader>c", "<cmd>noh<cr>", opts)
 
 -- Alternatives to :w, because I constantly typo it
-vim.keymap.set("n", "<C-w>", "<cmd>w<cr>", opts)
+vim.keymap.set("n", "<C-s>", "<cmd>w<cr>", opts)
 
 -- Map jj to esc
 vim.keymap.set("i", "jj", "<esc>", opts)
@@ -68,7 +68,7 @@ vim.keymap.set("n", "gp", "<cmd>cprev<cr>")
 -------------------------------------------------------------------------------
 -- Delete buffer
 vim.keymap.set("n", "<Leader>bd", ":Bdelete<CR>", opts)
-vim.keymap.set("n", "<Leader>d", ":bd<CR>", opts)
+vim.keymap.set("n", "<c-w>", ":bd<CR>", opts)
 
 -- Close a buffer without closing the split
 vim.keymap.set("n", "<leader>bd", ":lclose<bar>b#<bar>bd #<CR>", opts)
