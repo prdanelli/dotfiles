@@ -6,6 +6,7 @@ M.colors = {
   orange = "#d08770",
   yellow = "#ebcb8b",
   blue = "#5e81ac",
+  lblue = "#6c86a1",
   green = "#a3be8c",
   cyan = "#88c0d0",
   magenta = "#b48ead",
