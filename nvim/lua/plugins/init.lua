@@ -216,7 +216,7 @@ return packer.startup(function(use)
       "nvim-treesitter/nvim-treesitter",
     },
   } -- Comment out line / block
-
+  use "nathom/filetype.nvim" -- Use faster version of filetypes configuration
   -----------------------------------------------------------------------------
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
