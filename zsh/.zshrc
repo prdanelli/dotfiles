@@ -12,6 +12,9 @@ SAVEHIST=1000000
 
 setopt appendhistory
 
+# Ensure no duplicates are recorded in the history
+setopt HIST_IGNORE_ALL_DUPS
+
 # Disable highlight of pastes text
 zle_highlight=('paste:none')
 
@@ -34,7 +37,6 @@ autoload -Uz colors && colors
 autoload -Uz compinit
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
-zstyle ':completion:*' menu select
 zmodload zsh/complist
 
 # Include hidden files
@@ -49,12 +51,14 @@ compinit
 source "$ZDOTDIR/user/packages.sh"
 
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
+zsh_add_plugin "zsh-users/zsh-history-substring-search"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
 
 zsh_add_config "config/exports.sh"
 zsh_add_config "config/aliases.sh"
 zsh_add_config "config/vim-mode.sh"
+zsh_add_config "config/helpers.sh"
 
 ################################################################################
 # Imports
@@ -62,6 +66,17 @@ zsh_add_config "config/vim-mode.sh"
 
 zsh_add_file "$HOME/.asdf/asdf.sh"
 zsh_add_file "$HOME/.config/zsh/olio_aws.sh" # Don't commit secrets
+
+################################################################################
+# Key bindings
+################################################################################
+
+# History substring search keybings - normal mode
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+# Vim mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 ################################################################################
 # Prompt
