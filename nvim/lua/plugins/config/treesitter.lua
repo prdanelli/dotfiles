@@ -73,16 +73,6 @@ configs.setup({
       },
     },
   },
-  rainbow = {
-    colors = {
-      colors.red,
-      colors.orange,
-      colors.yellow,
-      colors.green,
-      colors.magenta,
-      colors.cyan,
-      colors.blue,
-    },
     enable = true,
     extended_mode = true,
     max_file_lines = nil,
