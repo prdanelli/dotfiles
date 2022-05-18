@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   callback = function() vim.cmd("set formatoptions-=cro") end,
 })
 
-vim.api.nvim_create_autocmd("filetype", {
+vim.api.nvim_create_autocmd("FileType", {
   group = "_general",
   pattern = "qf",
   callback = function() vim.cmd("set nobuflisted") end,
