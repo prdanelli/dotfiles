@@ -145,6 +145,7 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     requires = {
       "nvim-treesitter/nvim-treesitter-textobjects",
+      "RRethy/nvim-treesitter-textsubjects",
     },
     run = ":TSUpdate",
     config = function() require("plugins.config.treesitter") end,

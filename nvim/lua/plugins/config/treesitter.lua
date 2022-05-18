@@ -3,7 +3,6 @@ if not status_ok then
   return
 end
 
-local colors = require("colors").colors
 local languages = {
   "bash",
   "comment",
@@ -26,6 +25,10 @@ configs.setup({
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = true
+  },
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
   },
   indent = {
     enable = false
@@ -73,13 +76,14 @@ configs.setup({
       },
     },
   },
+  textsubjects = {
     enable = true,
-    extended_mode = true,
-    max_file_lines = nil,
-  },
-  context_commentstring = {
-    enable = true,
-    enable_autocmd = false,
+    prev_selection = ',', -- (Optional) keymap to select the previous selection
+    keymaps = {
+      ['.'] = 'textsubjects-smart',
+      [';'] = 'textsubjects-container-outer',
+      ['i;'] = 'textsubjects-container-inner',
+    },
   },
 })
 
