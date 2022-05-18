@@ -4,9 +4,9 @@
 local opts = { silent = true }
 
 -- Set the leader key
-vim.keymap.set("", ",", "<Nop>", opts)
-vim.g.mapleader = ","
-vim.g.maplocalleader = ","
+vim.keymap.set("", " ", "<Nop>", opts)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Turn off arrow keys - force HJKL
 vim.keymap.set("n", "<UP>", "<NOP>", opts)
