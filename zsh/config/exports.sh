@@ -3,6 +3,7 @@
 ################################################################################
 
 export PATH=/opt/homebrew/bin:$PATH # Brew is first as everything else uses that
+export PATH=/opt/homebrew/sbin:$PATH
 export PATH=/usr/local/bin:$PATH # Recommended by brew doctor
 export PATH=$HOME/.cargo/bin/:$PATH
 export PATH=$HOME/.bin:$PATH
