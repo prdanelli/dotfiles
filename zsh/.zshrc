@@ -74,6 +74,7 @@ zsh_add_file "$HOME/.config/zsh/olio_aws.sh" # Don't commit secrets
 # History substring search keybings - normal mode
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
 # Vim mode
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
