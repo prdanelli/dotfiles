@@ -23,7 +23,7 @@
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
     ~/.irbrc: irbrc
-    ~/.tmux.conf: tmux.conf
+    ~/.config/tmux: tmux
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
