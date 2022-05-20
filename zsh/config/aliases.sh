@@ -6,7 +6,7 @@
 
 alias zshsource="source $ZDOTDIR/.zshrc"
 alias zshedit="nvim $ZDOTDIR/.zshrc"
-alias ls="exa -G -s type "
+alias ls="exa -s type "
 alias vim="nvim"
 alias rspec="bundle exec rspec"
 alias lazygit="lazygit -ucd ~/.config/lazygit/"
