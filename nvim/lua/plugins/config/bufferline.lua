@@ -20,7 +20,7 @@ bufferline.setup({
     separator_style = "none",
     indicator_icon = "│",
     offsets = { { filetype = "NvimTree", text = "" } },
-    sort_by = "id",
+    sort_by = "insert_after_current",
   },
 })
 
