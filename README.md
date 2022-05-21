@@ -24,6 +24,7 @@ Run `./install` from this directory.
   - LSP
   - Treesitter
 + LazyGit
++ Wallpaper - Alena Aenami
 
 ## Screenshots
 
