@@ -225,6 +225,11 @@ return packer.startup(function(use)
     },
   } -- Comment out line / block
   use "nathom/filetype.nvim" -- Use faster version of filetypes configuration
+  use {
+    "FraserLee/ScratchPad",
+    config = function() require("plugins.config.scratchpad") end,
+  }
+
   -----------------------------------------------------------------------------
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
