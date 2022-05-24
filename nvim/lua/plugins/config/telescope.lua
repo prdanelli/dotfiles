@@ -16,6 +16,7 @@ vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)
 vim.keymap.set("n", "<leader>fr", "<cmd>Telescope registers<cr>", opts)
 vim.keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opts)
 vim.keymap.set("n", "<leader>fi", "<cmd>Telescope highlights<cr>", opts)
+vim.keymap.set("n", "<leader>fa", "<cmd>Telescope autocommands<cr>", opts)
 
 -- Filemanager shortcuts
 -- <A-c>/c	Create file/folder at current path (trailing path separator creates folder)
