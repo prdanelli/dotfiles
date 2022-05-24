@@ -26,7 +26,7 @@ onenord.setup {
     eob_lines = true,
   },
   custom_highlights = {
-    Folded = { fg = colors.grey9 },
+    Folded = { fg = colors.grey10 },
     VertSplit = { fg = colors.lblue },
 
     BufferLineIndicatorSelected = { fg = colors.cyan, bg = colors.bg },
