@@ -87,6 +87,11 @@ return packer.startup(function(use)
     after = { "nvim-web-devicons", "onenord.nvim" },
     config = function() require("plugins.config.bufferline") end,
   }
+
+  use {
+    "lukas-reineke/virt-column.nvim",
+    config = function() require("virt-column").setup() end,
+  }
   use {
     "kevinhwang91/rnvimr",
     config = function() require("plugins.config.rnvimr") end,
