@@ -30,7 +30,6 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   end
 })
 
-
 -- Have packer use a popup window
 packer.init {
   display = {
@@ -57,30 +56,30 @@ return packer.startup(function(use)
     "rmehri01/onenord.nvim",
     config = function() require("plugins.config.theme") end,
   }
-  use "kyazdani42/nvim-web-devicons"
+
   use "yggdroot/indentline"
+
   use {
     "norcalli/nvim-colorizer.lua",
     config = function() require("plugins.config.colorizer") end
   }
+
   use {
     "goolord/alpha-nvim",
     requires = { "kyazdani42/nvim-web-devicons" },
     config = function() require("plugins.config.alpha") end,
   }
+
   use {
-    "kyazdani42/nvim-tree.lua",
-    requires = { "kyazdani42/nvim-web-devicons" },
-    config = function() require("plugins.config.nvim_tree") end,
+    "petertriho/nvim-scrollbar",
+    config = function () require("scrollbar").setup() end
   }
 
-  -----------------------------------------------------------------------------
-  -- Navigation
-  -----------------------------------------------------------------------------
   use {
     "nvim-lualine/lualine.nvim",
     config = function() require("plugins.config.lualine") end,
   }
+
   use {
     "akinsho/bufferline.nvim",
     requires = "kyazdani42/nvim-web-devicons",
@@ -92,9 +91,19 @@ return packer.startup(function(use)
     "lukas-reineke/virt-column.nvim",
     config = function() require("virt-column").setup() end,
   }
+
+  -----------------------------------------------------------------------------
+  -- Navigation
+  -----------------------------------------------------------------------------
   use {
     "kevinhwang91/rnvimr",
     config = function() require("plugins.config.rnvimr") end,
+  }
+
+  use {
+    "kyazdani42/nvim-tree.lua",
+    requires = { "kyazdani42/nvim-web-devicons" },
+    config = function() require("plugins.config.nvim_tree") end,
   }
 
   -----------------------------------------------------------------------------
@@ -109,10 +118,12 @@ return packer.startup(function(use)
     },
     config = function() require("lsp.init") end,
   }
+
   use {
     "j-hui/fidget.nvim",
     config = function() require("plugins.config.fidget") end,
   } -- LSP progress indicator
+
   use {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
@@ -187,7 +198,8 @@ return packer.startup(function(use)
     requires = { "nvim-lua/plenary.nvim" },
     config = function() require('gitsigns').setup() end,
   }
-  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+
+  use { "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" }
 
   -----------------------------------------------------------------------------
   -- Tmux
@@ -199,23 +211,41 @@ return packer.startup(function(use)
   -----------------------------------------------------------------------------
   -- Misc
   -----------------------------------------------------------------------------
+
+  -- Better quick list
   use { "kevinhwang91/nvim-bqf", ft = "qf" }
-  use "tpope/vim-surround" -- Wrap text
-  use "vim-scripts/ReplaceWithRegister" -- Replace with register and don"t copy
+
+  -- Wrap text
+  use "tpope/vim-surround"
+
+  -- Replace with register and don"t copy
+  use "vim-scripts/ReplaceWithRegister"
+
+  -- Highlight yanked text
   use {
     "machakann/vim-highlightedyank",
     config = function() require("plugins.config.highlighted_yank") end,
-  } -- Highlight yanked text
-  use "editorconfig/editorconfig-vim" -- Editor config integration
+  }
+
+  -- Editor config integration
+  use "editorconfig/editorconfig-vim"
+
+  -- Record open files etc in sessions
   use {
     "rmagatti/auto-session",
     config = function() require("plugins.config.auto_session") end,
-  } -- Record open files etc in sessions
-  use "famiu/bufdelete.nvim" -- Delete buffers but maintain layout
+  }
+
+  -- Delete buffers but maintain layout
+  use "famiu/bufdelete.nvim"
+
+  -- Pretty notifications
   use {
     "rcarriga/nvim-notify",
     config = function () require("plugins.config.notify") end
   }
+
+  -- Comment lines/blocks
   use {
     'numToStr/Comment.nvim',
     config = function() require("plugins.config.comment") end,
@@ -223,8 +253,11 @@ return packer.startup(function(use)
       "JoosepAlviste/nvim-ts-context-commentstring",
       "nvim-treesitter/nvim-treesitter",
     },
-  } -- Comment out line / block
-  use "nathom/filetype.nvim" -- Use faster version of filetypes configuration
+  }
+
+  -- Use faster version of filetypes configuration
+  use "nathom/filetype.nvim"
+
   use {
     "FraserLee/ScratchPad",
     config = function() require("plugins.config.scratchpad") end,
@@ -238,3 +271,4 @@ return packer.startup(function(use)
     require("packer").sync()
   end
 end)
+
