@@ -27,7 +27,13 @@ vim.keymap.set("", "<Del>", '"_x', opts)
 vim.keymap.set("v", "p", '"_dP', opts)
 
 -- Select all
-vim.keymap.set("n", "<C-a>", "ggVG", opts)
+vim.keymap.set("n", "<C-a>", "<cmd>lua vim.notifier.info('Depreciated keymap')<cr>", opts)
+
+-- Copy buffer contents
+vim.keymap.set("n", "<leader>ya", "<cmd>%y<cr>", opts)
+
+-- Indent all
+vim.keymap.set("n", "<leader>ia", "mpggVG=<esc>`p", opts)
 
 -- Better Indentation
 vim.keymap.set("v", "<", "<gv", opts)
@@ -54,7 +60,7 @@ vim.keymap.set("i", "jj", "<esc>", opts)
 vim.keymap.set("i", "<C-c>", "<esc>", opts)
 
 -- Copy the current file path
-vim.keymap.set("n", "yp", "<cmd>let @+ = expand('%:p')<cr> <cmd>lua vim.notifier.info('Yanked filepath')<cr>", opts)
+vim.keymap.set("n", "<leader>yp", "<cmd>let @+ = expand('%:p')<cr> <cmd>lua vim.notifier.info('Yanked filepath')<cr>", opts)
 
 -- Toggle booleans
 vim.keymap.set("n", "<c-t>", "<cmd>lua require('user.toggle_term').toggle()<cr>", opts)
@@ -68,7 +74,9 @@ vim.keymap.set("n", "gp", "<cmd>cprev<cr>")
 -------------------------------------------------------------------------------
 -- Delete buffer
 vim.keymap.set("n", "<Leader>bd", ":Bdelete<CR>", opts)
+
 vim.keymap.set("n", "<c-w>", ":bd<CR>", opts)
+vim.keymap.set("n", "<leader>w", ":bd<CR>", opts)
 
 -- Close a buffer without closing the split
 vim.keymap.set("n", "<leader>bd", ":lclose<bar>b#<bar>bd #<CR>", opts)
