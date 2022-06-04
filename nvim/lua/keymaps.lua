@@ -72,6 +72,8 @@ vim.keymap.set("n", "<c-t>", "<cmd>lua require('user.toggle_term').toggle()<cr>"
 vim.keymap.set("n", "gn", "<cmd>cnext<cr>")
 vim.keymap.set("n", "gp", "<cmd>cprev<cr>")
 
+-- Get filetype bring used
+vim.keymap.set("n", "<leader>ft", "<cmd>echo &filetype<cr>", opts)
 -------------------------------------------------------------------------------
 -- Buffers
 -------------------------------------------------------------------------------
