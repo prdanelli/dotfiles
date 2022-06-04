@@ -21,5 +21,6 @@ ranger/plugins
 ranger/devicons
 zsh/secrets.sh
 zsh/.zsh_history
+zsh/.zsh_sessions
 zsh/.zcompdump
 zsh/plugins
