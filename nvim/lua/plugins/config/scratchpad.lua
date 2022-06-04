@@ -4,6 +4,8 @@ local options = {
   scratchpad_autostart = 0,
   scratchpad_location = "~/Personal/Dropbox/Documents/Scratchpad/scratchpad.md",
   scratchpad_autofocus = 1,
+  scratchpad_autosize = 0,
+  scratchpad_minwidth = 60,
 }
 
 for k, v in pairs(options) do
