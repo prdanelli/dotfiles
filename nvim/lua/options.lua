@@ -10,13 +10,13 @@ local options = {
   expandtab = true, -- convert tabs to spaces
   foldlevelstart = 20,
   foldmethod = "indent",
+  icm = "split",
   ignorecase = false, -- ignore case in search patterns
   laststatus = 3, -- Universal status bar
   lbr = true,
   mouse = "niv", -- allow the mouse to be used in neovim
   number = true, -- set numbered lines
   numberwidth = 4, -- set number column width to 4
-
   relativenumber = true, -- set relative numbered lines
   scrolloff = 8, -- is one of my fav
   shiftwidth = 2, -- the number of spaces inserted for each indentation
@@ -59,3 +59,4 @@ vim.cmd([[
   set foldtext=MyFoldText()
   set fillchars=fold:-
 ]])
+
