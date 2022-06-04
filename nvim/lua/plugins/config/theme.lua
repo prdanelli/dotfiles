@@ -31,6 +31,7 @@ onenord.setup {
 
     -- Color columns
     VirtColumn = { bg = colors.bg, fg = colors.grey13 },
+
     BufferLineIndicatorSelected = { fg = colors.cyan, bg = colors.bg },
     BufferLineFill = { fg = colors.fg, bg = colors.grey14 },
 
