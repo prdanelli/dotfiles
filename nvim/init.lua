@@ -1,3 +1,5 @@
+require('impatient')
+
 -- Allow hot reloading of configurations
 function load(mod)
   package.loaded[mod] = nil
