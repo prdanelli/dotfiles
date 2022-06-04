@@ -42,26 +42,6 @@ end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
-vim.g.nvim_tree_icons = {
-  default = "",
-  symlink = "",
-  git = {
-    unstaged = "",
-    staged = "S",
-    unmerged = "",
-    renamed = "➜",
-    deleted = "",
-    untracked = "U",
-    ignored = "◌",
-  },
-  folder = {
-    default = "",
-    open = "",
-    empty = "",
-    empty_open = "",
-    symlink = "",
-  },
-}
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 nvim_tree.setup({
   disable_netrw = true,
@@ -123,6 +103,30 @@ nvim_tree.setup({
   trash = {
     cmd = "trash",
     require_confirm = true
+  },
+  renderer = {
+    icons = {
+      glyphs = {
+        default = "",
+        symlink = "",
+        git = {
+          unstaged = "",
+          staged = "S",
+          unmerged = "",
+          renamed = "➜",
+          deleted = "",
+          untracked = "U",
+          ignored = "◌",
+        },
+        folder = {
+          default = "",
+          open = "",
+          empty = "",
+          empty_open = "",
+          symlink = "",
+        },
+      }
+    }
   },
 })
 
