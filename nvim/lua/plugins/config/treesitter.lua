@@ -26,10 +26,6 @@ configs.setup({
     enable = true,
     additional_vim_regex_highlighting = true
   },
-  context_commentstring = {
-    enable = true,
-    enable_autocmd = false,
-  },
   indent = {
     enable = false
   },
@@ -84,6 +80,10 @@ configs.setup({
       [';'] = 'textsubjects-container-outer',
       ['i;'] = 'textsubjects-container-inner',
     },
+  },
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
   },
 })
 
