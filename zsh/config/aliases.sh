@@ -13,3 +13,4 @@ alias lazygit="lazygit -ucd ~/.config/lazygit/"
 alias grep="grep --color=auto"
 alias cat="bat"
 
+alias skhdkeys="bat ~/.config/skhd/skhdrc"

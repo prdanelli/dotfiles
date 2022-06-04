@@ -65,23 +65,25 @@ zsh_add_config "config/helpers.sh"
 ################################################################################
 
 zsh_add_file "$HOME/.asdf/asdf.sh"
-zsh_add_file "$HOME/.config/zsh/olio_aws.sh" # Don't commit secrets
+zsh_add_file "$HOME/.config/zsh/secrets.sh" # Shhhh, don't commit secrets
 
 ################################################################################
 # Key bindings
 ################################################################################
 
 # History substring search keybings - normal mode
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+# bindkey '^[[A' history-substring-search-up
+# bindkey '^[[B' history-substring-search-down
 
 # Vim mode
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
+# bindkey -M vicmd 'k' history-substring-search-up
+# bindkey -M vicmd 'j' history-substring-search-down
 
 ################################################################################
 # Prompt
 ################################################################################
 
 eval "$(starship init zsh)"
+
+neofetch
 
