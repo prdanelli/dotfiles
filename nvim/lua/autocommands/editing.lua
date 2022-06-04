@@ -10,3 +10,11 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
+-- Prevent IndentLine from hiding ``` in markdown files
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  group = "_editing",
+  pattern = { "*.md" },
+  callback = function()
+    vim.g["indentLine_enabled"] = "0"
+  end,
+})
