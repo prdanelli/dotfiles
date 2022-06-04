@@ -38,9 +38,7 @@ packer.init {
     end,
     prompt_border = "single"
   },
-  git = {
-    clone_timeout = 600,
-  },
+  git = { clone_timeout = 600, },
   auto_clean = true,
   ensure_dependencies = true,
 }
@@ -199,7 +197,12 @@ return packer.startup(function(use)
     config = function() require('gitsigns').setup() end,
   }
 
-  use { "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" }
+
+  use {
+    "sindrets/diffview.nvim",
+    config = function() require("plugins.config.diffview") end,
+    requires = "nvim-lua/plenary.nvim"
+  }
 
   -----------------------------------------------------------------------------
   -- Tmux

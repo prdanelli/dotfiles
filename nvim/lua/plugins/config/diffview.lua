@@ -18,9 +18,6 @@ diffview.setup {
     fold_open = "",
   },
   file_panel = {
-    position = "left",                  -- One of 'left', 'right', 'top', 'bottom'
-    width = 35,                         -- Only applies when position is 'left' or 'right'
-    height = 10,                        -- Only applies when position is 'top' or 'bottom'
     listing_style = "tree",             -- One of 'list' or 'tree'
     tree_options = {                    -- Only applies when listing_style is 'tree'
       flatten_dirs = true,              -- Flatten dirs that only contain one single dir
@@ -28,9 +25,6 @@ diffview.setup {
     },
   },
   file_history_panel = {
-    position = "bottom",
-    width = 35,
-    height = 16,
     log_options = {
       max_count = 256,      -- Limit the number of commits
       follow = false,       -- Follow renames (only for single file)
@@ -50,8 +44,8 @@ diffview.setup {
     -- The `view` bindings are active in the diff buffers, only when the current
     -- tabpage is a Diffview.
     view = {
-      ["<tab>"]      = cb("select_next_entry"),  -- Open the diff for the next file
-      ["<s-tab>"]    = cb("select_prev_entry"),  -- Open the diff for the previous file
+      ["<c-n>"]      = cb("select_next_entry"),  -- Open the diff for the next file
+      ["<c-p>"]      = cb("select_prev_entry"),  -- Open the diff for the previous file
       ["gf"]         = cb("goto_file"),          -- Open the file in a new split in previous tabpage
       ["<C-w><C-f>"] = cb("goto_file_split"),    -- Open the file in a new split
       ["<C-w>gf"]    = cb("goto_file_tab"),      -- Open the file in a new tabpage
@@ -71,8 +65,8 @@ diffview.setup {
       ["U"]             = cb("unstage_all"),          -- Unstage all entries.
       ["X"]             = cb("restore_entry"),        -- Restore entry to the state on the left side.
       ["R"]             = cb("refresh_files"),        -- Update stats and entries in the file list.
-      ["<tab>"]         = cb("select_next_entry"),
-      ["<s-tab>"]       = cb("select_prev_entry"),
+      ["<c-n>"]         = cb("select_next_entry"),
+      ["<c-p>"]       = cb("select_prev_entry"),
       ["gf"]            = cb("goto_file"),
       ["<C-w><C-f>"]    = cb("goto_file_split"),
       ["<C-w>gf"]       = cb("goto_file_tab"),
@@ -94,8 +88,8 @@ diffview.setup {
       ["<cr>"]          = cb("select_entry"),
       ["o"]             = cb("select_entry"),
       ["<2-LeftMouse>"] = cb("select_entry"),
-      ["<tab>"]         = cb("select_next_entry"),
-      ["<s-tab>"]       = cb("select_prev_entry"),
+      ["<c-n>"]         = cb("select_next_entry"),
+      ["<c-p>"]       = cb("select_prev_entry"),
       ["gf"]            = cb("goto_file"),
       ["<C-w><C-f>"]    = cb("goto_file_split"),
       ["<C-w>gf"]       = cb("goto_file_tab"),
