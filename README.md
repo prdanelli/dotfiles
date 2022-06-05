@@ -4,14 +4,11 @@ My MacOS focused development environment dotfiles.
 
 ## Installation
 
-The repo uses [Dotbot](https://github.com/anishathalye/dotbot) to manage placement of files from this repo into the correct config locations on the host machine.
-
-``brew install dotbot``
-
-Run `./install` from this directory.
+To install brew packages `brew bundle --file <path>/homebrew/.Brewfile`
 
 ## Applications
 
++ Brew
 + ZSH
   - FIsh-esque history search
   - Autocomplete
