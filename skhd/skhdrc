@@ -1,6 +1,5 @@
 # https://dotfiles.joshmedeski.com/yabai.html#yabairc
 
-alt - return : open -na kitty --args -1
 cmd - return : open -na kitty --args -1
 
 # focus window
@@ -31,8 +30,7 @@ alt - f : yabai -m window --toggle zoom-fullscreen
 alt - g : yabai -m space --toggle padding; yabai -m space --toggle gap
 
 # float / unfloat window and center on screen
-alt - t : yabai -m window --toggle float;\
-          yabai -m window --grid 4:4:1:1:2:2
+alt - t : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2
 
 # toggle window split type
 alt - e : yabai -m window --toggle split
@@ -65,8 +63,8 @@ shift + alt - n : yabai -m window --display next; yabai -m display --focus next
 shift + alt - p : yabai -m window --display previous; yabai -m display --focus previous
 
 # move floating window
-# shift + ctrl - a : yabai -m window --move rel:-20:0
-# shift + ctrl - s : yabai -m window --move rel:0:20
+shift + ctrl - a : yabai -m window --move rel:-20:0
+shift + ctrl - s : yabai -m window --move rel:0:20
 
 # control window size, modified to be intuitive
 alt + ctrl - h : yabai -m window --resize left:-20:0 || yabai -m window --resize right:-20:0
