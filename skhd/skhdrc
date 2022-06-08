@@ -1,7 +1,5 @@
 # https://dotfiles.joshmedeski.com/yabai.html#yabairc
 
-cmd - return : open -na kitty --args -1
-
 # focus window
 alt - h : yabai -m window --focus west
 alt - j : yabai -m window --focus south
