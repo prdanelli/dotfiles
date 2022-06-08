@@ -24,6 +24,7 @@
     ~/.gitignore_global: gitignore_global
     ~/.irbrc: irbrc
     ~/.config/tmux: tmux
+    ~/.Brewfile: Brewfile
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

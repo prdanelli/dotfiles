@@ -4,11 +4,12 @@ My MacOS focused development environment dotfiles.
 
 ## Installation
 
-To install brew packages `brew bundle --file <path>/homebrew/.Brewfile`
+Link dotbot paths and run `brew bundle --file .Brewfile`
 
 ## Applications
 
-+ Brew
++ Yabai WM & SKHD
++ Homebrew
 + ZSH
   - FIsh-esque history search
   - Autocomplete
