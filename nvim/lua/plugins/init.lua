@@ -187,6 +187,10 @@ return packer.startup(function(use)
   use "tpope/vim-rails"
   use "vim-ruby/vim-ruby"
   use "mtdl9/vim-log-highlighting"
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  })
 
   -----------------------------------------------------------------------------
   -- Git
