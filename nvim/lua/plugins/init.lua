@@ -165,12 +165,6 @@ return packer.startup(function(use)
     run = ":TSUpdate",
     config = function() require("plugins.config.treesitter") end,
   }
-
-  use {
-    'stevearc/aerial.nvim',
-    config = function() require('plugins.config.aerial') end,
-    requires = { "nvim-treesitter/nvim-treesitter" }
-  }
   -----------------------------------------------------------------------------
   -- Telescope
   -----------------------------------------------------------------------------
@@ -196,6 +190,12 @@ return packer.startup(function(use)
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
   })
+
+  use {
+    'stevearc/aerial.nvim',
+    config = function() require('plugins.config.aerial') end,
+    requires = { "nvim-treesitter/nvim-treesitter" }
+  }
 
   -----------------------------------------------------------------------------
   -- Git
@@ -270,9 +270,16 @@ return packer.startup(function(use)
   -- Use faster version of filetypes configuration
   use "nathom/filetype.nvim"
 
+  -- Persistant buffer only available on keymap press
   use {
     "FraserLee/ScratchPad",
     config = function() require("plugins.config.scratchpad") end,
+  }
+
+  -- Try to prevent opening buffers in temp buffers like Aerial
+  use {
+    "stevearc/stickybuf.nvim",
+    config = function() require("stickybuf").setup() end,
   }
 
   -- Profiling and Performance
