@@ -166,6 +166,11 @@ return packer.startup(function(use)
     config = function() require("plugins.config.treesitter") end,
   }
 
+  use {
+    'stevearc/aerial.nvim',
+    config = function() require('plugins.config.aerial') end,
+    requires = { "nvim-treesitter/nvim-treesitter" }
+  }
   -----------------------------------------------------------------------------
   -- Telescope
   -----------------------------------------------------------------------------
