@@ -19,6 +19,8 @@ nvim/plugin/packer_compiled.lua
 nvim/spell/*
 ranger/plugins
 ranger/devicons
+
+tmux/plugins/**
 zsh/secrets.sh
 zsh/.zsh_history
 zsh/.zsh_sessions
