@@ -28,6 +28,7 @@ onenord.setup {
   custom_highlights = {
     Folded = { fg = colors.grey10 },
     VertSplit = { fg = colors.lblue },
+    MsgArea = { fg = colors.grey7 },
 
     -- Color columns
     VirtColumn = { bg = colors.bg, fg = colors.grey13 },
