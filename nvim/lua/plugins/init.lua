@@ -32,6 +32,10 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 
 -- Have packer use a popup window
 packer.init {
+  profile = {
+    enable = true,
+    threshold = 0, -- the amount in ms that a plugins load time must be over for it to be included in the profile
+  },
   display = {
     open_fn = function()
       return require("packer.util").float({ border = "rounded" })
@@ -55,27 +59,34 @@ return packer.startup(function(use)
     config = function() require("plugins.config.theme") end,
   }
 
-  use "yggdroot/indentline"
+  use {
+    "yggdroot/indentline",
+    -- event = "BufReadPre",
+  }
 
   use {
     "norcalli/nvim-colorizer.lua",
-    config = function() require("plugins.config.colorizer") end
+    config = function() require("plugins.config.colorizer") end,
+    event = "BufReadPre",
   }
 
   use {
     "goolord/alpha-nvim",
     requires = { "kyazdani42/nvim-web-devicons" },
     config = function() require("plugins.config.alpha") end,
+    event = "VimEnter",
   }
 
   use {
     "petertriho/nvim-scrollbar",
-    config = function () require("scrollbar").setup() end
+    config = function () require("scrollbar").setup() end,
+    event = "BufReadPre",
   }
 
   use {
     "nvim-lualine/lualine.nvim",
     config = function() require("plugins.config.lualine") end,
+    event = "VimEnter",
   }
 
   use {
@@ -83,12 +94,14 @@ return packer.startup(function(use)
     requires = "kyazdani42/nvim-web-devicons",
     after = { "nvim-web-devicons", "onenord.nvim" },
     config = function() require("plugins.config.bufferline") end,
+    event = "VimEnter",
   }
 
   use {
     "lukas-reineke/virt-column.nvim",
     config = function() require("virt-column").setup() end,
-  }
+    event = "BufReadPre",
+  } -- Add better vertical lines
 
   -----------------------------------------------------------------------------
   -- Navigation
@@ -96,12 +109,14 @@ return packer.startup(function(use)
   use {
     "kevinhwang91/rnvimr",
     config = function() require("plugins.config.rnvimr") end,
+    event = "BufEnter",
   }
 
   use {
     "kyazdani42/nvim-tree.lua",
     requires = { "kyazdani42/nvim-web-devicons" },
     config = function() require("plugins.config.nvim_tree") end,
+    event = "BufEnter",
   }
 
   -----------------------------------------------------------------------------
@@ -120,12 +135,14 @@ return packer.startup(function(use)
   use {
     "j-hui/fidget.nvim",
     config = function() require("plugins.config.fidget") end,
+    event = "BufReadPre",
   } -- LSP progress indicator
 
   use {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
     config = function() require("plugins.config.trouble") end,
+    event = "BufEnter",
   }
 
   -----------------------------------------------------------------------------
@@ -150,6 +167,7 @@ return packer.startup(function(use)
       "lukas-reineke/cmp-under-comparator", -- Tweak completion order
     },
     config = function() require("plugins.config.cmp") end,
+    --event = "BufEnter",
   }
 
   -----------------------------------------------------------------------------
@@ -164,6 +182,7 @@ return packer.startup(function(use)
     },
     run = ":TSUpdate",
     config = function() require("plugins.config.treesitter") end,
+    event = "BufReadPre",
   }
   -----------------------------------------------------------------------------
   -- Telescope
@@ -176,6 +195,7 @@ return packer.startup(function(use)
       "nvim-telescope/telescope-file-browser.nvim",
     },
     config = function() require("plugins.config.telescope") end,
+    event = "BufEnter",
   }
 
   -----------------------------------------------------------------------------
@@ -192,15 +212,18 @@ return packer.startup(function(use)
     requires = { "nvim-treesitter/nvim-treesitter" }
   }
 
-  use({
+  use {
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
-  })
+    ft = "markdown",
+    cmd = { "MarkdownPreview" },
+  }
 
   use {
     'stevearc/aerial.nvim',
-    config = function() require('plugins.config.aerial') end,
-    requires = { "nvim-treesitter/nvim-treesitter" }
+    config = function() require("plugins.config.aerial") end,
+    requires = { "nvim-treesitter/nvim-treesitter" },
+    event = "BufEnter",
   }
 
   -----------------------------------------------------------------------------
@@ -210,13 +233,14 @@ return packer.startup(function(use)
     "lewis6991/gitsigns.nvim",
     requires = { "nvim-lua/plenary.nvim" },
     config = function() require('gitsigns').setup() end,
+    event = "BufReadPre",
   }
-
 
   use {
     "sindrets/diffview.nvim",
     config = function() require("plugins.config.diffview") end,
-    requires = "nvim-lua/plenary.nvim"
+    requires = "nvim-lua/plenary.nvim",
+    cmd = "DiffviewOpen",
   }
 
   -----------------------------------------------------------------------------
@@ -231,18 +255,28 @@ return packer.startup(function(use)
   -----------------------------------------------------------------------------
 
   -- Better quick list
-  use { "kevinhwang91/nvim-bqf", ft = "qf" }
+  use {
+    "kevinhwang91/nvim-bqf",
+    ft = "qf"
+  }
 
   -- Wrap text
-  use "tpope/vim-surround"
+  use {
+    "tpope/vim-surround",
+    event = "BufEnter",
+  }
 
   -- Replace with register and don"t copy
-  use "vim-scripts/ReplaceWithRegister"
+  use {
+    "vim-scripts/ReplaceWithRegister",
+    event = "BufEnter",
+  }
 
   -- Highlight yanked text
   use {
     "machakann/vim-highlightedyank",
     config = function() require("plugins.config.highlighted_yank") end,
+    event = "BufEnter",
   }
 
   -- Editor config integration
@@ -255,12 +289,16 @@ return packer.startup(function(use)
   }
 
   -- Delete buffers but maintain layout
-  use "famiu/bufdelete.nvim"
+  use {
+    "famiu/bufdelete.nvim",
+    event = "BufEnter",
+  }
 
   -- Pretty notifications
   use {
     "rcarriga/nvim-notify",
-    config = function () require("plugins.config.notify") end
+    config = function () require("plugins.config.notify") end,
+    event = "BufEnter",
   }
 
   -- Comment lines/blocks
@@ -271,6 +309,7 @@ return packer.startup(function(use)
       "JoosepAlviste/nvim-ts-context-commentstring",
       "nvim-treesitter/nvim-treesitter",
     },
+    event = "BufEnter",
   }
 
   -- Use faster version of filetypes configuration
@@ -286,6 +325,7 @@ return packer.startup(function(use)
   use {
     "stevearc/stickybuf.nvim",
     config = function() require("stickybuf").setup() end,
+    event = "BufEnter",
   }
 
   -- Profiling and Performance
