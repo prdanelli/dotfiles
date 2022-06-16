@@ -55,11 +55,6 @@ return packer.startup(function(use)
   -- Look & feel
   -----------------------------------------------------------------------------
   use {
-    "rmehri01/onenord.nvim",
-    config = function() require("plugins.config.theme") end,
-  }
-
-  use {
     "yggdroot/indentline",
     -- event = "BufReadPre",
   }
@@ -87,6 +82,11 @@ return packer.startup(function(use)
     "nvim-lualine/lualine.nvim",
     config = function() require("plugins.config.lualine") end,
     event = "VimEnter",
+  }
+
+  use {
+    "rmehri01/onenord.nvim",
+    config = function() require("plugins.config.theme") end,
   }
 
   use {
@@ -199,13 +199,14 @@ return packer.startup(function(use)
   }
 
   -----------------------------------------------------------------------------
-  -- Syntax & code
+  -- Syntax, Languages & Code
   -----------------------------------------------------------------------------
   use "ekalinin/Dockerfile.vim"
   use "cespare/vim-toml"
   use "tpope/vim-rails"
   use "vim-ruby/vim-ruby"
   use "mtdl9/vim-log-highlighting"
+
   use {
     "cuducos/yaml.nvim",
     ft = { "yaml" },
@@ -226,6 +227,22 @@ return packer.startup(function(use)
     event = "BufEnter",
   }
 
+  use {
+    "nvim-neotest/neotest",
+    requires = {
+      "mfussenegger/nvim-dap",
+      "olimorris/neotest-rspec",
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim"
+    },
+    config = function()
+      require("neotest").setup({
+        adapters = { require("neotest-rspec"), }
+      })
+    end,
+    event = "BufEnter",
+  }
   -----------------------------------------------------------------------------
   -- Git
   -----------------------------------------------------------------------------
