@@ -1,9 +1,12 @@
-require('impatient')
+local impatient_loaded, impatient = pcall(require, "impatient")
+if impatient_loaded then
+  impatient.enable_profile()
+end
 
 -- Allow hot reloading of configurations
-function load(mod)
-  package.loaded[mod] = nil
-  require(mod)
+_G.load = function(module)
+  package.loaded[module] = nil
+  return require(module)
 end
 
 load "utils"
