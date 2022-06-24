@@ -242,12 +242,14 @@ return packer.startup(function(use)
       "antoinemadec/FixCursorHold.nvim"
     },
     config = function()
-      require("neotest").setup({
-        adapters = { require("neotest-rspec"), }
-      })
+      require("neotest").setup {
+        adapters = { require("neotest-rspec"), },
+        diagnostic = false,
+      }
     end,
     event = "BufEnter",
   }
+
   -----------------------------------------------------------------------------
   -- Git
   -----------------------------------------------------------------------------
