@@ -6,6 +6,7 @@
 
 # General
 alias ls="exa -s type "
+alias la="ls -la"
 alias vim="nvim"
 alias rspec="bundle exec rspec"
 alias lazygit="lazygit -ucd ~/.config/lazygit/"
