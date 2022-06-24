@@ -119,6 +119,11 @@ return packer.startup(function(use)
     event = "BufEnter",
   }
 
+  use {
+    "folke/which-key.nvim",
+    event = "VimEnter",
+    config = function() require("plugins.config.whichkey").setup() end,
+  }
   -----------------------------------------------------------------------------
   -- LSP
   -----------------------------------------------------------------------------

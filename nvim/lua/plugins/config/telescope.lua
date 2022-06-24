@@ -7,16 +7,6 @@ local actions = require("telescope.actions")
 local previewers = require("telescope.previewers")
 local trouble = require("trouble.providers.telescope")
 local sorters = require("telescope.sorters")
-local opts = { silent = true }
-
-vim.keymap.set("n", "<leader>p", "<cmd>Telescope find_files hidden=true layout_config={'prompt_position':'top'}<cr>", opts)
-vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<cr>", opts)
-vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
-vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)
-vim.keymap.set("n", "<leader>fr", "<cmd>Telescope registers<cr>", opts)
-vim.keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opts)
-vim.keymap.set("n", "<leader>fi", "<cmd>Telescope highlights<cr>", opts)
-vim.keymap.set("n", "<leader>fa", "<cmd>Telescope autocommands<cr>", opts)
 
 -- Filemanager shortcuts
 -- <A-c>/c	Create file/folder at current path (trailing path separator creates folder)
@@ -32,7 +22,6 @@ vim.keymap.set("n", "<leader>fa", "<cmd>Telescope autocommands<cr>", opts)
 -- <C-f>/f	Toggle between file and folder browser
 -- <C-h>/h	Toggle hidden files/folders
 -- <C-s>/s	Toggle all entries ignoring ./ and ../
-vim.keymap.set("n", "<leader>ff", ":Telescope file_browser grouped=true<cr>", { silent = true })
 
 telescope.load_extension("file_browser", { grouped = true })
 telescope.load_extension("fzf") -- require fzf extension for better fzf sorting algorithm

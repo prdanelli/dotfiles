@@ -26,9 +26,6 @@ vim.keymap.set("", "<Del>", '"_x', opts)
 -- Paste over selected text
 vim.keymap.set("v", "p", '"_dP', opts)
 
--- Select all
-vim.keymap.set("n", "<C-a>", "<cmd>lua vim.notifier.info('Depreciated keymap')<cr>", opts)
-
 -- Copy buffer contents
 vim.keymap.set("n", "<leader>ya", "<cmd>%y<cr>", opts)
 
@@ -81,7 +78,6 @@ vim.keymap.set("n", "<leader>ft", "<cmd>echo &filetype<cr>", opts)
 vim.keymap.set("n", "<Leader>bd", ":Bdelete<CR>", opts)
 
 vim.keymap.set("n", "<c-w>", ":bd<CR>", opts)
-vim.keymap.set("n", "<leader>w", ":bd<CR>", opts)
 
 -- Close a buffer without closing the split
 vim.keymap.set("n", "<leader>bd", ":lclose<bar>b#<bar>bd #<CR>", opts)
@@ -101,3 +97,12 @@ vim.keymap.set("n", "<M-Up>", ":resize +2<CR>", opts)
 vim.keymap.set("n", "<M-Down>", ":resize -2<CR>", opts)
 vim.keymap.set("n", "<M-Left>", ":vertical resize -2<CR>", opts)
 vim.keymap.set("n", "<M-Right>", ":vertical resize +2<CR>", opts)
+
+-------------------------------------------------------------------------------
+-- Deprecations
+-------------------------------------------------------------------------------
+vim.keymap.set("n", "<C-a>", "<cmd>lua vim.notifier.error('Deprecated keymap')<cr>", opts)
+vim.keymap.set("n", "<leader>p", "<Nop>", opts)
+vim.keymap.set("n", "<leader>p", "<cmd>lua vim.notifier.error('Deprecated Keymap, use `leader ep`')<cr>", opts)
+vim.keymap.set("n", "<leader>w", "<cmd>lua vim.notifier.error('Deprecated Keymap, use `leader bc`')<cr>", opts)
+

@@ -1,5 +1,3 @@
-vim.keymap.set("n", "<leader>cc", "<cmd>ScratchPad<cr>")
-
 local options = {
   scratchpad_autostart = 0,
   scratchpad_location = "~/Personal/Dropbox/Documents/Scratchpad/scratchpad.md",
