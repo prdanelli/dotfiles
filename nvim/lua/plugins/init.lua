@@ -184,6 +184,7 @@ return packer.startup(function(use)
       "nvim-treesitter/nvim-treesitter-textobjects",
       "JoosepAlviste/nvim-ts-context-commentstring",
       "RRethy/nvim-treesitter-textsubjects",
+      "nvim-treesitter/nvim-treesitter-context"
     },
     run = ":TSUpdate",
     config = function() require("plugins.config.treesitter") end,

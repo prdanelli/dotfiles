@@ -3,6 +3,11 @@ if not status_ok then
   return
 end
 
+local context_ok, context = pcall(require, "treesitter-context")
+if context_ok then
+  context.setup()
+end
+
 local languages = {
   "bash",
   "comment",
