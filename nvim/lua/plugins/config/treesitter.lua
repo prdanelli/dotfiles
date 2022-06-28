@@ -17,6 +17,7 @@ local languages = {
   "json",
   "lua",
   "markdown",
+  "markdown_inline",
   "regex",
   "ruby",
   "scss",
