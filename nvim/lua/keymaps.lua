@@ -14,9 +14,6 @@ vim.keymap.set("n", "<DOWN>", "<NOP>", opts)
 vim.keymap.set("n", "<LEFT>", "<NOP>", opts)
 vim.keymap.set("n", "<RIGHT>", "<NOP>", opts)
 
--- Reload the config
-vim.keymap.set("n", "<leader>r", "<cmd>source ~/.config/nvim/init.lua<cr> <cmd>lua vim.notifier.info('Sourced init.lua')<cr>", opts)
-
 -- Map ctrl-c to esc
 vim.keymap.set("i", "<C-c>", "<esc>", opts)
 
@@ -25,12 +22,6 @@ vim.keymap.set("", "<Del>", '"_x', opts)
 
 -- Paste over selected text
 vim.keymap.set("v", "p", '"_dP', opts)
-
--- Copy buffer contents
-vim.keymap.set("n", "<leader>ya", "<cmd>%y<cr>", opts)
-
--- Indent all
-vim.keymap.set("n", "<leader>ia", "mpggVG=<esc>`p", opts)
 
 -- Better Indentation
 vim.keymap.set("v", "<", "<gv", opts)
@@ -59,39 +50,22 @@ vim.keymap.set("i", "jj", "<esc>", opts)
 -- Ctrl-c to esc
 vim.keymap.set("i", "<C-c>", "<esc>", opts)
 
--- Copy the current file path
-vim.keymap.set("n", "<leader>yp", "<cmd>let @+ = expand('%:p')<cr> <cmd>lua vim.notifier.info('Yanked filepath')<cr>", opts)
-
--- Toggle booleans
-vim.keymap.set("n", "<c-t>", "<cmd>lua require('user.toggle_term').toggle()<cr>", opts)
-
 -- Navigate quicklist items
 vim.keymap.set("n", "gn", "<cmd>cnext<cr>")
 vim.keymap.set("n", "gp", "<cmd>cprev<cr>")
 
--- Get filetype bring used
-vim.keymap.set("n", "<leader>ft", "<cmd>echo &filetype<cr>", opts)
 -------------------------------------------------------------------------------
 -- Buffers
 -------------------------------------------------------------------------------
 -- Delete buffer
-vim.keymap.set("n", "<Leader>bd", ":Bdelete<CR>", opts)
-
 vim.keymap.set("n", "<c-w>", ":bd<CR>", opts)
 
--- Close a buffer without closing the split
-vim.keymap.set("n", "<leader>bd", ":lclose<bar>b#<bar>bd #<CR>", opts)
-
--- Buffer navigation with ctrl+lh
 vim.keymap.set("n", "<Tab>", ":bnext<CR>", opts)
 vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", opts)
 
 -------------------------------------------------------------------------------
 -- Splits
 -------------------------------------------------------------------------------
-vim.keymap.set("n", "<Leader>\\", ":vsplit<CR>", opts)
-vim.keymap.set("n", "<Leader>-", ":split<CR>", opts)
-
 -- Resize splits with alt+cursor keys
 vim.keymap.set("n", "<M-Up>", ":resize +2<CR>", opts)
 vim.keymap.set("n", "<M-Down>", ":resize -2<CR>", opts)
@@ -105,4 +79,5 @@ vim.keymap.set("n", "<C-a>", "<cmd>lua vim.notifier.error('Deprecated keymap')<c
 vim.keymap.set("n", "<leader>p", "<Nop>", opts)
 vim.keymap.set("n", "<leader>p", "<cmd>lua vim.notifier.error('Deprecated Keymap, use `leader ep`')<cr>", opts)
 vim.keymap.set("n", "<leader>w", "<cmd>lua vim.notifier.error('Deprecated Keymap, use `leader bc`')<cr>", opts)
+vim.keymap.set("n", "<leader>ft", "<cmd>lua vim.notifier.error('Deprecated Keymap, use `leader zf`')<cr>", opts)
 

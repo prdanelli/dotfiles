@@ -1,20 +1,29 @@
 local M = {}
 
 function M.setup()
-  local module_name = 'which-key'
+  local module_name = "which-key"
   local whichkey = require(module_name)
 
   local conf = {
-    window = {
-      border = 'none',
-      position = 'bottom',
-    },
     ignore_missing = true,
+    window = {
+      border = "single", -- none, single, double, shadow
+      position = "bottom", -- bottom, top
+      margin = { 0, 0, 0, 0 },
+      padding = { 0, 1, 0, 1 },
+      winblend = 0
+    },
+    layout = {
+      height = { min = 4, max = 25 }, -- min and max height of the columns
+      width = { min = 1, max = 50 }, -- min and max width of the columns
+      spacing = 10, -- spacing between columns
+      align = "center", -- align columns left, center or right
+    },
   }
 
   local opts = {
-    mode = 'n',
-    prefix = '<leader>',
+    mode = "n",
+    prefix = "<leader>",
     buffer = nil,
     silent = true,
     noremap = true,
@@ -22,13 +31,16 @@ function M.setup()
   }
 
   local mappings = {
-    ['a'] = { "<cmd>Alpha<cr>", "Startup Screen" },
+    ["a"] = { "<cmd>Alpha<cr>", "Startup Screen" },
+    ["-"] = { ":split<CR>", "Horizonal Split"  },
+    ['\\'] = { ":vsplit<CR>", "Vertical Split"  },
 
     b = {
-      name = 'Buffer',
-      c = { '<Cmd>bd!<Cr>', 'Close current buffer' },
-      w = { '<Cmd>bd!<Cr>', 'Close current buffer' },
-      D = { '<Cmd>%bd|e#|bd#<Cr>', 'Delete all buffers' },
+      name = "Buffer",
+      c = { "<Cmd>close<Cr>", "Close split" },
+      w = { "<Cmd>bd!<Cr>", "Close current" },
+      D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete all" },
+      i = { "mpggVG=<esc>`p", "Indent" },
       ["1"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "Goto Buffer 1" },
       ["2"] = { "<Cmd>BufferLineGoToBuffer 2<CR>", "Goto Buffer 2" },
       ["3"] = { "<Cmd>BufferLineGoToBuffer 3<CR>", "Goto Buffer 3" },
@@ -66,8 +78,15 @@ function M.setup()
     },
 
     g = {
-      name = 'GitSigns',
-      b = { '<cmd>Gitsigns toggle_current_line_blame<CR>', 'Blame' }
+      name = "Git",
+      b = { "<cmd>Gitsigns toggle_current_line_blame<CR>", "Blame" },
+      d = { "<cmd>DiffviewOpen<cr>", "Diff View Open" },
+      D = { "<cmd>DiffviewClose<cr>", "Diff View Close" },
+    },
+
+    l = {
+      name = "LSP",
+      a = { "<cmd>AerialToggle!<CR>", "Aerial Symbols" }
     },
 
     n = {
@@ -81,10 +100,14 @@ function M.setup()
       s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary" },
     },
 
-    -- s = {
-    --   name = "Search",
-    --   o = { [[ <Esc><Cmd>lua require('spectre').open()<CR>]], "Open" },
-    -- },
+    p = {
+      name = "Plugins",
+      i = { "<cmd>PackerInstall<cr>", "Install" },
+      p = { "<cmd>PackerProfile<cr>", "Profile" },
+      s = { "<cmd>PackerSync<cr>", "Sync" },
+      S = { "<cmd>PackerStatus<cr>", "Status" },
+      u = { "<cmd>PackerUpdate<cr>", "Update" },
+    },
 
     x = {
       name = "Trouble",
@@ -96,21 +119,21 @@ function M.setup()
       r = { "<cmd>Trouble lsp_references<cr>", "LSP References" },
     },
 
-    z = {
-      name = "System",
-      d = { "<cmd>DiffviewOpen<cr>", "Diff View Open" },
-      D = { "<cmd>DiffviewClose<cr>", "Diff View Close" },
-      i = { "<cmd>PackerInstall<cr>", "Install" },
-      p = { "<cmd>PackerProfile<cr>", "Profile" },
-      s = { "<cmd>PackerSync<cr>", "Sync" },
-      S = { "<cmd>PackerStatus<cr>", "Status" },
-      u = { "<cmd>PackerUpdate<cr>", "Update" },
-      x = { "<cmd>cd %:p:h<cr>", "Change Directory" },
-      e = { "!!$SHELL<CR>", "Execute line" },
+    y = {
+      name = "Yank",
+      p = { "<cmd>let @+ = expand('%:p')<cr> <cmd>lua vim.notifier.info('Yanked filepath')<cr>", "Filepath" },
+      a = { "<cmd>%y<cr>", "Buffer contents" },
     },
 
-    ['w'] = { '<cmd>update!<CR>', 'Save' },
-    ['q'] = { '<cmd>q!<CR>', 'Quit' },
+    z = {
+      name = "System",
+      f = { "<cmd>echo &filetype<cr>", "Filetype" },
+      r = { "<cmd>luafile %<cr> <cmd>lua vim.notifier.info('Sourced file')<cr>", "Source file" },
+      x = { "<cmd>cd %:p:h<cr>", "Change Directory" },
+      e = { "!!$SHELL<CR>", "Execute Shell" },
+      w = { "<cmd>update!<CR>", "Save" },
+      q = { "<cmd>q!<CR>", "Quit" },
+    },
   }
 
   whichkey.setup(conf)
