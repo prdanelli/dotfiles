@@ -26,6 +26,15 @@ onenord.setup {
     eob_lines = true,
   },
   custom_highlights = {
+
+    -- Whichkey
+    WhichKeyFloat = { bg = colors.grey14 },
+    WhichKey = { fg = colors.magenta },
+    WhichKeyGroup = { fg = colors.lblue },
+    WhichKeySeparator = { fg = colors.grey9 },
+    WhichKeyDesc = { fg = colors.blue },
+    -- WhichKeyValue
+
     Folded = { fg = colors.grey10 },
     VertSplit = { fg = colors.lblue },
     MsgArea = { fg = colors.grey7 },
