@@ -4,7 +4,6 @@
 local opts = { silent = true }
 
 -- Set the leader key
-vim.keymap.set("", " ", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
