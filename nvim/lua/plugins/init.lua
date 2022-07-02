@@ -283,8 +283,8 @@ return packer.startup(function(use)
 
   -- Wrap text
   use {
-    "tpope/vim-surround",
-    event = "BufEnter",
+    "kylechui/nvim-surround",
+    config = function() require("nvim-surround").setup({}) end,
   }
 
   -- Replace with register and don"t copy
