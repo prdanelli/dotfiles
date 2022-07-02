@@ -241,12 +241,7 @@ return packer.startup(function(use)
       "nvim-treesitter/nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim"
     },
-    config = function()
-      require("neotest").setup {
-        adapters = { require("neotest-rspec"), },
-        diagnostic = false,
-      }
-    end,
+    config = function() require("plugins.config.neotest") end,
     event = "BufEnter",
   }
 

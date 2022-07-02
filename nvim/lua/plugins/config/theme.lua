@@ -9,6 +9,8 @@ local prompt = colors.grey14
 local results = colors.grey14
 local preview = colors.grey14
 
+local window_bg = colors.grey14
+
 onenord.setup {
   borders = true,
   fade_nc = false,
@@ -26,14 +28,32 @@ onenord.setup {
     eob_lines = true,
   },
   custom_highlights = {
+    -- Neotest
+    NeotestAdapterName = { fg = colors.grey10 },
+    NeotestFile = { fg = colors.grey6 },
+    NeotestNamespace = { fg = colors.magenta },
+    NeotestDir = { fg = colors.blue },
+    NeotestTest = { fg = colors.grey3 },
+    NeotestFocused = { fg = colors.cyan },
+    NeotestMarked = { fg = colors.orange },
+    -- Neotest - Borders
+    NeotestIndent = { fg = colors.grey11 },
+    NeotestBorder = { fg = colors.grey11 },
+    NeotestExpandMarker = { fg = colors.grey11 },
+    -- Neotest - test state
+    NeotestRunning = { fg = colors.yellow },
+    NeotestSkipped = { fg = colors.organge },
+    NeotestPassed = { fg = colors.green },
+    NeotestFailed = { fg = colors.red },
+    NeotestWinSelect = { fg = colors.red, bg = colors.cyan }, -- ?
 
     -- Whichkey
-    WhichKeyFloat = { bg = colors.grey14 },
+    WhichKeyFloat = { bg = window_bg },
     WhichKey = { fg = colors.magenta },
-    WhichKeyGroup = { fg = colors.lblue },
-    WhichKeySeparator = { fg = colors.grey9 },
-    WhichKeyDesc = { fg = colors.blue },
-    -- WhichKeyValue
+    WhichKeyGroup = { fg = colors.grey7 },
+    WhichKeySeparator = { fg = colors.grey12 },
+    WhichKeyDesc = { fg = colors.grey7 },
+    WhichKeyValue = { fg = colors.grey7 },
 
     Folded = { fg = colors.grey10 },
     VertSplit = { fg = colors.lblue },
@@ -42,9 +62,11 @@ onenord.setup {
     -- Color columns
     VirtColumn = { bg = colors.bg, fg = colors.grey13 },
 
+    -- Buffer Line
     BufferLineIndicatorSelected = { fg = colors.cyan, bg = colors.bg },
     BufferLineFill = { fg = colors.fg, bg = colors.grey14 },
 
+    -- Git Signs
     GitSignsAdd = { fg = colors.green },
     GitSignsChange = { fg = colors.yellow },
     GitSignsDelete = { fg = colors.red },
@@ -56,6 +78,7 @@ onenord.setup {
     NormalFloat = { bg = colors.grey14 },
     FloatBorder = { bg = colors.grey14, fg = colors.grey14 },
 
+    -- Telescope
     TelescopeMatching = { fg = colors.blue },
     TelescopeNormal = { fg = colors.grey4 },
     TelescopePreviewBorder = { bg = preview, fg = preview },
