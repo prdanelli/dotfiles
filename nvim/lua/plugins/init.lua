@@ -236,7 +236,6 @@ return packer.startup(function(use)
   use {
     "nvim-neotest/neotest",
     requires = {
-      "mfussenegger/nvim-dap",
       "olimorris/neotest-rspec",
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
@@ -250,6 +249,8 @@ return packer.startup(function(use)
     end,
     event = "BufEnter",
   }
+
+  use "folke/lua-dev.nvim"
 
   -----------------------------------------------------------------------------
   -- Git
