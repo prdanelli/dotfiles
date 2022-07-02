@@ -3,7 +3,7 @@ vim.api.nvim_create_augroup("_general", { clear = true })
 -- Close different buffers with `q`
 vim.api.nvim_create_autocmd("FileType", {
   group = "_general",
-  pattern = "qf,help,man,lspinfo,startuptime",
+  pattern = "qf,help,man,lspinfo,startuptime,neotest-summary",
   callback = function() vim.cmd("nnoremap <silent><buffer> q :close<cr>") end,
 })
 
