@@ -81,7 +81,7 @@ function M.setup()
       f = { "<cmd>lua require('telescope').extensions.file_browser.file_browser()<cr>", "File Browser" },
       g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
       h = { "<cmd>Telescope help_tags<cr>", "Help" },
-      i = { "<cmd>Telescope hightlights<cr>", "Highlights" },
+      i = { "<cmd>Telescope highlights<cr>", "Highlights" },
       k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
       m = { "<cmd>Telescope marks<cr>", "Marks" },
       o = { "<cmd>Telescope oldfiles<cr>", "Old Files" },
