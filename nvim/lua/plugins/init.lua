@@ -103,6 +103,11 @@ return packer.startup(function(use)
     event = "BufReadPre",
   } -- Add better vertical lines
 
+  use {
+    "stevearc/dressing.nvim",
+    config = function() require('dressing').setup() end,
+    event = "VimEnter",
+  }
 
   -----------------------------------------------------------------------------
   -- Navigation
