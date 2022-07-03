@@ -96,6 +96,13 @@ function M.setup()
       b = { "<cmd>Gitsigns toggle_current_line_blame<CR>", "Blame" },
       d = { "<cmd>DiffviewOpen<cr>", "Diff View Open" },
       D = { "<cmd>DiffviewClose<cr>", "Diff View Close" },
+      co = { "<cmd>GitConflictChooseOurs<cr>", "Ours" },
+      ct = { "<cmd>GitConflictChooseTheirs<cr>", "Theirs" },
+      cb = { "<cmd>GitConflictChooseBoth<cr>", "Both" },
+      cn = { "<cmd>GitConflictChooseNone<cr>", "None" },
+      ["c]"] = { "<cmd>GitConflictNextConflict<cr>", "Next" },
+      ["c["] = { "<cmd>GitConflictPrevConflict<cr>", "Previous" },
+      cq = { "<cmd>GitConflictListQf<cr>", "Quicklist" },
     },
 
     l = {

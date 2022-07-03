@@ -264,6 +264,11 @@ return packer.startup(function(use)
     cmd = "DiffviewOpen",
   }
 
+  use {
+    'akinsho/git-conflict.nvim',
+    config = function() require("plugins.config.git_conflict") end
+  }
+
   -----------------------------------------------------------------------------
   -- Tmux
   -----------------------------------------------------------------------------
