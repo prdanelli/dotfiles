@@ -103,6 +103,7 @@ return packer.startup(function(use)
     event = "BufReadPre",
   } -- Add better vertical lines
 
+
   -----------------------------------------------------------------------------
   -- Navigation
   -----------------------------------------------------------------------------
@@ -288,8 +289,9 @@ return packer.startup(function(use)
 
   -- Wrap text
   use {
-    "kylechui/nvim-surround",
-    config = function() require("nvim-surround").setup({}) end,
+    "tpope/vim-surround",
+    requires = { "tpope/vim-repeat" },
+    event = "BufEnter",
   }
 
   -- Replace with register and don"t copy
