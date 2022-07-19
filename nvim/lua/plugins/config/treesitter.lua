@@ -26,15 +26,44 @@ local languages = {
 }
 
 configs.setup({
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  },
   ensure_installed = languages,
-  sync_install = true,
+  indent = {
+    enable = false
+  },
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = true
   },
-  indent = {
-    enable = false
+  refactor = {
+    highlight_current_scope = {
+      enable = false
+    },
+    highlight_definitions = {
+      enable = true,
+      clear_on_cursor_move = false,
+    },
+    navigation = {
+      enable = true,
+      keymaps = {
+        goto_definition = "gnd",
+        list_definitions = "gnD",
+        list_definitions_toc = "gO",
+        goto_next_usage = "<a-*>",
+        goto_previous_usage = "<a-#>",
+      },
+    },
+    smart_rename = {
+      enable = true,
+      keymaps = {
+        smart_rename = "grr",
+      },
+    },
   },
+  sync_install = true,
   textobjects = {
     swap = {
       enable = true,
@@ -86,10 +115,6 @@ configs.setup({
       [';'] = 'textsubjects-container-outer',
       ['i;'] = 'textsubjects-container-inner',
     },
-  },
-  context_commentstring = {
-    enable = true,
-    enable_autocmd = false,
   },
 })
 

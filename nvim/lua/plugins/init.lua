@@ -130,17 +130,17 @@ return packer.startup(function(use)
     event = "VimEnter",
     config = function() require("plugins.config.whichkey").setup() end,
   }
+
+  use {
+    "jinh0/eyeliner.nvim",
+    config = function() require("plugins.config.eyeliner") end
+  }
   -----------------------------------------------------------------------------
   -- LSP
   -----------------------------------------------------------------------------
   use {
     "williamboman/nvim-lsp-installer",
-    requires = {
-      "neovim/nvim-lspconfig",
-      "folke/lsp-colors.nvim", -- Add missing LSP highlight groups
-      "nvim-lua/lsp-status.nvim", -- Used by other plugins for basic lsp info
-    },
-    config = function() require("lsp.init") end,
+    requires = { "neovim/nvim-lspconfig" },
   }
 
   use {
@@ -155,6 +155,10 @@ return packer.startup(function(use)
     config = function() require("plugins.config.trouble") end,
     event = "BufEnter",
   }
+
+
+  use "folke/lsp-colors.nvim" -- Add missing LSP highlight groups
+  use "nvim-lua/lsp-status.nvim" -- Used by other plugins for basic lsp info
 
   -----------------------------------------------------------------------------
   -- Completions
@@ -176,6 +180,7 @@ return packer.startup(function(use)
 
       -- Misc
       "lukas-reineke/cmp-under-comparator", -- Tweak completion order
+      "f3fora/cmp-spell",
     },
     config = function() require("plugins.config.cmp") end,
     --event = "BufEnter",
@@ -190,7 +195,8 @@ return packer.startup(function(use)
       "nvim-treesitter/nvim-treesitter-textobjects",
       "JoosepAlviste/nvim-ts-context-commentstring",
       "RRethy/nvim-treesitter-textsubjects",
-      "nvim-treesitter/nvim-treesitter-context"
+      "nvim-treesitter/nvim-treesitter-context",
+      "nvim-treesitter/nvim-treesitter-refactor",
     },
     run = ":TSUpdate",
     config = function() require("plugins.config.treesitter") end,
