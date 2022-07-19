@@ -96,13 +96,13 @@ function M.setup()
       b = { "<cmd>Gitsigns toggle_current_line_blame<CR>", "Blame" },
       d = { "<cmd>DiffviewOpen<cr>", "Diff View Open" },
       D = { "<cmd>DiffviewClose<cr>", "Diff View Close" },
-      co = { "<cmd>GitConflictChooseOurs<cr>", "Ours" },
-      ct = { "<cmd>GitConflictChooseTheirs<cr>", "Theirs" },
-      cb = { "<cmd>GitConflictChooseBoth<cr>", "Both" },
-      cn = { "<cmd>GitConflictChooseNone<cr>", "None" },
-      ["c]"] = { "<cmd>GitConflictNextConflict<cr>", "Next" },
-      ["c["] = { "<cmd>GitConflictPrevConflict<cr>", "Previous" },
-      cq = { "<cmd>GitConflictListQf<cr>", "Quicklist" },
+      O = { "<cmd>GitConflictChooseOurs<cr>", "Ours" },
+      T = { "<cmd>GitConflictChooseTheirs<cr>", "Theirs" },
+      B = { "<cmd>GitConflictChooseBoth<cr>", "Both" },
+      N = { "<cmd>GitConflictChooseNone<cr>", "None" },
+      Q = { "<cmd>GitConflictListQf<cr>", "Quicklist" },
+      ["]"] = { "<cmd>GitConflictNextConflict<cr>", "Next" },
+      ["["] = { "<cmd>GitConflictPrevConflict<cr>", "Previous" },
     },
 
     l = {
@@ -124,6 +124,7 @@ function M.setup()
     p = {
       name = "Plugins",
       i = { "<cmd>PackerInstall<cr>", "Install" },
+      c = { "<cmd>PackerCompile<cr>", "Compile" },
       p = { "<cmd>PackerProfile<cr>", "Profile" },
       s = { "<cmd>PackerSync<cr>", "Sync" },
       S = { "<cmd>PackerStatus<cr>", "Status" },
