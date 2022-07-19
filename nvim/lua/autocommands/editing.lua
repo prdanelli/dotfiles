@@ -18,3 +18,11 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     vim.g["indentLine_enabled"] = "0"
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = "_editing",
+  pattern = "markdown",
+  callback = function()
+    vim.g["indentLine_enabled"] = "0"
+  end,
+})
