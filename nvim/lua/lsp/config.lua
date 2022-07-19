@@ -3,8 +3,6 @@ if not status_ok then
   return
 end
 
-local lspconfig = require("lspconfig")
-
 lsp_installer.setup {
   ensure_installed = {
     "bashls",
@@ -25,6 +23,8 @@ local defaults = {
   on_attach = require("lsp.handlers").on_attach,
   capabilities = require("lsp.handlers").capabilities,
 }
+
+local lspconfig = require("lspconfig")
 
 local luadev_ok, luadev = pcall(require, "lua-dev")
 if luadev_ok then
