@@ -41,6 +41,7 @@ packer.init {
     end,
     prompt_border = "single"
   },
+  max_jobs = 50,
   git = { clone_timeout = 600, },
   auto_clean = true,
   ensure_dependencies = true,
