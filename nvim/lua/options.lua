@@ -46,6 +46,22 @@ end
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.opt.shortmess:append "c"
+-- disable nvim intro
+vim.opt.shortmess:append "sI"
+
+-- vim.opt.winbar = "%{%v:lua.require('user.winbar').get_winbar()%}"
+
+-- go to previous/next line with h,l,left arrow and right arrow when
+-- cursor reaches end/beginning of line
+vim.opt.whichwrap:append "<>[]hl"
+
+-- Better search
+vim.opt.path:remove "/usr/include"
+vim.opt.path:append "**"
+
+vim.opt.wildignorecase = true
+vim.opt.wildignore:append "**/node_modules/*"
+vim.opt.wildignore:append "**/.git/*"
 
 -- Custom fold text
 vim.cmd([[

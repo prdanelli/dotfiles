@@ -195,7 +195,7 @@ return packer.startup(function(use)
       "nvim-treesitter/nvim-treesitter-textobjects",
       "JoosepAlviste/nvim-ts-context-commentstring",
       "RRethy/nvim-treesitter-textsubjects",
-      "nvim-treesitter/nvim-treesitter-context",
+      -- "nvim-treesitter/nvim-treesitter-context",
       "nvim-treesitter/nvim-treesitter-refactor",
     },
     run = ":TSUpdate",
@@ -277,7 +277,6 @@ return packer.startup(function(use)
   }
 
   use {
-    'akinsho/git-conflict.nvim',
     config = function() require("plugins.config.git_conflict") end
   }
 

@@ -78,6 +78,13 @@ onenord.setup {
     NormalFloat = { bg = colors.grey14 },
     FloatBorder = { bg = colors.grey14, fg = colors.grey14 },
 
+    GitConflictCurrent = { bg = colors.green, fg = colors.fg },
+    GitConflictCurrentLabel = { bg = colors.green, fg = colors.fg },
+    GitConflictIncoming = { bg = colors.red, fg = colors.bg },
+    GitConflictIncomingLabel = { bg = colors.red, fg = colors.bg },
+    -- GitConflictAncestor = { bg = colors.green, fg = colors.fg },
+    -- GitConflictAncestorLabel = { bg = colors.green, fg = colors.fg },
+
     -- Telescope
     TelescopeMatching = { fg = colors.blue },
     TelescopeNormal = { fg = colors.grey4 },
