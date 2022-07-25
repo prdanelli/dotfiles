@@ -13,14 +13,14 @@ alias lazygit="lazygit -ucd ~/.config/lazygit/"
 alias grep="grep --color=auto"
 alias cat="bat"
 
-alias skhdkeys="bat ~/.config/skhd/skhdrc"
 alias editdots="cd ~/Personal/Repos/dotfiles; nvim"
 alias brewbundle="brew bundle --file ~/.Brewfile"
 
+
 # ZSH
-alias zshsource="source $ZDOTDIR/.zshrc"
-alias zshedit="nvim $ZDOTDIR/.zshrc"
-alias zshalias="cat ~/.config/zsh/config/aliases.sh"
+alias zsh:source="source $ZDOTDIR/.zshrc"
+alias zsh:edit="nvim $ZDOTDIR/.zshrc"
+alias zsh:alias="cat ~/.config/zsh/config/aliases.sh"
 
 # Tmux
 alias t="tmux"
@@ -31,5 +31,6 @@ alias tn="t new -t"
 # Olio
 alias olio:storage="zsh ~/Dev/storage.sh"
 
-# Yabai
+# Yabai / SKHD
 alias yabai:restart="brew services restart yabai"
+alias skhd:keys="bat ~/.config/skhd/skhdrc"
