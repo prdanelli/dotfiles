@@ -20,5 +20,3 @@ end
 -- Link CursorLine into RnvimrNormal highlight in the Floating window
 vim.cmd[[highlight link RnvimrNormal CursorLine]]
 
-vim.keymap.set("n", "<leader>e", "<cmd>RnvimrToggle<CR>", { noremap = true, silent = true })
-
