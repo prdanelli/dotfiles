@@ -18,10 +18,8 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "scratchpad",
   callback = function()
     vim.cmd("nnoremap <silent><buffer> q :ScratchPad<cr>")
-
     vim.cmd("setlocal nospell")
     vim.cmd("setlocal wrap")
-
     vim.cmd("set filetype=markdown")
   end,
 })
