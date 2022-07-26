@@ -15,9 +15,7 @@ end
 
 -- Use a protected call so we don"t error out on first use
 local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-  return
-end
+if not status_ok then return end
 
 vim.api.nvim_create_augroup("_packer_user_config", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePost", {
@@ -277,6 +275,7 @@ return packer.startup(function(use)
   }
 
   use {
+    "akinsho/git-conflict.nvim",
     config = function() require("plugins.config.git_conflict") end
   }
 
