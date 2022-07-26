@@ -1,22 +1,14 @@
 local cmp_status_ok, cmp = pcall(require, "cmp")
-if not cmp_status_ok then
-  return
-end
+if not cmp_status_ok then return end
 
 local snip_status_ok, luasnip = pcall(require, "luasnip")
-if not snip_status_ok then
-  return
-end
+if not snip_status_ok then return end
 
 local cmp_buffer_ok, cmp_buffer = pcall(require, "cmp_buffer")
-if not cmp_buffer_ok then
-  return
-end
+if not cmp_buffer_ok then return end
 
 local cmp_under_comparator_ok, cmp_under_comparator = pcall(require, "cmp-under-comparator")
-if not cmp_under_comparator_ok then
-  return
-end
+if not cmp_under_comparator_ok then return end
 
 -- Required or snippets will not be added to the completion options
 require("luasnip/loaders/from_vscode").lazy_load()

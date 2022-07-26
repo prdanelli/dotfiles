@@ -1,7 +1,5 @@
 local status_ok, comment = pcall(require, "Comment")
-if not status_ok then
-  return
-end
+if not status_ok then return end
 
 local ts_context_ok, ts_context = pcall(require, "ts_context_commentstring")
 if not ts_context_ok then

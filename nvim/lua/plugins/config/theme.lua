@@ -1,7 +1,5 @@
 local status_ok, onenord = pcall(require, "onenord")
-if not status_ok then
-  return
-end
+if not status_ok then return end
 
 local colors = require("colors").colors
 

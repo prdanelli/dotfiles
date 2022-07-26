@@ -1,7 +1,5 @@
 local status_ok, gitsigns = pcall(require, "gitsigns")
-if not status_ok then
-  return
-end
+if not status_ok then return end
 
 vim.cmd [[ highlight GitSignsChangeLn guifg='#B48EAD' ]]
 vim.cmd [[ highlight GitSignsChange guifg='#B48EAD' ]]
