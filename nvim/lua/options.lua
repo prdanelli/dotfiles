@@ -44,38 +44,6 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
-vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.opt.shortmess:append "c"
--- disable nvim intro
-vim.opt.shortmess:append "sI"
-
--- vim.opt.winbar = "%{%v:lua.require('user.winbar').get_winbar()%}"
-
--- go to previous/next line with h,l,left arrow and right arrow when
--- cursor reaches end/beginning of line
-vim.opt.whichwrap:append "<>[]hl"
-
--- Better search
-vim.opt.path:remove "/usr/include"
-vim.opt.path:append "**"
-
-vim.opt.wildignorecase = true
-vim.opt.wildignore:append "**/node_modules/*"
-vim.opt.wildignore:append "**/.git/*"
-
--- Custom fold text
-vim.cmd([[
-  function! MyFoldText()
-    let line = getline(v:foldstart)
-    let foldedlinecount = v:foldend - v:foldstart + 1
-
-    return ' + ' . foldedlinecount . ' --- ' . line
-  endfunction
-
-  set foldtext=MyFoldText()
-  set fillchars=fold:-
-]])
-
 -- Disable some builtin vim plugins
 local disabled_built_ins = {
   "2html_plugin",
@@ -102,3 +70,28 @@ local disabled_built_ins = {
 for _, plugin in pairs(disabled_built_ins) do
   vim.g["loaded_" .. plugin] = 1
 end
+
+-- vim.opt.winbar = "%{%v:lua.require('user.winbar').get_winbar()%}"
+
+vim.opt.shortmess:append "acsI" -- disable nvim intro
+vim.opt.whichwrap:append "<>[]hl" -- go to previous/next line with h,l
+
+vim.opt.path:remove "/usr/include" -- Better search
+vim.opt.path:append "**" -- Better search
+
+vim.opt.wildignorecase = true
+vim.opt.wildignore:append "**/node_modules/*"
+vim.opt.wildignore:append "**/.git/*"
+
+-- Custom fold text
+vim.cmd([[
+  function! MyFoldText()
+    let line = getline(v:foldstart)
+    let foldedlinecount = v:foldend - v:foldstart + 1
+
+    return ' + ' . foldedlinecount . ' --- ' . line
+  endfunction
+
+  set foldtext=MyFoldText()
+  set fillchars=fold:-
+]])
