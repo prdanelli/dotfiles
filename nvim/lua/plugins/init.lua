@@ -366,6 +366,11 @@ return packer.startup(function(use)
     event = "BufEnter",
   }
 
+  use {
+    "akinsho/toggleterm.nvim",
+    config = function() require("plugins.config.toggleterm") end
+  }
+
   -- Profiling and Performance
   use "dstein64/vim-startuptime"
   use "lewis6991/impatient.nvim"

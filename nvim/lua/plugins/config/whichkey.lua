@@ -131,6 +131,14 @@ function M.setup()
       u = { "<cmd>PackerUpdate<cr>", "Update" },
     },
 
+    t = {
+      name = "Terminal",
+      l = { "<cmd>:lua _toggle_lazygit()<CR>", "Lazygit" },
+      c = { "<cmd>:lua _toggle_console()<CR>", "Console" },
+      i = { "<cmd>:lua _toggle_irb()<CR>", "IRB" },
+      h = { "<cmd>:lua _toggle_htop()<CR>", "htop" },
+    },
+
     x = {
       name = "Trouble",
       x = { "<cmd>Trouble<cr>", "Open" },
