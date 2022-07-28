@@ -64,7 +64,6 @@ end
 
 local htop = Terminal:new(vim.tbl_deep_extend("force", {
   cmd = "htop",
-  hidden = true,
 }, defaults))
 
 function _toggle_htop()
