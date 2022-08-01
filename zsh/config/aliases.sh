@@ -33,4 +33,6 @@ alias olio:storage="zsh ~/Dev/storage.sh"
 
 # Yabai / SKHD
 alias yabai:restart="brew services restart yabai"
+alias yabai:borders:off="yabai -m config window_border off"
+alias yabai:borders:on="yabai -m config window_border on"
 alias skhd:keys="bat ~/.config/skhd/skhdrc"
