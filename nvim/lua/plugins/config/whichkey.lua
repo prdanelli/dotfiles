@@ -78,7 +78,7 @@ function M.setup()
       c = { "<cmd>Telescope commands<cr>", "Commands" },
       d = { "<cmd>Telescope find_dotfiles<cr>", "Dotfiles" },
       e = { "<cmd>RnvimrToggle<CR>", "Ranger" },
-      f = { "<cmd>lua require('telescope').extensions.file_browser.file_browser()<cr>", "File Browser" },
+      f = { "<cmd>lua require('telescope').extensions.file_browser.file_browser({ previewer = false, })<cr>", "File Browser" },
       g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
       h = { "<cmd>Telescope help_tags<cr>", "Help" },
       i = { "<cmd>Telescope highlights<cr>", "Highlights" },

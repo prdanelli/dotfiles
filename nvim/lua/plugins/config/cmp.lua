@@ -95,7 +95,7 @@ cmp.setup {
         buffer = "[Buffer]",
         luasnip = "[Snippet]",
         nvim_lsp = "[LSP]",
-        nvim_lua = "[Lua]",
+        -- nvim_lua = "[Lua]",
       })[entry.source.name]
 
       return vim_item

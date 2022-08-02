@@ -80,10 +80,18 @@ bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
 ################################################################################
+# Misc
+################################################################################
+
+ssh-add -q --apple-use-keychain ~/.ssh/id_rsa # Ensure that the ssh_key is added to the ssh-agent
+
+ulimit -Sn 10240 # Increase the default number of sockers (helps with rspec tests in Chrome)
+
+################################################################################
 # Prompt
 ################################################################################
 
 eval "$(starship init zsh)"
 
-neofetch
+macchina
 

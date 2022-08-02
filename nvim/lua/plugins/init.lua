@@ -1,4 +1,4 @@
--- Automatically install packer
+-- Automatically install packerplugin
 local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = vim.fn.system {
@@ -140,6 +140,15 @@ return packer.startup(function(use)
     "williamboman/nvim-lsp-installer",
     requires = { "neovim/nvim-lspconfig" },
   }
+  --
+  -- use {
+  --   "williamboman/mason.nvim",
+  --   requires = {
+  --     "williamboman/mason-lspconfig.nvim",
+  --     "neovim/nvim-lspconfig",
+  --   },
+  --   config = function() require("plugins.comfig.mason") end,
+  -- }
 
   use {
     "j-hui/fidget.nvim",
@@ -153,7 +162,6 @@ return packer.startup(function(use)
     config = function() require("plugins.config.trouble") end,
     event = "BufEnter",
   }
-
 
   use "folke/lsp-colors.nvim" -- Add missing LSP highlight groups
   use "nvim-lua/lsp-status.nvim" -- Used by other plugins for basic lsp info
