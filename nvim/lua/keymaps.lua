@@ -26,10 +26,6 @@ vim.keymap.set("v", "p", '"_dP', opts)
 vim.keymap.set("v", "<", "<gv", opts)
 vim.keymap.set("v", ">", ">gv", opts)
 
--- Move text up and down
-vim.keymap.set("v", "<A-j>", ":m .+1<CR>==", opts)
-vim.keymap.set("v", "<A-k>", ":m .-2<CR>==", opts)
-
 -- Insert lines above/below without leaving normal mode
 vim.keymap.set("n", "oo", "o<Esc>k", opts)
 vim.keymap.set("n", "OO", "O<Esc>j", opts)
