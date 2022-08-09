@@ -103,6 +103,7 @@ function M.setup()
       Q = { "<cmd>GitConflictListQf<cr>", "Quicklist" },
       ["]"] = { "<cmd>GitConflictNextConflict<cr>", "Next" },
       ["["] = { "<cmd>GitConflictPrevConflict<cr>", "Previous" },
+      l = { "<cmd>lua require('gitlinker').get_buf_range_url('n', { action_callback = require('gitlinker.actions').open_in_browser })<cr>", "Git Link" }
     },
 
     l = {

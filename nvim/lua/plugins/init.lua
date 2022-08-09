@@ -77,6 +77,12 @@ return packer.startup(function(use)
   }
 
   use {
+    "echasnovski/mini.nvim",
+    config = function() require("mini.tabline").setup({}) end,
+    branch = "stable"
+  }
+
+  use {
     "nvim-lualine/lualine.nvim",
     config = function() require("plugins.config.lualine") end,
     event = "VimEnter",
@@ -85,14 +91,6 @@ return packer.startup(function(use)
   use {
     "rmehri01/onenord.nvim",
     config = function() require("plugins.config.theme") end,
-  }
-
-  use {
-    "akinsho/bufferline.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
-    after = { "nvim-web-devicons", "onenord.nvim" },
-    config = function() require("plugins.config.bufferline") end,
-    event = "VimEnter",
   }
 
   use {
