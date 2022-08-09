@@ -138,7 +138,7 @@ return packer.startup(function(use)
     "williamboman/nvim-lsp-installer",
     requires = { "neovim/nvim-lspconfig" },
   }
-  --
+
   -- use {
   --   "williamboman/mason.nvim",
   --   requires = {
@@ -212,13 +212,14 @@ return packer.startup(function(use)
   use {
     "nvim-telescope/telescope.nvim",
     requires = {
-      "nvim-lua/plenary.nvim",
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+      "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-file-browser.nvim",
     },
     config = function() require("plugins.config.telescope") end,
     event = "BufEnter",
   }
+
 
   -----------------------------------------------------------------------------
   -- Syntax, Languages & Code
@@ -283,6 +284,12 @@ return packer.startup(function(use)
   use {
     "akinsho/git-conflict.nvim",
     config = function() require("plugins.config.git_conflict") end
+  }
+
+  use {
+    "ruifm/gitlinker.nvim",
+    config = function() require("gitlinker").setup() end,
+    requires = "nvim-lua/plenary.nvim",
   }
 
   -----------------------------------------------------------------------------
