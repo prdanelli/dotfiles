@@ -55,9 +55,13 @@ vim.keymap.set("n", "gp", "<cmd>cprev<cr>")
 -- Delete buffer
 vim.keymap.set("n", "<c-w>", ":bd<CR>", opts)
 
-vim.keymap.set("n", "<Tab>", ":bnext<CR>", opts)
-vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", opts)
+-- Navigate buffers
+vim.keymap.set("n", "bn", ":bnext<CR>", opts)
+vim.keymap.set("n", "BN", ":bprevious<CR>", opts)
 
+vim.keymap.set("n", "<c-]>", ":bnext<CR>", opts)
+vim.keymap.set("n", "<c-[>", "", opts)
+vim.keymap.set("n", "<c-[>", ":bprevious<CR>", opts)
 -------------------------------------------------------------------------------
 -- Splits
 -------------------------------------------------------------------------------
