@@ -15,4 +15,4 @@ load "keymaps"
 load "plugins"
 load "lsp.init"
 load "autocommands"
-
+load "user.invert_term"
