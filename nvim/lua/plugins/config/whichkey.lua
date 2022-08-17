@@ -18,6 +18,7 @@ function M.setup()
         nav = true, -- misc bindings to work with windows
         z = false, -- bindings for folds, spelling and others prefixed with z
         g = false, -- bindings for prefixed with g
+        b = false,
       },
     },
     window = {
@@ -32,6 +33,11 @@ function M.setup()
       width = { min = 1, max = 50 }, -- min and max width of the columns
       spacing = 10, -- spacing between columns
       align = "center", -- align columns left, center or right
+    },
+    triggers_blacklist = {
+      i = { "j", "k" },
+      v = { "j", "k" },
+      n = { "b", }, -- Ensure b isn't used by whichkey as it slows it down a lot
     },
   }
 
