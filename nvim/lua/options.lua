@@ -19,6 +19,7 @@ local options = {
   numberwidth = 4, -- set number column width to 4
   relativenumber = true, -- set relative numbered lines
   scrolloff = 8, -- is one of my fav
+  scrollback = 100000,
   shiftwidth = 2, -- the number of spaces inserted for each indentation
   showmode = false, -- we don't need to see things like -- INSERT -- anymore
   showtabline = 2, -- always show tabs
