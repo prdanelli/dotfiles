@@ -18,12 +18,11 @@ local toggle = function()
   xpcall(function()
     vim.cmd(vim.tbl_get(c, vim.api.nvim_get_mode().mode) .. i)
   end, function()
-  print('toggler: unsupported value.')
-end)
+    print('toggler: unsupported value.')
+  end)
 end
 
-local opt = { noremap = true, silent = true }
-vim.keymap.set({ 'n', 'v' }, '<leader>i', toggle, opts)
+vim.keymap.set({ 'n', 'v' }, '<leader>i', toggle, { noremap = true, silent = true })
 
 return {
   setup = function(u_tbl)
