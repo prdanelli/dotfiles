@@ -12,13 +12,11 @@ alias rspec="bundle exec rspec"
 alias lazygit="lazygit -ucd ~/.config/lazygit/"
 alias grep="grep --color=auto"
 alias cat="bat"
-
 alias editdots="cd ~/Personal/Repos/dotfiles; nvim"
 alias brewbundle="brew bundle --file ~/.Brewfile"
 
-
 # ZSH
-alias zsh:source="source $ZDOTDIR/.zshrc"
+alias zsh:reload="source $ZDOTDIR/.zshrc"
 alias zsh:edit="nvim $ZDOTDIR/.zshrc"
 alias zsh:alias="cat ~/.config/zsh/config/aliases.sh"
 
@@ -36,3 +34,6 @@ alias yabai:restart="brew services restart yabai"
 alias yabai:borders:off="yabai -m config window_border off"
 alias yabai:borders:on="yabai -m config window_border on"
 alias skhd:keys="bat ~/.config/skhd/skhdrc"
+
+# Brew
+alias brew:upgrade:all="brew upgrade; brew remove nvim; brew install --HEAD nvim;"
