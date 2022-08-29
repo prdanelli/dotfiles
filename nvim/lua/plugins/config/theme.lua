@@ -70,7 +70,7 @@ onenord.setup {
     -- MiniTablineVisible
     -- MiniTablineTabpagesection
     MiniTablineModifiedHidden = { fg = colors.magenta_dark, bg = colors.bg },
-    MiniTablineModifiedCurrent = { fg = colors.magenta, bg = colors.grey13 },
+    MiniTablineModifiedCurrent = { fg = colors.magenta, bg = colors.grey12 },
     MiniTablineModifiedVisible = { fg = colors.magenta_dark, bg = colors.grey13 },
     -- TabLine = { fg = colors.fg, bg = colors.grey14 },
     -- TabLineSel = { fg = colors.fg, bg = colors.grey14 },
