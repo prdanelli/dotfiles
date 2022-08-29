@@ -262,6 +262,15 @@ return packer.startup(function(use)
     event = "BufEnter",
   }
 
+  use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function() require("plugins.config.refactoring") end,
+  }
+
   use "folke/lua-dev.nvim"
 
   -----------------------------------------------------------------------------
