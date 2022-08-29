@@ -20,19 +20,6 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function() vim.cmd("set nobuflisted") end,
 })
 
--- -- Return to last edit position when opening files
--- vim.api.nvim_create_autocmd('BufReadPost', {
---   group    = "_general",
---   pattern  = "*",
---   callback = function()
---     if vim.fn.line("'\"") > 0 and vim.fn.line("'\"") <= vim.fn.line("$") then
---       vim.fn.setpos('.', vim.fn.getpos("'\""))
---       -- vim.cmd('normal zz') -- how do I center the buffer in a sane way??
---       vim.cmd("silent! foldopen")
---     end
---   end
--- })
-
 -- Run resize methods when window size is changes
 vim.api.nvim_create_autocmd("VimResized", {
   group = "_general",
