@@ -1,10 +1,3 @@
-local plugin_loaded, notify = pcall(require, "notify")
-if not plugin_loaded then
-  return
-end
-
-vim.notify = notify
-
 local M = {}
 
 function M.t(str)
@@ -28,8 +21,6 @@ end
 function M.info(msg, name)
   vim.notify(msg, vim.log.levels.INFO, { title = name or "Information" })
 end
-
-vim.notifier = M
 
 return M
 
