@@ -45,6 +45,9 @@ vim.keymap.set("i", "jj", "<esc>", opts)
 -- Ctrl-c to esc
 vim.keymap.set("i", "<C-c>", "<esc>", opts)
 
+-- Escape in normal mode seems to tab
+vim.keymap.set("n", "<esc>", "<NOP>", opts)
+
 -- Navigate quicklist items
 vim.keymap.set("n", "gn", "<cmd>cnext<cr>")
 vim.keymap.set("n", "gp", "<cmd>cprev<cr>")
