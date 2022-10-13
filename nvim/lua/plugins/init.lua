@@ -345,12 +345,6 @@ use {
   event = "BufEnter",
 }
 
--- Pretty notifications
-use {
-  "rcarriga/nvim-notify",
-  event = "BufEnter",
-}
-
 -- Noice notifications and CMD
 use({
   "folke/noice.nvim",

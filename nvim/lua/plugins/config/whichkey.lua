@@ -33,7 +33,7 @@ function M.setup()
       width = { min = 1, max = 50 }, -- min and max width of the columns
       spacing = 10, -- spacing between columns
       align = "center", -- align columns left, center or right
-    },
+   },
     triggers_blacklist = {
       i = { "j", "k" },
       v = { "j", "k" },
