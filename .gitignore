@@ -17,6 +17,7 @@ openvpn/uk.protonvpn.com.udp.ovpn
 nvim.appimage
 nvim/plugin/packer_compiled.lua
 nvim/spell/*
+nvim/lua/playground
 ranger/plugins
 ranger/devicons
 
