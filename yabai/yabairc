@@ -41,5 +41,6 @@ yabai -m rule --add app="^balenaEtcher$" manage=off
 yabai -m rule --add app="^Creative Cloud$" manage=off
 yabai -m rule --add app="^Logi Options$" manage=off
 yabai -m rule --add app="^Alfred Preferences$" manage=off
+yabai -m rule --add title='Preferences$' manage=off layer=above
 
 echo "yabai configuration loaded.."
