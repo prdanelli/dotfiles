@@ -45,20 +45,14 @@ noice.setup({
   views = {
     cmdline_popup = {
       border = {
-        style = "none",
+        --[[ style = "none", ]]
         padding = { 1, 2 },
       },
       filter_options = {},
-      win_options = {
-        winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
-      },
       size = {
         width = 60,
         height = "auto",
       },
     },
-  },
-  win_options = {
-    winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
   },
 })
