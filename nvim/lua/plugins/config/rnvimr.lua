@@ -1,4 +1,4 @@
-local colors = require("colors").colors
+local colors = require("config.colors").colors
 local options = {
   rnvimr_enable_ex = 1, -- Make Ranger replace netrw and be the file explorer
   rnvimr_enable_picker = 1, -- Make Ranger to be hidden after picking a file

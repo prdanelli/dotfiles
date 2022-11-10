@@ -1,7 +1,7 @@
 local status_ok, onenord = pcall(require, "onenord")
 if not status_ok then return end
 
-local colors = require("colors").colors
+local colors = require("config.colors").colors
 
 local prompt = colors.grey14
 local results = colors.grey14
@@ -52,6 +52,11 @@ onenord.setup {
     WhichKeySeparator = { fg = colors.grey12 },
     WhichKeyDesc = { fg = colors.grey7 },
     WhichKeyValue = { fg = colors.grey7 },
+
+    -- Noice
+    --[[ https://github.com/gennaro-tedesco/dotfiles/blob/837345cf48ef14d42d0542566b50ebfd29e16ada/nvim/lua/plugins/noice.lua#L6-L22 ]]
+    --[[ NoicePopup = { fg = prompt, bg = prompt }, ]]
+
 
     Folded = { fg = colors.grey10 },
     VertSplit = { fg = colors.lblue },

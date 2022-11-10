@@ -4,7 +4,7 @@ if not status_ok then return end
 toggleterm.setup()
 
 local Terminal = require("toggleterm.terminal").Terminal
-local colors = require("colors").colors
+local colors = require("config.colors").colors
 local defaults = {
   direction = "float",
   float_opts = {

@@ -1,4 +1,5 @@
-M = {}
+local M = {}
+
 M.colors = {
   bg = "#2e3440",
   fg = "#ECEFF4",
@@ -34,4 +35,5 @@ M.colors = {
   grey18 = "#0d0e11",
   grey19 = "#020203",
 }
+
 return M
