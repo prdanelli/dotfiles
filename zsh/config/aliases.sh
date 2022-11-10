@@ -35,6 +35,7 @@ alias olio:storage="zsh ~/Dev/storage.sh"
 
 # Yabai
 alias yabai:reload="brew services restart yabai"
+alias yabai:install_sa="sudo yabai --load-sa"
 alias yabai:borders:off="yabai -m config window_border off"
 alias yabai:borders:on="yabai -m config window_border on"
 
