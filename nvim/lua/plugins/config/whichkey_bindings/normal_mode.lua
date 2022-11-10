@@ -7,10 +7,11 @@ M.bindings = {
 
   b = {
     name = "Buffer",
-    c = { "<Cmd>close<Cr>", "Close split" },
+    --[[ c = { "<Cmd>close<Cr>", "Close split" }, ]]
     w = { "<Cmd>bd!<Cr>", "Close current" },
     D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete all" },
     i = { "mpggVG=<esc>`p", "Indent" },
+    c = { "<cmd>set tabstop=2 shiftwidth=2 expandtab | retab<cr>", "Convert tabs to spaces" },
     ["1"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "Goto Buffer 1" },
     ["2"] = { "<Cmd>BufferLineGoToBuffer 2<CR>", "Goto Buffer 2" },
     ["3"] = { "<Cmd>BufferLineGoToBuffer 3<CR>", "Goto Buffer 3" },
@@ -60,11 +61,6 @@ M.bindings = {
     ["]"] = { "<cmd>GitConflictNextConflict<cr>", "Next" },
     ["["] = { "<cmd>GitConflictPrevConflict<cr>", "Previous" },
     l = { "<cmd>lua require('gitlinker').get_buf_range_url('n', { action_callback = require('gitlinker.actions').open_in_browser })<cr>", "Git Link" }
-  },
-
-  l = {
-    name = "LSP",
-    a = { "<cmd>AerialToggle!<CR>", "Aerial Symbols" }
   },
 
   n = {
