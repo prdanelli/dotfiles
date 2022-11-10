@@ -60,6 +60,9 @@ vim.keymap.set("n", "<c-w>", ":bd<CR>", opts)
 
 -- Navigate buffers
 vim.keymap.set("n", "bn", ":bnext<CR>", opts)
+vim.keymap.set("n", "bl", ":bnext<CR>", opts)
+vim.keymap.set("n", "bv", ":bprevious<CR>", opts)
+vim.keymap.set("n", "bh", ":bprevious<CR>", opts)
 vim.keymap.set("n", "BN", ":bprevious<CR>", opts)
 
 vim.keymap.set("n", "<c-]>", ":bnext<CR>", opts)
