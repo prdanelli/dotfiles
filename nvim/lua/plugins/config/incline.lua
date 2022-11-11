@@ -4,7 +4,12 @@ if not status_ok then return end
 -- Code taken from: https://github.com/b0o/incline.nvim/discussions/31
 
 local function get_diagnostic_label(props)
-  local icons = require("config.icons").icons
+  local icons = {
+    error = '',
+    hint = '',
+    info = '',
+    warn = '',
+  }
 
   local label = {}
   for severity, icon in pairs(icons) do

@@ -54,7 +54,12 @@ nvim_tree.setup({
   },
   diagnostics = {
     enable = true,
-    icons = require("config.icons").icons,
+    icons = {
+      error = '',
+      hint = '',
+      info = '',
+      warning = '',
+    }
   },
   update_focused_file = {
     enable = true,
