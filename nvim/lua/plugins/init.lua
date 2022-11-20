@@ -143,6 +143,11 @@ return packer.startup(function(use)
     config = function() require("plugins.config.whichkey").setup() end,
   }
 
+  use {
+    "jinh0/eyeliner.nvim",
+    config = function() require("plugins.config.eyeliner") end
+  }
+
   -----------------------------------------------------------------------------
   -- LSP
   -----------------------------------------------------------------------------
