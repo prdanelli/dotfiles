@@ -15,7 +15,8 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   group = "_editing",
   pattern = { "*.md", "*.markdown" },
   callback = function()
-    vim.g["indentLine_enabled"] = "0"
+    vim.g["indentLine_enabled"] = 0
+    vim.g["markdown_syntax_conceal"] = 0
   end,
 })
 
@@ -23,6 +24,7 @@ vim.api.nvim_create_autocmd("FileType", {
   group = "_editing",
   pattern = "markdown",
   callback = function()
-    vim.g["indentLine_enabled"] = "0"
+    vim.g["indentLine_enabled"] = 0
+    vim.g["markdown_syntax_conceal"] = 0
   end,
 })
