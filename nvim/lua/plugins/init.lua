@@ -53,6 +53,11 @@ return packer.startup(function(use)
   -- Look & feel
   -----------------------------------------------------------------------------
   use {
+    "kyazdani42/nvim-web-devicons",
+    config = function() require("plugins.config.nvim_web_devicons") end,
+  }
+
+  use {
     "yggdroot/indentline",
     config = function() require("plugins.config.indent_line") end,
   }
@@ -116,6 +121,7 @@ return packer.startup(function(use)
     }
   }
 
+  -- Winbar controls
   use {
     "b0o/incline.nvim",
     config = function () require("plugins.config.incline") end,
@@ -146,6 +152,16 @@ return packer.startup(function(use)
   use {
     "jinh0/eyeliner.nvim",
     config = function() require("plugins.config.eyeliner") end
+  }
+
+  use {
+    "utilyre/barbecue.nvim",
+    requires = {
+      "neovim/nvim-lspconfig",
+      "smiteshp/nvim-navic",
+      "kyazdani42/nvim-web-devicons", -- optional
+    },
+    config = function() require("plugins.config.barbecue") end,
   }
 
   -----------------------------------------------------------------------------
@@ -279,14 +295,14 @@ return packer.startup(function(use)
   use {
     "lewis6991/gitsigns.nvim",
     requires = { "nvim-lua/plenary.nvim" },
-    config = function() require('gitsigns').setup() end,
+    config = function() require("plugins.config.gitsigns") end,
     event = "BufReadPre",
   }
 
   use {
     "sindrets/diffview.nvim",
-    config = function() require("plugins.config.diffview") end,
     requires = "nvim-lua/plenary.nvim",
+    config = function() require("plugins.config.diffview") end,
     cmd = "DiffviewOpen",
   }
 
@@ -297,8 +313,8 @@ return packer.startup(function(use)
 
   use {
     "ruifm/gitlinker.nvim",
-    config = function() require("gitlinker").setup() end,
     requires = "nvim-lua/plenary.nvim",
+    config = function() require("gitlinker").setup() end,
   }
 
   -----------------------------------------------------------------------------

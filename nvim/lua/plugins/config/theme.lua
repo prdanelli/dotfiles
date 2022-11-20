@@ -26,6 +26,13 @@ onenord.setup {
     eob_lines = true,
   },
   custom_highlights = {
+    -- Barbecue
+    NavicText = { fg = colors.grey10 },
+    NavicSeparator = { fg = colors.grey10 },
+
+    -- Rnvimr
+    RnvimrNormal = { bg = prompt },
+
     -- Neotest
     NeotestAdapterName = { fg = colors.grey10 },
     NeotestFile = { fg = colors.grey6 },
@@ -56,7 +63,6 @@ onenord.setup {
     -- Noice
     --[[ https://github.com/gennaro-tedesco/dotfiles/blob/837345cf48ef14d42d0542566b50ebfd29e16ada/nvim/lua/plugins/noice.lua#L6-L22 ]]
     --[[ NoicePopup = { fg = prompt, bg = prompt }, ]]
-
 
     Folded = { fg = colors.grey10 },
     VertSplit = { fg = colors.lblue },

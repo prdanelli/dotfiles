@@ -1,5 +1,5 @@
 local status_ok, incline = pcall(require, "incline")
-if not status_ok then return end
+if status_ok then return end
 
 -- Code taken from: https://github.com/b0o/incline.nvim/discussions/31
 
