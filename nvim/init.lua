@@ -3,16 +3,12 @@ if impatient_loaded then
   impatient.enable_profile()
 end
 
--- Allow hot reloading of configurations
-_G.load = function(module)
-  package.loaded[module] = nil
-  return require(module)
-end
+require "utils"
 
-load "utils"
-load "options"
-load "keymaps"
-load "plugins"
-load "lsp.init"
-load "autocommands"
-load "user.invert_term"
+safe_load "config.options"
+safe_load "config.keymaps"
+safe_load "config.disable_builtins"
+safe_load "lsp"
+safe_load "plugins"
+safe_load "autocommands"
+safe_load "user.invert_term"

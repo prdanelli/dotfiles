@@ -2,7 +2,7 @@ local options = {
   background = "dark",
   backup = false, -- creates a backup file
   clipboard = "unnamedplus", -- allows neovim to access the system clipboard
-  cmdheight = 0, -- more space in the neovim command line for displaying messages
+  cmdheight = 1, -- 0 = off, more space in the neovim command line for displaying messages
   colorcolumn = "80,120",
   completeopt = { "menu", "menuone", "noselect" }, -- mostly just for cmp
   conceallevel = 0, -- so that `` is visible in markdown files
@@ -44,35 +44,6 @@ local options = {
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
-
--- Disable some builtin vim plugins
-local disabled_built_ins = {
-  "2html_plugin",
-  "getscript",
-  "getscriptPlugin",
-  "gzip",
-  "logipat",
-  "netrw",
-  "netrwPlugin",
-  "netrwSettings",
-  "netrwFileHandlers",
-  "matchit",
-  "matchparen",
-  "tar",
-  "tarPlugin",
-  "tutor",
-  "rrhelper",
-  "vimball",
-  "vimballPlugin",
-  "zip",
-  "zipPlugin",
-}
-
-for _, plugin in pairs(disabled_built_ins) do
-  vim.g["loaded_" .. plugin] = 1
-end
-
--- vim.opt.winbar = "%{%v:lua.require('user.winbar').get_winbar()%}"
 
 vim.opt.shortmess:append "acsI" -- disable nvim intro
 vim.opt.whichwrap:append "<>[]hl" -- go to previous/next line with h,l

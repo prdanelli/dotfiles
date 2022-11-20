@@ -1,4 +1,10 @@
 vim.notifier = require("utils.notifier")
+--
+-- Allow hot reloading of configurations
+_G.safe_load = function(module)
+  package.loaded[module] = nil
+  return require(module)
+end
 
 -- Local pretty_print
 _G.dump = function(...)
