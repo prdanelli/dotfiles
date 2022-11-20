@@ -181,7 +181,6 @@ return packer.startup(function(use)
       "hrsh7th/cmp-buffer", -- Buffer completions
       "hrsh7th/cmp-path", -- Path completions
       "hrsh7th/cmp-cmdline", -- Cmdline completions
-      "hrsh7th/cmp-nvim-lua", -- API completions
       "hrsh7th/cmp-nvim-lsp", -- LSP completions
       "hrsh7th/cmp-nvim-lsp-document-symbol", -- For textDocument/documentSymbol
 

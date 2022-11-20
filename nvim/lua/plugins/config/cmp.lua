@@ -97,7 +97,7 @@ cmp.setup {
         buffer = "[Buffer]",
         luasnip = "[Snippet]",
         nvim_lsp = "[LSP]",
-        -- nvim_lua = "[Lua]",
+        spell = "[Spelling]",
       })[entry.source.name]
 
       return vim_item
@@ -105,10 +105,18 @@ cmp.setup {
   },
   sources = {
     { name = "nvim_lsp" },
-    { name = "nvim_lua" },
     { name = "luasnip" },
     { name = "path" },
     { name = "buffer", keyword_length = 3 },
+    {
+      name = "spell",
+      option = {
+        keep_all_entries = false,
+        enable_in_context = function()
+          return require('cmp.config.context').in_treesitter_capture('spell')
+        end,
+      },
+    },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
@@ -157,12 +165,12 @@ cmp.setup.cmdline(":", {
 cmp.setup.cmdline("/", {
   completion = { autocomplete = false },
   sources = cmp.config.sources(
-    {
-      { name = "buffer" }
-    },
-    {
-      { name = "nvim_lsp_document_symbol" }
-    }
+  {
+    { name = "buffer" }
+  },
+  {
+    { name = "nvim_lsp_document_symbol" }
+  }
   ),
   mapping = cmp.mapping.preset.cmdline({}),
 })
