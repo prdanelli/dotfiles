@@ -185,6 +185,11 @@ return packer.startup(function(use)
     event = "BufEnter",
   }
 
+  use {
+    "ldelossa/nvim-ide",
+    config = function() require("plugins.config.nvim_ide") end,
+  }
+
   use "folke/lsp-colors.nvim" -- Add missing LSP highlight groups
   use "nvim-lua/lsp-status.nvim" -- Used by other plugins for basic lsp info
 
