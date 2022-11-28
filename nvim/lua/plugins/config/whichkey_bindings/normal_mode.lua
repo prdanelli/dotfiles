@@ -63,6 +63,12 @@ M.bindings = {
     l = { "<cmd>lua require('gitlinker').get_buf_range_url('n', { action_callback = require('gitlinker.actions').open_in_browser })<cr>", "Git Link" }
   },
 
+  i = {
+    name = "Nvim IDE",
+    r = { "<cmd>Workspace RightPanelToggle<cr>", "Right Panel" },
+    l = { "<cmd>Workspace LeftPanelToggle<cr>", "Left Panel" },
+  },
+
   n = {
     name = "Neotest",
     a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach" },
@@ -91,6 +97,13 @@ M.bindings = {
     v = { [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]], "Extract Variable" },
     i = { [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], "Inline Variable" },
     b = { [[ <Cmd>lua require('refactoring').refactor('Extract Block')<CR>]], "Extract Block" },
+  },
+
+  s = {
+    name = "Tree Split",
+    t = { "<esc><cmd>TSJToggle<cr>", "Toggle" },
+    s = { "<esc><cmd>TSJSplit<cr>", "Split" },
+    j = { "<esc><cmd>TSJJoin<cr>", "Join" },
   },
 
   t = {
