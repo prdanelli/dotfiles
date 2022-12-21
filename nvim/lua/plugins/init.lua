@@ -369,9 +369,16 @@ return packer.startup(function(use)
   use "editorconfig/editorconfig-vim"
 
   -- Record open files etc in sessions
+  --[[ use { ]]
+  --[[   "rmagatti/auto-session", ]]
+    --[[ config = function() require("plugins.config.sessions") end, ]]
+  --[[ } ]]
+  --[[ } ]]
   use {
-    "rmagatti/auto-session",
-    config = function() require("plugins.config.auto_session") end,
+    "folke/persistence.nvim",
+    event = "BufReadPre", -- this will only start session saving when an actual file was opened
+    module = "persistence",
+    config = function() require("plugins.config.sessions") end,
   }
 
   -- Delete buffers but maintain layout
