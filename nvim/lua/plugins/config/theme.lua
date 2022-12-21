@@ -27,8 +27,9 @@ onenord.setup {
   },
   custom_highlights = {
     -- Barbecue
-    NavicText = { fg = colors.grey10 },
-    NavicSeparator = { fg = colors.grey10 },
+    BarbecueBasename = { fg = colors.grey10 },
+    BarbecueDirname = { fg = colors.grey10 },
+    BarbecueSeparator = { fg = colors.grey10 },
 
     -- Rnvimr
     RnvimrNormal = { bg = prompt },
@@ -107,8 +108,9 @@ onenord.setup {
     -- GitConflictAncestorLabel = { bg = colors.green, fg = colors.fg },
 
     -- Telescope
+    -- https://github.com/nvim-telescope/telescope.nvim/blob/master/plugin/telescope.lua
     TelescopeMatching = { fg = colors.blue },
-    TelescopeNormal = { fg = colors.grey4 },
+    TelescopeNormal = { fg = colors.grey8 },
     TelescopePreviewBorder = { bg = preview, fg = preview },
     TelescopePreviewNormal = { bg = preview },
     TelescopePreviewTitle = { fg = preview },
@@ -119,5 +121,8 @@ onenord.setup {
     TelescopeResultsBorder = { bg = results, fg = results },
     TelescopeResultsNormal = { bg = results },
     TelescopeResultsTitle = { fg = results },
+    -- The current item
+    TelescopeSelection = { fg = colors.magenta_dark, bg = results },
+    TelescopeSelectionCaret = { fg = colors.magenta_dark, bg = results },
   }
 }
