@@ -292,12 +292,6 @@ return packer.startup(function(use)
     config = function() require("plugins.config.refactoring") end,
   }
 
-  use {
-    "Wansmer/treesj",
-    requires = { "nvim-treesitter" },
-    config = function() require("plugins.config.treesj") end,
-  }
-
   use "folke/lua-dev.nvim"
 
   -----------------------------------------------------------------------------
