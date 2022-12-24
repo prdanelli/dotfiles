@@ -257,6 +257,7 @@ return packer.startup(function(use)
   use "tpope/vim-rails"
   use "vim-ruby/vim-ruby"
   use "mtdl9/vim-log-highlighting"
+  use "folke/neodev.nvim"
 
   use {
     "cuducos/yaml.nvim",
@@ -291,8 +292,6 @@ return packer.startup(function(use)
     },
     config = function() require("plugins.config.refactoring") end,
   }
-
-  use "folke/lua-dev.nvim"
 
   -----------------------------------------------------------------------------
   -- Git

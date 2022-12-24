@@ -1,24 +1,3 @@
--- local status_ok, mason = pcall(require, "mason")
--- if not status_ok then return end
---
--- mason.setup()
---
--- require("mason-lspconfig").setup({
---   ensure_installed = {
---     "bashls",
---     "cssls",
---     "dockerls",
---     "html",
---     "jsonls",
---     "lemminx",
---     "solargraph",
---     "sqlls",
---     "sumneko_lua",
---     "tsserver",
---     "yamlls",
---   },
--- })
-
 local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
 if not status_ok then
   return
@@ -45,7 +24,7 @@ local defaults = {
 
 local lspconfig = require("lspconfig")
 
-local luadev_ok, luadev = pcall(require, "lua-dev")
+local luadev_ok, luadev = pcall(require, "neodev")
 if luadev_ok then
   lspconfig.sumneko_lua.setup(luadev.setup(vim.tbl_deep_extend("force", require("lsp.settings.sumneko_lua"), defaults)))
 else
