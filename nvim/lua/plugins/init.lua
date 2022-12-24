@@ -58,11 +58,6 @@ return packer.startup(function(use)
   }
 
   use {
-    "yggdroot/indentline",
-    config = function() require("plugins.config.indent_line") end,
-  }
-
-  use {
     "norcalli/nvim-colorizer.lua",
     config = function() require("plugins.config.colorizer") end,
     event = "BufReadPre",
@@ -98,16 +93,11 @@ return packer.startup(function(use)
     config = function() require("plugins.config.theme") end,
   }
 
+  -- Add better vertical lines
   use {
     "lukas-reineke/virt-column.nvim",
     config = function() require("virt-column").setup() end,
     event = "BufReadPre",
-  } -- Add better vertical lines
-
-  use {
-    "stevearc/dressing.nvim",
-    config = function() require('dressing').setup() end,
-    event = "VimEnter",
   }
 
   -- Noice notifications and CMD
@@ -161,6 +151,9 @@ return packer.startup(function(use)
   -----------------------------------------------------------------------------
   -- LSP
   -----------------------------------------------------------------------------
+  use "folke/lsp-colors.nvim" -- Add missing LSP highlight groups
+  use "nvim-lua/lsp-status.nvim" -- Used by other plugins for basic lsp info
+
   use {
     "williamboman/nvim-lsp-installer",
     requires = { "neovim/nvim-lspconfig" },
@@ -178,14 +171,6 @@ return packer.startup(function(use)
     config = function() require("plugins.config.trouble") end,
     event = "BufEnter",
   }
-
-  use {
-    "ldelossa/nvim-ide",
-    config = function() require("plugins.config.nvim_ide") end,
-  }
-
-  use "folke/lsp-colors.nvim" -- Add missing LSP highlight groups
-  use "nvim-lua/lsp-status.nvim" -- Used by other plugins for basic lsp info
 
   -----------------------------------------------------------------------------
   -- Completions
@@ -218,11 +203,10 @@ return packer.startup(function(use)
   use {
     "nvim-treesitter/nvim-treesitter",
     requires = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      "JoosepAlviste/nvim-ts-context-commentstring",
-      "RRethy/nvim-treesitter-textsubjects",
-      -- "nvim-treesitter/nvim-treesitter-context",
-      "nvim-treesitter/nvim-treesitter-refactor",
+--       "nvim-treesitter/nvim-treesitter-textobjects",
+--       "JoosepAlviste/nvim-ts-context-commentstring",
+--       "RRethy/nvim-treesitter-textsubjects",
+--       "nvim-treesitter/nvim-treesitter-refactor",
     },
     run = ":TSUpdate",
     config = function() require("plugins.config.treesitter") end,
@@ -252,6 +236,17 @@ return packer.startup(function(use)
   use "vim-ruby/vim-ruby"
   use "mtdl9/vim-log-highlighting"
   use "folke/neodev.nvim"
+
+  -- Comment lines/blocks
+  use {
+    'numToStr/Comment.nvim',
+    config = function() require("plugins.config.comment") end,
+    requires = {
+      -- "JoosepAlviste/nvim-ts-context-commentstring",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    event = "BufEnter",
+  }
 
   use {
     "cuducos/yaml.nvim",
@@ -325,6 +320,8 @@ return packer.startup(function(use)
   -----------------------------------------------------------------------------
   -- Misc
   -----------------------------------------------------------------------------
+  -- Editor config integration
+  use "editorconfig/editorconfig-vim"
 
   -- Better quick list
   use {
@@ -352,15 +349,6 @@ return packer.startup(function(use)
     event = "BufEnter",
   }
 
-  -- Editor config integration
-  use "editorconfig/editorconfig-vim"
-
-  -- Record open files etc in sessions
-  --[[ use { ]]
-  --[[   "rmagatti/auto-session", ]]
-    --[[ config = function() require("plugins.config.sessions") end, ]]
-  --[[ } ]]
-  --[[ } ]]
   use {
     "folke/persistence.nvim",
     event = "BufReadPre", -- this will only start session saving when an actual file was opened
@@ -371,17 +359,6 @@ return packer.startup(function(use)
   -- Delete buffers but maintain layout
   use {
     "famiu/bufdelete.nvim",
-    event = "BufEnter",
-  }
-
-  -- Comment lines/blocks
-  use {
-    'numToStr/Comment.nvim',
-    config = function() require("plugins.config.comment") end,
-    requires = {
-      "JoosepAlviste/nvim-ts-context-commentstring",
-      "nvim-treesitter/nvim-treesitter",
-    },
     event = "BufEnter",
   }
 
