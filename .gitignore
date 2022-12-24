@@ -14,15 +14,16 @@ duplicity/*
 !duplicity/excludes.conf
 openvpn/credentials.conf
 openvpn/uk.protonvpn.com.udp.ovpn
-nvim.appimage
-nvim/plugin/packer_compiled.lua
-nvim/spell/*
-nvim/lua/playground
 ranger/plugins
 ranger/devicons
 .luarc.json
 
-tmux/plugins/**
+nvim/plugin/packer_compiled.lua
+nvim/spell/*
+nvim/lua/playground
+nvim/sessions
+
+tmux/plugins/**/*
 tmux/resurrect/**
 zsh/secrets.sh
 zsh/.zsh_history
