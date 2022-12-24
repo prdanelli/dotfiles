@@ -1,3 +1,6 @@
+local plugin_loaded, alpha = pcall(require, "alpha")
+if not plugin_loaded then return end
+
 vim.api.nvim_create_augroup("_alpha", { clear = true })
 
 -- Alpha Specific fixes to adjust the display
