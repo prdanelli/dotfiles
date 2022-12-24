@@ -3,7 +3,6 @@ if not status_ok then return end
 
 local actions = require("telescope.actions")
 local previewers = require("telescope.previewers")
-local trouble = require("trouble.providers.telescope")
 local sorters = require("telescope.sorters")
 
 -- Filemanager shortcuts
@@ -41,11 +40,8 @@ telescope.setup({
     mappings = {
       i = {
         ["<esc>"] = actions.close,
-        ["<c-t>"] = trouble.open_with_trouble,
       },
-      n = {
-        ["<c-t>"] = trouble.open_with_trouble
-      },
+      n = {},
     },
     vimgrep_arguments = {
       "rg",
