@@ -100,10 +100,10 @@ M.bindings = {
   },
 
   s = {
-    name = "Tree Split",
-    t = { "<esc><cmd>TSJToggle<cr>", "Toggle" },
-    s = { "<esc><cmd>TSJSplit<cr>", "Split" },
-    j = { "<esc><cmd>TSJJoin<cr>", "Join" },
+    name = "Sessions",
+    r = { [[<cmd>lua require("persistence").load()<cr>]], "Restore (Directory)" },
+    l = { [[<cmd>lua require("persistence").load({ last = true })<cr>]], "Restore" },
+    s = { [[<cmd>lua require("persistence").stop()<cr>]], "Stop" },
   },
 
   t = {
