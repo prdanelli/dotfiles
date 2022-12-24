@@ -121,12 +121,6 @@ return packer.startup(function(use)
     }
   }
 
-  -- Winbar controls
-  use {
-    "b0o/incline.nvim",
-    config = function () require("plugins.config.incline") end,
-  }
-
   -----------------------------------------------------------------------------
   -- Navigation
   -----------------------------------------------------------------------------
