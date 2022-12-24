@@ -413,10 +413,6 @@ return packer.startup(function(use)
     config = function() require("nvim-autopairs").setup() end
   }
 
-  -- Profiling and Performance
-  use "dstein64/vim-startuptime"
-  use "lewis6991/impatient.nvim"
-
   -----------------------------------------------------------------------------
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

@@ -1,8 +1,3 @@
-local impatient_loaded, impatient = pcall(require, "impatient")
-if impatient_loaded then
-  impatient.enable_profile()
-end
-
 require "utils"
 require "plugins" -- Errors are generated with safe_load
 require "lsp"
