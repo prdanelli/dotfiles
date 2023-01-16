@@ -22,15 +22,16 @@ local defaults = {
   capabilities = require("lsp.handlers").capabilities,
 }
 
-local lspconfig = require("lspconfig")
-
+-- IMPORTANT: make sure to setup neodev BEFORE lspconfig
 local luadev_ok, luadev = pcall(require, "neodev")
 if luadev_ok then
-  lspconfig.sumneko_lua.setup(luadev.setup(vim.tbl_deep_extend("force", require("lsp.settings.sumneko_lua"), defaults)))
-else
-  lspconfig.sumneko_lua.setup(vim.tbl_deep_extend("force", require("lsp.settings.sumneko_lua"), defaults))
+  luadev.setup()
 end
 
+-- then setup your lsp server as usual
+local lspconfig = require('lspconfig')
+
+lspconfig.sumneko_lua.setup(vim.tbl_deep_extend("force", require("lsp.settings.sumneko_lua"), defaults))
 lspconfig.solargraph.setup(vim.tbl_deep_extend("force", require("lsp.settings.solargraph"), defaults))
 lspconfig.jsonls.setup(vim.tbl_deep_extend("force", require("lsp.settings.jsonls"), defaults))
 lspconfig.bashls.setup(defaults)
