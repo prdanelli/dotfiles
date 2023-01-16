@@ -26,11 +26,6 @@ onenord.setup {
     eob_lines = true,
   },
   custom_highlights = {
-    -- Barbecue
-    BarbecueBasename = { fg = colors.grey10 },
-    BarbecueDirname = { fg = colors.grey10 },
-    BarbecueSeparator = { fg = colors.grey10 },
-
     -- Rnvimr
     RnvimrNormal = { bg = prompt },
 
@@ -60,10 +55,6 @@ onenord.setup {
     WhichKeySeparator = { fg = colors.grey12 },
     WhichKeyDesc = { fg = colors.grey7 },
     WhichKeyValue = { fg = colors.grey7 },
-
-    -- Noice
-    --[[ https://github.com/gennaro-tedesco/dotfiles/blob/837345cf48ef14d42d0542566b50ebfd29e16ada/nvim/lua/plugins/noice.lua#L6-L22 ]]
-    --[[ NoicePopup = { fg = prompt, bg = prompt }, ]]
 
     Folded = { fg = colors.grey10 },
     VertSplit = { fg = colors.lblue },
