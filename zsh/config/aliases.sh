@@ -45,7 +45,7 @@ alias skhd:keys="bat ~/.config/skhd/skhdrc"
 alias skhd:reload="brew services restart skhd"
 
 # Brew
-alias brew:upgrade:all="brew upgrade; brew remove nvim; brew install --HEAD nvim;"
+alias brew:upgrade:all="brew upgrade; brew remove nvim; brew install --HEAD nvim; nvim --headless '+Lazy! sync' +qa;"
 # alias brew:upgrade:all="brew upgrade"
 alias brewbundle="brew bundle --file ~/.Brewfile"
 
