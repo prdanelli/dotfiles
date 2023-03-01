@@ -21,6 +21,7 @@ local languages = {
   "scss",
   "toml",
   "yaml",
+  "vim",
 }
 
 configs.setup({
