@@ -35,7 +35,6 @@ M.bindings = {
     c = { "<cmd>Telescope commands<cr>", "Commands" },
     d = { "<cmd>Telescope find_dotfiles<cr>", "Dotfiles" },
     e = { "<cmd>RnvimrToggle<CR>", "Ranger" },
-    f = { "<cmd>lua require('telescope').extensions.file_browser.file_browser({ previewer = false, })<cr>", "File Browser" },
     g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
     h = { "<cmd>Telescope help_tags<cr>", "Help" },
     i = { "<cmd>Telescope highlights<cr>", "Highlights" },
@@ -43,7 +42,7 @@ M.bindings = {
     m = { "<cmd>Telescope marks<cr>", "Marks" },
     r = { "<cmd>Telescope oldfiles<cr>", "Old Files" },
     p = { "<cmd>Telescope find_files hidden=true layout_config={'prompt_position':'top'}<cr>", "Files" },
-    s = { "<cmd>Telescope spell_suggest<cr>", "Spelling" },
+    s = { "<cmd>lua require'telescope.builtin'.grep_string()<CR>", "Grep String" },
     t = { "<cmd>NvimTreeToggle<cr>", "Tree Explorer" },
     w = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Current Buffer" },
   },
@@ -63,40 +62,16 @@ M.bindings = {
     l = { "<cmd>lua require('gitlinker').get_buf_range_url('n', { action_callback = require('gitlinker.actions').open_in_browser })<cr>", "Git Link" }
   },
 
-  i = {
-    name = "Nvim IDE",
-    r = { "<cmd>Workspace RightPanelToggle<cr>", "Right Panel" },
-    l = { "<cmd>Workspace LeftPanelToggle<cr>", "Left Panel" },
-  },
-
-  n = {
-    name = "Neotest",
-    a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach" },
-    f = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Run All" },
-    l = { "<cmd>lua require('neotest').run.run_last()<cr>", "Run Last" },
-    n = { "<cmd>lua require('neotest').run.run()<cr>", "Run Nearest" },
-    o = { "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Output" },
-    S = { "<cmd>lua require('neotest').run.stop()<cr>", "Stop" },
-    s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary" },
-  },
-
-  p = {
-    name = "Plugins",
-    i = { "<cmd>PackerInstall<cr>", "Install" },
-    c = { "<cmd>PackerCompile<cr>", "Compile" },
-    p = { "<cmd>PackerProfile<cr>", "Profile" },
-    s = { "<cmd>PackerSync<cr>", "Sync" },
-    S = { "<cmd>PackerStatus<cr>", "Status" },
-    u = { "<cmd>PackerUpdate<cr>", "Update" },
+  m = {
+    name = "Messages",
+    l = { "<cmd>lua require('noice').cmd('last')<cr>", "Last Message" },
+    h = { "<cmd>lua require('noice').cmd('history')<cr>", "History" },
   },
 
   r = {
     name = "Refactoring",
-    e = { [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], "Extract Function" },
-    f = { [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]], "Extract Function to File" },
-    v = { [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]], "Extract Variable" },
-    i = { [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], "Inline Variable" },
     b = { [[ <Cmd>lua require('refactoring').refactor('Extract Block')<CR>]], "Extract Block" },
+    i = { [[ <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], "Inline Variable" },
   },
 
   s = {
@@ -142,4 +117,3 @@ M.bindings = {
 }
 
 return M
-
