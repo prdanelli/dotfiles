@@ -25,7 +25,9 @@ local plugins = {
 
   {
     "goolord/alpha-nvim",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
+    dependencies = {
+      "kyazdani42/nvim-web-devicons"
+    },
     config = function() require("plugins.config.alpha") end,
   },
 
@@ -49,13 +51,13 @@ local plugins = {
   {
     "nvim-lualine/lualine.nvim",
     config = function() require("plugins.config.lualine") end,
-    dependencies = { "folke/noice.nvim" },
     event = "VimEnter",
   },
 
   {
     "rmehri01/onenord.nvim",
     config = function() require("plugins.config.theme") end,
+    lazy = false,
   },
 
   -- Add better vertical lines
@@ -161,6 +163,11 @@ local plugins = {
     event = "BufReadPre",
   },
 
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+  },
+
   -----------------------------------------------------------------------------
   -- Telescope
   -----------------------------------------------------------------------------
@@ -243,10 +250,20 @@ local plugins = {
   -----------------------------------------------------------------------------
   -- Tmux
   -----------------------------------------------------------------------------
-  { "tmux-plugins/vim-tmux" },
-  { "tmux-plugins/vim-tmux-focus-events" },
-  { "christoomey/vim-tmux-navigator" },
+  {
+    "tmux-plugins/vim-tmux",
+    lazy = false,
+  },
 
+  {
+    "tmux-plugins/vim-tmux-focus-events",
+    lazy = false,
+  },
+
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  },
   -----------------------------------------------------------------------------
   -- Misc
   -----------------------------------------------------------------------------
@@ -308,12 +325,31 @@ local plugins = {
 
   {
     "akinsho/toggleterm.nvim",
-    config = function() require("plugins.config.toggleterm") end
+    config = function() require("plugins.config.toggleterm") end,
+    lazy = false,
   },
 
   {
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup() end
+  },
+}
+
+local opts = {
+  defaults = {
+    lazy = true, -- should plugins be lazy-loaded?
+  },
+  lockfile = vim.fn.stdpath("config") .. "/.lazy-lock.json",
+  concurrency = 50,
+  install = {
+    missing = true, -- install missing plugins on startup.
+    colorscheme = { "onenord" }, -- try to load one of these colorschemes when installation
+  },
+  ui = {
+    size = {
+      width = 0.7,
+      height = 0.7
+    },
   },
 }
 
