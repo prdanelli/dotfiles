@@ -32,6 +32,7 @@ alias tn="t new -t"
 
 # Olio
 alias olio:storage="zsh ~/Dev/storage.sh"
+alias olio:stop_storage="docker stop redis-dev mysql-dev"
 
 # Yabai
 alias yabai:reload="brew services restart yabai"
@@ -47,3 +48,6 @@ alias skhd:reload="brew services restart skhd"
 alias brew:upgrade:all="brew upgrade; brew remove nvim; brew install --HEAD nvim;"
 # alias brew:upgrade:all="brew upgrade"
 alias brewbundle="brew bundle --file ~/.Brewfile"
+
+# Docker Compose
+alias dc="docker-compose"
