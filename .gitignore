@@ -22,7 +22,7 @@ nvim/plugin/packer_compiled.lua
 nvim/spell/*
 nvim/lua/playground
 nvim/sessions
-nvim/lazy-lock.json
+nvim/.lazy-lock.json
 
 tmux/plugins/**/*
 tmux/resurrect/**
