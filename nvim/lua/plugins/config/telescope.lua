@@ -20,8 +20,6 @@ local sorters = require("telescope.sorters")
 -- <C-h>/h	Toggle hidden files/folders
 -- <C-s>/s	Toggle all entries ignoring ./ and ../
 
-telescope.load_extension("file_browser", { grouped = true })
-telescope.load_extension("fzf") -- require fzf extension for better fzf sorting algorithm
 telescope.setup({
   pickers = {
     buffers = {
@@ -79,16 +77,6 @@ telescope.setup({
     file_previewer = previewers.vim_buffer_cat.new,
     grep_previewer = previewers.vim_buffer_vimgrep.new,
     qflist_previewer = previewers.vim_buffer_qflist.new,
-    extensions = {
-      fzf = {
-        override_generic_sorter = false,
-        override_file_sorter = true,
-        case_mode = "smart_case"
-      },
-      file_browser = {
-        files = false,
-      }
-    }
+    extensions = {}
   }
 })
-
