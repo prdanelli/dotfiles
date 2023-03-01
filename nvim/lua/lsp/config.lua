@@ -11,7 +11,7 @@ lsp_installer.setup {
     "jsonls",
     "lemminx",
     "solargraph",
-    "sumneko_lua",
+    "lua_ls",
     "tsserver",
     "yamlls",
   }
@@ -31,7 +31,7 @@ end
 -- then setup your lsp server as usual
 local lspconfig = require('lspconfig')
 
-lspconfig.sumneko_lua.setup(vim.tbl_deep_extend("force", require("lsp.settings.sumneko_lua"), defaults))
+lspconfig.lua_ls.setup(vim.tbl_deep_extend("force", require("lsp.settings.lua_ls"), defaults))
 lspconfig.solargraph.setup(vim.tbl_deep_extend("force", require("lsp.settings.solargraph"), defaults))
 lspconfig.jsonls.setup(vim.tbl_deep_extend("force", require("lsp.settings.jsonls"), defaults))
 lspconfig.bashls.setup(defaults)
