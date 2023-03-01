@@ -16,11 +16,6 @@ lualine.setup({
     lualine_b = { 'branch' },
     lualine_c = { 'diff', require("lsp-status").status },
     lualine_x = {
-      {
-        require("noice").api.statusline.mode.get,
-        cond = require("noice").api.statusline.mode.has,
-        color = { fg = "#ff9e64" },
-      },
       "filename",
       "filetype"
     },
