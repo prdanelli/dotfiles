@@ -57,7 +57,6 @@ local plugins = {
   {
     "rmehri01/onenord.nvim",
     config = function() require("plugins.config.theme") end,
-    lazy = false,
   },
 
   -- Add better vertical lines
@@ -247,23 +246,16 @@ local plugins = {
     config = function() require("gitlinker").setup() end,
   },
 
+  {
+  },
+
   -----------------------------------------------------------------------------
   -- Tmux
   -----------------------------------------------------------------------------
-  {
-    "tmux-plugins/vim-tmux",
-    lazy = false,
-  },
+  { "tmux-plugins/vim-tmux" },
+  { "tmux-plugins/vim-tmux-focus-events" },
+  { "christoomey/vim-tmux-navigator" },
 
-  {
-    "tmux-plugins/vim-tmux-focus-events",
-    lazy = false,
-  },
-
-  {
-    "christoomey/vim-tmux-navigator",
-    lazy = false,
-  },
   -----------------------------------------------------------------------------
   -- Misc
   -----------------------------------------------------------------------------
@@ -326,7 +318,6 @@ local plugins = {
   {
     "akinsho/toggleterm.nvim",
     config = function() require("plugins.config.toggleterm") end,
-    lazy = false,
   },
 
   {
@@ -337,7 +328,7 @@ local plugins = {
 
 local opts = {
   defaults = {
-    lazy = true, -- should plugins be lazy-loaded?
+    lazy = false, -- should plugins be lazy-loaded?
   },
   lockfile = vim.fn.stdpath("config") .. "/.lazy-lock.json",
   concurrency = 50,
