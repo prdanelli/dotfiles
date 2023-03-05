@@ -50,15 +50,22 @@ M.bindings = {
   g = {
     name = "Git",
     b = { "<cmd>Gitsigns toggle_current_line_blame<CR>", "Blame" },
+
+    s = { "", "Search" },
+    sb = { "<cmd>Telescope advanced_git_search diff_branch_file<CR>", "Search Branches" },
+    sp = { "<cmd>Telescope advanced_git_search search_log_content<CR>", "Search Previous Commits" },
+    sf = { "<cmd>Telescope advanced_git_search diff_commit_file<CR>", "Search Previous Commits in File" },
+    sr = { "<cmd>Telescope advanced_git_search checkout_reflog<CR>", "Search Reflog" },
+
     d = { "<cmd>DiffviewOpen<cr>", "Diff View Open" },
     D = { "<cmd>DiffviewClose<cr>", "Diff View Close" },
-    O = { "<cmd>GitConflictChooseOurs<cr>", "Ours" },
-    T = { "<cmd>GitConflictChooseTheirs<cr>", "Theirs" },
-    B = { "<cmd>GitConflictChooseBoth<cr>", "Both" },
-    N = { "<cmd>GitConflictChooseNone<cr>", "None" },
-    Q = { "<cmd>GitConflictListQf<cr>", "Quicklist" },
-    ["]"] = { "<cmd>GitConflictNextConflict<cr>", "Next" },
-    ["["] = { "<cmd>GitConflictPrevConflict<cr>", "Previous" },
+    O = { "<cmd>GitConflictChooseOurs<cr>", "Conflict - Choose Ours" },
+    T = { "<cmd>GitConflictChooseTheirs<cr>", "Conflict - Choose Theirs" },
+    B = { "<cmd>GitConflictChooseBoth<cr>", "Conflict - Choose Both" },
+    N = { "<cmd>GitConflictChooseNone<cr>", "Conflict - Choose None" },
+    Q = { "<cmd>GitConflictListQf<cr>", "Conflict - Quicklist" },
+    ["]"] = { "<cmd>GitConflictNextConflict<cr>", "Conflict - Goto Next" },
+    ["["] = { "<cmd>GitConflictPrevConflict<cr>", "Conflict - Goto Previous" },
     l = { "<cmd>lua require('gitlinker').get_buf_range_url('n', { action_callback = require('gitlinker.actions').open_in_browser })<cr>", "Git Link" }
   },
 
