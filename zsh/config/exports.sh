@@ -2,16 +2,13 @@
 # Exported Variables
 ################################################################################
 
-export PATH=/opt/homebrew/bin:$PATH # Brew is first as everything else uses that
-export PATH=/opt/homebrew/sbin:$PATH
-export PATH=/usr/local/bin:$PATH # Recommended by brew doctor
-export PATH=$HOME/.cargo/bin/:$PATH
-export PATH=$HOME/.bin:$PATH
+# First items are added first, but referred to last - first in, last out. 
+export PATH=/opt/homebrew/opt/yarn:$PATH
 export PATH=/opt/homebrew/opt/python@3.9:$PATH
 export PATH=/opt/homebrew/opt/openssl@3:$PATH
-export PATH=/opt/homebrew/opt/yarn:$PATH
-# export PATH=$(yarn global bin):$PATH
-export PATH=./bin:$PATH # Rails binstubs
+export PATH=/usr/local/bin:$PATH # Recommended by brew doctor
+export PATH=/opt/homebrew/bin:$PATH # Brew is first as everything else uses that
+export PATH=$HOME/.bin:$PATH
 
 export LIBRARY_PATH=$LIBRARY_PATH:/opt/homebrew/opt/zstd/lib/ # Fix for MySQL2 gem not compiling
 
@@ -25,3 +22,7 @@ export HOMEBREW_NO_ENV_HINTS=1
 export EDITOR="nvim"
 export TERMINAL="kitty"
 export MANPAGER='nvim +Man!'
+
+# Mobile app
+export NODE_ENV=development
+export JAVA_HOME=$(/usr/libexec/java_home)

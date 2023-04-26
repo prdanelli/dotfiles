@@ -64,8 +64,18 @@ zsh_add_config "config/helpers.sh"
 # Imports
 ################################################################################
 
-zsh_add_file "$HOME/.asdf/asdf.sh"
 zsh_add_file "$HOME/.config/zsh/secrets.sh" # Shhhh, don't commit secrets
+
+################################################################################
+# ASDF Packages
+################################################################################
+
+. "$HOME/.asdf/asdf.sh"
+
+# Ensure Ruby is loaded above, before trying to add Ruby Gems to PATH
+if which ruby >/dev/null && which gem >/dev/null; then
+  PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
 
 ################################################################################
 # Key bindings
@@ -95,6 +105,3 @@ eval "$(starship init zsh)"
 
 macchina
 
-if which ruby >/dev/null && which gem >/dev/null; then
-  PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-fi
