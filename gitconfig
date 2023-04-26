@@ -23,6 +23,7 @@
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   graph = log --all --decorate --oneline --graph
 	fame = !python -m gitfame
+  changed = diff --stat
 [push]
 	default = simple
 	autoSetupRemote = true
