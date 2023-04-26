@@ -37,31 +37,6 @@ configs.setup({
     enable = true,
     additional_vim_regex_highlighting = true
   },
-  refactor = {
-    highlight_current_scope = {
-      enable = false
-    },
-    highlight_definitions = {
-      enable = true,
-      clear_on_cursor_move = false,
-    },
-    navigation = {
-      enable = true,
-      keymaps = {
-        goto_definition = "gnd",
-        list_definitions = "gnD",
-        list_definitions_toc = "gO",
-        goto_next_usage = "<a-*>",
-        goto_previous_usage = "<a-#>",
-      },
-    },
-    smart_rename = {
-      enable = true,
-      keymaps = {
-        smart_rename = "grr",
-      },
-    },
-  },
   sync_install = true,
   textobjects = {
     swap = {
@@ -91,6 +66,10 @@ configs.setup({
       goto_next_start = {
         [']m'] = '@function.outer',
         [']]'] = '@class.outer',
+
+        -- Below example nvim-treesitter's `locals.scm` and `folds.scm`. They also provide highlights.scm and indent.scm.
+        ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
+        ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
       },
       goto_next_end = {
         [']M'] = '@function.outer',
@@ -104,15 +83,15 @@ configs.setup({
         ['[M'] = '@function.outer',
         ['[]'] = '@class.outer',
       },
-    },
-  },
-  textsubjects = {
-    enable = true,
-    prev_selection = ',', -- (Optional) keymap to select the previous selection
-    keymaps = {
-      ['.'] = 'textsubjects-smart',
-      [';'] = 'textsubjects-container-outer',
-      ['i;'] = 'textsubjects-container-inner',
+      -- Below will go to either the start or the end, whichever is closer.
+      -- Use if you want more granular movements
+      -- Make it even more gradual by adding multiple queries and regex.
+      goto_next = {
+        ["]d"] = "@conditional.outer",
+      },
+      goto_previous = {
+        ["[d"] = "@conditional.outer",
+      }
     },
   },
 })
