@@ -22,11 +22,10 @@ Link dotbot paths and run `brew bundle --file .Brewfile`
   - LSP
   - Treesitter
 + LazyGit
-+ Wallpaper - Alena Aenami
 
 ## Screenshots
 
-![Tmux, Neovim and Lazygit](https://github.com/prdanelli/dotfiles/raw/main/screenshots/tmux.jpeg)
+![Tmux, Neovim and Lazygit](https://user-images.githubusercontent.com/1199977/222270392-dcecd82a-a627-4f71-83ee-96ea1fdf4955.png)
 
 ## Yabai
 
