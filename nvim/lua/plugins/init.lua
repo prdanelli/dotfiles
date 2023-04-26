@@ -109,9 +109,26 @@ local plugins = {
   { "folke/lsp-colors.nvim" }, -- Add missing LSP highlight groups
   { "nvim-lua/lsp-status.nvim" }, -- Used by other plugins for basic lsp info
 
+  -- {
+  --   "williamboman/nvim-lsp-installer",
+  --   dependencies = { "neovim/nvim-lspconfig" },
+  -- },
+
   {
-    "williamboman/nvim-lsp-installer",
-    dependencies = { "neovim/nvim-lspconfig" },
+    "williamboman/mason.nvim",
+    dependencies = {
+      "williamboman/mason-lspconfig.nvim",
+      "neovim/nvim-lspconfig",
+    },
+    config = function() require("lsp") end
+  },
+
+  {
+    "mihyaeru21/nvim-lspconfig-bundler",
+    dependencies = {
+      "neovim/nvim-lspconfig"
+    },
+    config = function() require('lspconfig-bundler').setup() end,
   },
 
   {
@@ -149,7 +166,25 @@ local plugins = {
       "f3fora/cmp-spell",
     },
     config = function() require("plugins.config.cmp") end,
-    --event = "BufEnter",
+    event = "BufEnter",
+  },
+
+  {
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
+    config = function ()
+      require("copilot_cmp").setup({
+        formatters = {
+          label = require("copilot_cmp.format").format_label_text,
+          preview = require("copilot_cmp.format").deindent,
+          insert_text = require("copilot_cmp.format").remove_existing,
+        },
+      })
+    end,
+    dependencies = {
+      "zbirenbaum/copilot.lua",
+      "hrsh7th/nvim-cmp",
+    }
   },
 
   -----------------------------------------------------------------------------
@@ -162,8 +197,14 @@ local plugins = {
     event = "BufReadPre",
   },
 
+  -- {
+  --   "nim-treesitter/nvim-treesitter-textobjects",
+  --   dependencies = "nvim-treesitter/nvim-treesitter",
+  -- },
+
   {
-    "nvim-treesitter/nvim-treesitter-textobjects",
+    "m-demare/hlargs.nvim",
+    config = function() require("hlargs").setup() end,
     dependencies = "nvim-treesitter/nvim-treesitter",
   },
 
@@ -181,10 +222,17 @@ local plugins = {
   -----------------------------------------------------------------------------
   { "ekalinin/Dockerfile.vim" },
   { "cespare/vim-toml" },
-  { "tpope/vim-rails" },
+  -- { "tpope/vim-rails" },
   { "vim-ruby/vim-ruby" },
   { "mtdl9/vim-log-highlighting" },
   { "folke/neodev.nvim" },
+
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function() require("plugins.config.copilot") end,
+  },
 
   -- Comment lines/blocks
   {
@@ -216,6 +264,14 @@ local plugins = {
     },
     config = function() require("plugins.config.neotest") end,
     event = "BufEnter",
+  },
+
+  {
+    "ThePrimeagen/refactoring.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter"
+    }
   },
 
   -----------------------------------------------------------------------------
@@ -266,10 +322,6 @@ local plugins = {
   -----------------------------------------------------------------------------
   -- Misc
   -----------------------------------------------------------------------------
-  { "nvim-lua/plenary.nvim" },
-
-  -- Editor config integration
-  { "editorconfig/editorconfig-vim" },
 
   -- Better quick list
   {
@@ -311,16 +363,16 @@ local plugins = {
   },
 
   -- Persistant buffer only available on keymap press
-  {
-    "FraserLee/ScratchPad",
-    config = function() require("plugins.config.scratchpad") end,
-  },
+  -- {
+  --   "FraserLee/ScratchPad",
+  --   config = function() require("plugins.config.scratchpad") end,
+  -- },
 
-  {
-    "stevearc/stickybuf.nvim",
-    config = function() require("stickybuf").setup() end,
-    event = "BufEnter",
-  },
+  -- {
+  --   "stevearc/stickybuf.nvim",
+  --   config = function() require("stickybuf").setup() end,
+  --   event = "BufEnter",
+  -- },
 
   {
     "akinsho/toggleterm.nvim",
