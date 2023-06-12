@@ -16,7 +16,6 @@ local options = {
   lbr = true,
   mouse = "niv", -- allow the mouse to be used in neovim
   number = true, -- set numbered lines
-  numberwidth = 4, -- set number column width to 4
   relativenumber = true, -- set relative numbered lines
   scrolloff = 8, -- is one of my fav
   scrollback = 100000,
@@ -39,6 +38,8 @@ local options = {
   updatetime = 100, -- faster completion (4000ms default)
   wrap = true, -- display lines as one long line
   writebackup = false, -- if a file is being edited by another program
+  numberwidth = 4, -- set number column width to 4
+  statuscolumn = "%=%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum < 10 ? v:lnum . '  ' : v:lnum) : ''}%=%s"
 }
 
 for k, v in pairs(options) do
@@ -54,6 +55,10 @@ vim.opt.path:append "**" -- Better search
 vim.opt.wildignorecase = true
 vim.opt.wildignore:append "**/node_modules/*"
 vim.opt.wildignore:append "**/.git/*"
+
+vim.opt.fixendofline = false -- Prevent Nvim from removing end of file new line
+
+vim.g.editorconfig = false
 
 -- Custom fold text
 vim.cmd([[

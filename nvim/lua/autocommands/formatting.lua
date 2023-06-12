@@ -7,3 +7,9 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   command = "%s/\\s\\+$//e"
 })
 
+-- Prevent stripping EOL on save
+-- vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead", "BufWritePost" }, {
+--   group = "_formatting",
+--   pattern = "*",
+--   command = "setl fixeol"
+-- })

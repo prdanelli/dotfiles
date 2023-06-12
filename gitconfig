@@ -6,12 +6,14 @@
 	editor = nvim
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	fileMode = false
+	autocrlf = input
 [color]
 	ui = true
 [alias]
 	ch = checkout
 	co = commit
-	st = status -s
+	st = status -sMu
+  changed = diff --stat
 	br = branch
 	first = rev-list --max-parents=0 HEAD
 	ci = commit
@@ -23,7 +25,6 @@
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   graph = log --all --decorate --oneline --graph
 	fame = !python -m gitfame
-  changed = diff --stat
 [push]
 	default = simple
 	autoSetupRemote = true

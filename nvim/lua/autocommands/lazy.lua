@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd("FileType", {
   group = "_lazy",
   pattern = "lazy",
   callback = function()
-    vim.cmd("setlocal nonumber colorcolumn=")
+    vim.cmd("setlocal nonumber colorcolumn= | autocmd BufUnload set colorcolumn=80,120")
   end,
 })
 

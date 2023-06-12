@@ -3,6 +3,7 @@
 ################################################################################
 
 # First items are added first, but referred to last - first in, last out. 
+export PATH=/opt/homebrew/opt/postgresql@15/bin:$PATH
 export PATH=/opt/homebrew/opt/yarn:$PATH
 export PATH=/opt/homebrew/opt/python@3.9:$PATH
 export PATH=/opt/homebrew/opt/openssl@3:$PATH

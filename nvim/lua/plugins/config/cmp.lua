@@ -19,6 +19,7 @@ local check_backspace = function()
 end
 
 local kind_icons = {
+  -- Copilot = "",
   Text = "",
   Method = "",
   Function = "",
@@ -94,6 +95,7 @@ cmp.setup {
       vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
 
       vim_item.menu = ({
+        -- copilot = "[Copilot]",
         buffer = "[Buffer]",
         luasnip = "[Snippet]",
         nvim_lsp = "[LSP]",
@@ -104,6 +106,7 @@ cmp.setup {
     end
   },
   sources = {
+    -- { name = "copilot" },
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "path" },
@@ -123,12 +126,15 @@ cmp.setup {
     select = false,
   },
   sorting = {
+    priority_weight = 2,
     comparators = {
       function(...) return cmp_buffer:compare_locality(...) end,
+      -- require("copilot_cmp.comparators").prioritize,
       cmp.config.compare.offset,
       cmp.config.compare.exact,
       cmp.config.compare.score,
-      cmp_under_comparator.under,
+      cmp.config.compare.recently_used,
+      cmp.config.compare.locality,
       cmp.config.compare.kind,
       cmp.config.compare.sort_text,
       cmp.config.compare.length,
@@ -181,4 +187,3 @@ au!
 au FileType TelescopePrompt lua cmp.setup.buffer { enabled = false }
 augroup END
 ]])
-

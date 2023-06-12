@@ -35,16 +35,19 @@ alias olio:storage="zsh ~/Dev/storage.sh"
 alias olio:stop_storage="docker stop redis-dev mysql-dev"
 
 # Yabai
-alias yabai:reload="brew services restart yabai"
-alias yabai:start="brew services start yabai"
-alias yabai:stop="brew services stop yabai"
+alias yabai:reload="yabai --restart-service"
+alias yabai:start="yabai --start-service"
+alias yabai:stop="yabai --stop-service"
 alias yabai:install_sa="sudo yabai --load-sa"
 alias yabai:borders:off="yabai -m config window_border off"
 alias yabai:borders:on="yabai -m config window_border on"
 
 # SKHD
 alias skhd:keys="bat ~/.config/skhd/skhdrc"
-alias skhd:reload="brew services restart skhd"
+alias skhd:start="skhd --start-service"
+alias skhd:stop="skhd --stop-service"
+alias skhd:restart="skhd --restart-service"
+alias skhd:reload="skhd --restart-service"
 
 # Brew
 # alias brew:upgrade:all="brew upgrade; brew remove nvim; brew install --HEAD nvim; nvim --headless '+Lazy! sync' +qa;"

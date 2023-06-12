@@ -37,7 +37,7 @@ M.setup = function()
   })
 end
 
-local function lsp_keymaps(bufnr)
+M.on_attach = function(client, bufnr)
   local opts = { silent = true, remap = false, buffer = bufnr }
 
   -- Generate LSP functionality
@@ -58,9 +58,26 @@ local function lsp_keymaps(bufnr)
   vim.keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>", opts)
 end
 
-M.on_attach = function(client, bufnr)
-  lsp_keymaps(bufnr)
-end
+-- RubyLSP missing diagnostic config = https://github.com/Shopify/ruby-lsp/issues/188#issuecomment-1384373777
+-- on_attach = function(client, buffer)
+--   local callback = function()
+--     local params = vim.lsp.util.make_text_document_params(buffer)
+--
+--     client.request('textDocument/diagnostic', { textDocument = params }, function(err, result)
+--       if err then return end
+--
+--       vim.lsp.diagnostic.on_publish_diagnostics(nil, vim.tbl_extend('keep', params, { diagnostics = result.items }), { client_id = client.id })
+--     end)
+--   end
+--
+--   callback() -- call on attach
+--
+--   vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePre', 'BufReadPost', 'InsertLeave', 'TextChanged' }, {
+--     buffer = buffer,
+--     callback = callback,
+--   })
+-- end
+
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local cmp_lsp_loaded, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
@@ -69,4 +86,3 @@ if cmp_lsp_loaded then
 end
 
 return M
-

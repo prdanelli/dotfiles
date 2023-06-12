@@ -1,6 +1,7 @@
+vim.opt.termguicolors = true
+
 require "utils"
-require "plugins" -- Errors are generated with safe_load
-require "lsp"
+require "plugins" 
 
 require "config.options"
 require "config.keymaps"

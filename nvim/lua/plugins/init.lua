@@ -169,23 +169,23 @@ local plugins = {
     event = "BufEnter",
   },
 
-  {
-    "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua" },
-    config = function ()
-      require("copilot_cmp").setup({
-        formatters = {
-          label = require("copilot_cmp.format").format_label_text,
-          preview = require("copilot_cmp.format").deindent,
-          insert_text = require("copilot_cmp.format").remove_existing,
-        },
-      })
-    end,
-    dependencies = {
-      "zbirenbaum/copilot.lua",
-      "hrsh7th/nvim-cmp",
-    }
-  },
+  -- {
+  --   "zbirenbaum/copilot-cmp",
+  --   after = { "copilot.lua" },
+  --   config = function ()
+  --     require("copilot_cmp").setup({
+  --       formatters = {
+  --         label = require("copilot_cmp.format").format_label_text,
+  --         preview = require("copilot_cmp.format").deindent,
+  --         insert_text = require("copilot_cmp.format").remove_existing,
+  --       },
+  --     })
+  --   end,
+  --   dependencies = {
+  --     "zbirenbaum/copilot.lua",
+  --     "hrsh7th/nvim-cmp",
+  --   }
+  -- },
 
   -----------------------------------------------------------------------------
   -- Treesitter
@@ -227,12 +227,12 @@ local plugins = {
   { "mtdl9/vim-log-highlighting" },
   { "folke/neodev.nvim" },
 
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function() require("plugins.config.copilot") end,
-  },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   cmd = "Copilot",
+  --   event = "InsertEnter",
+  --   config = function() require("plugins.config.copilot") end,
+  -- },
 
   -- Comment lines/blocks
   {

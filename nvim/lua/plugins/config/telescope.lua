@@ -38,6 +38,7 @@ telescope.setup({
     mappings = {
       i = {
         ["<esc>"] = actions.close,
+        ["<C-u>"] = false
       },
       n = {},
     },
@@ -46,7 +47,11 @@ telescope.setup({
       "--vimgrep",
       "--hidden",
       "--smart-case",
-      "--trim"
+      "--trim",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
     },
     prompt_prefix = " ",
     selection_caret = " ",

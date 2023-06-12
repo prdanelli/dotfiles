@@ -23,11 +23,6 @@ M.bindings = {
     ["9"] = { "<Cmd>BufferLineGoToBuffer 9<CR>", "Goto Buffer 9" },
   },
 
-  c = {
-    name = "Scratch Pad",
-    c = { "<cmd>ScratchPad<cr>", "Toggle" },
-  },
-
   f = {
     name = "Find",
     a = { "<cmd>Telescope autocommands<cr>", "Autocommands" },
@@ -36,13 +31,14 @@ M.bindings = {
     d = { "<cmd>Telescope find_dotfiles<cr>", "Dotfiles" },
     e = { "<cmd>RnvimrToggle<CR>", "Ranger" },
     g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
+    G = { "<cmd>Telescope grep_string<cr>", "Grep String" },
     h = { "<cmd>Telescope help_tags<cr>", "Help" },
     i = { "<cmd>Telescope highlights<cr>", "Highlights" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     m = { "<cmd>Telescope marks<cr>", "Marks" },
     r = { "<cmd>Telescope oldfiles<cr>", "Old Files" },
     p = { "<cmd>Telescope find_files hidden=true layout_config={'prompt_position':'top'}<cr>", "Files" },
-    s = { "<cmd>lua require'telescope.builtin'.grep_string()<CR>", "Grep String" },
+    r = { "<cmd>Telescope lsp_document_symbols<cr>", "LSP Symbols" },
     t = { "<cmd>NvimTreeToggle<cr>", "Tree Explorer" },
     w = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Current Buffer" },
   },
@@ -120,6 +116,7 @@ M.bindings = {
     e = { "!!$SHELL<CR>", "Execute Shell" },
     w = { "<cmd>update!<CR>", "Save" },
     q = { "<cmd>q!<CR>", "Quit" },
+    s = { "<cmd>ScratchPad<cr>", "ScratchPad" },
   },
 }
 
