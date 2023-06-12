@@ -169,24 +169,6 @@ local plugins = {
     event = "BufEnter",
   },
 
-  -- {
-  --   "zbirenbaum/copilot-cmp",
-  --   after = { "copilot.lua" },
-  --   config = function ()
-  --     require("copilot_cmp").setup({
-  --       formatters = {
-  --         label = require("copilot_cmp.format").format_label_text,
-  --         preview = require("copilot_cmp.format").deindent,
-  --         insert_text = require("copilot_cmp.format").remove_existing,
-  --       },
-  --     })
-  --   end,
-  --   dependencies = {
-  --     "zbirenbaum/copilot.lua",
-  --     "hrsh7th/nvim-cmp",
-  --   }
-  -- },
-
   -----------------------------------------------------------------------------
   -- Treesitter
   -----------------------------------------------------------------------------

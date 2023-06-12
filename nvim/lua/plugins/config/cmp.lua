@@ -19,7 +19,6 @@ local check_backspace = function()
 end
 
 local kind_icons = {
-  -- Copilot = "",
   Text = "",
   Method = "",
   Function = "",
@@ -95,7 +94,6 @@ cmp.setup {
       vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
 
       vim_item.menu = ({
-        -- copilot = "[Copilot]",
         buffer = "[Buffer]",
         luasnip = "[Snippet]",
         nvim_lsp = "[LSP]",
@@ -106,7 +104,6 @@ cmp.setup {
     end
   },
   sources = {
-    -- { name = "copilot" },
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "path" },
