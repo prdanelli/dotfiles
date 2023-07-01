@@ -365,6 +365,13 @@ local plugins = {
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup() end
   },
+
+  -- Vim motion suggestions
+  {
+    "m4xshen/hardtime.nvim",
+    event = "VeryLazy",
+    opts = {}
+  },
 }
 
 local opts = {
@@ -384,5 +391,4 @@ local opts = {
     },
   },
 }
-
 plugin.setup(plugins, opts)
