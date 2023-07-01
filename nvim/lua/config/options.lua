@@ -38,7 +38,7 @@ local options = {
   updatetime = 100, -- faster completion (4000ms default)
   wrap = true, -- display lines as one long line
   writebackup = false, -- if a file is being edited by another program
-  numberwidth = 6, -- set number column width to 4
+  numberwidth = 5, -- set number column width to 4
 }
 
 for k, v in pairs(options) do

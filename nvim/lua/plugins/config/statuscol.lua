@@ -6,11 +6,7 @@ local builtin = require("statuscol.builtin")
 statuscol.setup({
   relculright = true,
   segments = {
-    { text = { "%C" } },
-    {
-      sign = { name = { "Diagnostic" }, maxwidth = 1, auto = true },
-      click = "v:lua.ScSa"
-    },
+    { text = { "%s" } },
     { text = { builtin.lnumfunc, "  " } },
   }
 })
