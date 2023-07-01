@@ -65,9 +65,13 @@ telescope.setup({
       prompt_position = "top",
       horizontal = {
         mirror = false,
+        width = 0.999999,
+        height = 0.999999,
       },
       vertical = {
         mirror = false,
+        width = 0.9999999,
+        height = 0.999999,
       },
     },
     file_sorter = sorters.get_fuzzy_file,
