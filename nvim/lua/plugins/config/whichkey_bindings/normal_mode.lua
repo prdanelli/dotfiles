@@ -55,11 +55,11 @@ M.bindings = {
 
     d = { "<cmd>DiffviewOpen<cr>", "Diff View Open" },
     D = { "<cmd>DiffviewClose<cr>", "Diff View Close" },
-    O = { "<cmd>GitConflictChooseOurs<cr>", "Conflict - Choose Ours" },
-    T = { "<cmd>GitConflictChooseTheirs<cr>", "Conflict - Choose Theirs" },
-    B = { "<cmd>GitConflictChooseBoth<cr>", "Conflict - Choose Both" },
-    N = { "<cmd>GitConflictChooseNone<cr>", "Conflict - Choose None" },
-    Q = { "<cmd>GitConflictListQf<cr>", "Conflict - Quicklist" },
+    o = { "<cmd>GitConflictChooseOurs<cr>", "Conflict - Choose Ours" },
+    t = { "<cmd>GitConflictChooseTheirs<cr>", "Conflict - Choose Theirs" },
+    b = { "<cmd>GitConflictChooseBoth<cr>", "Conflict - Choose Both" },
+    n = { "<cmd>GitConflictChooseNone<cr>", "Conflict - Choose None" },
+    q = { "<cmd>GitConflictListQf<cr>", "Conflict - Quicklist" },
     ["]"] = { "<cmd>GitConflictNextConflict<cr>", "Conflict - Goto Next" },
     ["["] = { "<cmd>GitConflictPrevConflict<cr>", "Conflict - Goto Previous" },
     l = { "<cmd>lua require('gitlinker').get_buf_range_url('n', { action_callback = require('gitlinker.actions').open_in_browser })<cr>", "Git Link" }
