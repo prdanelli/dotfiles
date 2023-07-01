@@ -38,8 +38,7 @@ local options = {
   updatetime = 100, -- faster completion (4000ms default)
   wrap = true, -- display lines as one long line
   writebackup = false, -- if a file is being edited by another program
-  numberwidth = 4, -- set number column width to 4
-  statuscolumn = "%=%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum < 10 ? v:lnum . '  ' : v:lnum) : ''}%=%s"
+  numberwidth = 6, -- set number column width to 4
 }
 
 for k, v in pairs(options) do
