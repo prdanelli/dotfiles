@@ -37,7 +37,7 @@ M.setup = function()
   })
 end
 
-M.on_attach = function(client, bufnr)
+M.on_attach = function(_, bufnr)
   local opts = { silent = true, remap = false, buffer = bufnr }
 
   -- Generate LSP functionality
