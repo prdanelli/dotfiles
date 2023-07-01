@@ -36,6 +36,9 @@ style = "#5E81AC"
 [git_status]
 style = "bold #4C566A"
 
+[docker_context]
+disabled = true
+
 [aws]
 disabled = true
 
