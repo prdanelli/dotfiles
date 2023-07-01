@@ -87,14 +87,19 @@ local plugins = {
     config = function() require("plugins.config.eyeliner") end
   },
 
+  -- {
+  --   "utilyre/barbecue.nvim",
+  --   dependencies = {
+  --     "neovim/nvim-lspconfig",
+  --     "smiteshp/nvim-navic",
+  --     "kyazdani42/nvim-web-devicons", -- optional
+  --   },
+  --   config = function() require("plugins.config.barbecue") end,
+  -- },
+
   {
-    "utilyre/barbecue.nvim",
-    dependencies = {
-      "neovim/nvim-lspconfig",
-      "smiteshp/nvim-navic",
-      "kyazdani42/nvim-web-devicons", -- optional
-    },
-    config = function() require("plugins.config.barbecue") end,
+    "luukvbaal/statuscol.nvim",
+    config = function() require("plugins.config.statuscol") end,
   },
 
   -----------------------------------------------------------------------------
@@ -129,6 +134,7 @@ local plugins = {
     "j-hui/fidget.nvim",
     config = function() require("plugins.config.fidget") end,
     event = "BufReadPre",
+    tag = "legacy",
   }, -- LSP progress indicator
 
   {
