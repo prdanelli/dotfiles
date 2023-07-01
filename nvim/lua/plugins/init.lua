@@ -344,18 +344,6 @@ local plugins = {
     event = "BufEnter",
   },
 
-  -- Persistant buffer only available on keymap press
-  -- {
-  --   "FraserLee/ScratchPad",
-  --   config = function() require("plugins.config.scratchpad") end,
-  -- },
-
-  -- {
-  --   "stevearc/stickybuf.nvim",
-  --   config = function() require("stickybuf").setup() end,
-  --   event = "BufEnter",
-  -- },
-
   {
     "akinsho/toggleterm.nvim",
     config = function() require("plugins.config.toggleterm") end,
