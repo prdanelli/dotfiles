@@ -1,8 +1,8 @@
 gui:
   # stuff relating to the UI
-  scrollHeight: 5 # how many lines you scroll by
-  scrollPastBottom: false # enable scrolling past the bottom
-  sidePanelWidth: 0.25 # number from 0 to 1
+  scrollHeight: 2 # how many lines you scroll by
+  scrollPastBottom: true # enable scrolling past the bottom
+  sidePanelWidth: 0.3333
   expandFocusedSidePanel: true
   mainPanelSplitMode: 'flexible' # one of 'horizontal' | 'flexible' | 'vertical'
   language: 'auto' # one of 'auto' | 'en' | 'zh' | 'pl' | 'nl'
@@ -53,13 +53,16 @@ git:
   parseEmoji: true
 
 os:
-  editCommand: '' # see 'Configuring File Editing' section
-  editCommandTemplate: '{{editor}} {{filename}}'
-  openCommand: ''
+  editPreset: '' # see 'Configuring File Editing' section
+  edit: ''
+  editAtLine: '{{editor}} {{filename}}'
+  editAtLineAndWait: ''
+  open: ''
+  openLink: ''
 
 refresher:
-  refreshInterval: 10 # file/submodule refresh interval in seconds
-  fetchInterval: 10 # re-fetch interval in seconds
+  refreshInterval: 3 # file/submodule refresh interval in seconds
+  fetchInterval: 5 # re-fetch interval in seconds
 
 update:
   method: background # can be: prompt | background | never
