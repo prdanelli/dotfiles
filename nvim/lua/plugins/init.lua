@@ -43,12 +43,6 @@ local plugins = {
   },
 
   {
-    "echasnovski/mini.nvim",
-    config = function() require("mini.tabline").setup({}) end,
-    version = "*",
-  },
-
-  {
     "nvim-lualine/lualine.nvim",
     config = function() require("plugins.config.lualine") end,
     event = "VimEnter",
