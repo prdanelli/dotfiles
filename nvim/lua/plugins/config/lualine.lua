@@ -83,6 +83,6 @@ lualine.setup({
     lualine_y = {},
     lualine_z = {}
   },
-  extensions = {}
+  extensions = { "nvim-tree", "man", "lazy", "trouble", "toggleterm" }
 })
 
