@@ -64,7 +64,7 @@ function fname:update_status()
   table.insert(symbols, state)
 
   -- data = data .. "" .. (#symbols > 0 and "" .. table.concat(symbols, "") or "")
-  local icon = icons[vim.bo.filetype]
+  local icon = icons[vim.fn.expand('%:e')]
   if icon then
     icon = icon.icon
   else
