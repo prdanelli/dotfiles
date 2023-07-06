@@ -17,11 +17,11 @@ local options = {
   mouse = "niv", -- allow the mouse to be used in neovim
   number = true, -- set numbered lines
   relativenumber = true, -- set relative numbered lines
-  scrolloff = 8, -- is one of my fav
+  scrolloff = 12, -- number of lines above and below cursor when scrolling
   scrollback = 100000,
   shiftwidth = 2, -- the number of spaces inserted for each indentation
   showmode = false, -- we don't need to see things like -- INSERT -- anymore
-  showtabline = 0, -- always show tabs
+  showtabline = 0, -- 0: never, 1: only if there are at least two tab pages, 2: always
   sidescrolloff = 8,
   signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
   smartcase = true, -- smart case
@@ -58,6 +58,7 @@ vim.opt.wildignore:append "**/.git/*"
 vim.opt.fixendofline = false -- Prevent Nvim from removing end of file new line
 
 vim.g.editorconfig = false
+vim.g.ruby_host_prog = "/Users/paul/.asdf/shims/neovim-ruby-host" -- avoid needing to install this in every project
 
 -- Custom fold text
 vim.cmd([[
