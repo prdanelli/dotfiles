@@ -104,7 +104,8 @@ M.bindings = {
 
   y = {
     name = "Yank",
-    p = { "<cmd>let @+ = expand('%:p')<cr> <cmd>lua vim.notifier.info('Yanked filepath')<cr>", "Filepath" },
+    p = { "<cmd>let @+ = expand('%:~:.')<cr> <cmd>lua vim.notifier.info('Yanked relative path')<cr>", "Relative Path" },
+    f = { "<cmd>let @+ = expand('%:p')<cr> <cmd>lua vim.notifier.info('Yanked full path')<cr>", "Full Path" },
     a = { "<cmd>%y<cr>", "Buffer contents" },
   },
 
