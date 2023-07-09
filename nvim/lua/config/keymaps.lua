@@ -16,8 +16,9 @@ vim.keymap.set("n", "<RIGHT>", "<NOP>", opts)
 -- Map ctrl-c to esc
 vim.keymap.set("i", "<C-c>", "<esc>", opts)
 
--- Use Del key for black hole register
+-- Use x and Del key for black hole register
 vim.keymap.set("", "<Del>", '"_x', opts)
+vim.keymap.set("", "x", '"_x', opts)
 
 -- Paste over selected text
 vim.keymap.set("v", "p", '"_dP', opts)
