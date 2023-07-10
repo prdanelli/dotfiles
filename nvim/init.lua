@@ -1,7 +1,7 @@
 vim.opt.termguicolors = true
 
 require "utils"
-require "plugins" 
+require "plugins"
 
 require "config.options"
 require "config.keymaps"
