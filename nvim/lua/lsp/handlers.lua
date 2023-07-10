@@ -1,88 +1,66 @@
-local M  = {}
+M = {}
 
-M.setup = function()
-  local signs = {
-    { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
-    { name = "DiagnosticSignInfo", text = "" },
-  }
-
-  for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+M.import_depdendencies = function()
+  local loaded, mason = pcall(require, "mason")
+  if not loaded then
+    return
   end
 
-  vim.diagnostic.config({
-    virtual_text = false,
-    signs = { active = signs },
-    update_in_insert = true,
-    underline = false,
-    severity_sort = true,
-    float = {
-      focusable = false,
-      style = "minimal",
-      border = "rounded",
-      source = "always",
-      header = "",
-      prefix = "",
-    },
-  })
+  local loaded, mlsp = pcall(require, "mason-lspconfig")
+  if not loaded then
+    return
+  end
 
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
-  })
+  -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
+  local loaded, luadev = pcall(require, "neodev")
+  if loaded then
+    luadev.setup()
+  end
 
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = "rounded",
-  })
+  mason.setup()
+  mlsp.setup()
 end
 
-M.on_attach = function(_, bufnr)
-  local opts = { silent = true, remap = false, buffer = bufnr }
+M.setup_language_servers = function(defaults)
+  local lspconfig = require('lspconfig')
 
-  -- Generate LSP functionality
-  vim.keymap.set("n", "K",  vim.lsp.buf.hover, opts)
-  vim.keymap.set("n", "ge", vim.lsp.buf.rename, opts)
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-  vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
-  vim.keymap.set('n', 'lhs', function() print("real lua function") end)
-
-  -- Navigate diagnotis errors/mesages
-  vim.keymap.set("n", "gk", vim.diagnostic.goto_next, opts)
-  vim.keymap.set("n", "gj", vim.diagnostic.goto_prev, opts)
-
-  -- Telescope helpers for listing symbols and diagnostics
-  vim.keymap.set("n", "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", opts)
-  vim.keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>", opts)
+  lspconfig.lua_ls.setup(vim.tbl_deep_extend("force", require("lsp.settings.lua_ls"), defaults))
+  lspconfig.solargraph.setup(vim.tbl_deep_extend("force", require("lsp.settings.solargraph"), defaults))
+  lspconfig.jsonls.setup(vim.tbl_deep_extend("force", require("lsp.settings.jsonls"), defaults))
+  lspconfig.bashls.setup(defaults)
+  lspconfig.dockerls.setup(defaults)
+  lspconfig.html.setup(defaults)
+  lspconfig.lemminx.setup(defaults)
+  lspconfig.sqlls.setup(defaults)
+  lspconfig.tsserver.setup(defaults)
+  lspconfig.yamlls.setup(defaults)
 end
 
--- RubyLSP missing diagnostic config = https://github.com/Shopify/ruby-lsp/issues/188#issuecomment-1384373777
--- on_attach = function(client, buffer)
---   local callback = function()
---     local params = vim.lsp.util.make_text_document_params(buffer)
---
---     client.request('textDocument/diagnostic', { textDocument = params }, function(err, result)
---       if err then return end
---
---       vim.lsp.diagnostic.on_publish_diagnostics(nil, vim.tbl_extend('keep', params, { diagnostics = result.items }), { client_id = client.id })
---     end)
---   end
---
---   callback() -- call on attach
---
---   vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePre', 'BufReadPost', 'InsertLeave', 'TextChanged' }, {
---     buffer = buffer,
---     callback = callback,
---   })
--- end
+M.default_on_attach = function(client, bufnr)
+  require("lsp.keymaps").setup(client, bufnr)
+  require("lsp.auto_commands").setup(client, bufnr)
+end
 
+M.set_capabilities = function()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-local cmp_lsp_loaded, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if cmp_lsp_loaded then
-  M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+  local loaded, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+  if not loaded then
+    return capabilities
+  end
+
+  return cmp_nvim_lsp.default_capabilities(capabilities)
+end
+
+M.setup = function()
+  M.import_depdendencies()
+
+  local defaults = {
+    on_attach = M.default_on_attach,
+    capabilities = M.set_capabilities(),
+  }
+
+  M.setup_language_servers(defaults)
 end
 
 return M

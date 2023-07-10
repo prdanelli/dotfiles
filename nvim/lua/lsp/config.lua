@@ -1,39 +1,40 @@
-local mason_loaded, mason = pcall(require, "mason")
-if not mason_loaded then
-  return
+local M = {}
+
+M.setup = function()
+  local signs = {
+    { name = "DiagnosticSignError", text = "" },
+    { name = "DiagnosticSignWarn",  text = "" },
+    { name = "DiagnosticSignHint",  text = "" },
+    { name = "DiagnosticSignInfo",  text = "" },
+  }
+
+  for _, sign in ipairs(signs) do
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+  end
+
+  vim.diagnostic.config({
+    virtual_text = false,
+    signs = { active = signs },
+    update_in_insert = true,
+    underline = false,
+    severity_sort = true,
+    float = {
+      focusable = false,
+      style = "minimal",
+      border = "rounded",
+      source = "always",
+      header = "",
+      prefix = "",
+    },
+  })
+
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = "rounded",
+  })
+
+  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = "rounded",
+  })
 end
 
-local mlsp_loaded, mlsp = pcall(require, "mason-lspconfig")
-if not mlsp_loaded then
-  return
-end
---
--- IMPORTANT: make sure to setup neodev BEFORE lspconfig
-local luadev_ok, luadev = pcall(require, "neodev")
-if luadev_ok then
-  luadev.setup()
-end
-
-local lspconfig = require('lspconfig')
-
-mason.setup()
-mlsp.setup()
-
-local defaults = {
-  on_attach = require("lsp.handlers").on_attach,
-  capabilities = require("lsp.handlers").capabilities,
-}
-
-lspconfig.lua_ls.setup(vim.tbl_deep_extend("force", require("lsp.settings.lua_ls"), defaults))
-lspconfig.solargraph.setup(vim.tbl_deep_extend("force", require("lsp.settings.solargraph"), defaults))
-
--- lspconfig.ruby_ls.setup(vim.tbl_deep_extend("force", require("lsp.settings.ruby_ls"), defaults))
-
-lspconfig.jsonls.setup(vim.tbl_deep_extend("force", require("lsp.settings.jsonls"), defaults))
-lspconfig.bashls.setup(defaults)
-lspconfig.dockerls.setup(defaults)
-lspconfig.html.setup(defaults)
-lspconfig.lemminx.setup(defaults)
-lspconfig.sqlls.setup(defaults)
-lspconfig.tsserver.setup(defaults)
-lspconfig.yamlls.setup(defaults)
+return M
