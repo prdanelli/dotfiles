@@ -38,7 +38,7 @@ local plugins = {
 
   {
     "petertriho/nvim-scrollbar",
-    config = function () require("scrollbar").setup() end,
+    config = function() require("scrollbar").setup() end,
     event = "BufReadPre",
   },
 
@@ -87,16 +87,6 @@ local plugins = {
     config = function() require("plugins.config.eyeliner") end
   },
 
-  -- {
-  --   "utilyre/barbecue.nvim",
-  --   dependencies = {
-  --     "neovim/nvim-lspconfig",
-  --     "smiteshp/nvim-navic",
-  --     "kyazdani42/nvim-web-devicons", -- optional
-  --   },
-  --   config = function() require("plugins.config.barbecue") end,
-  -- },
-
   {
     "luukvbaal/statuscol.nvim",
     config = function() require("plugins.config.statuscol") end,
@@ -105,13 +95,8 @@ local plugins = {
   -----------------------------------------------------------------------------
   -- LSP
   -----------------------------------------------------------------------------
-  { "folke/lsp-colors.nvim" }, -- Add missing LSP highlight groups
+  { "folke/lsp-colors.nvim" },    -- Add missing LSP highlight groups
   { "nvim-lua/lsp-status.nvim" }, -- Used by other plugins for basic lsp info
-
-  -- {
-  --   "williamboman/nvim-lsp-installer",
-  --   dependencies = { "neovim/nvim-lspconfig" },
-  -- },
 
   {
     "williamboman/mason.nvim",
@@ -119,7 +104,8 @@ local plugins = {
       "williamboman/mason-lspconfig.nvim",
       "neovim/nvim-lspconfig",
     },
-    config = function() require("lsp") end
+    config = function() require("lsp").setup() end,
+    build = ":MasonUpdate",
   },
 
   {
@@ -130,12 +116,13 @@ local plugins = {
     config = function() require('lspconfig-bundler').setup() end,
   },
 
+  -- LSP progress indicator
   {
     "j-hui/fidget.nvim",
     config = function() require("plugins.config.fidget") end,
     event = "BufReadPre",
     tag = "legacy",
-  }, -- LSP progress indicator
+  },
 
   {
     "folke/trouble.nvim",
@@ -150,15 +137,15 @@ local plugins = {
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      "hrsh7th/cmp-buffer", -- Buffer completions
-      "hrsh7th/cmp-path", -- Path completions
-      "hrsh7th/cmp-cmdline", -- Cmdline completions
-      "hrsh7th/cmp-nvim-lsp", -- LSP completions
+      "hrsh7th/cmp-buffer",                   -- Buffer completions
+      "hrsh7th/cmp-path",                     -- Path completions
+      "hrsh7th/cmp-cmdline",                  -- Cmdline completions
+      "hrsh7th/cmp-nvim-lsp",                 -- LSP completions
       "hrsh7th/cmp-nvim-lsp-document-symbol", -- For textDocument/documentSymbol
 
       -- Snippets
-      "saadparwaiz1/cmp_luasnip", -- snippet completions
-      "L3MON4D3/LuaSnip", --snippet engine
+      "saadparwaiz1/cmp_luasnip",     -- snippet completions
+      "L3MON4D3/LuaSnip",             --snippet engine
       "rafamadriz/friendly-snippets", -- a bunch of snippets to
 
       -- Misc
@@ -178,11 +165,6 @@ local plugins = {
     config = function() require("plugins.config.treesitter") end,
     event = "BufReadPre",
   },
-
-  -- {
-  --   "nim-treesitter/nvim-treesitter-textobjects",
-  --   dependencies = "nvim-treesitter/nvim-treesitter",
-  -- },
 
   {
     "m-demare/hlargs.nvim",
@@ -204,17 +186,10 @@ local plugins = {
   -----------------------------------------------------------------------------
   { "ekalinin/Dockerfile.vim" },
   { "cespare/vim-toml" },
-  -- { "tpope/vim-rails" },
+  { "tpope/vim-rails" },
   { "vim-ruby/vim-ruby" },
   { "mtdl9/vim-log-highlighting" },
   { "folke/neodev.nvim" },
-
-  -- {
-  --   "zbirenbaum/copilot.lua",
-  --   cmd = "Copilot",
-  --   event = "InsertEnter",
-  --   config = function() require("plugins.config.copilot") end,
-  -- },
 
   -- Comment lines/blocks
   {
@@ -362,7 +337,7 @@ local opts = {
   lockfile = vim.fn.stdpath("config") .. "/.lazy-lock.json",
   concurrency = 50,
   install = {
-    missing = true, -- install missing plugins on startup.
+    missing = true,              -- install missing plugins on startup.
     colorscheme = { "onenord" }, -- try to load one of these colorschemes when installation
   },
   ui = {
@@ -371,5 +346,22 @@ local opts = {
       height = 0.7
     },
   },
+  performance = {
+    reset_packpath = true, -- reset the package path to improve startup time
+    rtp = {
+      reset = true,
+      disabled_plugins = {
+        "gzip",
+        "matchit",
+        "matchparen",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
 }
+
 plugin.setup(plugins, opts)
