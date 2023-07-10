@@ -7,9 +7,14 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   command = "%s/\\s\\+$//e"
 })
 
--- Prevent stripping EOL on save
--- vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead", "BufWritePost" }, {
---   group = "_formatting",
---   pattern = "*",
---   command = "setl fixeol"
--- })
+-- Highlight on yank
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 200 })
+  end,
+  group = highlight_group,
+  pattern = "*",
+})
+
+vim.cmd [[highlight IncSearch cterm=reverse gui=reverse]]

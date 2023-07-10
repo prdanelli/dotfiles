@@ -324,13 +324,6 @@ local plugins = {
     event = "BufEnter",
   },
 
-  -- Highlight yanked text
-  {
-    "machakann/vim-highlightedyank",
-    config = function() require("plugins.config.highlighted_yank") end,
-    event = "BufEnter",
-  },
-
   {
     "folke/persistence.nvim",
     event = "BufReadPre", -- this will only start session saving when an actual file was opened
