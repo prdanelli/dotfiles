@@ -27,6 +27,10 @@ vim.keymap.set("v", "p", '"_dP', opts)
 vim.keymap.set("v", "<", "<gv", opts)
 vim.keymap.set("v", ">", ">gv", opts)
 
+-- move lines
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
 -- Insert lines above/below without leaving normal mode
 vim.keymap.set("n", "oo", "o<Esc>k", opts)
 vim.keymap.set("n", "OO", "O<Esc>j", opts)
@@ -40,10 +44,8 @@ vim.keymap.set("i", "<c-s>", "<NOP>", opts)
 vim.keymap.set("n", "<c-s>", "<cmd>w<cr>", opts)
 vim.keymap.set("i", "<c-s>", "<esc><cmd>w<cr>", opts)
 
--- Map jj to esc
+-- Map to esc
 vim.keymap.set("i", "jj", "<esc>", opts)
-
--- Ctrl-c to esc
 vim.keymap.set("i", "<C-c>", "<esc>", opts)
 
 -- Escape in normal mode seems to tab
@@ -78,4 +80,3 @@ vim.keymap.set("n", "<M-Up>", ":resize +2<CR>", opts)
 vim.keymap.set("n", "<M-Down>", ":resize -2<CR>", opts)
 vim.keymap.set("n", "<M-Left>", ":vertical resize -2<CR>", opts)
 vim.keymap.set("n", "<M-Right>", ":vertical resize +2<CR>", opts)
-
