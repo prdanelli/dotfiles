@@ -64,6 +64,18 @@ local plugins = {
   -- Navigation
   -----------------------------------------------------------------------------
   {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+    },
+    config = function()
+      require("plugins.config.neo-tree")
+    end,
+  },
+
+  {
     "kevinhwang91/rnvimr",
     config = function() require("plugins.config.rnvimr") end,
     event = "BufEnter",
