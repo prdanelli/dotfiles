@@ -2,8 +2,8 @@ M = {}
 
 M.bindings = {
   ["a"] = { "<cmd>Alpha<cr>", "Startup Screen" },
-  ["-"] = { ":split<CR>", "Horizonal Split"  },
-  ['\\'] = { ":vsplit<CR>", "Vertical Split"  },
+  ["-"] = { ":split<CR>", "Horizonal Split" },
+  ["\\"] = { ":vsplit<CR>", "Vertical Split" },
 
   b = {
     name = "Buffer",
@@ -11,6 +11,7 @@ M.bindings = {
     w = { "<Cmd>bd!<Cr>", "Close current" },
     D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete all" },
     i = { "mpggVG=<esc>`p", "Indent" },
+    f = { "<cmd>Format<cr>", "Format" },
     c = { "<cmd>set tabstop=2 shiftwidth=2 expandtab | retab<cr>", "Convert tabs to spaces" },
     ["1"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "Goto Buffer 1" },
     ["2"] = { "<Cmd>BufferLineGoToBuffer 2<CR>", "Goto Buffer 2" },
@@ -39,7 +40,7 @@ M.bindings = {
     r = { "<cmd>Telescope oldfiles<cr>", "Old Files" },
     p = { "<cmd>Telescope find_files hidden=true layout_config={'prompt_position':'top'}<cr>", "Files" },
     r = { "<cmd>Telescope lsp_document_symbols<cr>", "LSP Symbols" },
-    t = { "<cmd>NvimTreeToggle<cr>", "Tree Explorer" },
+    t = { "<cmd>Neotree<cr>", "Tree Explorer" },
     w = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Current Buffer" },
   },
 
@@ -62,7 +63,10 @@ M.bindings = {
     q = { "<cmd>GitConflictListQf<cr>", "Conflict - Quicklist" },
     ["]"] = { "<cmd>GitConflictNextConflict<cr>", "Conflict - Goto Next" },
     ["["] = { "<cmd>GitConflictPrevConflict<cr>", "Conflict - Goto Previous" },
-    l = { "<cmd>lua require('gitlinker').get_buf_range_url('n', { action_callback = require('gitlinker.actions').open_in_browser })<cr>", "Git Link" }
+    l = {
+      "<cmd>lua require('gitlinker').get_buf_range_url('n', { action_callback = require('gitlinker.actions').open_in_browser })<cr>",
+      "Git Link",
+    },
   },
 
   m = {
