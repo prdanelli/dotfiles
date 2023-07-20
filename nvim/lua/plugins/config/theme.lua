@@ -1,5 +1,7 @@
 local status_ok, onenord = pcall(require, "onenord")
-if not status_ok then return end
+if not status_ok then
+  return
+end
 
 local colors = require("config.colors").colors
 
@@ -9,7 +11,7 @@ local preview = colors.grey14
 
 local window_bg = colors.grey14
 
-onenord.setup {
+onenord.setup({
   borders = true,
   fade_nc = false,
   styles = {
@@ -28,6 +30,11 @@ onenord.setup {
   custom_highlights = {
     -- Rnvimr
     RnvimrNormal = { bg = prompt },
+
+    -- Neotree
+    NeoTreeNormal = { bg = prompt },
+    Search = { bg = prompt },
+    NeoTreeNormal = { bg = prompt },
 
     -- Neotest
     NeotestAdapterName = { fg = colors.grey10 },
@@ -115,5 +122,5 @@ onenord.setup {
     -- The current item
     TelescopeSelection = { fg = colors.magenta_dark, bg = results },
     TelescopeSelectionCaret = { fg = colors.magenta_dark, bg = results },
-  }
-}
+  },
+})
