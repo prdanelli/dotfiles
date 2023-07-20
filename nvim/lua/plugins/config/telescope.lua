@@ -1,5 +1,7 @@
 local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then return end
+if not status_ok then
+  return
+end
 
 local actions = require("telescope.actions")
 local previewers = require("telescope.previewers")
@@ -20,6 +22,9 @@ local sorters = require("telescope.sorters")
 -- <C-h>/h	Toggle hidden files/folders
 -- <C-s>/s	Toggle all entries ignoring ./ and ../
 
+local width = 0.95
+local height = 0.95
+
 telescope.setup({
   pickers = {
     buffers = {
@@ -30,15 +35,19 @@ telescope.setup({
       mappings = {
         i = {
           ["<c-d>"] = "delete_buffer",
-        }
+        },
       },
-    }
+    },
   },
   defaults = {
     mappings = {
       i = {
         ["<esc>"] = actions.close,
-        ["<C-u>"] = false
+        ["<C-u>"] = false,
+        ["<C-j>"] = require("telescope.actions").cycle_history_next,
+        ["<C-k>"] = require("telescope.actions").cycle_history_prev,
+        ["<C-n>"] = require("telescope.actions").move_selection_next,
+        ["<C-p>"] = require("telescope.actions").move_selection_previous,
       },
       n = {},
     },
@@ -65,13 +74,13 @@ telescope.setup({
       prompt_position = "top",
       horizontal = {
         mirror = false,
-        width = 0.999999,
-        height = 0.999999,
+        width = width,
+        height = height,
       },
       vertical = {
         mirror = false,
-        width = 0.9999999,
-        height = 0.999999,
+        width = width,
+        height = height,
       },
     },
     file_sorter = sorters.get_fuzzy_file,
@@ -86,6 +95,6 @@ telescope.setup({
     file_previewer = previewers.vim_buffer_cat.new,
     grep_previewer = previewers.vim_buffer_vimgrep.new,
     qflist_previewer = previewers.vim_buffer_qflist.new,
-    extensions = {}
-  }
+    extensions = {},
+  },
 })
