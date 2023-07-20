@@ -1,5 +1,7 @@
 local status_ok, lualine = pcall(require, "lualine")
-if not status_ok then return end
+if not status_ok then
+  return
+end
 
 local highlight = require("lualine.highlight")
 local colors = require("config.colors").colors
@@ -19,8 +21,9 @@ local default_options = {
     readonly = " [✘]",
     unnamed = "[No Name]",
     newfile = "[New]",
-  }
+  },
 }
+local excludes = { "qf", "netrw", "NvimTree", "lazy", "mason", "oil", "neo-tree" }
 
 function fname:init(options)
   fname.super.init(self, options)
@@ -43,8 +46,10 @@ function fname:update_status()
   local data
   local symbols = {}
 
-  -- Filename
-  -- data = vim.fn.expand("%:t")
+  if _G.contains(excludes, vim.bo.filetype) then
+    return
+  end
+
   -- Relative path
   data = vim.fn.expand("%:~:.")
   data = modules.utils.stl_escape(data)
@@ -64,7 +69,7 @@ function fname:update_status()
   table.insert(symbols, state)
 
   -- data = data .. "" .. (#symbols > 0 and "" .. table.concat(symbols, "") or "")
-  local icon = icons[vim.fn.expand('%:e')]
+  local icon = icons[vim.fn.expand("%:e")]
   if icon then
     icon = icon.icon
   else
@@ -102,7 +107,7 @@ lualine.setup({
     lualine_c = { fname },
     lualine_x = { "diff" },
     lualine_y = {},
-    lualine_z = {}
+    lualine_z = {},
   },
   inactive_sections = {
     lualine_a = {},
@@ -110,7 +115,7 @@ lualine.setup({
     lualine_c = {},
     lualine_x = {},
     lualine_y = {},
-    lualine_z = {}
+    lualine_z = {},
   },
   -- tabline = {
   --   lualine_a = {},
@@ -126,14 +131,13 @@ lualine.setup({
     lualine_c = {},
     lualine_x = {},
     lualine_y = {},
-    lualine_z = {}
+    lualine_z = {},
   },
   extensions = {
     "nvim-tree",
     "man",
     "lazy",
     "trouble",
-    "toggleterm"
-  }
+    "toggleterm",
+  },
 })
-
