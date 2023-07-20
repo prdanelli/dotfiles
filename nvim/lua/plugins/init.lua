@@ -12,7 +12,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local status_ok, plugin = pcall(require, "lazy")
-if not status_ok then return end
+if not status_ok then
+  return
+end
 
 local plugins = {
   -----------------------------------------------------------------------------
@@ -20,44 +22,72 @@ local plugins = {
   -----------------------------------------------------------------------------
   {
     "kyazdani42/nvim-web-devicons",
-    config = function() require("plugins.config.nvim_web_devicons") end,
+    config = function()
+      require("plugins.config.nvim_web_devicons")
+    end,
   },
 
   {
     "goolord/alpha-nvim",
     dependencies = {
-      "kyazdani42/nvim-web-devicons"
+      "kyazdani42/nvim-web-devicons",
     },
-    config = function() require("plugins.config.alpha") end,
+    config = function()
+      require("plugins.config.alpha")
+    end,
   },
 
   {
     "norcalli/nvim-colorizer.lua",
-    config = function() require("plugins.config.colorizer") end,
+    config = function()
+      require("plugins.config.colorizer")
+    end,
   },
 
   {
     "petertriho/nvim-scrollbar",
-    config = function() require("scrollbar").setup() end,
+    config = function()
+      require("scrollbar").setup()
+    end,
     event = "BufReadPre",
   },
 
   {
     "nvim-lualine/lualine.nvim",
-    config = function() require("plugins.config.lualine") end,
+    config = function()
+      require("plugins.config.lualine")
+    end,
     event = "VimEnter",
   },
 
   {
     "rmehri01/onenord.nvim",
-    config = function() require("plugins.config.theme") end,
+    config = function()
+      require("plugins.config.theme")
+    end,
   },
 
   -- Add better vertical lines
   {
     "lukas-reineke/virt-column.nvim",
-    config = function() require("virt-column").setup() end,
+    config = function()
+      require("virt-column").setup()
+    end,
     event = "BufReadPre",
+  },
+
+  {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("plugins.config.zenmode")
+    end,
+  },
+
+  {
+    "rcarriga/nvim-notify",
+    config = function()
+      require("plugins.config.notify")
+    end,
   },
 
   -----------------------------------------------------------------------------
@@ -77,37 +107,46 @@ local plugins = {
 
   {
     "kevinhwang91/rnvimr",
-    config = function() require("plugins.config.rnvimr") end,
+    config = function()
+      require("plugins.config.rnvimr")
+    end,
     event = "BufEnter",
   },
 
   {
     "kyazdani42/nvim-tree.lua",
     dependencies = { "kyazdani42/nvim-web-devicons" },
-    config = function() require("plugins.config.nvim_tree") end,
+    config = function()
+      require("plugins.config.nvim_tree")
+    end,
     event = "BufEnter",
   },
 
   {
     "folke/which-key.nvim",
     event = "VimEnter",
-    config = function() require("plugins.config.whichkey").setup() end,
+    config = function()
+      require("plugins.config.whichkey").setup()
+    end,
   },
 
   {
     "jinh0/eyeliner.nvim",
-    config = function() require("plugins.config.eyeliner") end
+    config = function()
+      require("plugins.config.eyeliner")
+    end,
   },
 
   {
     "luukvbaal/statuscol.nvim",
-    config = function() require("plugins.config.statuscol") end,
+    config = function()
+      require("plugins.config.statuscol")
+    end,
   },
 
   -----------------------------------------------------------------------------
   -- LSP
   -----------------------------------------------------------------------------
-  { "folke/lsp-colors.nvim" },    -- Add missing LSP highlight groups
   { "nvim-lua/lsp-status.nvim" }, -- Used by other plugins for basic lsp info
 
   {
@@ -116,22 +155,28 @@ local plugins = {
       "williamboman/mason-lspconfig.nvim",
       "neovim/nvim-lspconfig",
     },
-    config = function() require("lsp").setup() end,
+    config = function()
+      require("lsp").setup()
+    end,
     build = ":MasonUpdate",
   },
 
   {
     "mihyaeru21/nvim-lspconfig-bundler",
     dependencies = {
-      "neovim/nvim-lspconfig"
+      "neovim/nvim-lspconfig",
     },
-    config = function() require('lspconfig-bundler').setup() end,
+    config = function()
+      require("lspconfig-bundler").setup()
+    end,
   },
 
   -- LSP progress indicator
   {
     "j-hui/fidget.nvim",
-    config = function() require("plugins.config.fidget") end,
+    config = function()
+      require("plugins.config.fidget")
+    end,
     event = "BufReadPre",
     tag = "legacy",
   },
@@ -139,7 +184,9 @@ local plugins = {
   {
     "folke/trouble.nvim",
     dependencies = "kyazdani42/nvim-web-devicons",
-    config = function() require("plugins.config.trouble") end,
+    config = function()
+      require("plugins.config.trouble")
+    end,
     event = "BufEnter",
   },
 
@@ -149,22 +196,24 @@ local plugins = {
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      "hrsh7th/cmp-buffer",                   -- Buffer completions
-      "hrsh7th/cmp-path",                     -- Path completions
-      "hrsh7th/cmp-cmdline",                  -- Cmdline completions
-      "hrsh7th/cmp-nvim-lsp",                 -- LSP completions
+      "hrsh7th/cmp-buffer", -- Buffer completions
+      "hrsh7th/cmp-path", -- Path completions
+      "hrsh7th/cmp-cmdline", -- Cmdline completions
+      "hrsh7th/cmp-nvim-lsp", -- LSP completions
       "hrsh7th/cmp-nvim-lsp-document-symbol", -- For textDocument/documentSymbol
 
       -- Snippets
-      "saadparwaiz1/cmp_luasnip",     -- snippet completions
-      "L3MON4D3/LuaSnip",             --snippet engine
+      "saadparwaiz1/cmp_luasnip", -- snippet completions
+      "L3MON4D3/LuaSnip", --snippet engine
       "rafamadriz/friendly-snippets", -- a bunch of snippets to
 
       -- Misc
       "lukas-reineke/cmp-under-comparator", -- Tweak completion order
       "f3fora/cmp-spell",
     },
-    config = function() require("plugins.config.cmp") end,
+    config = function()
+      require("plugins.config.cmp")
+    end,
     event = "BufEnter",
   },
 
@@ -174,13 +223,23 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    config = function() require("plugins.config.treesitter") end,
+    config = function()
+      require("plugins.config.treesitter")
+    end,
     event = "BufReadPre",
   },
 
   {
     "m-demare/hlargs.nvim",
-    config = function() require("hlargs").setup() end,
+    config = function()
+      require("hlargs").setup()
+    end,
+    dependencies = "nvim-treesitter/nvim-treesitter",
+  },
+
+  -- https://github.com/chrisgrieser/nvim-various-textobjs#list-of-text-objects
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
     dependencies = "nvim-treesitter/nvim-treesitter",
   },
 
@@ -189,7 +248,9 @@ local plugins = {
   -----------------------------------------------------------------------------
   {
     "nvim-telescope/telescope.nvim",
-    config = function() require("plugins.config.telescope") end,
+    config = function()
+      require("plugins.config.telescope")
+    end,
     event = "BufEnter",
   },
 
@@ -206,7 +267,9 @@ local plugins = {
   -- Comment lines/blocks
   {
     "terrortylor/nvim-comment",
-    config = function() require("plugins.config.comment") end,
+    config = function()
+      require("plugins.config.comment")
+    end,
     event = "BufEnter",
   },
 
@@ -218,7 +281,9 @@ local plugins = {
 
   {
     "iamcco/markdown-preview.nvim",
-    build = function() vim.fn["mkdp#util#install"]() end,
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
     ft = "markdown",
     cmd = { "MarkdownPreview" },
   },
@@ -229,9 +294,11 @@ local plugins = {
       "olimorris/neotest-rspec",
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
-      "antoinemadec/FixCursorHold.nvim"
+      "antoinemadec/FixCursorHold.nvim",
     },
-    config = function() require("plugins.config.neotest") end,
+    config = function()
+      require("plugins.config.neotest")
+    end,
     event = "BufEnter",
   },
 
@@ -239,41 +306,57 @@ local plugins = {
     "ThePrimeagen/refactoring.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter"
-    }
+      "nvim-treesitter/nvim-treesitter",
+    },
   },
 
+  {
+    "mhartington/formatter.nvim",
+    config = function()
+      require("plugins.config.formatter")
+    end,
+  },
   -----------------------------------------------------------------------------
   -- Git
   -----------------------------------------------------------------------------
   {
     "lewis6991/gitsigns.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = function() require("plugins.config.gitsigns") end,
+    config = function()
+      require("plugins.config.gitsigns")
+    end,
     event = "BufReadPre",
   },
 
   {
     "sindrets/diffview.nvim",
     dependencies = "nvim-lua/plenary.nvim",
-    config = function() require("plugins.config.diffview") end,
+    config = function()
+      require("plugins.config.diffview")
+    end,
     cmd = "DiffviewOpen",
   },
 
   {
     "akinsho/git-conflict.nvim",
-    config = function() require("plugins.config.git_conflict") end
+    config = function()
+      require("plugins.config.git_conflict")
+    end,
   },
 
   {
     "ruifm/gitlinker.nvim",
     dependencies = "nvim-lua/plenary.nvim",
-    config = function() require("gitlinker").setup() end,
+    config = function()
+      require("gitlinker").setup()
+    end,
   },
 
   {
     "aaronhallaert/advanced-git-search.nvim",
-    config = function() require("telescope").load_extension("advanced_git_search") end,
+    config = function()
+      require("telescope").load_extension("advanced_git_search")
+    end,
     dependencies = {
       "nvim-telescope/telescope.nvim",
       -- to show diff splits and open commits in browser
@@ -295,14 +378,16 @@ local plugins = {
   -- Better quick list
   {
     "kevinhwang91/nvim-bqf",
-    ft = "qf"
+    ft = "qf",
   },
 
   -- Wrap text
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to `main` branch for the latest features
-    config = function() require("nvim-surround").setup() end
+    config = function()
+      require("nvim-surround").setup()
+    end,
   },
 
   -- Replace with register and don"t copy
@@ -315,7 +400,9 @@ local plugins = {
     "folke/persistence.nvim",
     event = "BufReadPre", -- this will only start session saving when an actual file was opened
     module = "persistence",
-    config = function() require("plugins.config.sessions") end,
+    config = function()
+      require("plugins.config.sessions")
+    end,
   },
 
   -- Delete buffers but maintain layout
@@ -326,19 +413,26 @@ local plugins = {
 
   {
     "akinsho/toggleterm.nvim",
-    config = function() require("plugins.config.toggleterm") end,
+    config = function()
+      require("plugins.config.toggleterm")
+    end,
   },
 
   {
     "windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup() end
+    config = function()
+      require("nvim-autopairs").setup()
+    end,
   },
 
   -- Vim motion suggestions
   {
     "m4xshen/hardtime.nvim",
     event = "VeryLazy",
-    opts = {}
+    opts = {
+      -- Add "oil" to the disabled_filetypes
+      disabled_filetypes = { "qf", "netrw", "NvimTree", "lazy", "mason", "oil", "neo-tree" },
+    },
   },
 }
 
@@ -349,13 +443,13 @@ local opts = {
   lockfile = vim.fn.stdpath("config") .. "/.lazy-lock.json",
   concurrency = 50,
   install = {
-    missing = true,              -- install missing plugins on startup.
+    missing = true, -- install missing plugins on startup.
     colorscheme = { "onenord" }, -- try to load one of these colorschemes when installation
   },
   ui = {
     size = {
       width = 0.7,
-      height = 0.7
+      height = 0.7,
     },
   },
   performance = {
