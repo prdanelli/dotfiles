@@ -1,5 +1,7 @@
-local plugin_loaded, alpha = pcall(require, "alpha")
-if not plugin_loaded then return end
+local loaded, alpha = pcall(require, "alpha")
+if not loaded then
+  return
+end
 
 alpha.setup(require("alpha.themes.startify").config)
 
