@@ -7,17 +7,17 @@ local highlight_cmd_group = vim.api.nvim_create_augroup("Highlight", {
 })
 
 M.setup = function(client, bufnr)
-  if client.server_capabilities.documentFormattingProvider then
-    api.nvim_create_autocmd("BufWritePre", {
-      callback = function()
-        vim.lsp.buf.format({ timeout_ms = 2000 })
-      end,
-
-      group = api.nvim_create_augroup("Format", {
-        clear = true,
-      }),
-    })
-  end
+  -- if client.server_capabilities.documentFormattingProvider then
+  --   api.nvim_create_autocmd("BufWritePre", {
+  --     callback = function()
+  --       vim.lsp.buf.format({ timeout_ms = 2000 })
+  --     end,
+  --
+  --     group = api.nvim_create_augroup("Format", {
+  --       clear = true,
+  --     }),
+  --   })
+  -- end
 
   if client.server_capabilities.documentHighlightProvider then
     -- Highlight word under cursor on hold
