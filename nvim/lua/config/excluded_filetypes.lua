@@ -1,4 +1,5 @@
 return {
+  "help",
   "qf",
   "netrw",
   "NvimTree",
