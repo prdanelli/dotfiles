@@ -22,7 +22,7 @@ M.import_depdendencies = function()
 end
 
 M.setup_language_servers = function(defaults)
-  local lspconfig = require('lspconfig')
+  local lspconfig = require("lspconfig")
 
   lspconfig.lua_ls.setup(vim.tbl_deep_extend("force", require("lsp.settings.lua_ls"), defaults))
   lspconfig.solargraph.setup(vim.tbl_deep_extend("force", require("lsp.settings.solargraph"), defaults))
@@ -38,7 +38,7 @@ end
 
 M.default_on_attach = function(client, bufnr)
   require("lsp.keymaps").setup(client, bufnr)
-  require("lsp.auto_commands").setup(client, bufnr)
+  -- require("lsp.auto_commands").setup(client, bufnr)
 end
 
 M.set_capabilities = function()
