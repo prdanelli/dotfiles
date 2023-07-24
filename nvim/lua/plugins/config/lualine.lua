@@ -23,7 +23,6 @@ local default_options = {
     newfile = "[New]",
   },
 }
-local excludes = { "qf", "netrw", "NvimTree", "lazy", "mason", "oil", "neo-tree" }
 
 function fname:init(options)
   fname.super.init(self, options)
@@ -42,11 +41,10 @@ function fname:init(options)
 end
 
 function fname:update_status()
-  local path_separator = package.config:sub(1, 1)
   local data
   local symbols = {}
 
-  if _G.contains(excludes, vim.bo.filetype) then
+  if _G.contains(require("config.excluded_filetypes"), vim.bo.filetype) then
     return
   end
 
@@ -94,6 +92,7 @@ end
 
 lualine.setup({
   options = {
+    theme = "nordic",
     icons_enabled = true,
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
