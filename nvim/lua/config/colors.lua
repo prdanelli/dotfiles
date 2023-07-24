@@ -2,7 +2,7 @@ local M = {}
 
 M.colors = {
   bg_light = "#353b49",
-  bg = "#242933",
+  bg = "#2e3440",
   fg = "#ECEFF4",
   red = "#bf616a",
   orange = "#d08770",
@@ -14,7 +14,7 @@ M.colors = {
   cyan = "#88c0d0",
   magenta_dark = "#9d6b93",
   magenta = "#b48ead",
-  magenta_light = "#cbb1c7",
+  magenta_light= "#cbb1c7",
   pink = "#FFA19F",
   grey1 = "#f8fafc",
   grey2 = "#f0f1f4",
@@ -29,13 +29,12 @@ M.colors = {
   grey11 = "#464f62",
   grey12 = "#3a4150",
   grey13 = "#333a47",
-  grey14 = "#242933",
-  grey15 = "#1c2029",
-  grey16 = "#1c2028",
+  grey14 = "#242932",
+  grey15 = "#1e222a",
+  grey16 = "#1c1f26",
   grey17 = "#0f1115",
   grey18 = "#0d0e11",
   grey19 = "#020203",
-  grey20 = "#1a1c24",
 }
 
 return M
