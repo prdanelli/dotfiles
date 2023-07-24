@@ -60,10 +60,19 @@ local plugins = {
     event = "VimEnter",
   },
 
+  -- {
+  --   "rmehri01/onenord.nvim",
+  --   config = function()
+  --     require("plugins.config.onenord")
+  --   end,
+  -- },
+
   {
-    "rmehri01/onenord.nvim",
+    "AlexvZyl/nordic.nvim",
+    lazy = false,
+    priority = 1000,
     config = function()
-      require("plugins.config.onenord")
+      require("plugins.config.nordic")
     end,
   },
 
