@@ -13,6 +13,8 @@ vim.keymap.set("n", "<DOWN>", "<NOP>", opts)
 vim.keymap.set("n", "<LEFT>", "<NOP>", opts)
 vim.keymap.set("n", "<RIGHT>", "<NOP>", opts)
 
+vim.keymap.set({ "n", "t", "v", "i", "o" }, "<C-x>", "<cmd>echo &filetype<cr>", opts)
+
 -- Map ctrl-c to esc
 vim.keymap.set("i", "<C-c>", "<esc>", opts)
 
