@@ -63,7 +63,7 @@ local plugins = {
   {
     "rmehri01/onenord.nvim",
     config = function()
-      require("plugins.config.theme")
+      require("plugins.config.onenord")
     end,
   },
 
@@ -87,6 +87,13 @@ local plugins = {
     "rcarriga/nvim-notify",
     config = function()
       require("plugins.config.notify")
+    end,
+  },
+
+  {
+    "RRethy/vim-illuminate",
+    config = function()
+      require("plugins.config.vim-illuminate")
     end,
   },
 
@@ -114,12 +121,10 @@ local plugins = {
   },
 
   {
-    "kyazdani42/nvim-tree.lua",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
+    "chrisgrieser/nvim-spider",
     config = function()
-      require("plugins.config.nvim_tree")
+      require("plugins.config.spider")
     end,
-    event = "BufEnter",
   },
 
   {
