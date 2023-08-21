@@ -2,12 +2,13 @@
 # Exported Variables
 ################################################################################
 
-# First items are added first, but referred to last - first in, last out. 
+# First items are added first, but referred to last - first in, last out.
 export PATH=/opt/homebrew/opt/postgresql@15/bin:$PATH
 export PATH=/opt/homebrew/opt/yarn:$PATH
 export PATH=/opt/homebrew/opt/python@3.9:$PATH
 export PATH=/opt/homebrew/opt/openssl@3:$PATH
 export PATH=/usr/local/bin:$PATH # Recommended by brew doctor
+export PATH=/opt/homebrew/sbin:$PATH # Recommended by brew doctor
 export PATH=/opt/homebrew/bin:$PATH # Brew is first as everything else uses that
 export PATH=$HOME/.bin:$PATH
 
