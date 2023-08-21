@@ -17,6 +17,7 @@ if not status_ok then
 end
 
 local plugins = {
+
   -----------------------------------------------------------------------------
   -- Look & feel
   -----------------------------------------------------------------------------
@@ -321,6 +322,7 @@ local plugins = {
       require("plugins.config.formatter")
     end,
   },
+
   -----------------------------------------------------------------------------
   -- Git
   -----------------------------------------------------------------------------
@@ -436,7 +438,7 @@ local plugins = {
     event = "VeryLazy",
     opts = {
       -- Add "oil" to the disabled_filetypes
-      disabled_filetypes = { "qf", "netrw", "NvimTree", "lazy", "mason", "oil", "neo-tree" },
+      disabled_filetypes = require("config.excluded_filetypes"),
     },
   },
 }
