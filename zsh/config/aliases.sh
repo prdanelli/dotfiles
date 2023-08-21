@@ -57,6 +57,7 @@ alias brewbundle="brew bundle --file ~/.Brewfile"
 # Docker Compose
 alias dc="docker-compose"
 alias dcr="docker-compose run --rm"
+# DO NOT use ctrl+c or it will exit the container, instead use ctrl+q+p
 function docker-attach() {
   docker attach $(docker-compose ps -q $1)
 }
