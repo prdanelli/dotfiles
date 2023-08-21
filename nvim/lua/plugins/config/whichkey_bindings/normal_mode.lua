@@ -10,7 +10,7 @@ M.bindings = {
     --[[ c = { "<Cmd>close<Cr>", "Close split" }, ]]
     w = { "<Cmd>bd!<Cr>", "Close current" },
     D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete all" },
-    i = { "mpggVG=<esc>`p", "Indent" },
+    i = { "mpgg=G<esc>`p", "Indent" },
     f = { "<cmd>Format<cr>", "Format" },
     c = { "<cmd>set tabstop=2 shiftwidth=2 expandtab | retab<cr>", "Convert tabs to spaces" },
     ["1"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "Goto Buffer 1" },
