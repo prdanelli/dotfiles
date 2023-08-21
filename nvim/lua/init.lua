@@ -29,23 +29,6 @@ local plugins = {
   },
 
   {
-    "goolord/alpha-nvim",
-    dependencies = {
-      "kyazdani42/nvim-web-devicons",
-    },
-    config = function()
-      require("plugins.config.alpha")
-    end,
-  },
-
-  {
-    "norcalli/nvim-colorizer.lua",
-    config = function()
-      require("plugins.config.colorizer")
-    end,
-  },
-
-  {
     "petertriho/nvim-scrollbar",
     config = function()
       require("scrollbar").setup()
@@ -137,13 +120,6 @@ local plugins = {
   },
 
   {
-    "jinh0/eyeliner.nvim",
-    config = function()
-      require("plugins.config.eyeliner")
-    end,
-  },
-
-  {
     "luukvbaal/statuscol.nvim",
     config = function()
       require("plugins.config.statuscol")
@@ -177,48 +153,11 @@ local plugins = {
     end,
   },
 
-  -- LSP progress indicator
-  {
-    "j-hui/fidget.nvim",
-    config = function()
-      require("plugins.config.fidget")
-    end,
-    event = "BufReadPre",
-    tag = "legacy",
-  },
-
   {
     "folke/trouble.nvim",
     dependencies = "kyazdani42/nvim-web-devicons",
     config = function()
       require("plugins.config.trouble")
-    end,
-    event = "BufEnter",
-  },
-
-  -----------------------------------------------------------------------------
-  -- Completions
-  -----------------------------------------------------------------------------
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "hrsh7th/cmp-buffer", -- Buffer completions
-      "hrsh7th/cmp-path", -- Path completions
-      "hrsh7th/cmp-cmdline", -- Cmdline completions
-      "hrsh7th/cmp-nvim-lsp", -- LSP completions
-      "hrsh7th/cmp-nvim-lsp-document-symbol", -- For textDocument/documentSymbol
-
-      -- Snippets
-      "saadparwaiz1/cmp_luasnip", -- snippet completions
-      "L3MON4D3/LuaSnip", --snippet engine
-      "rafamadriz/friendly-snippets", -- a bunch of snippets to
-
-      -- Misc
-      "lukas-reineke/cmp-under-comparator", -- Tweak completion order
-      "f3fora/cmp-spell",
-    },
-    config = function()
-      require("plugins.config.cmp")
     end,
     event = "BufEnter",
   },
@@ -270,15 +209,6 @@ local plugins = {
   { "mtdl9/vim-log-highlighting" },
   { "folke/neodev.nvim" },
 
-  -- Comment lines/blocks
-  {
-    "terrortylor/nvim-comment",
-    config = function()
-      require("plugins.config.comment")
-    end,
-    event = "BufEnter",
-  },
-
   {
     "cuducos/yaml.nvim",
     ft = { "yaml" },
@@ -316,41 +246,9 @@ local plugins = {
     },
   },
 
-  {
-    "mhartington/formatter.nvim",
-    config = function()
-      require("plugins.config.formatter")
-    end,
-  },
-
   -----------------------------------------------------------------------------
   -- Git
   -----------------------------------------------------------------------------
-  {
-    "lewis6991/gitsigns.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("plugins.config.gitsigns")
-    end,
-    event = "BufReadPre",
-  },
-
-  {
-    "sindrets/diffview.nvim",
-    dependencies = "nvim-lua/plenary.nvim",
-    config = function()
-      require("plugins.config.diffview")
-    end,
-    cmd = "DiffviewOpen",
-  },
-
-  {
-    "akinsho/git-conflict.nvim",
-    config = function()
-      require("plugins.config.git_conflict")
-    end,
-  },
-
   {
     "ruifm/gitlinker.nvim",
     dependencies = "nvim-lua/plenary.nvim",
@@ -444,6 +342,7 @@ local plugins = {
 }
 
 local opts = {
+  spec = "plugins",
   defaults = {
     lazy = false, -- should plugins be lazy-loaded?
   },
@@ -453,6 +352,7 @@ local opts = {
     missing = true, -- install missing plugins on startup.
     colorscheme = { "onenord" }, -- try to load one of these colorschemes when installation
   },
+  checker = { enabled = true },
   ui = {
     size = {
       width = 0.7,
