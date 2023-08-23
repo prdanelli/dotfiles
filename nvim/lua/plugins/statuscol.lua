@@ -1,12 +1,14 @@
-local plugin_loaded, statuscol = pcall(require, "statuscol")
-if not plugin_loaded then return end
+return {
+  "luukvbaal/statuscol.nvim",
+  config = function()
+    local builtin = require("statuscol.builtin")
 
-local builtin = require("statuscol.builtin")
-
-statuscol.setup({
-  relculright = true,
-  segments = {
-    { text = { "%s" } },
-    { text = { builtin.lnumfunc, "  " } },
-  }
-})
+    require("statuscol").setup({
+      relculright = true,
+      segments = {
+        { text = { "%s" } },
+        { text = { builtin.lnumfunc, "  " } },
+      },
+    })
+  end,
+}
