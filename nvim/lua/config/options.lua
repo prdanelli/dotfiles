@@ -61,6 +61,8 @@ vim.opt.fixendofline = false -- Prevent Nvim from removing end of file new line
 vim.g.editorconfig = false
 vim.g.ruby_host_prog = "/Users/paul/.asdf/shims/neovim-ruby-host" -- avoid needing to install this in every project
 
+vim.g.indentLine_color_gui = require("config.colors").colors.grey14
+
 -- Custom fold text
 vim.cmd([[
   function! MyFoldText()
