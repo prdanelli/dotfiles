@@ -11,23 +11,16 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local status_ok, plugin = pcall(require, "lazy")
-if not status_ok then
-  return
-end
-
-local opts = {
+require("lazy").setup({
   spec = "plugins",
-  defaults = {
-    lazy = false, -- should plugins be lazy-loaded?
-  },
+  defaults = { lazy = true,  },
   lockfile = vim.fn.stdpath("config") .. "/.lazy-lock.json",
   concurrency = 50,
   install = {
     missing = true, -- install missing plugins on startup.
     colorscheme = { "onenord" }, -- try to load one of these colorschemes when installation
-  },
-  checker = { enabled = true },
+  },  
+  checker = { enabled = false },
   ui = {
     size = {
       width = 0.7,
@@ -35,9 +28,7 @@ local opts = {
     },
   },
   performance = {
-    reset_packpath = true, -- reset the package path to improve startup time
     rtp = {
-      reset = true,
       disabled_plugins = {
         "gzip",
         "matchit",
@@ -46,10 +37,7 @@ local opts = {
         "tarPlugin",
         "tohtml",
         "tutor",
-        "zipPlugin",
-      },
+        "zipPlugin",      },
     },
   },
-}
-
-plugin.setup(opts)
+})
