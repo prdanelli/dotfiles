@@ -19,6 +19,37 @@ return {
     event = "BufReadPre",
   },
 
+  {
+    "Aasim-A/scrollEOF.nvim",
+    config = function()
+      require("scrollEOF").setup()
+    end,
+  },
+
+  {
+    "tzachar/highlight-undo.nvim",
+    config = function()
+      require("highlight-undo").setup({
+        duration = 300,
+        undo = {
+          hlgroup = "HighlightUndo",
+          mode = "n",
+          lhs = "u",
+          map = "undo",
+          opts = {},
+        },
+        redo = {
+          hlgroup = "HighlightUndo",
+          mode = "n",
+          lhs = "<C-r>",
+          map = "redo",
+          opts = {},
+        },
+        highlight_for_count = true,
+      })
+    end,
+  },
+
   -----------------------------------------------------------------------------
   -- Navigation
   -----------------------------------------------------------------------------
@@ -109,5 +140,16 @@ return {
       -- Add "oil" to the disabled_filetypes
       disabled_filetypes = require("config.excluded_filetypes"),
     },
+  },
+
+  {
+    "johmsalas/text-case.nvim",
+    config = function()
+      require("textcase").setup({})
+
+      require("telescope").load_extension("textcase")
+      vim.api.nvim_set_keymap("n", "ga.", "<cmd>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
+      vim.api.nvim_set_keymap("v", "ga.", "<cmd>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
+    end,
   },
 }
