@@ -13,13 +13,13 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = "plugins",
-  defaults = { lazy = true,  },
+  defaults = { lazy = false },
   lockfile = vim.fn.stdpath("config") .. "/.lazy-lock.json",
   concurrency = 50,
   install = {
     missing = true, -- install missing plugins on startup.
     colorscheme = { "onenord" }, -- try to load one of these colorschemes when installation
-  },  
+  },
   checker = { enabled = false },
   ui = {
     size = {
@@ -37,7 +37,8 @@ require("lazy").setup({
         "tarPlugin",
         "tohtml",
         "tutor",
-        "zipPlugin",      },
+        "zipPlugin",
+      },
     },
   },
 })
