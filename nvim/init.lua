@@ -1,9 +1,17 @@
 vim.opt.termguicolors = true
 
-require("utils")
-require("config.options")
-require("config.keymaps")
-require("lazynvim")
-require("config.disable_builtins")
-require("autocommands")
-require("user.invert_term")
+local modules = {
+  "user.utils",
+  "config.options",
+  "config.keymaps",
+  "autocommands",
+  "config.plugins",
+  "config.disable_builtins",
+}
+
+for _, module in ipairs(modules) do
+  local ok, err = pcall(require, module)
+  if not ok then
+    error("Error loading " .. module .. "\n\n" .. err)
+  end
+end

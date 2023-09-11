@@ -1,4 +1,4 @@
-vim.notifier = require("notifier")
+vim.notifier = require("user.notifier")
 --
 -- Allow hot reloading of configurations
 _G.safe_load = function(module)
