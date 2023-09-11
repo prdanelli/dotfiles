@@ -13,7 +13,7 @@ vim.keymap.set("n", "<DOWN>", "<NOP>", opts)
 vim.keymap.set("n", "<LEFT>", "<NOP>", opts)
 vim.keymap.set("n", "<RIGHT>", "<NOP>", opts)
 
-vim.keymap.set({ "n", "t", "v", "i", "o" }, "<C-x>", "<cmd>echo &filetype<cr>", opts)
+vim.keymap.set({ "n", "t", "v", "i", "" }, "<C-x>", "<cmd>echo &filetype<cr>", opts)
 
 -- Map ctrl-c to esc
 vim.keymap.set("i", "<C-c>", "<esc>", opts)
@@ -39,6 +39,7 @@ vim.keymap.set("n", "OO", "O<Esc>j", opts)
 
 -- Remove highlighting
 vim.keymap.set("n", "<leader>c", "<cmd>noh<cr>", opts)
+vim.keymap.set("n", "<esc><esc>", "<esc><cmd>noh<cr><esc>", opts)
 
 -- Alternatives to :w, because I constantly typo it
 vim.keymap.set("n", "<c-s>", "<NOP>", opts)
