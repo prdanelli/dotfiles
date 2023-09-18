@@ -52,18 +52,6 @@ return {
         BufferLineIndicatorSelected = { fg = colors.cyan, bg = colors.bg },
         BufferLineFill = { fg = colors.fg, bg = colors.grey14 },
 
-        -- Mini Tab Line
-        MiniTablineHidden = { fg = colors.grey10, bg = colors.bg },
-        MiniTablineCurrent = { fg = colors.grey5, bg = colors.grey12 },
-        -- MiniTablineVisible
-        -- MiniTablineTabpagesection
-        MiniTablineModifiedHidden = { fg = colors.magenta_dark, bg = colors.bg },
-        MiniTablineModifiedCurrent = { fg = colors.magenta, bg = colors.grey12 },
-        MiniTablineModifiedVisible = { fg = colors.magenta_dark, bg = colors.grey13 },
-        -- TabLine = { fg = colors.fg, bg = colors.grey14 },
-        -- TabLineSel = { fg = colors.fg, bg = colors.grey14 },
-        -- TabLineFill = { fg = colors.fg, bg = colors.grey14 },
-
         -- Git Signs
         GitSignsAdd = { fg = colors.green },
         GitSignsChange = { fg = colors.yellow },
