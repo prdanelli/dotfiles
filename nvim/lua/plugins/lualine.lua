@@ -12,6 +12,7 @@ return {
       modified = { bg = colors.orange_washed, fg = colors.grey10 },
       readonly = { bg = colors.red, fg = colors.fg },
     }
+
     local default_options = {
       symbols = {
         saved = " [✓]",
