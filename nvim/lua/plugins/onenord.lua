@@ -32,26 +32,6 @@ return {
 
         -- Neotree
         NeoTreeNormal = { bg = prompt },
-        NeoTreeNormal = { bg = prompt },
-
-        -- Neotest
-        NeotestAdapterName = { fg = colors.grey10 },
-        NeotestFile = { fg = colors.grey6 },
-        NeotestNamespace = { fg = colors.magenta },
-        NeotestDir = { fg = colors.blue },
-        NeotestTest = { fg = colors.grey3 },
-        NeotestFocused = { fg = colors.cyan },
-        NeotestMarked = { fg = colors.orange },
-        -- Neotest - Borders
-        NeotestIndent = { fg = colors.grey11 },
-        NeotestBorder = { fg = colors.grey11 },
-        NeotestExpandMarker = { fg = colors.grey11 },
-        -- Neotest - test state
-        NeotestRunning = { fg = colors.yellow },
-        NeotestSkipped = { fg = colors.organge },
-        NeotestPassed = { fg = colors.green },
-        NeotestFailed = { fg = colors.red },
-        NeotestWinSelect = { fg = colors.red, bg = colors.cyan }, -- ?
 
         -- Whichkey
         WhichKeyFloat = { bg = window_bg },
