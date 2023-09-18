@@ -1,11 +1,6 @@
 return {
   "akinsho/git-conflict.nvim",
   config = function()
-    local status_ok, git_conflict = pcall(require, "git-conflict")
-    if not status_ok then
-      return
-    end
-
     -- GitConflictChooseOurs -- Select the current changes.
     -- GitConflictChooseTheirs -- Select the incoming changes.
     -- GitConflictChooseBoth -- Select both changes.
@@ -14,9 +9,10 @@ return {
     -- GitConflictPrevConflict -- Move to the previous conflict.
     -- GitConflictListQf -- Get all conflict to quickfix
 
-    git_conflict.setup({
+    require("git-conflict").setup({
       default_mappings = false, -- disable buffer local mapping created by this plugin
       disable_diagnostics = false, -- This will disable the diagnostics in a buffer whilst it is conflicted
+      list_opener = "copen", -- command or function to open the conflicts list
       highlights = { -- They must have background color, otherwise the default color will be used
         incoming = "DiffText",
         current = "DiffAdd",

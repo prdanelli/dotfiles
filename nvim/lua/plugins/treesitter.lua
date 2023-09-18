@@ -32,6 +32,9 @@ return {
       }
 
       configs.setup({
+        endwise = {
+          enable = true,
+        },
         context_commentstring = {
           enable = true,
           enable_autocmd = false,
@@ -104,6 +107,10 @@ return {
       })
     end,
     event = "BufReadPre",
+  },
+
+  {
+    "RRethy/nvim-treesitter-endwise",
   },
 
   {

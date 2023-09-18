@@ -121,8 +121,6 @@ return {
         sf = { "<cmd>Telescope advanced_git_search diff_commit_file<CR>", "Search Previous Commits in File" },
         sr = { "<cmd>Telescope advanced_git_search checkout_reflog<CR>", "Search Reflog" },
 
-        d = { "<cmd>DiffviewOpen<cr>", "Diff View Open" },
-        D = { "<cmd>DiffviewClose<cr>", "Diff View Close" },
         o = { "<cmd>GitConflictChooseOurs<cr>", "Conflict - Choose Ours" },
         t = { "<cmd>GitConflictChooseTheirs<cr>", "Conflict - Choose Theirs" },
         b = { "<cmd>GitConflictChooseBoth<cr>", "Conflict - Choose Both" },
