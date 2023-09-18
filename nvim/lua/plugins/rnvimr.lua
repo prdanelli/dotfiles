@@ -4,10 +4,11 @@ return {
     local options = {
       rnvimr_enable_ex = 1, -- Make Ranger replace netrw and be the file explorer
       rnvimr_enable_picker = 1, -- Make Ranger to be hidden after picking a file
+      rnvimr_edit_cmd = "drop", -- Replace `$EDITOR` candidate with this command to open the selected file
       rnvimr_draw_border = 0, -- Border for floating window
       rnvimr_hide_gitignore = 1, -- Hide the files included in gitignore
       rnvimr_enable_bw = 1, -- Make Neovim wipe the buffers corresponding to the files deleted by Ranger
-      rnvimr_shadow_winblend = 50, -- Add a shadow window, value is equal to 100 will disable shadow
+      rnvimr_shadow_winblend = 100, -- Add a shadow window, value is equal to 100 will disable shadow
       rnvimr_ranger_cmd = { "ranger" }, -- Draw border with both
     }
 

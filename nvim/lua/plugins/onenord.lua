@@ -22,7 +22,7 @@ return {
         diagnostics = "italic",
       },
       disable = {
-        background = false,
+        background = true,
         cursorline = false,
         eob_lines = true,
       },
