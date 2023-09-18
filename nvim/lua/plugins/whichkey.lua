@@ -76,6 +76,21 @@ return {
         ["9"] = { "<Cmd>BufferLineGoToBuffer 9<CR>", "Goto Buffer 9" },
       },
 
+      c = {
+        name = "Convert Text",
+        u = { "<cmd>lua require('textcase').current_word('to_upper_case')<CR>", "Upper Case" },
+        l = { "<cmd>lua require('textcase').current_word('to_lower_case')<CR>", "Lower Case" },
+        s = { "<cmd>lua require('textcase').current_word('to_snake_case')<CR>", "Snake Case" },
+        d = { "<cmd>lua require('textcase').current_word('to_dash_case')<CR>", "Dash Case" },
+        n = { "<cmd>lua require('textcase').current_word('to_constant_case')<CR>", "Constant Case" },
+        o = { "<cmd>lua require('textcase').current_word('to_dot_case')<CR>", "Dot Case" },
+        p = { "<cmd>lua require('textcase').current_word('to_phrase_case')<CR>", "Phrase Case" },
+        c = { "<cmd>lua require('textcase').current_word('to_camel_case')<CR>", "Camel Case" },
+        s = { "<cmd>lua require('textcase').current_word('to_pascal_case')<CR>", "Pascal Case" },
+        t = { "<cmd>lua require('textcase').current_word('to_title_case')<CR>", "Title Case" },
+        a = { "<cmd>lua require('textcase').current_word('to_path_case')<CR>", "Path Case" },
+      },
+
       f = {
         name = "Find",
         a = { "<cmd>Telescope autocommands<cr>", "Autocommands" },
