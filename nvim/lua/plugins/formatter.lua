@@ -1,11 +1,6 @@
 return {
   "mhartington/formatter.nvim",
   config = function()
-    local loaded, formatter = pcall(require, "formatter")
-    if not loaded then
-      return
-    end
-
     local util = require("formatter.util")
 
     vim.api.nvim_create_autocmd("BufWritePost", {
@@ -16,12 +11,11 @@ return {
 
     -- Provides the following commands:
     -- Format, FormatWrite, FormatLock, FormatWriteLock
-    formatter.setup({
+    require("formatter").setup({
       logging = true,
       log_level = vim.log.levels.WARN,
       filetype = {
         ruby = {
-          -- require("formatter.filetypes.ruby").rubocop,
           function()
             return {
               exe = "rubocop",
