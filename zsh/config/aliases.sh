@@ -51,7 +51,7 @@ alias skhd:restart="skhd --restart-service"
 alias skhd:reload="skhd --restart-service"
 
 # Brew
-# alias brew:upgrade:all="brew upgrade; brew remove nvim; brew install --HEAD nvim; nvim --headless '+Lazy! sync' +qa;"
+# alias brew:upgrade:all="brew upgrade; sh ~/Personal/Repos/dotfiles/zsh/user/install_neovim_head.sh; nvim --headless '+Lazy! sync' +qa;"
 alias brew:upgrade:all="brew upgrade; nvim --headless '+Lazy! sync' +qa;"
 alias brewbundle="brew bundle --file ~/.Brewfile"
 

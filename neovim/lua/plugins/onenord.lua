@@ -7,7 +7,6 @@ return {
     local prompt = colors.grey14
     local results = colors.grey14
     local preview = colors.grey14
-
     local window_bg = colors.grey14
 
     require("onenord").setup({
@@ -27,6 +26,16 @@ return {
         eob_lines = true,
       },
       custom_highlights = {
+        -- BQL
+        BqfPreviewBorder = { fg = window_bg },
+        -- BqfPreviewFloat = { bg = window_bg },
+
+        -- Notify
+        NotifyBackground = { bg = prompt },
+
+        -- Color Column
+        NonText = { fg = colors.grey13 },
+
         -- Rnvimr
         RnvimrNormal = { bg = prompt },
 
