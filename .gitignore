@@ -18,14 +18,16 @@ ranger/plugins
 ranger/devicons
 .luarc.json
 
-nvim/plugin/packer_compiled.lua
-nvim/spell/*
-nvim/lua/playground
-nvim/sessions
-nvim/.lazy-lock.json
+neovim/plugin/packer_compiled.lua
+neovim/spell/*
+neovim/lua/playground
+neovim/sessions
+neovim/sessions/*.vim
+neovim/.lazy-lock.json
 
 tmux/plugins/**/*
 tmux/resurrect/**
+
 zsh/secrets.sh
 zsh/.zsh_history
 zsh/.zsh_sessions
