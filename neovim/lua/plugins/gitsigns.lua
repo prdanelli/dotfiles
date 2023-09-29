@@ -1,5 +1,6 @@
 return {
   "lewis6991/gitsigns.nvim",
+  event = "BufEnter",
   dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
     local status_ok, gitsigns = pcall(require, "gitsigns")

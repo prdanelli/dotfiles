@@ -1,5 +1,6 @@
 return {
   "akinsho/git-conflict.nvim",
+  event = "VeryLazy",
   config = function()
     -- GitConflictChooseOurs -- Select the current changes.
     -- GitConflictChooseTheirs -- Select the incoming changes.

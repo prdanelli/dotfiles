@@ -1,5 +1,6 @@
 return {
   "folke/zen-mode.nvim",
+  cmd = "ZenMode",
   config = function()
     local loaded, zenmode = pcall(require, "zen-mode")
     if not loaded then

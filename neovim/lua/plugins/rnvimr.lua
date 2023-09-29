@@ -1,5 +1,6 @@
 return {
   "kevinhwang91/rnvimr",
+  event = "BufEnter",
   config = function()
     local options = {
       rnvimr_enable_ex = 1, -- Make Ranger replace netrw and be the file explorer
@@ -23,12 +24,11 @@ return {
       let g:rnvimr_layout = {
         \ 'relative': 'editor',
         \ 'width': float2nr(round(0.95 * &columns)),
-        \ 'height': float2nr(round(0.95 * &lines)),
+        \ 'height': float2nr(round(0.90 * &lines)),
         \ 'col': float2nr(round(0.025 * &columns)),
         \ 'row': float2nr(round(0.025 * &lines)),
         \ 'style': 'minimal'
         \ }
      ]])
   end,
-  event = "BufEnter",
 }

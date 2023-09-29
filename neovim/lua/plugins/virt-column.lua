@@ -1,6 +1,7 @@
 -- Add better vertical lines
 return {
   "lukas-reineke/virt-column.nvim",
+  event = "BufReadPre",
   config = function()
     require("virt-column").setup({
       enabled = true,
@@ -21,5 +22,4 @@ return {
       },
     })
   end,
-  event = "BufReadPre",
 }

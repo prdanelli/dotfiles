@@ -1,5 +1,6 @@
 return {
   "RRethy/vim-illuminate",
+  event = "BufEnter",
   config = function()
     local loaded, illuminate = pcall(require, "vim-illuminate")
     if not loaded then

@@ -1,5 +1,6 @@
 return {
   "nvim-telescope/telescope.nvim",
+  cmd = "Telescope",
   config = function()
     local actions = require("telescope.actions")
     local previewers = require("telescope.previewers")
@@ -97,5 +98,4 @@ return {
       },
     })
   end,
-  event = "BufEnter",
 }

@@ -1,5 +1,7 @@
 return {
   "hrsh7th/nvim-cmp",
+  lazy = true,
+  event = "InsertEnter",
   dependencies = {
     "hrsh7th/cmp-buffer", -- Buffer completions
     "hrsh7th/cmp-path", -- Path completions
@@ -211,5 +213,4 @@ return {
       augroup END
     ]])
   end,
-  event = "BufEnter",
 }

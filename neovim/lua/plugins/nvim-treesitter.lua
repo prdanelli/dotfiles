@@ -1,6 +1,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    event = "BufReadPre",
     build = ":TSUpdate",
     config = function()
       local status_ok, configs = pcall(require, "nvim-treesitter.configs")
@@ -106,15 +107,16 @@ return {
         },
       })
     end,
-    event = "BufReadPre",
   },
 
   {
     "RRethy/nvim-treesitter-endwise",
+    event = "InsertEnter",
   },
 
   {
     "m-demare/hlargs.nvim",
+    event = "BufReadPre",
     config = function()
       require("hlargs").setup()
     end,
@@ -124,6 +126,7 @@ return {
   -- https://github.com/chrisgrieser/nvim-various-textobjs#list-of-text-objects
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    event = "BufReadPre",
     dependencies = "nvim-treesitter/nvim-treesitter",
   },
 }

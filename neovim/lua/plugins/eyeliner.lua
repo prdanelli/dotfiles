@@ -1,5 +1,6 @@
 return {
   "jinh0/eyeliner.nvim",
+  event = "VeryLazy",
   config = function()
     local colors = require("config.colors").colors
 
