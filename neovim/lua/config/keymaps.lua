@@ -42,10 +42,8 @@ vim.keymap.set("n", "<leader>c", "<cmd>noh<cr>", opts)
 vim.keymap.set("n", "<esc><esc>", "<esc><cmd>noh<cr><esc>", opts)
 
 -- Alternatives to :w, because I constantly typo it
-vim.keymap.set("n", "<c-s>", "<NOP>", opts)
-vim.keymap.set("i", "<c-s>", "<NOP>", opts)
-vim.keymap.set("n", "<c-s>", "<cmd>w<cr>", opts)
-vim.keymap.set("i", "<c-s>", "<esc><cmd>w<cr>", opts)
+vim.keymap.set({ "i", "n", "v" }, "<c-s>", "<NOP>", opts)
+vim.keymap.set({ "i", "n", "v" }, "<c-s>", "<esc><cmd>w<cr>", opts)
 
 -- Map to esc
 vim.keymap.set("i", "jj", "<esc>", opts)
