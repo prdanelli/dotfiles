@@ -26,13 +26,19 @@ return {
         eob_lines = true,
       },
       custom_highlights = {
-        -- BQL
+        -- Nvim Core
+        Folded = { fg = colors.grey10 },
+        VertSplit = { fg = colors.lblue },
+        MsgArea = { fg = colors.grey7 },
+        NormalFloat = { bg = colors.grey14 },
+        FloatBorder = { bg = colors.grey14, fg = colors.grey14 },
 
         -- LSP Document Highlights
         LspReferenceText = { link = "Search" },
         LspReferenceRead = { link = "Search" },
         LspReferenceWrite = { link = "Search" },
 
+        -- Better Quick List
         BqfPreviewBorder = { fg = window_bg },
         -- BqfPreviewFloat = { bg = window_bg },
 
@@ -56,10 +62,6 @@ return {
         WhichKeyDesc = { fg = colors.grey7 },
         WhichKeyValue = { fg = colors.grey7 },
 
-        Folded = { fg = colors.grey10 },
-        VertSplit = { fg = colors.lblue },
-        MsgArea = { fg = colors.grey7 },
-
         -- Color columns
         VirtColumn = { bg = colors.bg, fg = colors.grey13 },
 
@@ -71,13 +73,6 @@ return {
         GitSignsAdd = { fg = colors.green },
         GitSignsChange = { fg = colors.yellow },
         GitSignsDelete = { fg = colors.red },
-
-        NvimTreeNormal = { fg = colors.grey6, bg = preview },
-        NvimTreeFolderIcon = { fg = colors.grey10 },
-        NvimTreeIndentMarker = { fg = colors.grey10 },
-
-        NormalFloat = { bg = colors.grey14 },
-        FloatBorder = { bg = colors.grey14, fg = colors.grey14 },
 
         GitConflictCurrent = { bg = colors.green, fg = colors.fg },
         GitConflictCurrentLabel = { bg = colors.green, fg = colors.fg },
