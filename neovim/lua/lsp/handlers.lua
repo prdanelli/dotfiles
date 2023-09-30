@@ -38,7 +38,7 @@ end
 
 M.default_on_attach = function(client, bufnr)
   require("lsp.keymaps").setup(client, bufnr)
-  -- require("lsp.auto_commands").setup(client, bufnr)
+  require("lsp.auto_commands").setup(client, bufnr)
 end
 
 M.set_capabilities = function()

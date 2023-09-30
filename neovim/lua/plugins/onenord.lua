@@ -27,6 +27,12 @@ return {
       },
       custom_highlights = {
         -- BQL
+
+        -- LSP Document Highlights
+        LspReferenceText = { link = "Search" },
+        LspReferenceRead = { link = "Search" },
+        LspReferenceWrite = { link = "Search" },
+
         BqfPreviewBorder = { fg = window_bg },
         -- BqfPreviewFloat = { bg = window_bg },
 
