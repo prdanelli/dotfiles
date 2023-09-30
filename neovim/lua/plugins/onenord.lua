@@ -7,7 +7,7 @@ return {
     local prompt = colors.grey14
     local results = colors.grey14
     local preview = colors.grey14
-    local window_bg = colors.grey14
+    local float_bg = colors.grey14
 
     require("onenord").setup({
       borders = true,
@@ -38,30 +38,31 @@ return {
         MsgArea = { fg = colors.grey7 },
         NormalFloat = { bg = colors.grey14 },
         FloatBorder = { bg = colors.grey14, fg = colors.grey14 },
+        IncSearch = { style = "reverse" },
 
         -- LSP Document Highlights
-        LspReferenceText = { link = "Search" },
-        LspReferenceRead = { link = "Search" },
-        LspReferenceWrite = { link = "Search" },
+        LspReferenceText = { link = "Search", style = "none" },
+        LspReferenceRead = { link = "Search", style = "none" },
+        LspReferenceWrite = { link = "Search", style = "none" },
 
         -- Better Quick List
-        BqfPreviewBorder = { fg = window_bg },
-        -- BqfPreviewFloat = { bg = window_bg },
+        BqfPreviewBorder = { fg = float_bg },
+        -- BqfPreviewFloat = { bg = float_bg },
 
         -- Notify
-        NotifyBackground = { bg = prompt },
+        NotifyBackground = { bg = float_bg },
 
         -- Color Column
         NonText = { fg = colors.grey13 },
 
         -- Rnvimr
-        RnvimrNormal = { bg = prompt },
+        RnvimrNormal = { bg = float_bg },
 
         -- Neotree
-        NeoTreeNormal = { bg = prompt },
+        NeoTreeNormal = { bg = float_bg },
 
         -- Whichkey
-        WhichKeyFloat = { bg = window_bg },
+        WhichKeyFloat = { bg = float_bg },
         WhichKey = { fg = colors.magenta },
         WhichKeyGroup = { fg = colors.grey7 },
         WhichKeySeparator = { fg = colors.grey12 },
@@ -84,8 +85,11 @@ return {
         GitConflictCurrentLabel = { bg = colors.green, fg = colors.fg },
         GitConflictIncoming = { bg = colors.red, fg = colors.bg },
         GitConflictIncomingLabel = { bg = colors.red, fg = colors.bg },
-        -- GitConflictAncestor = { bg = colors.green, fg = colors.fg },
-        -- GitConflictAncestorLabel = { bg = colors.green, fg = colors.fg },
+
+        -- Lualine
+        StatusLine = { bg = colors.bg },
+        StatusLineNC = { bg = colors.bg },
+        StatusLineTerm = { bg = colors.bg },
 
         -- Telescope
         -- https://github.com/nvim-telescope/telescope.nvim/blob/master/plugin/telescope.lua
@@ -94,10 +98,12 @@ return {
         TelescopePreviewBorder = { bg = preview, fg = preview },
         TelescopePreviewNormal = { bg = preview },
         TelescopePreviewTitle = { fg = preview },
-        TelescopePromptBorder = { bg = prompt, fg = prompt },
+
         TelescopePromptNormal = { bg = prompt },
+        TelescopePromptBorder = { bg = prompt, fg = prompt },
         TelescopePromptPrefix = { bg = prompt },
         TelescopePromptTitle = { fg = prompt },
+
         TelescopeResultsBorder = { bg = results, fg = results },
         TelescopeResultsNormal = { bg = results },
         TelescopeResultsTitle = { fg = results },

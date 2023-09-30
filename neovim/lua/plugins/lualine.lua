@@ -1,6 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
-  event = "VeryLazy",
+  event = "VimEnter",
   config = function()
     local highlight = require("lualine.highlight")
     local colors = require("config.colors").colors
@@ -103,7 +103,8 @@ return {
         icons_enabled = true,
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
-        disabled_filetypes = { "NvimTree", "alpha", "Ranger", "Telescope" },
+        -- disabled_filetypes = require("config.excluded_filetypes"),
+        disabled_filetypes = { "alpha", "Ranger" },
         globalstatus = true,
         always_divide_middle = true,
       },
@@ -123,14 +124,6 @@ return {
         lualine_y = {},
         lualine_z = {},
       },
-      -- tabline = {
-      --   lualine_a = {},
-      --   lualine_b = {},
-      --   lualine_c = {},
-      --   lualine_x = {},
-      --   lualine_y = {},
-      --   lualine_z = {}
-      -- },
       winbar = {
         lualine_a = {},
         lualine_b = {},
