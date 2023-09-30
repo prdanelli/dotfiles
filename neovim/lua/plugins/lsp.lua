@@ -1,8 +1,12 @@
 return {
-  { "nvim-lua/lsp-status.nvim" }, -- Used by other plugins for basic lsp info
+  {
+    "nvim-lua/lsp-status.nvim",
+    event = "BufReadPre",
+  }, -- Used by other plugins for basic lsp info
 
   {
     "j-hui/fidget.nvim",
+    event = "BufReadPre",
     config = function()
       require("fidget").setup({
         text = {
@@ -23,13 +27,12 @@ return {
         },
       })
     end,
-    event = "BufReadPre",
     tag = "legacy",
   },
 
   {
     "williamboman/mason.nvim",
-    lazy = false,
+    event = "BufReadPre",
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
       "neovim/nvim-lspconfig",
@@ -42,6 +45,7 @@ return {
 
   {
     "mihyaeru21/nvim-lspconfig-bundler",
+    event = "BufReadPre",
     dependencies = {
       "neovim/nvim-lspconfig",
     },

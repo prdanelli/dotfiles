@@ -1,6 +1,6 @@
 return {
   "folke/which-key.nvim",
-  event = "VimEnter",
+  event = "VeryLazy",
   config = function()
     local module_name = "which-key"
     local whichkey = require(module_name)
