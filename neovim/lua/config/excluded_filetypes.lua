@@ -1,12 +1,13 @@
 return {
-  "help",
-  "qf",
-  "netrw",
   "NvimTree",
+  "TelescopePrompt",
+  "alpha",
+  "help",
   "lazy",
   "mason",
-  "oil",
   "neo-tree",
-  "TelescopePrompt",
+  "netrw",
+  "oil",
+  "qf",
   "rnvimr",
 }
