@@ -1,5 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
+  event = "VeryLazy",
   config = function()
     local highlight = require("lualine.highlight")
     local colors = require("config.colors").colors
@@ -147,5 +148,4 @@ return {
       },
     })
   end,
-  event = "VimEnter",
 }
