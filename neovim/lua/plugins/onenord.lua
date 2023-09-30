@@ -26,6 +26,12 @@ return {
         eob_lines = true,
       },
       custom_highlights = {
+        -- Examples
+        -- LspDiagnosticsUnderlineInformation = { style = config.styles.diagnostics, sp = colors.info },
+        -- ["@text.uri"] = { fg = colors.cyan, style = "underline" },
+        -- Todo = { fg = colors.yellow, bg = colors.none, style = "bold,italic" },
+        -- DiagnosticError = { link = "LspDiagnosticsDefaultError" },
+
         -- Nvim Core
         Folded = { fg = colors.grey10 },
         VertSplit = { fg = colors.lblue },
