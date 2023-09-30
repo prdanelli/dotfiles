@@ -177,7 +177,6 @@ return {
         e = { "!!$SHELL<CR>", "Execute Shell" },
         w = { "<cmd>update!<CR>", "Save" },
         q = { "<cmd>q!<CR>", "Quit" },
-        s = { "<cmd>ScratchPad<cr>", "ScratchPad" },
       },
     }, n_opts)
   end,
