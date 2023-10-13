@@ -41,9 +41,10 @@ return {
         IncSearch = { style = "reverse" },
 
         -- LSP Document Highlights
-        LspReferenceText = { link = "Search", style = "none" },
-        LspReferenceRead = { link = "Search", style = "none" },
-        LspReferenceWrite = { link = "Search", style = "none" },
+        -- gui=bold guifg=#81a1c1 guibg=#4c566a
+        LspReferenceText = { bg = colors.grey11, style = "none" },
+        LspReferenceRead = { link = "LspReferenceText", style = "none" },
+        LspReferenceWrite = { link = "LspReferenceText", style = "none" },
 
         -- Better Quick List
         BqfPreviewBorder = { fg = float_bg },
