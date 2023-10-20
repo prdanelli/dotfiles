@@ -14,6 +14,7 @@ alt - g : yabai -m space --toggle padding; yabai -m space --toggle gap
 
 # float / unfloat window and center on screen
 alt - t : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2
+# alt - s : yabai -m window --toggle sticky # Seems buggy
 
 # toggle window split type
 alt - e : yabai -m window --toggle split
