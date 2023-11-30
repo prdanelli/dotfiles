@@ -53,8 +53,11 @@ vim.keymap.set("i", "<C-c>", "<esc>", opts)
 vim.keymap.set("n", "<esc>", "<NOP>", opts)
 
 -- Navigate quicklist items
-vim.keymap.set("n", "gn", "<cmd>cnext<cr>")
-vim.keymap.set("n", "gp", "<cmd>cprev<cr>")
+vim.keymap.set("n", "gn", "<cmd>cnext<cr>", opts)
+vim.keymap.set("n", "gp", "<cmd>cprev<cr>", opts)
+
+-- Add line break and jump to start
+vim.keymap.set("n", "<Enter>", "i<Enter><Esc>^", opts)
 
 -------------------------------------------------------------------------------
 -- Buffers
