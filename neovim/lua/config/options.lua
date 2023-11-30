@@ -33,8 +33,8 @@ local options = {
   synmaxcol = 500,
   tabstop = 2, -- insert 2 spaces for a tab
   termguicolors = true, -- set term gui colors (most terminals support this)
-  timeoutlen = 300, -- time to wait for a mapped sequence to complete (in milliseconds)
-  ttimeoutlen = 250,
+  timeoutlen = 200, -- time to wait for a mapped sequence to complete (in milliseconds)
+  ttimeoutlen = 200,
   undofile = true, -- enable persistent undo
   updatetime = 100, -- faster completion (4000ms default)
   wrap = true, -- display lines as one long line
@@ -74,4 +74,28 @@ vim.cmd([[
 
   set foldtext=MyFoldText()
   set fillchars=fold:-
+]])
+
+-- Ensure I dont freak out by hitting the cap w when exiting
+vim.cmd([[
+  cnoreabbrev W! w!
+  cnoreabbrev W1 w!
+  cnoreabbrev w1 w!
+  cnoreabbrev Q! q!
+  cnoreabbrev Q1 q!
+  cnoreabbrev q1 q!
+  cnoreabbrev Qa! qa!
+  cnoreabbrev Qall! qall!
+  cnoreabbrev Wa wa
+  cnoreabbrev Wq wq
+  cnoreabbrev wQ wq
+  cnoreabbrev WQ wq
+  cnoreabbrev wq1 wq!
+  cnoreabbrev Wq1 wq!
+  cnoreabbrev wQ1 wq!
+  cnoreabbrev WQ1 wq!
+  cnoreabbrev W w
+  cnoreabbrev Q q
+  cnoreabbrev Qa qa
+  cnoreabbrev Qall qall
 ]])
