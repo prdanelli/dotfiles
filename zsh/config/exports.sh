@@ -11,6 +11,7 @@ export PATH=/usr/local/bin:$PATH # Recommended by brew doctor
 export PATH=/opt/homebrew/sbin:$PATH # Recommended by brew doctor
 export PATH=/opt/homebrew/bin:$PATH # Brew is first as everything else uses that
 export PATH=$HOME/.bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 export LIBRARY_PATH=$LIBRARY_PATH:/opt/homebrew/opt/zstd/lib/ # Fix for MySQL2 gem not compiling
 
