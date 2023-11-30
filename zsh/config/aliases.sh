@@ -65,3 +65,11 @@ function docker-attach() {
 
 # ASDF
 alias asdf:versions="nvim /Users/paul/.tool-versions"
+
+alias ai:install="docker run -d -v /Users/paul/Repo/llm/model-cache:/root/.ollama -p 11434:11434 --name ollama ollama/ollama"
+alias ai:start="docker start ollama"
+alias ai:stop="docker stop ollama"
+alias ai="docker exec -it ollama ollama run mistral:latest"
+alias ai:code="docker exec -it ollama ollama run mistral:ruby-mentor"
+alias ai:ls="docker exec -it ollama ollama ls"
+alias ai:rm="docker exec -it ollama ollama rm"
