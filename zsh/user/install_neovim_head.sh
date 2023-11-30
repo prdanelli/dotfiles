@@ -1,16 +1,12 @@
 #!/bin/bash
 
-if [ -d "/Users/paul/Personal/Repos/neovim" ]
-then
-  echo "Found Neovim Repo"
-  cd ~/Personal/Repos/neovim
-  git pull
-else
-  echo "Could not find Neovim repo"
-  cd ~/Personal/Repos
-  git clone https://github.com/neovim/neovim
-  cd neovim
-fi
+TARGET=nvim-macos
+FILENAME="$TARGET.tar.gz"
+DOWNLOADS=$HOME/Downloads
 
-sudo make distclean
-sudo make install
+wget -q -P $DOWNLOADS "https://github.com/neovim/neovim/releases/download/nightly/$FILENAME"
+xattr -c "$DOWNLOADS/$FILENAME"
+tar xzf "$DOWNLOADS/$FILENAME"
+mv "$TARGET/bin/nvim" ~/.local/bin
+rm -rf $TARGET
+rm $FILENAME

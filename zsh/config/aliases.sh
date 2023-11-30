@@ -51,8 +51,8 @@ alias skhd:restart="skhd --restart-service"
 alias skhd:reload="skhd --restart-service"
 
 # Brew
-# alias brew:upgrade:all="brew upgrade; sh ~/Personal/Repos/dotfiles/zsh/user/install_neovim_head.sh; nvim --headless '+Lazy! sync' +qa;"
-alias brew:upgrade:all="brew upgrade; nvim --headless '+Lazy! sync' +qa;"
+alias brew:upgrade:all="brew upgrade; sh ~/Personal/Repos/dotfiles/zsh/user/install_neovim_head.sh; nvim --headless '+Lazy! sync' +qa;"
+# alias brew:upgrade:all="brew upgrade; nvim --headless '+Lazy! sync' +qa;"
 alias brewbundle="brew bundle --file ~/.Brewfile"
 
 # Docker Compose
@@ -62,7 +62,6 @@ alias dcr="docker-compose run --rm"
 function docker-attach() {
   docker attach $(docker-compose ps -q $1)
 }
-
 
 # ASDF
 alias asdf:versions="nvim /Users/paul/.tool-versions"
