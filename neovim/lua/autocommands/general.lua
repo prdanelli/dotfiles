@@ -9,15 +9,16 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- Adjust how text is formatted
-vim.api.nvim_create_autocmd("BufWinEnter", {
-  group = "_general",
-  pattern = "*",
+-- Highlight on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
-    vim.cmd("set formatoptions-=cro")
+    vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
   end,
+  group = vim.api.nvim_create_augroup("YankHighlight", { clear = true }),
+  pattern = "*",
 })
 
+-- Don't list quick list in buffer list and so bnext etc dont toggle to it
 vim.api.nvim_create_autocmd("FileType", {
   group = "_general",
   pattern = "qf",
@@ -31,17 +32,21 @@ vim.api.nvim_create_autocmd("VimResized", {
   group = "_general",
   pattern = "*",
   callback = function()
+    local current_tab = vim.fn.tabpagenr()
+
     vim.cmd("tabdo wincmd =")
+    vim.cmd("tabnext " .. current_tab)
   end,
 })
 
--- create directories when needed, when saving a file
-vim.api.nvim_create_autocmd("BufWritePre", {
-  group = vim.api.nvim_create_augroup("better_backup", { clear = true }),
+-- Auto create dir when saving a file, in case some intermediate directory does not exist
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  group = "_general",
   callback = function(event)
+    if event.match:match("^%w%w+://") then
+      return
+    end
     local file = vim.loop.fs_realpath(event.match) or event.match
-    local backup = vim.fn.fnamemodify(file, ":p:~:h")
-    backup = backup:gsub("[/\\]", "%%")
-    vim.go.backupext = backup
+    vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
 })
