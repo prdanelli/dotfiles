@@ -42,4 +42,6 @@ yabai -m rule --add app="^Archive Utility$" manage=off
 yabai -m rule --add app="^Alfred Preferences$" manage=off
 yabai -m rule --add title='Preferences$' manage=off layer=above
 
+borders active_color=0xffcbb1c7 inactive_color=0xff2e3440 width=5.0 2>/dev/null 1>&2 &
+
 echo "yabai configuration loaded.."
