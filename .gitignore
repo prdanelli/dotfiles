@@ -24,6 +24,8 @@ neovim/lua/playground
 neovim/sessions
 neovim/sessions/*.vim
 neovim/.lazy-lock.json
+neovim/lazy-lock.json
+nvim-macos
 
 tmux/plugins/**/*
 tmux/resurrect/**
