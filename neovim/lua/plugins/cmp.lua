@@ -205,12 +205,5 @@ return {
       }),
       mapping = cmp.mapping.preset.cmdline({}),
     })
-
-    vim.cmd([[
-      augroup NvimCmp
-      au!
-      au FileType TelescopePrompt lua cmp.setup.buffer { enabled = false }
-      augroup END
-    ]])
   end,
 }
