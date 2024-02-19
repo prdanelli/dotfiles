@@ -1,0 +1,6 @@
+---
+BUNDLE_JOBS: "9"
+BUNDLE_CLEAN: "false"
+BUNDLE_BUILD__SQLITE3: "--with-cflags=-Wno-implicit-function-declaration"
+BUNDLE_BUILD__FFI: "--with-cflags=-Wno-implicit-function-declaration"
+BUNDLE_BUILD__MYSQL2: "--with-ldflags=-L/opt/homebrew/opt/zstd/lib"
