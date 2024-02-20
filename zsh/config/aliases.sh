@@ -9,7 +9,7 @@ alias ls="exa -s type "
 alias la="ls -la"
 alias lazygit="lazygit -ucd ~/.config/lazygit/"
 alias grep="grep --color=auto"
-alias cat="bat --paging=never --wrap=never"
+alias cat="bat --paging=never --wrap=never --style=plain"
 alias editdots="cd ~/Personal/Repos/dotfiles; nvim"
 
 # Vim
@@ -23,6 +23,7 @@ alias rspec="bundle exec rspec"
 alias zsh:reload="source $ZDOTDIR/.zshrc"
 alias zsh:edit="nvim $ZDOTDIR/.zshrc"
 alias zsh:alias="cat ~/.config/zsh/config/aliases.sh"
+alias zsh:alias:edit="nvim ~/.config/zsh/config/aliases.sh"
 
 # Tmux
 alias t="tmux"
@@ -51,8 +52,8 @@ alias skhd:restart="skhd --restart-service"
 alias skhd:reload="skhd --restart-service"
 
 # Brew
-alias brew:upgrade:all="brew upgrade; sh ~/Personal/Repos/dotfiles/zsh/user/install_neovim_head.sh; nvim --headless '+Lazy! sync' +qa;"
-# alias brew:upgrade:all="brew upgrade; nvim --headless '+Lazy! sync' +qa;"
+# alias brew:upgrade:all="brew upgrade; sh ~/Personal/Repos/dotfiles/zsh/user/install_neovim_head.sh; nvim --headless '+Lazy! sync' +qa; yabai:stop; yabai:start;"
+alias brew:upgrade:all="brew upgrade; nvim --headless '+Lazy! sync' +qa; yabai:stop; yabai:start;"
 alias brew:bundle="brew bundle --file ~/.Brewfile"
 
 # Docker Compose
@@ -66,6 +67,14 @@ function docker-attach() {
 # ASDF
 alias asdf:versions="nvim /Users/paul/.tool-versions"
 
+# FZF
+alias fzf='fzf --color=light --no-bold --margin="0,2,0,2" --padding="0,2,0,2" --no-separator --info="right" --pointer="-" --prompt="Search: " '
+
+# Rails
+alias rails:routes="bin/rails routes | fzf -e"
+
+
+# Ollama
 alias ai:install="docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama"
 alias ai:start="docker start ollama"
 alias ai:stop="docker stop ollama"
