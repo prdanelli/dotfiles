@@ -57,6 +57,13 @@ return {
       ["-"] = { ":split<CR>", "Horizonal Split" },
       ["\\"] = { ":vsplit<CR>", "Vertical Split" },
 
+      a = {
+        name = "Ai",
+        g = { "<Cmd>Gen<Cr>", "Gen" },
+        s = { "<Cmd>Gen Enhance_Grammar_Spelling<Cr>", "Spelling and Grammar" },
+        c = { "<Cmd>Gen Chat<Cr>", "Chat" },
+      },
+
       b = {
         name = "Buffer",
         --[[ c = { "<Cmd>close<Cr>", "Close split" }, ]]
@@ -133,6 +140,20 @@ return {
           "<cmd>lua require('gitlinker').get_buf_range_url('n', { action_callback = require('gitlinker.actions').open_in_browser })<cr>",
           "Git Link",
         },
+      },
+
+      n = {
+        name = "Navigate",
+        t = { "<cmd>Grapple tag<cr>", "Grapple tag" },
+        m = { "<cmd>Grapple toggle<cr>", "Grapple toggle tag" },
+        k = { "<cmd>Grapple toggle_tags<cr>", "Grapple toggle tags" },
+        K = { "<cmd>Grapple toggle_scopes<cr>", "Grapple toggle scopes" },
+        j = { "<cmd>Grapple cycle forward<cr>", "Grapple cycle forward" },
+        J = { "<cmd>Grapple cycle backward<cr>", "Grapple cycle backward" },
+        ["1"] = { "<cmd>Grapple select index=1<cr>", "Grapple select 1" },
+        ["2"] = { "<cmd>Grapple select index=2<cr>", "Grapple select 2" },
+        ["3"] = { "<cmd>Grapple select index=3<cr>", "Grapple select 3" },
+        ["4"] = { "<cmd>Grapple select index=4<cr>", "Grapple select 4" },
       },
 
       s = {

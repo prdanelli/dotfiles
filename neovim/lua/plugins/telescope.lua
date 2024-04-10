@@ -6,6 +6,8 @@ return {
     local previewers = require("telescope.previewers")
     local sorters = require("telescope.sorters")
 
+    require("telescope").load_extension("grapple")
+
     -- Filemanager shortcuts
     -- <A-c>/c	Create file/folder at current path (trailing path separator creates folder)
     -- <A-r>/r	Rename multi-selected files/folders
