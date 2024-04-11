@@ -16,6 +16,9 @@ vim.keymap.del("n", "<leader>fe")
 vim.keymap.del("n", "<leader>fT")
 vim.keymap.del("n", "<leader>ft")
 
+vim.keymap.set({ "n", "v" }, "<leader>-", "<cmd>split<CR>", { silent = true, desc = "Horizonal Split" })
+vim.keymap.set({ "n", "v" }, "<leader>\\", "<cmd>vsplit<CR>", { silent = true, desc = "Vertical Split" })
+
 -------------------------------------------------------------------------------
 -- Custom
 -------------------------------------------------------------------------------

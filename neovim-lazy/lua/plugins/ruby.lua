@@ -7,6 +7,7 @@ return {
       })
     end,
   },
+
   {
     "williamboman/mason.nvim",
     opts = function(_, opts)
@@ -15,6 +16,7 @@ return {
       })
     end,
   },
+
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -27,6 +29,7 @@ return {
       },
     },
   },
+
   {
     "nvim-neotest/neotest",
     optional = false,
@@ -76,5 +79,21 @@ return {
         desc = "Test: File",
       },
     },
+  },
+
+  {
+    "mihyaeru21/nvim-lspconfig-bundler",
+    event = "BufReadPre",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+    },
+    config = function()
+      require("lspconfig-bundler").setup()
+    end,
+  },
+
+  {
+    "RRethy/nvim-treesitter-endwise",
+    event = "InsertEnter",
   },
 }
