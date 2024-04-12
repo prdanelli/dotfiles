@@ -8,4 +8,7 @@ return {
   { "echasnovski/mini.diff", enabled = false },
   { "ggandor/leap.nvim", enabled = false },
   { "ggandor/flit.nvim", enabled = false },
+  { "echasnovski/mini.ai", enabled = false },
+  { "SmiteshP/nvim-navic", enabled = false },
+  { "nvim-treesitter/nvim-treesitter-context", enabled = false },
 }
