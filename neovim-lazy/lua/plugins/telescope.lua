@@ -31,8 +31,6 @@ return {
     local width = 0.95
     local height = 0.95
 
-    local sorters = require("telescope.sorters")
-
     return {
       defaults = {
         prompt_prefix = " ",
@@ -107,12 +105,8 @@ return {
             ["q"] = actions.close,
           },
         },
-        -- file_previewer = previewers.vim_buffer_cat.new,
-        -- grep_previewer = previewers.vim_buffer_vimgrep.new,
-        -- qflist_previewer = previewers.vim_buffer_qflist.new,
-        -- file_sorter = sorters.get_fuzzy_file,
         file_ignore_patterns = { "gtk/**/*", "node_modules", ".git", "pdf_viewer" },
-        generic_sorter = sorters.get_generic_fuzzy_sorter,
+        generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
         extensions = {
           ["zf-native"] = {
             file = {
