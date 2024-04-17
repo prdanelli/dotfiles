@@ -1,5 +1,6 @@
 return {
   "nvim-telescope/telescope.nvim",
+  dependencies = { "natecraddock/telescope-zf-native.nvim" },
   opts = function()
     local actions = require("telescope.actions")
 
@@ -14,19 +15,22 @@ return {
     local find_files_no_ignore = function()
       local action_state = require("telescope.actions.state")
       local line = action_state.get_current_line()
+
       LazyVim.telescope("find_files", { no_ignore = true, default_text = line })()
     end
 
     local find_files_with_hidden = function()
       local action_state = require("telescope.actions.state")
       local line = action_state.get_current_line()
+
       LazyVim.telescope("find_files", { hidden = true, default_text = line })()
     end
+
+    require("telescope").load_extension("zf-native")
 
     local width = 0.95
     local height = 0.95
 
-    local previewers = require("telescope.previewers")
     local sorters = require("telescope.sorters")
 
     return {
@@ -39,7 +43,6 @@ return {
         selection_strategy = "reset",
         sorting_strategy = "ascending",
         layout_strategy = "horizontal",
-
         layout_config = {
           prompt_position = "top",
           horizontal = {
@@ -69,13 +72,16 @@ return {
         -- use the current window if no other window is available.
         get_selection_window = function()
           local wins = vim.api.nvim_list_wins()
+
           table.insert(wins, 1, vim.api.nvim_get_current_win())
+
           for _, win in ipairs(wins) do
             local buf = vim.api.nvim_win_get_buf(win)
             if vim.bo[buf].buftype == "" then
               return win
             end
           end
+
           return 0
         end,
         mappings = {
@@ -83,9 +89,12 @@ return {
             ["<esc>"] = actions.close,
 
             ["<c-t>"] = open_with_trouble,
-            ["<a-t>"] = open_selected_with_trouble,
-            ["<a-i>"] = find_files_no_ignore,
-            ["<a-h>"] = find_files_with_hidden,
+            ["<c-y>"] = open_selected_with_trouble,
+            ["<c-g>"] = find_files_no_ignore,
+            ["<c-h>"] = find_files_with_hidden,
+
+            ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+            ["<c-w>"] = actions.send_selected_to_qflist + actions.open_qflist,
 
             ["<C-f>"] = actions.preview_scrolling_down,
             ["<C-b>"] = actions.preview_scrolling_up,
@@ -98,14 +107,26 @@ return {
             ["q"] = actions.close,
           },
         },
-
-        file_previewer = previewers.vim_buffer_cat.new,
-        grep_previewer = previewers.vim_buffer_vimgrep.new,
-        qflist_previewer = previewers.vim_buffer_qflist.new,
-
-        file_sorter = sorters.get_fuzzy_file,
+        -- file_previewer = previewers.vim_buffer_cat.new,
+        -- grep_previewer = previewers.vim_buffer_vimgrep.new,
+        -- qflist_previewer = previewers.vim_buffer_qflist.new,
+        -- file_sorter = sorters.get_fuzzy_file,
         file_ignore_patterns = { "gtk/**/*", "node_modules", ".git", "pdf_viewer" },
         generic_sorter = sorters.get_generic_fuzzy_sorter,
+        extensions = {
+          ["zf-native"] = {
+            file = {
+              enable = true, -- override default telescope file sorter
+              highlight_results = true, -- highlight matching text in results
+              match_filename = true, -- enable zf filename match priority
+            },
+            generic = {
+              enable = true, -- override default telescope generic item sorter
+              highlight_results = true, -- highlight matching text in results
+              match_filename = false, -- disable zf filename match priority
+            },
+          },
+        },
       },
     }
   end,
