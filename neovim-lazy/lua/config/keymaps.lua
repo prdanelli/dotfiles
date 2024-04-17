@@ -1,29 +1,18 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set<cmd> https<cmd>//github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
-
 -------------------------------------------------------------------------------
--- Delete Default Keymaps
+-- General Keybindings, not plugin specific
 -------------------------------------------------------------------------------
-
--- new file
-vim.keymap.del("n", "<leader>fn")
-
--- default nerd tree
-vim.keymap.del("n", "<leader>fe")
-
--- floating terminal
-vim.keymap.del("n", "<leader>fT")
-vim.keymap.del("n", "<leader>ft")
-
-vim.keymap.set({ "n", "v" }, "<leader>-", "<cmd>split<CR>", { silent = true, desc = "Horizonal Split" })
-vim.keymap.set({ "n", "v" }, "<leader>\\", "<cmd>vsplit<CR>", { silent = true, desc = "Vertical Split" })
-
--------------------------------------------------------------------------------
--- Custom
--------------------------------------------------------------------------------
-
 local opts = { silent = true }
+
+-- Turn off arrow keys - force HJKL
+vim.keymap.set("n", "<UP>", "<NOP>", opts)
+vim.keymap.set("n", "<DOWN>", "<NOP>", opts)
+vim.keymap.set("n", "<LEFT>", "<NOP>", opts)
+vim.keymap.set("n", "<RIGHT>", "<NOP>", opts)
+
+vim.keymap.set({ "n", "t", "v", "i", "" }, "<C-x>", "<cmd>echo &filetype<cr>", opts)
+
+-- Map ctrl-c to esc
+vim.keymap.set("i", "<C-c>", "<esc>", opts)
 
 -- Use x and Del key for black hole register
 vim.keymap.set("", "<Del>", '"_x', opts)
@@ -32,58 +21,42 @@ vim.keymap.set("", "x", '"_x', opts)
 -- Paste over selected text
 vim.keymap.set("v", "p", '"_dP', opts)
 
--- Better Indentation
-vim.keymap.set("v", "<", "<gv", opts)
-vim.keymap.set("v", ">", ">gv", opts)
-
--- move lines
-vim.keymap.set("v", "K", "<cmd>m '<-2<CR>gv=gv")
-
 -- Insert lines above/below without leaving normal mode
 vim.keymap.set("n", "oo", "o<Esc>k", opts)
 vim.keymap.set("n", "OO", "O<Esc>j", opts)
 
 -- Remove highlighting
-vim.keymap.set("n", "<leader>c", "<cmd>noh<cr>", opts)
 vim.keymap.set("n", "<esc><esc>", "<esc><cmd>noh<cr><esc>", opts)
 
--- Alternatives to <cmd>w, because I constantly typo it
+-- Alternatives to :w, because I constantly typo it
 vim.keymap.set({ "i", "n", "v" }, "<c-s>", "<NOP>", opts)
 vim.keymap.set({ "i", "n", "v" }, "<c-s>", "<esc><cmd>w<cr>", opts)
 
--- Navigate quicklist items
-vim.keymap.set("n", "gn", "<cmd>cnext<cr>", opts)
-vim.keymap.set("n", "gp", "<cmd>cprev<cr>", opts)
+-- Map to esc
+vim.keymap.set("i", "<C-c>", "<esc>", opts)
+
+-- Escape in normal mode seems to tab
+vim.keymap.set("n", "<esc>", "<NOP>", opts)
 
 -- Add line break and jump to start
 vim.keymap.set("n", "<Enter>", "i<Enter><Esc>^", opts)
 
-vim.keymap.set(
-  { "n", "v" },
-  "<leader>fe",
-  "<cmd>lua require('ranger-nvim').open(true)<cr>",
-  { desc = "Ranger", silent = true }
-)
-
--- Get current filetype
-vim.keymap.set("n", "<c-x>", "<cmd>echo &filetype<cr>", opts)
-
-vim.keymap.set("n", "<leader>yf", "<cmd>let @+ = expand('%:p')<cr>", { desc = "Full Path", silent = true })
-vim.keymap.set("n", "<leader>yr", "<cmd>let @+ = expand('%:~:.')<cr>", { desc = "Relative Path", silent = true })
-
--------------------------------------------------------------------------------
--- Buffers
--------------------------------------------------------------------------------
 -- Delete buffer
-vim.keymap.set("n", "<c-w>", "<cmd>bd<CR>", opts)
+vim.keymap.set("n", "<c-w>", ":bd<CR>", opts)
 
--- Navigate buffers
-vim.keymap.set("n", "bn", "<cmd>bnext<CR>", opts)
-vim.keymap.set("n", "bl", "<cmd>bnext<CR>", opts)
-vim.keymap.set("n", "bv", "<cmd>bprevious<CR>", opts)
-vim.keymap.set("n", "bh", "<cmd>bprevious<CR>", opts)
-vim.keymap.set("n", "BN", "<cmd>bprevious<CR>", opts)
+vim.keymap.set("n", "<leader>yr", "<cmd>let @+ = expand('%:~:.')<cr>", { desc = "Relative Path", silent = true })
+vim.keymap.set("n", "<leader>yf", "<cmd>let @+ = expand('%:p')<cr>", { desc = "Full Path", silent = true })
 
-vim.keymap.set("n", "<c-]>", "<cmd>bnext<CR>", opts)
-vim.keymap.set("n", "<c-[>", "", opts)
-vim.keymap.set("n", "<c-[>", "<cmd>bprevious<CR>", opts)
+-------------------------------------------------------------------------------
+-- Splits
+-------------------------------------------------------------------------------
+-- Resize splits with alt+cursor keys
+vim.keymap.set({ "n", "i", "v" }, "<A-j>", "<nop>")
+vim.keymap.set({ "n", "i", "v" }, "<A-k>", "<nop>")
+vim.keymap.set({ "n", "i", "v" }, "<M-j>", "<nop>")
+vim.keymap.set({ "n", "i", "v" }, "<M-k>", "<nop>")
+
+vim.keymap.set("n", "<M-Up>", ":resize +2<CR>", opts)
+vim.keymap.set("n", "<M-Down>", ":resize -2<CR>", opts)
+vim.keymap.set("n", "<M-Left>", ":vertical resize -2<CR>", opts)
+vim.keymap.set("n", "<M-Right>", ":vertical resize +2<CR>", opts)

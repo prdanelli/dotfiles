@@ -20,5 +20,12 @@ return {
         y = 0.5,
       },
     })
+
+    vim.keymap.set(
+      "n",
+      "<leader>fe",
+      "<cmd>lua require('ranger-nvim').open(true)<cr>",
+      { silent = true, desc = "Ranger" }
+    )
   end,
 }
