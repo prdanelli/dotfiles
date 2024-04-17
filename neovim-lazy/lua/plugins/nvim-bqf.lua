@@ -5,31 +5,30 @@ return {
   config = function()
     require("bqf").setup({
       auto_enable = true,
+      magic_window = true,
       auto_resize_height = true, -- highly recommended enable
       preview = {
         auto_preview = true,
-
-        border = "single",
         show_title = false,
         show_scroll_bar = false,
         delay_syntax = 30,
         winblend = 0,
-        win_height = 15,
-        win_vheight = 15,
+        win_height = 20,
+        win_vheight = 20,
         wrap = false,
         buf_label = true,
-        border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
-
+        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
         should_preview_cb = function(bufnr)
           local ret = true
           local bufname = vim.api.nvim_buf_get_name(bufnr)
           local fsize = vim.fn.getfsize(bufname)
 
+          -- skip file size greater than 100k
           if fsize > 100 * 1024 then
-            -- skip file size greater than 100k
             ret = false
+
+          -- skip fugitive buffer
           elseif bufname:match("^fugitive://") then
-            -- skip fugitive buffer
             ret = false
           end
 
