@@ -1,4 +1,5 @@
 local options = {
+  backup = false, -- creates a backup file
   clipboard = "unnamedplus", -- allows neovim to access the system clipboard
   cmdheight = 1, -- 0 = off, more space in the neovim command line for displaying messages
   colorcolumn = "80,120",
@@ -26,24 +27,22 @@ vim.g.ruby_host_prog = "/Users/paul/.asdf/shims/neovim-ruby-host" -- avoid needi
 
 -- Ensure I dont freak out by hitting the cap w when exiting
 vim.cmd([[
-  cnoreabbrev W! w!
-  cnoreabbrev W1 w!
-  cnoreabbrev w1 w!
-  cnoreabbrev Q! q!
-  cnoreabbrev Q1 q!
-  cnoreabbrev q1 q!
-  cnoreabbrev Qa! qa!
-  cnoreabbrev Qall! qall!
-  cnoreabbrev Wa wa
   cnoreabbrev Wq wq
   cnoreabbrev wQ wq
   cnoreabbrev WQ wq
-  cnoreabbrev wq1 wq!
-  cnoreabbrev Wq1 wq!
-  cnoreabbrev wQ1 wq!
-  cnoreabbrev WQ1 wq!
   cnoreabbrev W w
   cnoreabbrev Q q
-  cnoreabbrev Qa qa
-  cnoreabbrev Qall qall
+]])
+
+-- Custom fold text
+vim.cmd([[
+  function! MyFoldText()
+    let line = getline(v:foldstart)
+    let foldedlinecount = v:foldend - v:foldstart + 1
+
+    return ' + ' . foldedlinecount . ' --- ' . line
+  endfunction
+
+  set foldtext=MyFoldText()
+  set fillchars=fold:-
 ]])
