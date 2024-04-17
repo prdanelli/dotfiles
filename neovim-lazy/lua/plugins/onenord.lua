@@ -4,10 +4,6 @@ return {
   config = function()
     local colors = require("config.colors").colors
 
-    local prompt = colors.grey14
-    local preview = colors.grey14
-    local float_bg = colors.grey14
-
     require("onenord").setup({
       borders = true,
       fade_nc = false,
@@ -45,10 +41,9 @@ return {
         LspReferenceWrite = { link = "LspReferenceText", style = "none" },
 
         -- Better Quick List
-        BqfPreviewFloat = { bg = preview, style = "none" },
-        BqfPreviewBorder = { bg = preview, fg = preview, style = "none" },
-        BqfPreviewTitle = { bg = preview, fg = preview, style = "none" },
-        -- BqfPreviewTitle
+        BqfPreviewFloat = { bg = colors.bg },
+        BqfPreviewBorder = { bg = colors.bg, fg = colors.magenta },
+        BqfPreviewTitle = { bg = colors.bg, fg = colors.magenta },
         -- BqfPreviewThumb
         -- BqfPreviewSbar
         -- BqfPreviewCursor
@@ -56,14 +51,8 @@ return {
         -- BqfPreviewRange
         -- BqfPreviewBufLabel
 
-        -- Notify
-        -- NotifyBackground = { bg = float_bg },
-
-        -- Neotree
-        NeoTreeNormal = { bg = float_bg },
-
         -- Whichkey
-        WhichKeyFloat = { bg = float_bg },
+        WhichKeyFloat = { bg = colors.grey14 },
         WhichKey = { fg = colors.magenta },
         WhichKeyGroup = { fg = colors.grey7 },
         WhichKeySeparator = { fg = colors.grey12 },
@@ -72,7 +61,6 @@ return {
 
         -- Color columns
         VirtColumn = { bg = colors.bg, fg = colors.grey13 },
-        -- Color Column
         NonText = { fg = colors.grey13 },
 
         --
@@ -98,26 +86,24 @@ return {
         StatusLineTerm = { bg = colors.bg },
 
         -- Telescope
-
         -- https://github.com/nvim-telescope/telescope.nvim/blob/master/plugin/telescope.lua
-        -- TelescopeMatching = { fg = colors.blue },
-        -- TelescopeNormal = { fg = colors.grey8 },
-        TelescopePreviewBorder = { bg = bg, fg = colors.magenta },
-        TelescopePreviewNormal = { bg = bg, fg = colors.magenta },
-        TelescopePreviewTitle = { bg = bg, fg = colors.magenta },
+        TelescopeMatching = { fg = colors.magenta_light }, -- sections which match the search
+        TelescopePreviewBorder = { bg = colors.bg, fg = colors.magenta },
+        TelescopePreviewNormal = { bg = colors.bg, fg = colors.magenta },
+        TelescopePreviewTitle = { bg = colors.bg, fg = colors.magenta },
 
-        TelescopePromptNormal = { bg = bg },
-        TelescopePromptBorder = { bg = bg, fg = colors.magenta },
-        TelescopePromptPrefix = { bg = bg },
+        TelescopePromptNormal = { bg = colors.bg },
+        TelescopePromptBorder = { bg = colors.bg, fg = colors.magenta },
+        TelescopePromptPrefix = { bg = colors.bg },
         TelescopePromptTitle = { fg = colors.magenta },
 
-        TelescopeResultsBorder = { bg = bg, fg = colors.magenta },
-        TelescopeResultsNormal = { bg = bg },
+        TelescopeResultsBorder = { bg = colors.bg, fg = colors.magenta },
+        TelescopeResultsNormal = { fg = colors.grey9, bg = colors.bg }, -- results returned
         -- TelescopeResultsTitle = { fg = results },
 
         -- -- The current item
-        -- TelescopeSelection = { fg = colors.magenta_dark, bg = results },
-        -- TelescopeSelectionCaret = { fg = colors.magenta_dark, bg = results },
+        TelescopeSelection = { fg = colors.magenta },
+        TelescopeSelectionCaret = { fg = colors.magenta },
       },
     })
   end,
