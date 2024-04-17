@@ -12,7 +12,6 @@ return {
     -- Snippets
     "saadparwaiz1/cmp_luasnip", -- snippet completions
     "L3MON4D3/LuaSnip", --snippet engine
-    "rafamadriz/friendly-snippets", -- a bunch of snippets to
 
     -- Misc
     "lukas-reineke/cmp-under-comparator", -- Tweak completion order
@@ -34,16 +33,9 @@ return {
       return
     end
 
-    local cmp_under_comparator_ok, cmp_under_comparator = pcall(require, "cmp-under-comparator")
-    if not cmp_under_comparator_ok then
-      return
-    end
-
-    -- Required or snippets will not be added to the completion options
-    require("luasnip/loaders/from_vscode").lazy_load()
-
     local check_backspace = function()
       local col = vim.fn.col(".") - 1
+
       return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
     end
 
@@ -74,6 +66,8 @@ return {
       Operator = "",
       TypeParameter = "",
     }
+
+    local WIDE_HEIGHT = 40
 
     cmp.setup({
       snippet = {
@@ -118,6 +112,7 @@ return {
         }),
       },
       formatting = {
+        expandable_indicator = true,
         fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
           vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
@@ -157,7 +152,6 @@ return {
           function(...)
             return cmp_buffer:compare_locality(...)
           end,
-          -- require("copilot_cmp.comparators").prioritize,
           cmp.config.compare.offset,
           cmp.config.compare.exact,
           cmp.config.compare.score,
@@ -170,9 +164,41 @@ return {
         },
       },
       window = {
-        documentation = {
+        -- https://github.com/hrsh7th/nvim-cmp/blob/main/lua/cmp/config/default.lua
+        -- https://github.com/hrsh7th/nvim-cmp/blob/main/lua/cmp/config/window.lua
+        -- completion = {
+        --   border = { '', '', '', '', '', '', '', '' },
+        --   winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None',
+        --   winblend = vim.o.pumblend,
+        --   scrolloff = 0,
+        --   col_offset = 0,
+        --   side_padding = 1,
+        --   scrollbar = true,
+        -- },
+        -- documentation = {
+        --   max_height = math.floor(WIDE_HEIGHT * (WIDE_HEIGHT / vim.o.lines)),
+        --   max_width = math.floor((WIDE_HEIGHT * 2) * (vim.o.columns / (WIDE_HEIGHT * 2 * 16 / 9))),
+        --   border = { '', '', '', ' ', '', '', '', ' ' },
+        --   winhighlight = 'FloatBorder:NormalFloat',
+        --   winblend = vim.o.pumblend,
+        -- },
+        completion = {
           border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+          winhighlight = "Normal:TelescopePreviewBorder,TelescopePreviewBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+          winblend = 0,
+          scrolloff = 0,
+          col_offset = 0,
+          side_padding = 1,
+          scrollbar = true,
         },
+        -- documentation = {
+        --   winhighlight = "TelescopePreviewBorder:NormalFloat",
+        -- },
+        documentation = cmp.config.window.bordered({
+          border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+          winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+          winblend = 0,
+        }),
       },
       experimental = {
         ghost_text = false,
@@ -183,6 +209,7 @@ return {
         if in_prompt then -- this will disable cmp in the Telescope window (taken from the default config)
           return false
         end
+
         local context = require("cmp.config.context")
         return not (context.in_treesitter_capture("comment") == true or context.in_syntax_group("Comment"))
       end,
