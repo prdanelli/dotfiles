@@ -3,7 +3,7 @@ return {
   { "folke/noice.nvim", enabled = false },
   { "mfussenegger/nvim-dap", enabled = false },
   { "nvim-pack/nvim-spectre", enabled = false },
-  { "catppuccin/nvim", enabled = false },
+  { "catppuccin", enabled = false },
   { "folke/flash.nvim", enabled = false },
   { "echasnovski/mini.diff", enabled = false },
   { "ggandor/leap.nvim", enabled = false },
@@ -11,4 +11,9 @@ return {
   { "echasnovski/mini.ai", enabled = false },
   { "SmiteshP/nvim-navic", enabled = false },
   { "nvim-treesitter/nvim-treesitter-context", enabled = false },
+  { "folke/neoconf.nvim", enabled = false },
+  { "nvim-neo-tree/neo-tree.nvim", enabled = false },
+  { "nvim-neotest/neotest", enabled = false },
+  { "olimorris/neotest-rspec", enabled = false },
+  { "simrat39/symbols-outline.nvim", enabled = false },
 }
