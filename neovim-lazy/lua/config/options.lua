@@ -5,6 +5,7 @@ local options = {
   colorcolumn = "80,120",
   conceallevel = 0, -- so that `` is visible in markdown files
   confirm = false,
+  fixendofline = false, -- Prevent Nvim from removing end of file new line
   number = true, -- set numbered lines
   relativenumber = true, -- set relative numbered lines
   showtabline = 0, -- 0: never, 1: only if there are at least two tab pages, 2: always
@@ -12,8 +13,8 @@ local options = {
   splitright = true, -- force all vertical splits to go to the right of current window
   timeoutlen = 200, -- time to wait for a mapped sequence to complete (in milliseconds)
   undofile = true, -- enable persistent undo
+  wrap = true,
   writebackup = false, -- if a file is being edited by another program
-  fixendofline = false, -- Prevent Nvim from removing end of file new line
 }
 
 for k, v in pairs(options) do
