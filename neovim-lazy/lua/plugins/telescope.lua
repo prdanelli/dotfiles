@@ -126,11 +126,6 @@ return {
   end,
   keys = function()
     return {
-      {
-        "<leader>fp",
-        "<cmd>Telescope find_files hidden=true layout_config={'prompt_position':'top'}<cr>",
-        desc = "Find Files",
-      },
       { "<leader>fa", "<cmd>Telescope autocommands<cr>", desc = "Autocommands" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
       { "<leader>fc", "<cmd>Telescope commands<cr>", desc = "Commands" },
@@ -141,18 +136,9 @@ return {
       { "<leader>fi", "<cmd>Telescope highlights<cr>", desc = "Highlights" },
       { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
       { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Marks" },
+      { "<leader>fp", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Old Files" },
-      {
-        "<leader>fp",
-        "<cmd>Telescope find_files hidden=true layout_config={'prompt_position':'top'}<cr>",
-        desc = "Files",
-      },
-      { "<leader>fr", "<cmd>Telescope lsp_document_symbols<cr>", desc = "LSP Symbols" },
-      {
-        "<leader>fw",
-        "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>",
-        desc = "Current Buffer",
-      },
+      { "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", desc = "LSP Symbols" },
     }
   end,
 }
