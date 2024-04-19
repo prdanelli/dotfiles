@@ -32,7 +32,7 @@ return {
       },
     },
     indent = {
-      enable = true,
+      enable = false, -- Dont enable this or it'll messup indentation when a period is added to a class
     },
     incremental_selection = {
       enable = true,
