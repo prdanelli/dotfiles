@@ -26,6 +26,21 @@ return {
       LazyVim.telescope("find_files", { hidden = true, default_text = line })()
     end
 
+    local select_one_or_multi = function(prompt_bufnr)
+      local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+      local multi = picker:get_multi_selection()
+      if not vim.tbl_isempty(multi) then
+        require("telescope.actions").close(prompt_bufnr)
+        for _, j in pairs(multi) do
+          if j.path ~= nil then
+            vim.cmd(string.format("%s %s", "edit", j.path))
+          end
+        end
+      else
+        require("telescope.actions").select_default(prompt_bufnr)
+      end
+    end
+
     require("telescope").load_extension("zf-native")
 
     local width = 0.95
@@ -66,22 +81,6 @@ return {
           "--line-number",
           "--column",
         },
-        -- open files in the first window that is an actual file.
-        -- use the current window if no other window is available.
-        get_selection_window = function()
-          local wins = vim.api.nvim_list_wins()
-
-          table.insert(wins, 1, vim.api.nvim_get_current_win())
-
-          for _, win in ipairs(wins) do
-            local buf = vim.api.nvim_win_get_buf(win)
-            if vim.bo[buf].buftype == "" then
-              return win
-            end
-          end
-
-          return 0
-        end,
         mappings = {
           i = {
             ["<esc>"] = actions.close,
@@ -100,6 +99,8 @@ return {
             ["<C-k>"] = actions.cycle_history_prev,
             ["<C-n>"] = actions.move_selection_next,
             ["<C-p>"] = actions.move_selection_previous,
+
+            ["<CR>"] = select_one_or_multi,
           },
           n = {
             ["q"] = actions.close,
