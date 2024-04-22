@@ -3,6 +3,10 @@
 -------------------------------------------------------------------------------
 local opts = { silent = true }
 
+vim.keymap.set("n", "<leader>d", "<cmd>Dashboard<cr>", { desc = "Dashboard", silent = true })
+vim.keymap.set("n", "<leader>\\", "<cmd>vsplit<cr>", { desc = "Vertical Split", silent = true })
+vim.keymap.set("n", "<leader>-", "<cmd>split<cr>", { desc = "Horizontal Split", silent = true })
+
 -- Turn off arrow keys - force HJKL
 vim.keymap.set("n", "<UP>", "<NOP>", opts)
 vim.keymap.set("n", "<DOWN>", "<NOP>", opts)
