@@ -1,3 +1,7 @@
+-- Disable LazyVim terminal maps
+vim.keymap.del("n", "<leader>ft")
+vim.keymap.del("n", "<leader>fT")
+
 -------------------------------------------------------------------------------
 -- General Keybindings, not plugin specific
 -------------------------------------------------------------------------------
@@ -50,6 +54,15 @@ vim.keymap.set("n", "<c-w>", ":bd<CR>", opts)
 
 vim.keymap.set("n", "<leader>yr", "<cmd>let @+ = expand('%:~:.')<cr>", { desc = "Relative Path", silent = true })
 vim.keymap.set("n", "<leader>yf", "<cmd>let @+ = expand('%:p')<cr>", { desc = "Full Path", silent = true })
+
+-- floating terminal
+local lazyterm = function()
+  LazyVim.terminal(nil, { cwd = LazyVim.root() })
+end
+vim.keymap.set("n", "<leader>tr", lazyterm, { desc = "Terminal (Root Dir)" })
+vim.keymap.set("n", "<leader>tc", function()
+  LazyVim.terminal()
+end, { desc = "Terminal (cwd)" })
 
 -------------------------------------------------------------------------------
 -- Splits

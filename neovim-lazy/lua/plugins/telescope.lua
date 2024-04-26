@@ -47,6 +47,20 @@ return {
     local height = 0.95
 
     return {
+      pickers = {
+        buffers = {
+          show_all_buffers = true,
+          sort_lastused = true,
+          sort_mru = true,
+          previewer = false,
+          theme = "dropdown",
+          mappings = {
+            i = {
+              ["<c-d>"] = "delete_buffer",
+            },
+          },
+        },
+      },
       defaults = {
         prompt_prefix = " ",
         selection_caret = " ",
@@ -133,7 +147,6 @@ return {
       { "<leader>fd", "<cmd>Telescope find_dotfiles<cr>", desc = "Dotfiles" },
       { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
       { "<leader>fG", "<cmd>Telescope grep_string<cr>", desc = "Grep String" },
-      { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
       { "<leader>fi", "<cmd>Telescope highlights<cr>", desc = "Highlights" },
       { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
       { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Marks" },

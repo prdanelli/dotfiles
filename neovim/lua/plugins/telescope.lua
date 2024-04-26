@@ -32,7 +32,7 @@ return {
           show_all_buffers = true,
           sort_lastused = true,
           sort_mru = true,
-          previewer = true,
+          previewer = false,
           theme = "dropdown",
           mappings = {
             i = {
