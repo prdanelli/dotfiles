@@ -46,7 +46,7 @@ return {
         header = vim.split(logo, "\n"),
         center = {
           { action = 'lua require("persistence").load()', desc = " Restore Session", icon = " ", key = "s" },
-          { action = "lua require('ranger-nvim').open(true)", desc = " File Explorer", icon = "󰙅", key = "e" },
+          { action = "lua require('ranger-nvim').open(true)", desc = " File Explorer", icon = "󰙅 ", key = "e" },
           { action = LazyVim.telescope("files"), desc = " Find File", icon = " ", key = "f" },
           { action = "Telescope live_grep", desc = " Live Grep", icon = " ", key = "g" },
           { action = "ene | startinsert", desc = " New File", icon = " ", key = "n" },
