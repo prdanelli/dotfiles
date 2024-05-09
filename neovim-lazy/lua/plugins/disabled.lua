@@ -13,7 +13,5 @@ return {
   { "nvim-treesitter/nvim-treesitter-context", enabled = false },
   { "folke/neoconf.nvim", enabled = false },
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },
-  { "nvim-neotest/neotest", enabled = false },
-  { "olimorris/neotest-rspec", enabled = false },
   { "simrat39/symbols-outline.nvim", enabled = false },
 }
