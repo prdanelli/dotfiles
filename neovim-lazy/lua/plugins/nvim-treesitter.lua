@@ -86,6 +86,7 @@ return {
           ["ab"] = "@block.outer",
           ["ib"] = "@block.inner",
         },
+        include_surrounding_whitespace = true,
       },
     },
     endwise = {
