@@ -98,10 +98,9 @@ ssh-add -q --apple-use-keychain ~/.ssh/id_rsa # Ensure that the ssh_key is added
 ulimit -Sn 10240 # Increase the default number of sockers (helps with rspec tests in Chrome)
 
 ################################################################################
-# Prompt
+# Extras
 ################################################################################
 
 eval "$(starship init zsh)"
-
-macchina
+eval "$(fzf --zsh)"
 
