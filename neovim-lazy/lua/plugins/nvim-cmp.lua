@@ -67,8 +67,6 @@ return {
       TypeParameter = "",
     }
 
-    local WIDE_HEIGHT = 40
-
     cmp.setup({
       snippet = {
         expand = function(args)
@@ -158,24 +156,6 @@ return {
         },
       },
       window = {
-        -- https://github.com/hrsh7th/nvim-cmp/blob/main/lua/cmp/config/default.lua
-        -- https://github.com/hrsh7th/nvim-cmp/blob/main/lua/cmp/config/window.lua
-        -- completion = {
-        --   border = { '', '', '', '', '', '', '', '' },
-        --   winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None',
-        --   winblend = vim.o.pumblend,
-        --   scrolloff = 0,
-        --   col_offset = 0,
-        --   side_padding = 1,
-        --   scrollbar = true,
-        -- },
-        -- documentation = {
-        --   max_height = math.floor(WIDE_HEIGHT * (WIDE_HEIGHT / vim.o.lines)),
-        --   max_width = math.floor((WIDE_HEIGHT * 2) * (vim.o.columns / (WIDE_HEIGHT * 2 * 16 / 9))),
-        --   border = { '', '', '', ' ', '', '', '', ' ' },
-        --   winhighlight = 'FloatBorder:NormalFloat',
-        --   winblend = vim.o.pumblend,
-        -- },
         completion = {
           border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
           winhighlight = "Normal:TelescopePreviewBorder,TelescopePreviewBorder:Pmenu,CursorLine:PmenuSel,Search:None",
