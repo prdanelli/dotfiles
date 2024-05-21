@@ -15,13 +15,16 @@ require("lazy").setup({
   spec = {
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     { import = "lazyvim.plugins.extras.editor.trouble-v3" },
-    { import = "lazyvim.plugins.extras.editor.navic" },
 
     { import = "plugins" },
   },
   defaults = {
     lazy = false,
     version = false,
+  },
+  change_detection = {
+    enabled = true,
+    notify = false,
   },
   concurrency = 50,
   install = {
@@ -31,6 +34,7 @@ require("lazy").setup({
   },
   checker = {
     enabled = true,
+    notify = false,
   },
   ui = {
     size = {

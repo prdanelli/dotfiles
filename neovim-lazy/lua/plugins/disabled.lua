@@ -5,6 +5,7 @@ return {
   { "echasnovski/mini.ai", enabled = false },
   { "echasnovski/mini.diff", enabled = false },
   { "echasnovski/mini.surround", enabled = false },
+  { "echasnovski/mini.indentscope", enabled = false },
   { "folke/flash.nvim", enabled = false },
   { "folke/neoconf.nvim", enabled = false },
   { "folke/noice.nvim", enabled = false },

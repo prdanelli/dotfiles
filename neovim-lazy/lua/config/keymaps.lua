@@ -7,7 +7,7 @@ vim.keymap.del("n", "<leader>fT")
 -------------------------------------------------------------------------------
 local opts = { silent = true }
 
-vim.keymap.set("n", "<leader>d", "<cmd>Dashboard<cr>", { desc = "Dashboard", silent = true })
+vim.keymap.set("n", "<leader>d", "<cmd>Dashboard<cr>", { desc = "[D]ashboard", silent = true })
 vim.keymap.set("n", "<leader>\\", "<cmd>vsplit<cr>", { desc = "Vertical Split", silent = true })
 vim.keymap.set("n", "<leader>-", "<cmd>split<cr>", { desc = "Horizontal Split", silent = true })
 
@@ -77,3 +77,10 @@ vim.keymap.set("n", "<M-Up>", ":resize +2<CR>", opts)
 vim.keymap.set("n", "<M-Down>", ":resize -2<CR>", opts)
 vim.keymap.set("n", "<M-Left>", ":vertical resize -2<CR>", opts)
 vim.keymap.set("n", "<M-Right>", ":vertical resize +2<CR>", opts)
+
+-------------------------------------------------------------------------------
+-- Splits
+-------------------------------------------------------------------------------
+vim.keymap.set("n", "<leader>ch", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }))
+end, { desc = "[C]ode: Toggle Inlay [H]ints", silent = true })
