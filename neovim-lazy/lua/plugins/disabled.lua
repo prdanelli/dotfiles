@@ -2,7 +2,6 @@ return {
   { "SmiteshP/nvim-navic", enabled = false },
   { "akinsho/bufferline.nvim", enabled = false },
   { "catppuccin", enabled = false },
-  { "echasnovski/mini.ai", enabled = false },
   { "echasnovski/mini.diff", enabled = false },
   { "echasnovski/mini.surround", enabled = false },
   { "echasnovski/mini.indentscope", enabled = false },
@@ -16,4 +15,5 @@ return {
   { "nvim-pack/nvim-spectre", enabled = false },
   { "nvim-treesitter/nvim-treesitter-context", enabled = false },
   { "simrat39/symbols-outline.nvim", enabled = false },
+  { "folke/tokyonight.nvim", enabled = false },
 }
