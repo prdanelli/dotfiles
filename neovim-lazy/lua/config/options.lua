@@ -24,7 +24,6 @@ end
 vim.g.editorconfig = false
 vim.opt.whichwrap:append("<>[]hl") -- go to previous/next line with h,l
 vim.g.ruby_host_prog = "/Users/paul/.asdf/shims/neovim-ruby-host" -- avoid needing to install this in every project
--- vim.g.indentLine_color_gui = require("config.colors").colors.grey14
 
 -- Ensure I dont freak out by hitting the cap w when exiting
 vim.cmd([[
@@ -35,15 +34,13 @@ vim.cmd([[
   cnoreabbrev Q q
 ]])
 
--- Custom fold text
-vim.cmd([[
-  function! MyFoldText()
-    let line = getline(v:foldstart)
-    let foldedlinecount = v:foldend - v:foldstart + 1
+vim.opt.foldlevel = 1
 
-    return ' + ' . foldedlinecount . ' --- ' . line
-  endfunction
+function _G.custom_fold_text()
+  local line = vim.fn.getline(vim.v.foldstart)
+  local line_count = vim.v.foldend - vim.v.foldstart + 1
 
-  set foldtext=MyFoldText()
-  set fillchars=fold:-
-]])
+  return " --- " .. line_count .. " lines: " .. line
+end
+
+vim.opt.foldtext = "v:lua.custom_fold_text()"
