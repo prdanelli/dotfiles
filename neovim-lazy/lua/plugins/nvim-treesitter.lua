@@ -30,6 +30,10 @@ return {
       disable = {
         "qf",
       },
+      additional_vim_regex_highlighting = false,
+    },
+    fold = {
+      enabled = true,
     },
     indent = {
       enable = false, -- Dont enable this or it'll messup indentation when a period is added to a class
