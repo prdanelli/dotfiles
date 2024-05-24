@@ -1,8 +1,15 @@
 return {
   "nvim-telescope/telescope.nvim",
-  dependencies = { "natecraddock/telescope-zf-native.nvim" },
+  dependencies = {
+    {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+    },
+  },
   opts = function()
     local actions = require("telescope.actions")
+    local previewers = require("telescope.previewers")
+    local sorters = require("telescope.sorters")
 
     local open_with_trouble = function(...)
       return require("trouble.providers.telescope").open_with_trouble(...)
@@ -41,7 +48,7 @@ return {
       end
     end
 
-    require("telescope").load_extension("zf-native")
+    require("telescope").load_extension("fzf")
 
     local width = 0.95
     local height = 0.95
@@ -121,21 +128,16 @@ return {
           },
         },
         file_ignore_patterns = { "gtk/**/*", "node_modules", ".git", "pdf_viewer" },
+        color_devicons = true,
+        use_less = true,
+        path_display = {},
         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-        extensions = {
-          ["zf-native"] = {
-            file = {
-              enable = true, -- override default telescope file sorter
-              highlight_results = true, -- highlight matching text in results
-              match_filename = true, -- enable zf filename match priority
-            },
-            generic = {
-              enable = true, -- override default telescope generic item sorter
-              highlight_results = true, -- highlight matching text in results
-              match_filename = false, -- disable zf filename match priority
-            },
-          },
-        },
+        file_previewer = previewers.vim_buffer_cat.new,
+        grep_previewer = previewers.vim_buffer_vimgrep.new,
+        qflist_previewer = previewers.vim_buffer_qflist.new,
+        file_sorter = sorters.get_fuzzy_file,
+        generic_sorter = sorters.get_generic_fuzzy_sorter,
+        extensions = {},
       },
     }
   end,
