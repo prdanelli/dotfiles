@@ -64,7 +64,7 @@ zsh_add_config "config/helpers.sh"
 # Imports
 ################################################################################
 
-zsh_add_file "$HOME/.config/zsh/secrets.sh" # Shhhh, don't commit secrets
+zsh_add_file "$HOME/Dev/secrets.sh" # Shhhh, don't commit secrets
 
 ################################################################################
 # ASDF Packages
