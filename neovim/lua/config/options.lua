@@ -18,6 +18,7 @@ local options = {
   relativenumber = true, -- set relative numbered lines
   scrolloff = 12, -- number of lines above and below cursor when scrolling
   scrollback = 100000,
+  splitkeep = "screen",
   shiftwidth = 2, -- the number of spaces inserted for each indentation
   showmode = false, -- we don't need to see things like -- INSERT -- anymore
   showtabline = 0, -- 0: never, 1: only if there are at least two tab pages, 2: always

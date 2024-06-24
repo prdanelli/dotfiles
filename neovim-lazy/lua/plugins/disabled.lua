@@ -11,7 +11,6 @@ return {
   { "ggandor/flit.nvim", enabled = false },
   { "ggandor/leap.nvim", enabled = false },
   { "mfussenegger/nvim-dap", enabled = false },
-  { "nvim-neo-tree/neo-tree.nvim", enabled = false },
   { "nvim-pack/nvim-spectre", enabled = false },
   { "nvim-treesitter/nvim-treesitter-context", enabled = false },
   { "simrat39/symbols-outline.nvim", enabled = false },
