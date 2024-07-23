@@ -23,14 +23,14 @@ return {
       local action_state = require("telescope.actions.state")
       local line = action_state.get_current_line()
 
-      LazyVim.telescope("find_files", { no_ignore = true, default_text = line })()
+      LazyVim.pick.telescope("find_files", { no_ignore = true, default_text = line })()
     end
 
     local find_files_with_hidden = function()
       local action_state = require("telescope.actions.state")
       local line = action_state.get_current_line()
 
-      LazyVim.telescope("find_files", { hidden = true, default_text = line })()
+      LazyVim.pick.telescope("find_files", { hidden = true, default_text = line })()
     end
 
     local select_one_or_multi = function(prompt_bufnr)
