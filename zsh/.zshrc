@@ -9,6 +9,7 @@ INC_APPEND_HISTORY="true"
 HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history # Persist history
 HISTSIZE=1000000
 SAVEHIST=1000000
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
 setopt appendhistory
 

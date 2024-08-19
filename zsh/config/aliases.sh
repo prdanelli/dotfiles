@@ -5,11 +5,11 @@
 ################################################################################
 
 # General
-alias ls="exa -s type "
+alias ls="eza -s type"
 alias la="ls -la"
 alias lazygit="lazygit -ucd ~/.config/lazygit/"
 alias grep="grep --color=auto"
-alias cat="bat --paging=never --wrap=never --style=plain"
+# alia cat="bat --paging=never --wrap=never --style=plain"
 alias editdots="cd ~/Personal/Repos/dotfiles; nvim"
 
 # Vim
@@ -34,6 +34,12 @@ alias tn="t new -t"
 # Olio
 alias olio:storage="zsh ~/Dev/storage.sh"
 alias olio:stop_storage="docker stop redis-dev mysql-dev"
+function olio_ips() {
+  aws ec2 describe-instances \
+    --query "Reservations[*].Instances[*].{InstanceId:InstanceId,PrivateIpAddress:PrivateIpAddress,Name:Tags[?Key=='Name']|[0].Value}" \
+    --output table | fzf
+}
+alias olio:ips="olio_ips"
 
 # Yabai
 alias yabai:reload="yabai --restart-service"
@@ -45,7 +51,7 @@ alias yabai:borders:off="yabai -m config window_border off"
 alias yabai:borders:on="yabai -m config window_border on"
 
 # SKHD
-alias skhd:keys="bat ~/.config/skhd/skhdrc"
+alias skhd:keys="cat ~/.config/skhd/skhdrc"
 alias skhd:start="skhd --start-service"
 alias skhd:stop="skhd --stop-service"
 alias skhd:restart="skhd --restart-service"
@@ -72,7 +78,6 @@ alias fzf='fzf --color=light --no-bold --margin="0,2,0,2" --padding="0,2,0,2" --
 
 # Rails
 alias rails:routes="bin/rails routes | fzf -e"
-
 
 # Ollama
 alias ai:install="docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama"
