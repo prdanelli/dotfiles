@@ -63,12 +63,12 @@ return {
         NeoTreeNormal = { bg = float_bg },
 
         -- Whichkey
-        WhichKeyFloat = { bg = float_bg },
-        WhichKey = { fg = colors.magenta },
-        WhichKeyGroup = { fg = colors.grey7 },
-        WhichKeySeparator = { fg = colors.grey12 },
-        WhichKeyDesc = { fg = colors.grey7 },
-        WhichKeyValue = { fg = colors.grey7 },
+        -- WhichKeyFloat = { bg = float_bg },
+        -- WhichKey = { fg = colors.magenta },
+        -- WhichKeyGroup = { fg = colors.grey7 },
+        -- WhichKeySeparator = { fg = colors.grey12 },
+        -- WhichKeyDesc = { fg = colors.grey7 },
+        -- WhichKeyValue = { fg = colors.grey7 },
 
         -- Color columns
         VirtColumn = { bg = colors.bg, fg = colors.grey13 },

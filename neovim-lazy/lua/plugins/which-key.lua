@@ -36,6 +36,7 @@ return {
     },
     spec = {
       mode = { "n", "v" },
+      { "<esc>", hidden = true },
       ["g"] = { name = "+goto" },
       ["gs"] = { name = "+surround" },
       ["z"] = { name = "+fold" },

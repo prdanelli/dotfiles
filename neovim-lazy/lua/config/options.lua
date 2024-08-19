@@ -34,13 +34,14 @@ vim.cmd([[
   cnoreabbrev Q q
 ]])
 
-vim.opt.foldlevel = 1
+-- function _G.custom_fold_text()
+--   local line = vim.fn.getline(vim.v.foldstart)
+--   local line_count = vim.v.foldend - vim.v.foldstart + 1
+--
+--   return " --- " .. line_count .. " lines: " .. line
+-- end
+--
+-- vim.opt.foldtext = "v:lua.custom_fold_text()"
 
-function _G.custom_fold_text()
-  local line = vim.fn.getline(vim.v.foldstart)
-  local line_count = vim.v.foldend - vim.v.foldstart + 1
-
-  return " --- " .. line_count .. " lines: " .. line
-end
-
-vim.opt.foldtext = "v:lua.custom_fold_text()"
+vim.opt.foldmethod = "indent"
+vim.opt.foldtext = "v:lua.require'lazyvim.util'.ui.foldtext()"

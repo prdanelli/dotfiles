@@ -146,3 +146,20 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     vim.cmd("setfiletype bash")
   end,
 })
+
+-- https://www.reddit.com/r/neovim/comments/1ehidxy/you_can_remove_padding_around_neovim_instance/?share_id=m2Zef0slsNr9lKQNDSYaC&utm_content=2&utm_medium=ios_app&utm_name=iossmf&utm_source=share&utm_term=22
+vim.api.nvim_create_autocmd({ "UIEnter", "ColorScheme" }, {
+  callback = function()
+    local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
+    if not normal.bg then
+      return
+    end
+    io.write(string.format("\027]11;#%06x\027\\", normal.bg))
+  end,
+})
+
+vim.api.nvim_create_autocmd("UILeave", {
+  callback = function()
+    io.write("\027]111\027\\")
+  end,
+})
