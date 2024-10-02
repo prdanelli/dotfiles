@@ -44,6 +44,7 @@ return {
       Method = "",
       Function = "",
       Constructor = "",
+      Codeium = "",
       Field = "",
       Variable = "",
       Class = "ﴯ",
@@ -110,6 +111,7 @@ return {
           vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
 
           vim_item.menu = ({
+            codeium = "[LLM]",
             buffer = "[Buffer]",
             luasnip = "[Snippet]",
             nvim_lsp = "[LSP]",
@@ -120,6 +122,7 @@ return {
         end,
       },
       sources = {
+        { name = "codeium" },
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "path" },
