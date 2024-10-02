@@ -11,8 +11,11 @@
 	ui = true
 [alias]
 	ch = checkout
+  sw = switch 
 	co = commit
 	st = status -sMu
+  hide = update-index --assume-unchanged
+  unhide = update-index --no-assume-unchanged
   changed = diff --stat
 	br = branch
 	first = rev-list --max-parents=0 HEAD
