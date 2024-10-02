@@ -152,7 +152,7 @@ return {
       { "<leader>fi", "<cmd>Telescope highlights<cr>", desc = "Highlights" },
       { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
       { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Marks" },
-      { "<leader>fp", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Old Files" },
       { "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", desc = "LSP Symbols" },
     }
