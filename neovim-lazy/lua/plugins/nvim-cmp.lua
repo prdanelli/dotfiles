@@ -1,5 +1,7 @@
 return {
-  "hrsh7th/nvim-cmp",
+  -- CMP Fork
+  "iguanacucumber/magazine.nvim",
+  name = "nvim-cmp", -- Otherwise highlighting gets messed up
   lazy = true,
   event = "InsertEnter",
   dependencies = {
@@ -9,10 +11,6 @@ return {
     "hrsh7th/cmp-nvim-lsp", -- LSP completions
     "hrsh7th/cmp-nvim-lsp-document-symbol", -- For textDocument/documentSymbol
 
-    -- Snippets
-    "saadparwaiz1/cmp_luasnip", -- snippet completions
-    "L3MON4D3/LuaSnip", --snippet engine
-
     -- Misc
     "lukas-reineke/cmp-under-comparator", -- Tweak completion order
     "f3fora/cmp-spell",
@@ -20,11 +18,6 @@ return {
   config = function()
     local cmp_status_ok, cmp = pcall(require, "cmp")
     if not cmp_status_ok then
-      return
-    end
-
-    local snip_status_ok, luasnip = pcall(require, "luasnip")
-    if not snip_status_ok then
       return
     end
 
@@ -55,7 +48,6 @@ return {
       Value = "",
       Enum = "",
       Keyword = "",
-      Snippet = "",
       Color = "",
       File = "",
       Reference = "",
@@ -69,21 +61,10 @@ return {
     }
 
     cmp.setup({
-      snippet = {
-        expand = function(args)
-          luasnip.lsp_expand(args.body)
-        end,
-      },
       mapping = {
         ["<C-n>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
-          elseif luasnip.jumpable(1) then
-            luasnip.jump(1)
-          elseif luasnip.expandable() then
-            luasnip.expand()
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
           elseif check_backspace() then
             fallback()
           else
@@ -93,8 +74,6 @@ return {
         ["<C-p>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
           else
             fallback()
           end
@@ -113,7 +92,6 @@ return {
           vim_item.menu = ({
             codeium = "[LLM]",
             buffer = "[Buffer]",
-            luasnip = "[Snippet]",
             nvim_lsp = "[LSP]",
             spell = "[Spelling]",
           })[entry.source.name]
@@ -124,7 +102,6 @@ return {
       sources = {
         { name = "codeium" },
         { name = "nvim_lsp" },
-        { name = "luasnip" },
         { name = "path" },
         { name = "buffer", keyword_length = 3 },
         {
