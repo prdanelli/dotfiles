@@ -21,11 +21,6 @@ return {
       return
     end
 
-    local cmp_buffer_ok, cmp_buffer = pcall(require, "cmp_buffer")
-    if not cmp_buffer_ok then
-      return
-    end
-
     local check_backspace = function()
       local col = vim.fn.col(".") - 1
 
