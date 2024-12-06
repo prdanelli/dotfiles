@@ -40,6 +40,9 @@ function olio_ips() {
     --output table | fzf
 }
 alias olio:ips="olio_ips"
+# function olio_console() {
+#   FILTER=admin bundle exec cap $1 rails:console
+# }
 
 # Yabai
 alias yabai:reload="yabai --restart-service"
@@ -59,7 +62,7 @@ alias skhd:reload="skhd --restart-service"
 
 # Brew
 # alias brew:upgrade:all="brew upgrade; sh ~/Personal/Repos/dotfiles/zsh/user/install_neovim_head.sh; nvim --headless '+Lazy! sync' +qa; yabai:stop; yabai:start;"
-alias brew:upgrade:all="brew upgrade; nvim --headless '+Lazy! sync' +qa; yabai:stop; yabai:start;"
+alias brew:upgrade:all="brew upgrade; nvim --headless '+Lazy! sync' +qa > /dev/null; yabai:stop; yabai:start;"
 alias brew:bundle="brew bundle --file ~/.Brewfile"
 
 # Docker Compose
@@ -77,7 +80,7 @@ alias asdf:versions="nvim /Users/paul/.tool-versions"
 alias fzf='fzf --color=light --no-bold --margin="0,2,0,2" --padding="0,2,0,2" --no-separator --info="right" --pointer="-" --prompt="Search: " '
 
 # Rails
-alias rails:routes="bin/rails routes | fzf -e"
+alias rails:routes="dcr rails routes | fzf -e"
 
 # Ollama
 alias ai:install="docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama"
