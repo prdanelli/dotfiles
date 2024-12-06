@@ -4,7 +4,6 @@ return {
     ensure_installed = {
       "stylua",
       "shfmt",
-      "solargraph",
     },
   },
 }

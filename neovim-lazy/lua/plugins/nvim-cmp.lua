@@ -1,17 +1,17 @@
 return {
-  -- CMP Fork
   "iguanacucumber/magazine.nvim",
   name = "nvim-cmp", -- Otherwise highlighting gets messed up
   lazy = true,
   event = "InsertEnter",
   dependencies = {
-    "hrsh7th/cmp-buffer", -- Buffer completions
-    "hrsh7th/cmp-path", -- Path completions
-    "hrsh7th/cmp-cmdline", -- Cmdline completions
-    "hrsh7th/cmp-nvim-lsp", -- LSP completions
-    "hrsh7th/cmp-nvim-lsp-document-symbol", -- For textDocument/documentSymbol
+    { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
+    { "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
+    { "iguanacucumber/mag-buffer", name = "cmp-buffer" },
+    { "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
+    "https://codeberg.org/FelipeLema/cmp-async-path",
 
     -- Misc
+    "hrsh7th/cmp-nvim-lsp-document-symbol", -- For textDocument/documentSymbol
     "lukas-reineke/cmp-under-comparator", -- Tweak completion order
     "f3fora/cmp-spell",
   },
@@ -59,6 +59,8 @@ return {
       Operator = "",
       TypeParameter = "",
     }
+    local compare = require("cmp.config.compare")
+    local types = require("cmp.types")
 
     cmp.setup({
       mapping = {
@@ -102,7 +104,7 @@ return {
       sources = {
         { name = "codeium" },
         { name = "nvim_lsp" },
-        { name = "path" },
+        { name = "async_path" },
         { name = "buffer", keyword_length = 3 },
         {
           name = "spell",
@@ -121,18 +123,16 @@ return {
       sorting = {
         priority_weight = 2,
         comparators = {
-          function(...)
-            return cmp_buffer:compare_locality(...)
-          end,
-          cmp.config.compare.offset,
-          cmp.config.compare.exact,
-          cmp.config.compare.score,
-          cmp.config.compare.recently_used,
-          cmp.config.compare.locality,
-          cmp.config.compare.kind,
-          cmp.config.compare.sort_text,
-          cmp.config.compare.length,
-          cmp.config.compare.order,
+          compare.offset,
+          compare.exact,
+          -- compare.scopes,
+          compare.score,
+          compare.recently_used,
+          compare.locality,
+          compare.kind,
+          -- compare.sort_text,
+          compare.length,
+          compare.order,
         },
       },
       window = {
@@ -158,15 +158,53 @@ return {
         ghost_text = false,
         native_menu = false,
       },
+      -- enabled = function()
+      --   local in_prompt = vim.api.nvim_buf_get_option(0, "buftype") == "prompt"
+      --   if in_prompt then -- this will disable cmp in the Telescope window (taken from the default config)
+      --     return false
+      --   end
+      --
+      --   local context = require("cmp.config.context")
+      --   return not (context.in_treesitter_capture("comment") == true or context.in_syntax_group("Comment"))
+      -- end,
       enabled = function()
-        local in_prompt = vim.api.nvim_buf_get_option(0, "buftype") == "prompt"
-        if in_prompt then -- this will disable cmp in the Telescope window (taken from the default config)
-          return false
-        end
+        local disabled = false
+        disabled = disabled or (vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "prompt")
+        disabled = disabled or (vim.fn.reg_recording() ~= "")
+        disabled = disabled or (vim.fn.reg_executing() ~= "")
 
-        local context = require("cmp.config.context")
-        return not (context.in_treesitter_capture("comment") == true or context.in_syntax_group("Comment"))
+        return not disabled
       end,
+
+      performance = {
+        debounce = 60,
+        throttle = 30,
+        fetching_timeout = 500,
+        filtering_context_budget = 3,
+        confirm_resolve_timeout = 80,
+        async_budget = 1,
+        max_view_entries = 200,
+      },
+
+      preselect = types.cmp.PreselectMode.Item,
+
+      completion = {
+        autocomplete = {
+          types.cmp.TriggerEvent.TextChanged,
+        },
+        completeopt = "menu,menuone,noselect",
+        keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
+        keyword_length = 1,
+      },
+
+      matching = {
+        disallow_fuzzy_matching = false,
+        disallow_fullfuzzy_matching = false,
+        disallow_partial_fuzzy_matching = true,
+        disallow_partial_matching = false,
+        disallow_prefix_unmatching = false,
+        disallow_symbol_nonprefix_matching = true,
+      },
     })
 
     cmp.setup.cmdline(":", {

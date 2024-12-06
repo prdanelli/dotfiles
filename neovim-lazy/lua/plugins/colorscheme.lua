@@ -22,11 +22,18 @@ return {
           eob_lines = true,
         },
         custom_highlights = {
+          SnacksDashboardTitle = { fg = colors.cyan },
+          FidgetTask = { link = "Comment" },
+
           -- Examples
           -- LspDiagnosticsUnderlineInformation = { style = config.styles.diagnostics, sp = colors.info },
           -- ["@text.uri"] = { fg = colors.cyan, style = "underline" },
           -- Todo = { fg = colors.yellow, bg = colors.none, style = "bold,italic" },
           -- DiagnosticError = { link = "LspDiagnosticsDefaultError" },
+          QuickFixLineNr = { fg = colors.grey10 },
+          QuickFixHeaderHard = { fg = colors.grey10 },
+          QuickFixHeaderSoft = { fg = colors.grey10 },
+          Delimiter = { fg = colors.grey10 },
 
           -- Nvim Core
           Folded = { fg = colors.grey10 },

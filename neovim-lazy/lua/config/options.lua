@@ -15,6 +15,7 @@ local options = {
   undofile = true, -- enable persistent undo
   wrap = true,
   writebackup = false, -- if a file is being edited by another program
+  swapfile = false,
 }
 
 for k, v in pairs(options) do
