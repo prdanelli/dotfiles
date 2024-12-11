@@ -10,7 +10,7 @@ source "$CONFIG_DIR/scripts/colors.sh"
 # the difference is in this line:
 # sketchybar --set "$NAME" background.drawing="$SELECTED" color=$MAGENTA icon.highlight="$SELECTED" icon.highlight_color=$BG
 
-COLOR=$MAGENTA
+COLOR=$MAGENTA_DARK
 
 if [ $SELECTED = true ]; then
   sketchybar --set $NAME \
