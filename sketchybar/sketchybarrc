@@ -59,7 +59,8 @@ do
     icon="${SPACE_ICONS[i]}"
     icon.padding_left=10
     icon.padding_right=10
-    background.color="$MAGENTA"
+    background.color="$TRANSPARENT"
+    label.color="$GREEN"
     background.corner_radius=3
     background.height=22
     label.drawing=off
@@ -82,24 +83,21 @@ sketchybar --add item space_separator left                             \
 
 
 ##### Adding Left Items #####
-# We add some regular items to the left side of the bar, where
-# only the properties deviating from the current defaults need to be set
 
-sketchybar --add item chevron left \
-           --set chevron icon= label.drawing=off \
-           --add item front_app left \
-           --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
+# https://www.josean.com/posts/sketchybar-setup
+sketchybar --add item front_app left \
+           --set front_app       background.color=$TRANSPARENT \
+                                 icon.color=$FG \
+                                 icon.font="sketchybar-app-font:Regular:16.0" \
+                                 label.color=$FG \
+                                 script="$PLUGIN_DIR/front_app.sh"            \
            --subscribe front_app front_app_switched
 
+
 ##### Adding Right Items #####
-# In the same way as the left items we can add items to the right side.
+
 # Additional position (e.g. center) are available, see:
 # https://felixkratz.github.io/SketchyBar/config/items#adding-items-to-sketchybar
-
-# Some items refresh on a fixed cycle, e.g. the clock runs its script once
-# every 10s. Other items respond to events they subscribe to, e.g. the
-# volume.sh script is only executed once an actual change in system audio
-# volume is registered. More info about the event system can be found here:
 # https://felixkratz.github.io/SketchyBar/config/events
 
 sketchybar --add item time right \
@@ -111,11 +109,9 @@ sketchybar --add item time right \
            --subscribe volume volume_change \
            --add item battery right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
-           --subscribe battery system_woke power_source_change
-
-sketchybar --add item cpu right \
-           --set cpu update_freq=2 \
-                 script="$PLUGIN_DIR/cpu.sh"
+           --subscribe battery system_woke power_source_change \
+           --add item cpu right \
+           --set cpu update_freq=2 script="$PLUGIN_DIR/cpu.sh"
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
