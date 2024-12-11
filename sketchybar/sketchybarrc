@@ -32,8 +32,8 @@ sketchybar --bar \
 default=(
   padding_left=5
   padding_right=5
-  icon.font="Hack Nerd Font:Bold:17.0"
-  label.font="Hack Nerd Font:Bold:14.0"
+  icon.font="Hack Nerd Font Mono:Bold:20.0"
+  label.font="Hack Nerd Font Mono:Bold:14.0"
   icon.color=0xffffffff # bar icons
   label.color=0xffffffff # bar test color
   icon.padding_left=5
@@ -61,7 +61,7 @@ do
     background.corner_radius=3
     background.height=22
     label.drawing=off
-    icon.font="JetBrains Mono:Regular:15.0"
+    icon.font="Hack Nerd Font Mono:Bold:15.0"
     script="$PLUGIN_DIR/space.sh"
     click_script="yabai -m space --focus $sid"
   )
@@ -90,8 +90,10 @@ sketchybar --add item chevron left \
 # volume is registered. More info about the event system can be found here:
 # https://felixkratz.github.io/SketchyBar/config/events
 
-sketchybar --add item clock right \
-           --set clock update_freq=10 icon=  script="$PLUGIN_DIR/clock.sh" \
+sketchybar --add item time right \
+           --set time update_freq=10 script="$PLUGIN_DIR/time.sh" \
+           --add item date right \
+           --set date update_freq=10 script="$PLUGIN_DIR/date.sh" \
            --add item volume right \
            --set volume script="$PLUGIN_DIR/volume.sh" \
            --subscribe volume volume_change \

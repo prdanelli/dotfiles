@@ -13,14 +13,14 @@ sketchybar --set "$NAME" background.drawing="$SELECTED" color=$MAGENTA icon.high
 # and mouse events for special mouse-over highlight effect
 case "$SENDER" in
 "mouse.entered")
-  sketchybar --set $NAME icon.highlight=on icon.highlight_color=$MAGENTA
+  sketchybar --set $NAME icon.highlight=on background.color="$MAGENTA"
   ;;
 "mouse.exited" | "mouse.exited.global")
-  sketchybar --set $NAME icon.highlight_color=$MAGENTA icon.highlight=$SELECTED
+  sketchybar --set $NAME icon.highlight_color=$BG icon.highlight=$SELECTED
   ;;
 "mouse.clicked")
   # clicked effect
-  sketchybar --set $NAME icon.highlight_color=$MAGENTA label.highlight_color=$MAGENTA
-  sketchybar --set $NAME icon.highlight=$SELECTED label.highlight=$SELECTED
+  sketchybar --set $NAME icon.highlight_color=$BG background.color="$MAGENTA"
+  sketchybar --set $NAME icon.highlight=$SELECTED background.color="$MAGENTA"
   ;;
 esac
