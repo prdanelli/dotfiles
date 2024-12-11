@@ -1,3 +1,5 @@
+# https://www.nerdfonts.com/cheat-sheet
+
 source "$CONFIG_DIR/colors.sh"
 
 # https://github.com/FelixKratz/dotfiles
@@ -61,13 +63,23 @@ do
     background.corner_radius=3
     background.height=22
     label.drawing=off
-    icon.font="Hack Nerd Font Mono:Bold:15.0"
+    icon.font="Hack Nerd Font Mono:Bold:14.0"
     script="$PLUGIN_DIR/space.sh"
     click_script="yabai -m space --focus $sid"
   )
   sketchybar --add space space."$sid" left --set space."$sid" "${space[@]}" ignore_association=on 
   sketchybar --subscribe space."$sid" mouse.clicked mouse.entered mouse.entered.global mouse.exited mouse.exited.global 
 done
+
+sketchybar --add item space_separator left                             \
+           --set space_separator icon="󰕰"                                \
+                                 icon.color=$FG \
+                                 icon.padding_left=4                   \
+                                 label.drawing=off                     \
+                                 background.drawing=off                \
+                                 script="$PLUGIN_DIR/space_windows.sh" \
+           --subscribe space_separator space_windows_change
+
 
 ##### Adding Left Items #####
 # We add some regular items to the left side of the bar, where
@@ -100,6 +112,10 @@ sketchybar --add item time right \
            --add item battery right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change
+
+sketchybar --add item cpu right \
+           --set cpu update_freq=2 \
+                 script="$PLUGIN_DIR/cpu.sh"
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
