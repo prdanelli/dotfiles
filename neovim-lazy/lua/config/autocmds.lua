@@ -51,13 +51,13 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Don't list quick list in buffer list and so bnext etc dont toggle to it
-vim.api.nvim_create_autocmd("FileType", {
-  group = "_general",
-  pattern = "qf",
-  callback = function()
-    vim.cmd("set nobuflisted")
-  end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--   group = "_general",
+--   pattern = "qf",
+--   callback = function()
+--     vim.cmd("set nobuflisted")
+--   end,
+-- })
 
 -- Run resize methods when window size is changes
 vim.api.nvim_create_autocmd("VimResized", {
@@ -83,34 +83,19 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   end,
 })
 
--- Git --
-vim.api.nvim_create_augroup("_git", { clear = true })
-
--- Enable spell check and word wrap for git commits
-vim.api.nvim_create_autocmd("FileType", {
-  group = "_git",
-  pattern = "gitcommit",
-  callback = function()
-    vim.cmd("setlocal spell")
-    vim.cmd("setlocal wrap")
-  end,
-})
-
 -- Lazy --
 local lazy_loaded, _ = pcall(require, "lazy")
-if not lazy_loaded then
-  return
+if lazy_loaded then
+  vim.api.nvim_create_augroup("_lazy", { clear = true })
+
+  vim.api.nvim_create_autocmd("FileType", {
+    group = "_lazy",
+    pattern = "lazy",
+    callback = function()
+      vim.cmd("setlocal nonumber colorcolumn= | autocmd BufUnload set colorcolumn=80,120")
+    end,
+  })
 end
-
-vim.api.nvim_create_augroup("_lazy", { clear = true })
-
-vim.api.nvim_create_autocmd("FileType", {
-  group = "_lazy",
-  pattern = "lazy",
-  callback = function()
-    vim.cmd("setlocal nonumber colorcolumn= | autocmd BufUnload set colorcolumn=80,120")
-  end,
-})
 
 local colorizer_loaded, _ = pcall(require, "colorizer")
 if colorizer_loaded then

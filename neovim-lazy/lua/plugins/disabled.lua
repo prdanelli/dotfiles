@@ -6,8 +6,6 @@ return {
   { "echasnovski/mini.surround", enabled = false },
   { "echasnovski/mini.indentscope", enabled = false },
   { "folke/flash.nvim", enabled = false },
-  { "folke/neoconf.nvim", enabled = false },
-  { "folke/noice.nvim", enabled = false },
   { "ggandor/flit.nvim", enabled = false },
   { "ggandor/leap.nvim", enabled = false },
   { "mfussenegger/nvim-dap", enabled = false },

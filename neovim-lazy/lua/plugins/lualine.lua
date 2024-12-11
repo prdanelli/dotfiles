@@ -121,9 +121,15 @@ return {
       sections = {
         lualine_a = { "mode" },
         lualine_b = { "branch" },
-        lualine_c = { fname },
-        lualine_x = { "diff" },
-        lualine_y = {},
+        lualine_c = {
+          {
+            require("noice").api.statusline.mode.get,
+            cond = require("noice").api.statusline.mode.has,
+            color = { fg = colors.magenta },
+          },
+        },
+        lualine_x = { fname },
+        lualine_y = { "diff" },
         lualine_z = {},
       },
       inactive_sections = {
