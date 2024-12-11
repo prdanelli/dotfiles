@@ -1,26 +1,28 @@
 #!/bin/sh
 
+source "$CONFIG_DIR/scripts/colors.sh"
+
 # The $SELECTED variable is available for space components and indicates if
 # the space invoking this script (with name: $NAME) is currently selected:
 # https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
-
-source "$CONFIG_DIR/colors.sh"
 
 # sketchybar --set "$NAME" background.drawing="$SELECTED"
 # the difference is in this line:
 # sketchybar --set "$NAME" background.drawing="$SELECTED" color=$MAGENTA icon.highlight="$SELECTED" icon.highlight_color=$BG
 
+COLOR=$MAGENTA
+
 if [ $SELECTED = true ]; then
   sketchybar --set $NAME \
     background.drawing=on \
-    background.color=$GREEN \
+    background.color=$COLOR \
     label.color=$BG \
     icon.color=$BG
 else
   sketchybar --set $NAME \
     background.drawing=off \
-    label.color$GREEN \
-    icon.color=$GREEN
+    label.color=$COLOR \
+    icon.color=$COLOR
 fi
 
 # and mouse events for special mouse-over highlight effect

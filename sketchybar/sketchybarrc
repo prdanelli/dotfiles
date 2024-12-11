@@ -1,10 +1,9 @@
 # https://www.nerdfonts.com/cheat-sheet
-
-source "$CONFIG_DIR/colors.sh"
-
 # https://github.com/FelixKratz/dotfiles
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+source "$CONFIG_DIR/scripts/colors.sh"
 
 ##### Bar Appearance #####
 # Configuring the general appearance of the bar.
@@ -36,8 +35,8 @@ default=(
   padding_right=5
   icon.font="Hack Nerd Font Mono:Bold:20.0"
   label.font="Hack Nerd Font Mono:Bold:14.0"
-  icon.color=0xffffffff # bar icons
-  label.color=0xffffffff # bar test color
+  icon.color=$FG
+  label.color=$FG
   icon.padding_left=5
   icon.padding_right=5
   label.padding_left=5
@@ -72,16 +71,6 @@ do
   sketchybar --subscribe space."$sid" mouse.clicked mouse.entered mouse.entered.global mouse.exited mouse.exited.global 
 done
 
-sketchybar --add item space_separator left                             \
-           --set space_separator icon="󰕰"                                \
-                                 icon.color=$FG \
-                                 icon.padding_left=4                   \
-                                 label.drawing=off                     \
-                                 background.drawing=off                \
-                                 script="$PLUGIN_DIR/space_windows.sh" \
-           --subscribe space_separator space_windows_change
-
-
 ##### Adding Left Items #####
 
 # https://www.josean.com/posts/sketchybar-setup
@@ -92,7 +81,6 @@ sketchybar --add item front_app left \
                                  label.color=$FG \
                                  script="$PLUGIN_DIR/front_app.sh"            \
            --subscribe front_app front_app_switched
-
 
 ##### Adding Right Items #####
 
@@ -111,7 +99,12 @@ sketchybar --add item time right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change \
            --add item cpu right \
-           --set cpu update_freq=2 script="$PLUGIN_DIR/cpu.sh"
+           --set cpu update_freq=5 script="$PLUGIN_DIR/cpu.sh"
+
+sketchybar --add event brew_update \
+           --add item homebrew right \
+           --set homebrew icon= update_freq=60 label=? script="$PLUGIN_DIR/homebrew.sh"
+           --subscribe homebrew brew_update
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update

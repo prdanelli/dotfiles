@@ -1,8 +1,10 @@
 #!/bin/bash
 
+# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
+
 export BG_LIGHT=0xff353b49
 export BG=0xff2e3440
-export FG=0xffeCEFF4
+export FG=0xff616d85
 export RED=0xffbf616a
 export ORANGE=0xffd08770
 export ORANGE_WASHED=0xffdfac9c
@@ -34,5 +36,4 @@ export GREY16=0xff1c1f26
 export GREY17=0xff0f1115
 export GREY18=0xff0d0e11
 export GREY19=0xff020203
-
 export TRANSPARENT=0x00000000
