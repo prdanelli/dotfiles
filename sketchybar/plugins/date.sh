@@ -6,4 +6,4 @@
 #
 # https://www.cyberciti.biz/faq/linux-unix-formatting-dates-for-display/
 
-sketchybar --set "$NAME" icon="󰸘" label="$(date '+%a %d/%m')"
+sketchybar --set "$NAME" icon="󰸘" label="$(date '+%A, %d %B')"

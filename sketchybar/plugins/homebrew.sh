@@ -8,15 +8,17 @@ COLOR=$RED
 
 case "${COUNT}" in
 [3-5][0-9])
-  COLOR=$ORANGE
+  COLOR=$RED
   ;;
 [1-2][0-9])
-  COLOR=$YELLOW
+  COLOR=$ORANGE
   ;;
 [1-9])
-  COLOR=$GREEN
+  COLOR=$YELLOW
   ;;
-*) COLOR=$GREEN ;;
+*)
+  COLOR=$FG
+  ;;
 esac
 
 sketchybar --set $NAME icon= label="$COUNT" icon.color=$COLOR label.color=$COLOR
