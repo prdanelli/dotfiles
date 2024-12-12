@@ -25,7 +25,9 @@ Link dotbot paths and run `brew bundle --file .Brewfile`
 
 ## Screenshots
 
-![Tmux, Neovim and Lazygit](https://user-images.githubusercontent.com/1199977/222270392-dcecd82a-a627-4f71-83ee-96ea1fdf4955.png)
+![Neovim](https://github.com/user-attachments/assets/1e079905-ed3b-41a0-9589-0a16ab6f9c84)
+
+![Tmux, Neovim and Lazygit](https://github.com/user-attachments/assets/35deebbf-0b3e-4469-81c8-0b734036fffd)
 
 ## Yabai
 
