@@ -1,23 +1,23 @@
 #!/bin/bash
 
+# https://snelson.us/2024/09/determining-a-macs-ssid-like-an-animal/
+
 source "$CONFIG_DIR/scripts/colors.sh"
 
 ICON_DISCONNECTED="󰖪"
 ICON_CONNECTED="󰖩"
 
 update() {
-  connection=$(ipconfig getsummary $(networksetup -listallhardwareports | awk '/Hardware Port: Wi-Fi/{getline; print $2}') |
-    awk '/Active : FALSE/ { print "Disconnected"; exit }
-      /LinkStatusActive : TRUE/ { link_active = 1 }
-      /SSID : / { ssid = $3 }
-      END { if (link_active) print ssid }')
+  ssid=$(ipconfig getsummary $(networksetup -listallhardwareports |
+    awk '/Hardware Port: Wi-Fi/{getline; print $2}') |
+    awk -F ' SSID : ' '/ SSID : / {print $2}')
 
-  LABEL=$connection
-
-  if [ "$connection" = "Disconnected" ]; then
+  if [ -z "$ssid" ]; then
+    LABEL="Disconnected"
     ICON=$ICON_DISCONNECTED
     COLOR=$RED
   else
+    LABEL=$ssid
     ICON=$ICON_CONNECTED
     COLOR=$GREEN
   fi
