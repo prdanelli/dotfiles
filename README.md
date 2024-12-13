@@ -25,6 +25,9 @@ Link dotbot paths and run `brew bundle --file .Brewfile`
 
 ## Screenshots
 
+<img width="1680" alt="image" src="https://github.com/user-attachments/assets/59857593-0c15-4c6c-b323-1c5c336ee89c" />
+
+
 ![Neovim](https://github.com/user-attachments/assets/1e079905-ed3b-41a0-9589-0a16ab6f9c84)
 
 ![Tmux, Neovim and Lazygit](https://github.com/user-attachments/assets/35deebbf-0b3e-4469-81c8-0b734036fffd)
