@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source "$CONFIG_DIR/scripts/colors.sh"
+source "$CONFIG_DIR/scripts/config.sh"
 
 # The $SELECTED variable is available for space components and indicates if
 # the space invoking this script (with name: $NAME) is currently selected:
@@ -26,16 +26,16 @@ else
 fi
 
 # and mouse events for special mouse-over highlight effect
-case "$SENDER" in
-"mouse.entered")
-  sketchybar --set $NAME icon.highlight=on background.color="$YELLOW"
-  ;;
-"mouse.exited" | "mouse.exited.global")
-  sketchybar --set $NAME icon.highlight_color=$BG icon.highlight=$SELECTED
-  ;;
-"mouse.clicked")
-  # clicked effect
-  sketchybar --set $NAME icon.highlight_color=$BG background.color="$YELLOW"
-  sketchybar --set $NAME icon.highlight=$SELECTED background.color="$YELLOW"
-  ;;
-esac
+# case "$SENDER" in
+# "mouse.entered")
+#   sketchybar --set $NAME icon.highlight=on background.color="$YELLOW"
+#   ;;
+# "mouse.exited" | "mouse.exited.global")
+#   sketchybar --set $NAME icon.highlight_color=$BG icon.highlight=$SELECTED
+#   ;;
+# "mouse.clicked")
+#   # clicked effect
+#   sketchybar --set $NAME icon.highlight_color=$BG background.color="$YELLOW"
+#   sketchybar --set $NAME icon.highlight=$SELECTED background.color="$YELLOW"
+#   ;;
+# esac

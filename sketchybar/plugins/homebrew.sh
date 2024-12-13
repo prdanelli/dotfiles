@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "$CONFIG_DIR/scripts/colors.sh"
+source "$CONFIG_DIR/scripts/config.sh"
 
 COUNT="$(brew outdated | wc -l | tr -d ' ')"
 

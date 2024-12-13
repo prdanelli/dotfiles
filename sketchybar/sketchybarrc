@@ -1,25 +1,25 @@
 # https://www.nerdfonts.com/cheat-sheet
 # https://github.com/FelixKratz/dotfiles
 
+# Unload the macOS on screen indicator overlay for volume change
+launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /dev/null 2>&1 &
+
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 ITEM_DIR="$CONFIG_DIR/items"
 
-source "$CONFIG_DIR/scripts/colors.sh"
+source "$CONFIG_DIR/scripts/config.sh"
 
 ##### Bar Appearance #####
-# Configuring the general appearance of the bar.
-# These are only some of the options available. For all options see:
-# https://felixkratz.github.io/SketchyBar/config/bar
-# If you are looking for other colors, see the color picker:
-# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
 sketchybar --bar \
   position=top \
   height=35 \
+  color=$BG_40 \
   blur_radius=10 \
-  color=0x402e3440 \
+  border_color=$BG_80 \
+  border_width=3 \
   y_offset=15  \
-  corner_radius=4 \
+  corner_radius=5 \
   margin=15 \ 
   display=main \
   topmost=on \
@@ -30,15 +30,12 @@ sketchybar --bar \
 
 
 ##### Changing Defaults #####
-# We now change some default values, which are applied to all further items.
-# For a full list of all available item properties see:
-# https://felixkratz.github.io/SketchyBar/config/items
 
 default=(
   padding_left=2
   padding_right=2
-  icon.font="Hack Nerd Font Mono:Bold:20.0"
-  label.font="Hack Nerd Font Mono:Bold:14.0"
+  icon.font="$FONT:Bold:20.0"
+  label.font="$FONT:Bold:14.0"
   icon.color=$FG
   label.color=$FG
   icon.padding_left=5
@@ -49,50 +46,12 @@ default=(
 sketchybar --default "${default[@]}"
 
 ##### Adding Mission Control Space Indicators #####
-# Let's add some mission control spaces:
-# https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
-# to indicate active and available mission control spaces.
 
-SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9")
-for i in "${!SPACE_ICONS[@]}"
-do
-  sid="$(($i+1))"
-  space=(
-    space="$sid"
-    icon="${SPACE_ICONS[i]}"
-    icon.padding_left=10
-    icon.padding_right=10
-    background.color="$TRANSPARENT"
-    background.padding_left=0
-    background.padding_right=5
-    label.color="$GREEN"
-    background.corner_radius=3
-    background.height=22
-    label.drawing=off
-    icon.font="Hack Nerd Font Mono:Bold:14.0"
-    script="$PLUGIN_DIR/space.sh"
-    click_script="yabai -m space --focus $sid"
-  )
-  sketchybar --add space space."$sid" left --set space."$sid" "${space[@]}" ignore_association=on 
-  sketchybar --subscribe space."$sid" mouse.clicked mouse.entered mouse.entered.global mouse.exited mouse.exited.global 
-done
-
-##### Adding Left Items #####
-
-# https://www.josean.com/posts/sketchybar-setup
-sketchybar --add item front_app left \
-           --set front_app       background.color=$TRANSPARENT \
-                                 icon.color=$FG \
-                                 icon.font="sketchybar-app-font:Regular:16.0" \
-                                 label.color=$FG \
-                                 script="$PLUGIN_DIR/front_app.sh"            \
-           --subscribe front_app front_app_switched
+source "$ITEM_DIR/apple.sh"
+source "$ITEM_DIR/spaces.sh"
+source "$ITEM_DIR/spotify.sh"
 
 ##### Adding Right Items #####
-
-# Additional position (e.g. center) are available, see:
-# https://felixkratz.github.io/SketchyBar/config/items#adding-items-to-sketchybar
-# https://felixkratz.github.io/SketchyBar/config/events
 
 source "$ITEM_DIR/time.sh"
 source "$ITEM_DIR/date.sh"

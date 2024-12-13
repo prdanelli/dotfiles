@@ -1,9 +1,13 @@
 #!/bin/bash
 
-# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
+export FONT="Hack Nerd Font Mono"
 
+# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 export BG_LIGHT=0xff353b49
 export BG=0xff2e3440
+export BG_80=0xcc2e3440
+export BG_60=0x992e3440
+export BG_40=0x662e3440
 export FG=0xff616d85
 export RED=0xffbf616a
 export ORANGE=0xffd08770
@@ -15,6 +19,9 @@ export GREEN=0xffa3be8c
 export CYAN=0xff88c0d0
 export MAGENTA_DARK=0xff9d6b93
 export MAGENTA=0xffb48ead
+export MAGENTA_80=0xccb48ead
+export MAGENTA_60=0x99b48ead
+export MAGENTA_40=0x66b48ead
 export MAGENTA_LIGH=0xffcbb1c7
 export PINK=0xffFFA19F
 export GREY1=0xfff8fafc

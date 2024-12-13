@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "$CONFIG_DIR/scripts/colors.sh"
+source "$CONFIG_DIR/scripts/config.sh"
 
 CORE_COUNT=$(sysctl -n machdep.cpu.thread_count)
 CPU_INFO=$(ps -eo pcpu,user)

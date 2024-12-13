@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source "$CONFIG_DIR/scripts/colors.sh"
-
 wifi=(
   padding_right=7
   label.width=0

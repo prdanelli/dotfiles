@@ -2,7 +2,7 @@
 
 # https://snelson.us/2024/09/determining-a-macs-ssid-like-an-animal/
 
-source "$CONFIG_DIR/scripts/colors.sh"
+source "$CONFIG_DIR/scripts/config.sh"
 
 ICON_DISCONNECTED="󰖪"
 ICON_CONNECTED="󰖩"
@@ -27,8 +27,8 @@ update() {
     label="$LABEL" \
     icon.color="$COLOR" \
     label.color="$COLOR" \
-    icon.font="Hack Nerd Font Mono:Bold:23.0" \
-    label.font="Hack Nerd Font Mono:Bold:13.0"
+    icon.font="$FONT:Bold:23.0" \
+    label.font="$FONT:Bold:13.0"
 }
 
 click() {
