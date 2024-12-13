@@ -2,6 +2,7 @@
 # https://github.com/FelixKratz/dotfiles
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
+ITEM_DIR="$CONFIG_DIR/items"
 
 source "$CONFIG_DIR/scripts/colors.sh"
 
@@ -14,16 +15,19 @@ source "$CONFIG_DIR/scripts/colors.sh"
 
 sketchybar --bar \
   position=top \
-  height=30 \
-  blur_radius=30 \
+  height=35 \
+  blur_radius=10 \
   color=0x402e3440 \
   y_offset=15  \
-  corner_radius=5 \
+  corner_radius=4 \
   margin=15 \ 
-  display=main \ 
-  topmost=on \ 
+  display=main \
+  topmost=on \
   sticky=on \
-  font_smoothing=on 
+  font_smoothing=on \
+  padding_left=0 \
+  padding_right=0
+
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -31,8 +35,8 @@ sketchybar --bar \
 # https://felixkratz.github.io/SketchyBar/config/items
 
 default=(
-  padding_left=5
-  padding_right=5
+  padding_left=2
+  padding_right=2
   icon.font="Hack Nerd Font Mono:Bold:20.0"
   label.font="Hack Nerd Font Mono:Bold:14.0"
   icon.color=$FG
@@ -59,6 +63,8 @@ do
     icon.padding_left=10
     icon.padding_right=10
     background.color="$TRANSPARENT"
+    background.padding_left=0
+    background.padding_right=5
     label.color="$GREEN"
     background.corner_radius=3
     background.height=22
@@ -88,23 +94,15 @@ sketchybar --add item front_app left \
 # https://felixkratz.github.io/SketchyBar/config/items#adding-items-to-sketchybar
 # https://felixkratz.github.io/SketchyBar/config/events
 
-sketchybar --add item time right \
-           --set time update_freq=10 script="$PLUGIN_DIR/time.sh" \
-           --add item date right \
-           --set date update_freq=10 script="$PLUGIN_DIR/date.sh" \
-           --add item volume right \
-           --set volume script="$PLUGIN_DIR/volume.sh" \
-           --subscribe volume volume_change \
-           --add item battery right \
-           --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
-           --subscribe battery system_woke power_source_change \
-           --add item cpu right \
-           --set cpu update_freq=5 script="$PLUGIN_DIR/cpu.sh"
+source "$ITEM_DIR/time.sh"
+source "$ITEM_DIR/date.sh"
+source "$ITEM_DIR/wifi.sh"
+source "$ITEM_DIR/volume.sh"
+source "$ITEM_DIR/battery.sh"
+source "$ITEM_DIR/cpu.sh"
+source "$ITEM_DIR/homebrew.sh"
 
-sketchybar --add event brew_update \
-           --add item homebrew right \
-           --set homebrew icon= update_freq=60 label=? script="$PLUGIN_DIR/homebrew.sh"
-           --subscribe homebrew brew_update
+sketchybar --hotload on
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update

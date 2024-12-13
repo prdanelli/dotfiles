@@ -5,9 +5,6 @@ return {
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
     },
-    {
-      "nvim-telescope/telescope-frecency.nvim",
-    },
   },
   opts = function()
     local actions = require("telescope.actions")
@@ -52,7 +49,6 @@ return {
     end
 
     require("telescope").load_extension("fzf")
-    require("telescope").load_extension("frecency")
 
     local width = 0.95
     local height = 0.95
@@ -147,7 +143,6 @@ return {
   end,
   keys = function()
     return {
-      { "<leader><leader>", "<cmd>Telescope frecency workspace=CWD<cr>", desc = "Frecency" },
       { "<leader>fa", "<cmd>Telescope autocommands<cr>", desc = "Autocommands" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
       { "<leader>fc", "<cmd>Telescope commands<cr>", desc = "Commands" },
@@ -157,6 +152,7 @@ return {
       { "<leader>fi", "<cmd>Telescope highlights<cr>", desc = "Highlights" },
       { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
       { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Marks" },
+      { "<leader><leader>", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
       { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Old Files" },
       { "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", desc = "LSP Symbols" },
