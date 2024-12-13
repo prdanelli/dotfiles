@@ -18,7 +18,7 @@ case "${CPU_PERCENT}" in
 [3-5][0-9])
   COLOR=$YELLOW
   ;;
-[1-2][0-9])
+[1-2][0-9] | [0-9])
   COLOR=$GREEN
   ;;
 *)
