@@ -9,19 +9,17 @@ Link dotbot paths and run `brew bundle --file .Brewfile`
 ## Applications
 
 + Yabai WM & SKHD
-+ Homebrew
-+ ZSH
-  - FIsh-esque history search
-  - Autocomplete
-  - Vim mode
++ Sketchybar
 + Kitty
-+ Starship Prompt
 + Tmux
 + Neovim
   - Ruby development focused
   - LSP
   - Treesitter
++ ZSH
++ Starship Prompt
 + LazyGit
++ Homebrew
 
 ## Screenshots
 
