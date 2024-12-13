@@ -28,7 +28,6 @@ sketchybar --bar \
   padding_left=0 \
   padding_right=0
 
-
 ##### Changing Defaults #####
 
 default=(
@@ -49,7 +48,7 @@ sketchybar --default "${default[@]}"
 
 source "$ITEM_DIR/apple.sh"
 source "$ITEM_DIR/spaces.sh"
-source "$ITEM_DIR/spotify.sh"
+# source "$ITEM_DIR/spotify.sh"
 
 ##### Adding Right Items #####
 
