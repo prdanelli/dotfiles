@@ -10,15 +10,15 @@ if [ "$SENDER" = "volume_change" ]; then
   VOLUME="$INFO"
 
   case "$VOLUME" in
-  [8-9][0-9] | 100)
+  [7-9][0-9] | 100)
     ICON=""
     COLOR=$RED
     ;;
-  [3-7][0-9])
+  [2-6][0-9])
     ICON=""
     COLOR=$ORANGE
     ;;
-  [1-9] | [1-2][0-9])
+  [1-9] | [1-1][0-9])
     ICON=""
     COLOR=$GREEN
     ;;
