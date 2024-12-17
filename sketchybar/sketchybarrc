@@ -48,6 +48,7 @@ sketchybar --default "${default[@]}"
 
 source "$ITEM_DIR/apple.sh"
 source "$ITEM_DIR/spaces.sh"
+source "$ITEM_DIR/front_app.sh"
 # source "$ITEM_DIR/spotify.sh"
 
 ##### Adding Right Items #####
@@ -55,6 +56,7 @@ source "$ITEM_DIR/spaces.sh"
 source "$ITEM_DIR/time.sh"
 source "$ITEM_DIR/date.sh"
 source "$ITEM_DIR/wifi.sh"
+source "$ITEM_DIR/brightness.sh"
 source "$ITEM_DIR/volume.sh"
 source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/cpu.sh"

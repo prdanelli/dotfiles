@@ -23,13 +23,3 @@ do
   sketchybar --add space space."$sid" left --set space."$sid" "${space[@]}" ignore_association=on 
   sketchybar --subscribe space."$sid" mouse.clicked mouse.entered mouse.entered.global mouse.exited mouse.exited.global 
 done
-
-# https://www.josean.com/posts/sketchybar-setup
-sketchybar --add item front_app left \
-           --set front_app       background.color=$TRANSPARENT \
-                                 icon.color=$FG \
-                                 icon.font="sketchybar-app-font:Regular:16.0" \
-                                 label.color=$FG \
-                                 script="$PLUGIN_DIR/front_app.sh"            \
-           --subscribe front_app front_app_switched
-
