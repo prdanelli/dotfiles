@@ -25,6 +25,9 @@ return {
           SnacksDashboardTitle = { fg = colors.cyan },
           FidgetTask = { link = "Comment" },
 
+          -- Snack index line scope
+          SnacksIndentScope = { fg = colors.grey11 },
+
           -- Examples
           -- LspDiagnosticsUnderlineInformation = { style = config.styles.diagnostics, sp = colors.info },
           -- ["@text.uri"] = { fg = colors.cyan, style = "underline" },

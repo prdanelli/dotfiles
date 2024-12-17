@@ -22,6 +22,7 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
+vim.g.snacks_animate = false
 vim.g.editorconfig = false
 vim.opt.whichwrap:append("<>[]hl") -- go to previous/next line with h,l
 vim.g.ruby_host_prog = "/Users/paul/.asdf/shims/neovim-ruby-host" -- avoid needing to install this in every project
