@@ -1,13 +1,9 @@
--- Disable LazyVim terminal maps
-vim.keymap.del("n", "<leader>ft")
-vim.keymap.del("n", "<leader>fT")
-
 -------------------------------------------------------------------------------
 -- General Keybindings, not plugin specific
 -------------------------------------------------------------------------------
 local opts = { silent = true }
 
-vim.keymap.set("n", "<leader>d", "<cmd>Dashboard<cr>", { desc = "[D]ashboard", silent = true })
+vim.keymap.set("n", "<leader>d", "<cmd>Snacks.dashboard.open()<cr>", { desc = "[D]ashboard", silent = true })
 vim.keymap.set("n", "<leader>\\", "<cmd>vsplit<cr>", { desc = "Vertical Split", silent = true })
 vim.keymap.set("n", "<leader>-", "<cmd>split<cr>", { desc = "Horizontal Split", silent = true })
 
@@ -47,7 +43,7 @@ vim.keymap.set("i", "<C-c>", "<esc>", opts)
 vim.keymap.set("n", "<esc>", "<NOP>", opts)
 
 -- Add line break and jump to start
-vim.keymap.set("n", "<Enter>", "i<Enter><Esc>^", opts)
+vim.keymap.set("n", "<Enter>", "a<Enter><Esc>^", opts)
 
 -- Delete buffer
 vim.keymap.set("n", "<c-w>", ":bd<CR>", opts)
