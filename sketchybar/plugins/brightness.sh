@@ -14,11 +14,11 @@ if [ "$SENDER" = "brightness_change" ]; then
     ICON="󰃠"
     COLOR=$MAGENTA
     ;;
-  [2-6][0-9])
+  [3-6][0-9])
     ICON="󰃝"
     COLOR=$MAGENTA
     ;;
-  [1-9] | [1-1][0-9])
+  [1-9] | [2-1][0-9])
     ICON="󰃟"
     COLOR=$MAGENTA
     ;;
