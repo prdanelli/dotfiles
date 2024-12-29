@@ -17,7 +17,6 @@ return {
           diagnostics = "italic",
         },
         disable = {
-          background = true,
           cursorline = false,
           eob_lines = true,
         },
@@ -25,8 +24,55 @@ return {
           SnacksDashboardTitle = { fg = colors.cyan },
           FidgetTask = { link = "Comment" },
 
+          FzfLuaHeaderText = { link = "Comment" },
+          FzfLuaFzfBorder = { fg = colors.magenta },
+          FzfLuaBorder = { fg = colors.magenta },
+          FzfLuaHelpBorder = { fg = colors.magenta },
+          FzfLuaPreviewBorder = { fg = colors.magenta },
+
+          -- Snack Dashboard
+          SnacksDashboardHeader = { link = "Comment" },
+          SnacksDashboardFooter = { link = "Comment" },
+          SnacksDashboardDesc = { link = "Comment" },
+          SnacksDashboardIcon = { link = "Comment" },
+          SnacksDashboardFile = { link = "Comment" },
+          SnacksDashboardSpecial = { link = "Comment" },
+          SnacksDashboardKey = { link = "Comment" },
+
           -- Snack index line scope
           SnacksIndentScope = { fg = colors.grey11 },
+
+          -- NormalFloat = { fg = colors.fg },
+          -- BlinkCmpSource = { fg = colors.fg },
+
+          -- BlinkCmpMenuBorder = { fg = colors.yellow, bg = colors.green },
+          -- BlinkCmpScrollBarGutter = { fg = colors.magenta },
+          -- BlinkCmpLabel = { fg = colors.magenta },
+          -- BlinkCmpKind = { fg = colors.green },
+          -- BlinkCmpDoc = { fg = colors.magenta },
+          -- BlinkCmpGhostText = { link = "Comment" },
+
+          -- BlinkCmpMenu	Pmenu	The completion menu window
+          -- BlinkCmpMenuBorder	Pmenu	The completion menu window border
+          -- BlinkCmpMenuSelection	PmenuSel	The completion menu window selected item
+          -- BlinkCmpScrollBarThumb	PmenuThumb	The scrollbar thumb
+          -- BlinkCmpScrollBarGutter	PmenuSbar	The scrollbar gutter
+          -- BlinkCmpLabel	Pmenu	Label of the completion item
+          -- BlinkCmpLabelDeprecated	NonText	Deprecated label of the completion item
+          -- BlinkCmpLabelMatch	Pmenu	(Currently unused) Label of the completion item when it matches the query
+          -- BlinkCmpLabelDetail	NonText	Label description of the completion item
+          -- BlinkCmpLabelDescription	NonText	Label description of the completion item
+          -- BlinkCmpKind	Special	Kind icon/text of the completion item
+          -- BlinkCmpKind<kind>	Special	Kind icon/text of the completion item
+          -- BlinkCmpSource	NonText	Source of the completion item
+          -- BlinkCmpGhostText	NonText	Preview item with ghost text
+          -- BlinkCmpDoc	NormalFloat	The documentation window
+          -- BlinkCmpDocBorder	NormalFloat	The documentation window border
+          -- BlinkCmpDocSeparator	NormalFloat	The documentation separator between doc and detail
+          -- BlinkCmpDocCursorLine	Visual	The documentation window cursor line
+          -- BlinkCmpSignatureHelp	NormalFloat	The signature help window
+          -- BlinkCmpSignatureHelpBorder	NormalFloat	The signature help window border
+          -- BlinkCmpSignatureHelpActiveParameter
 
           -- Examples
           -- LspDiagnosticsUnderlineInformation = { style = config.styles.diagnostics, sp = colors.info },
@@ -95,26 +141,6 @@ return {
           StatusLine = { bg = colors.bg },
           StatusLineNC = { bg = colors.bg },
           StatusLineTerm = { bg = colors.bg },
-
-          -- Telescope
-          -- https://github.com/nvim-telescope/telescope.nvim/blob/master/plugin/telescope.lua
-          TelescopeMatching = { fg = colors.magenta_light }, -- sections which match the search
-          TelescopePreviewBorder = { bg = colors.bg, fg = colors.magenta },
-          TelescopePreviewNormal = { bg = colors.bg, fg = colors.magenta },
-          TelescopePreviewTitle = { bg = colors.bg, fg = colors.magenta },
-
-          TelescopePromptNormal = { bg = colors.bg },
-          TelescopePromptBorder = { bg = colors.bg, fg = colors.magenta },
-          TelescopePromptPrefix = { bg = colors.bg },
-          TelescopePromptTitle = { fg = colors.magenta },
-
-          TelescopeResultsBorder = { bg = colors.bg, fg = colors.magenta },
-          TelescopeResultsNormal = { fg = colors.grey9, bg = colors.bg }, -- results returned
-          -- TelescopeResultsTitle = { fg = results },
-
-          -- -- The current item
-          TelescopeSelection = { fg = colors.magenta },
-          TelescopeSelectionCaret = { fg = colors.magenta },
         },
       })
     end,
