@@ -1,0 +1,6 @@
+window-colorspace = "display-p3"
+theme = nord 
+window-padding-x = 10
+window-padding-y = 15
+copy-on-select = true
+macos-titlebar-style = hidden
