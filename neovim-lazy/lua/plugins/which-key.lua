@@ -37,19 +37,6 @@ return {
     spec = {
       mode = { "n", "v" },
       { "<esc>", hidden = true },
-      ["g"] = { name = "+goto" },
-      ["gs"] = { name = "+surround" },
-      ["z"] = { name = "+fold" },
-      ["]"] = { name = "+next" },
-      ["["] = { name = "+prev" },
-      ["<leader>c"] = { name = "+code" },
-      ["<leader>ct"] = { name = "+test" },
-      ["<leader>f"] = { name = "+find" },
-      ["<leader>g"] = { name = "+git" },
-      ["<leader>q"] = { name = "+session" },
-      ["<leader>u"] = { name = "+ui" },
-      ["<leader>w"] = { name = "+windows" },
-      ["<leader>x"] = { name = "+quickfix" },
     },
     icons = {
       breadcrumb = "» ", -- symbol used in the command line area that shows your active key combo
