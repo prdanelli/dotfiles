@@ -37,6 +37,7 @@ return {
     spec = {
       mode = { "n", "v" },
       { "<esc>", hidden = true },
+      ["z"] = { name = "+fold" },
     },
     icons = {
       breadcrumb = "» ", -- symbol used in the command line area that shows your active key combo
