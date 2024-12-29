@@ -11,11 +11,12 @@ local options = {
   showtabline = 0, -- 0: never, 1: only if there are at least two tab pages, 2: always
   signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
   splitright = true, -- force all vertical splits to go to the right of current window
+  swapfile = false,
+  termguicolors = true,
   timeoutlen = 200, -- time to wait for a mapped sequence to complete (in milliseconds)
   undofile = true, -- enable persistent undo
   wrap = true,
   writebackup = false, -- if a file is being edited by another program
-  swapfile = false,
 }
 
 for k, v in pairs(options) do
