@@ -1,17 +1,10 @@
 return {
-  { "SmiteshP/nvim-navic", enabled = false },
   { "akinsho/bufferline.nvim", enabled = false },
   { "catppuccin", enabled = false },
-  { "echasnovski/mini.diff", enabled = false },
-  { "echasnovski/mini.surround", enabled = false },
-  { "echasnovski/mini.indentscope", enabled = false },
   { "folke/flash.nvim", enabled = false },
   { "ggandor/flit.nvim", enabled = false },
   { "ggandor/leap.nvim", enabled = false },
   { "mfussenegger/nvim-dap", enabled = false },
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },
-  { "nvim-pack/nvim-spectre", enabled = false },
-  { "nvim-treesitter/nvim-treesitter-context", enabled = false },
-  { "simrat39/symbols-outline.nvim", enabled = false },
   { "folke/tokyonight.nvim", enabled = false },
 }
