@@ -148,3 +148,5 @@ vim.api.nvim_create_autocmd("UILeave", {
     io.write("\027]111\027\\")
   end,
 })
+
+vim.cmd([[autocmd FileType ruby setlocal indentkeys-=.]])
