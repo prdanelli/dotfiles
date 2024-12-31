@@ -1,5 +1,8 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  dependencies = {
+    "RRethy/nvim-treesitter-endwise",
+  },
   opts = {
     ensure_installed = {
       "bash",
@@ -36,7 +39,7 @@ return {
       enabled = true,
     },
     indent = {
-      enable = false, -- Dont enable this or it'll messup indentation when a period is added to a class
+      enable = true,
     },
     incremental_selection = {
       enable = true,
@@ -92,9 +95,6 @@ return {
         },
         include_surrounding_whitespace = true,
       },
-    },
-    endwise = {
-      enable = true,
     },
   },
 }
