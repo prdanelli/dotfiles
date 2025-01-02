@@ -104,12 +104,3 @@ ulimit -Sn 10240 # Increase the default number of sockers (helps with rspec test
 
 eval "$(starship init zsh)"
 eval "$(fzf --zsh)"
-
-
-# pnpm
-export PNPM_HOME="/Users/paul/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
