@@ -53,9 +53,9 @@ source "$ITEM_DIR/front_app.sh"
 
 ##### Adding Right Items #####
 
-source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/time.sh"
 source "$ITEM_DIR/date.sh"
+source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/wifi.sh"
 source "$ITEM_DIR/brightness.sh"
 source "$ITEM_DIR/volume.sh"

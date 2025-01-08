@@ -12,11 +12,11 @@ fi
 FONT_SIZE=15
 
 case "${PERCENTAGE}" in
-9[0-9] | 100)
+[8-9][0-9] | 100)
   ICON="󱊣"
   COLOR=$GREEN
   ;;
-[6-8][0-9])
+[6-7][0-9])
   ICON="󱊢"
   COLOR=$YELLOW
   ;;
