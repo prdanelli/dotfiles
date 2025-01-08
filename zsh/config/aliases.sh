@@ -32,6 +32,9 @@ alias tls="t ls"
 alias tn="t new -t"
 
 # Olio
+alias olio:api:console:production="FILTER=admin bundle exec cap production rails:console"
+alias olio:api:console:staging="bundle exec cap staging rails:console"
+
 alias olio:storage="zsh ~/Dev/storage.sh"
 alias olio:stop_storage="docker stop redis-dev mysql-dev"
 function olio_ips() {

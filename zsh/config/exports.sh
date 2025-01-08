@@ -18,6 +18,7 @@ export LIBRARY_PATH=$LIBRARY_PATH:/opt/homebrew/opt/zstd/lib/ # Fix for MySQL2 g
 # You may need to manually set your language environment
 export LANG=en_GB.UTF-8
 
+# Olio API specific
 export RAILS_ENV="development"
 
 # Disable homebrew post-install messages
