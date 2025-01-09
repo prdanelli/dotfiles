@@ -18,7 +18,7 @@ return {
   config = function(_, opts)
     local handler = function(virtText, lnum, endLnum, width, truncate)
       local newVirtText = {}
-      local foldedLines = endLnum - lnum
+      local foldedLines = endLnum - lnum + 1
       local suffix = (" %d"):format(foldedLines)
       local sufWidth = vim.fn.strdisplaywidth(suffix)
       local targetWidth = width - sufWidth
