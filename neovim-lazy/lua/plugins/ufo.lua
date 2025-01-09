@@ -5,13 +5,13 @@ return {
   },
   event = "VeryLazy",
   init = function()
-    vim.o.foldcolumn = "1"
+    vim.o.foldcolumn = "0"
     vim.o.foldlevel = 99
     vim.o.foldlevelstart = 99
     vim.o.foldenable = true
   end,
   opts = {
-    provider_selector = function(bufnr, filetype, buftype)
+    provider_selector = function()
       return { "treesitter", "indent" }
     end,
   },
@@ -47,7 +47,7 @@ return {
       end
 
       local rAlignAppndx = math.max(math.min(vim.opt.textwidth["_value"], width - 1) - curWidth - sufWidth, 0)
-      suffix = " ---" .. (" "):rep(rAlignAppndx) .. suffix
+      suffix = "  󰁂 ---" .. (" "):rep(rAlignAppndx) .. suffix
       table.insert(newVirtText, { suffix, "Comment" })
 
       return newVirtText
