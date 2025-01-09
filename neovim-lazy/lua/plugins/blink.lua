@@ -17,7 +17,7 @@ return {
         enabled = false,
       },
       list = {
-        selection = { preselect = true, auto_insert = false },
+        selection = { preselect = true, auto_insert = true },
       },
       menu = {
         draw = {
