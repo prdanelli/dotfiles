@@ -17,6 +17,8 @@ local options = {
   undofile = true, -- enable persistent undo
   wrap = true,
   writebackup = false, -- if a file is being edited by another program
+  mousescroll = "ver:1,hor:0",
+  smoothscroll = true,
 }
 
 for k, v in pairs(options) do
@@ -28,6 +30,8 @@ vim.g.editorconfig = false
 vim.opt.whichwrap:append("<>[]hl") -- go to previous/next line with h,l
 vim.g.ruby_host_prog = "/Users/paul/.asdf/shims/neovim-ruby-host" -- avoid needing to install this in every project
 
+vim.opt.iskeyword:append({ "_", "-" })
+
 -- Ensure I dont freak out by hitting the cap w when exiting
 vim.cmd([[
   cnoreabbrev Wq wq
@@ -36,15 +40,3 @@ vim.cmd([[
   cnoreabbrev W w
   cnoreabbrev Q q
 ]])
-
--- function _G.custom_fold_text()
---   local line = vim.fn.getline(vim.v.foldstart)
---   local line_count = vim.v.foldend - vim.v.foldstart + 1
---
---   return " --- " .. line_count .. " lines: " .. line
--- end
---
--- vim.opt.foldtext = "v:lua.custom_fold_text()"
-
-vim.opt.foldmethod = "indent"
-vim.opt.foldtext = "v:lua.require'lazyvim.util'.ui.foldtext()"
