@@ -4,8 +4,7 @@ return {
     formatters_by_ft = {
       ruby = { "rubocop" },
       eruby = { "erb_format" },
-      -- yaml = { "yamlfix" },
-      sql = { "sqlfmt" },
+      css = { "prettier" },
     },
     formatters = {
       rubocop = function()
