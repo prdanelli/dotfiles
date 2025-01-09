@@ -1,8 +1,6 @@
 return {
   "kevinhwang91/nvim-ufo",
-  dependencies = {
-    "kevinhwang91/promise-async",
-  },
+  dependencies = { "kevinhwang91/promise-async" },
   event = "VeryLazy",
   init = function()
     vim.o.foldcolumn = "0"
@@ -10,16 +8,10 @@ return {
     vim.o.foldlevelstart = 99
     vim.o.foldenable = true
   end,
-  opts = {
-    provider_selector = function()
-      return { "treesitter", "indent" }
-    end,
-  },
   config = function(_, opts)
     local handler = function(virtText, lnum, endLnum, width, truncate)
       local newVirtText = {}
-      local foldedLines = endLnum - lnum + 1
-      local suffix = (" %d"):format(foldedLines)
+      local suffix = (" 󰁂 --- %d "):format(endLnum - lnum + 1)
       local sufWidth = vim.fn.strdisplaywidth(suffix)
       local targetWidth = width - sufWidth
       local curWidth = 0
@@ -46,13 +38,14 @@ return {
         curWidth = curWidth + chunkWidth
       end
 
-      local rAlignAppndx = math.max(math.min(vim.opt.textwidth["_value"], width - 1) - curWidth - sufWidth, 0)
-      suffix = "  󰁂 ---" .. (" "):rep(rAlignAppndx) .. suffix
       table.insert(newVirtText, { suffix, "Comment" })
 
       return newVirtText
     end
 
+    opts["provider_selector"] = function()
+      return { "treesitter", "indent" }
+    end
     opts["fold_virt_text_handler"] = handler
     require("ufo").setup(opts)
 
