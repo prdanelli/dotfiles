@@ -15,6 +15,7 @@ alias editdots="cd ~/Personal/Repos/dotfiles; nvim"
 # Vim
 alias vimdiff='nvim -d'
 alias vim="nvim"
+alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
 
 # Rails / Ruby
 alias rspec="bundle exec rspec"
