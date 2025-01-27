@@ -1,63 +1,63 @@
 return {
-  'iguanacucumber/magazine.nvim',
-  name = 'nvim-cmp', -- Otherwise highlighting gets messed up
+  "iguanacucumber/magazine.nvim",
+  name = "nvim-cmp", -- Otherwise highlighting gets messed up
   lazy = true,
-  event = 'InsertEnter',
+  event = "InsertEnter",
   dependencies = {
-    { 'iguanacucumber/mag-nvim-lsp', name = 'cmp-nvim-lsp', opts = {} },
-    { 'iguanacucumber/mag-nvim-lua', name = 'cmp-nvim-lua' },
-    { 'iguanacucumber/mag-buffer', name = 'cmp-buffer' },
-    { 'iguanacucumber/mag-cmdline', name = 'cmp-cmdline' },
-    'https://codeberg.org/FelipeLema/cmp-async-path',
-    'hrsh7th/cmp-nvim-lsp-document-symbol', -- For textDocument/documentSymbol
-    'lukas-reineke/cmp-under-comparator', -- Tweak completion order
-    'f3fora/cmp-spell',
+    { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
+    { "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
+    { "iguanacucumber/mag-buffer", name = "cmp-buffer" },
+    { "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
+    "https://codeberg.org/FelipeLema/cmp-async-path",
+    "hrsh7th/cmp-nvim-lsp-document-symbol", -- For textDocument/documentSymbol
+    "lukas-reineke/cmp-under-comparator", -- Tweak completion order
+    "f3fora/cmp-spell",
   },
   config = function()
-    local cmp_status_ok, cmp = pcall(require, 'cmp')
+    local cmp_status_ok, cmp = pcall(require, "cmp")
     if not cmp_status_ok then
       return
     end
 
     local check_backspace = function()
-      local col = vim.fn.col '.' - 1
+      local col = vim.fn.col "." - 1
 
-      return col == 0 or vim.fn.getline('.'):sub(col, col):match '%s'
+      return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
     end
 
     local kind_icons = {
-      Text = '',
-      Method = '',
-      Function = '',
-      Constructor = '',
-      Codeium = '',
-      Field = '',
-      Variable = '',
-      Class = 'ﴯ',
-      Interface = '',
-      Module = '',
-      Property = 'ﰠ',
-      Unit = '',
-      Value = '',
-      Enum = '',
-      Keyword = '',
-      Color = '',
-      File = '',
-      Reference = '',
-      Folder = '',
-      EnumMember = '',
-      Constant = '',
-      Struct = '',
-      Event = '',
-      Operator = '',
-      TypeParameter = '',
+      Text = "",
+      Method = "",
+      Function = "",
+      Constructor = "",
+      Codeium = "",
+      Field = "",
+      Variable = "",
+      Class = "ﴯ",
+      Interface = "",
+      Module = "",
+      Property = "ﰠ",
+      Unit = "",
+      Value = "",
+      Enum = "",
+      Keyword = "",
+      Color = "",
+      File = "",
+      Reference = "",
+      Folder = "",
+      EnumMember = "",
+      Constant = "",
+      Struct = "",
+      Event = "",
+      Operator = "",
+      TypeParameter = "",
     }
-    local compare = require 'cmp.config.compare'
-    local types = require 'cmp.types'
+    local compare = require "cmp.config.compare"
+    local types = require "cmp.types"
 
-    cmp.setup {
+    cmp.setup({
       mapping = {
-        ['<C-n>'] = cmp.mapping(function(fallback)
+        ["<C-n>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
           elseif check_backspace() then
@@ -65,46 +65,46 @@ return {
           else
             fallback()
           end
-        end, { 'i', 's' }),
-        ['<C-p>'] = cmp.mapping(function(fallback)
+        end, { "i", "s" }),
+        ["<C-p>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
           else
             fallback()
           end
-        end, { 'i', 's' }),
-        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-e>'] = cmp.mapping { i = cmp.mapping.abort(), c = cmp.mapping.close() },
-        ['<CR>'] = cmp.mapping.confirm { select = true },
+        end, { "i", "s" }),
+        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-e>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
       },
       formatting = {
         expandable_indicator = true,
-        fields = { 'kind', 'abbr', 'menu' },
+        fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
-          vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+          vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
 
           vim_item.menu = ({
-            codeium = '[LLM]',
-            buffer = '[Buffer]',
-            nvim_lsp = '[LSP]',
-            spell = '[Spelling]',
+            codeium = "[LLM]",
+            buffer = "[Buffer]",
+            nvim_lsp = "[LSP]",
+            spell = "[Spelling]",
           })[entry.source.name]
 
           return vim_item
         end,
       },
       sources = {
-        { name = 'codeium' },
-        { name = 'nvim_lsp' },
-        { name = 'async_path' },
-        { name = 'buffer', keyword_length = 3 },
+        { name = "codeium" },
+        { name = "nvim_lsp" },
+        { name = "async_path" },
+        { name = "buffer", keyword_length = 3 },
         {
-          name = 'spell',
+          name = "spell",
           option = {
             keep_all_entries = false,
             enable_in_context = function()
-              return require('cmp.config.context').in_treesitter_capture 'spell'
+              return require("cmp.config.context").in_treesitter_capture "spell"
             end,
           },
         },
@@ -130,8 +130,8 @@ return {
       },
       window = {
         completion = {
-          border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
-          winhighlight = 'Normal:TelescopePreviewBorder,TelescopePreviewBorder:Pmenu,CursorLine:PmenuSel,Search:None',
+          border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+          winhighlight = "Normal:TelescopePreviewBorder,TelescopePreviewBorder:Pmenu,CursorLine:PmenuSel,Search:None",
           winblend = 0,
           scrolloff = 0,
           col_offset = 0,
@@ -141,11 +141,11 @@ return {
         -- documentation = {
         --   winhighlight = "TelescopePreviewBorder:NormalFloat",
         -- },
-        documentation = cmp.config.window.bordered {
-          border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
-          winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None',
+        documentation = cmp.config.window.bordered({
+          border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+          winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
           winblend = 0,
-        },
+        }),
       },
       experimental = {
         ghost_text = false,
@@ -162,9 +162,9 @@ return {
       -- end,
       enabled = function()
         local disabled = false
-        disabled = disabled or (vim.api.nvim_get_option_value('buftype', { buf = 0 }) == 'prompt')
-        disabled = disabled or (vim.fn.reg_recording() ~= '')
-        disabled = disabled or (vim.fn.reg_executing() ~= '')
+        disabled = disabled or (vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "prompt")
+        disabled = disabled or (vim.fn.reg_recording() ~= "")
+        disabled = disabled or (vim.fn.reg_executing() ~= "")
 
         return not disabled
       end,
@@ -185,7 +185,7 @@ return {
         autocomplete = {
           types.cmp.TriggerEvent.TextChanged,
         },
-        completeopt = 'menu,menuone,noselect',
+        completeopt = "menu,menuone,noselect",
         keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
         keyword_length = 1,
       },
@@ -198,24 +198,24 @@ return {
         disallow_prefix_unmatching = false,
         disallow_symbol_nonprefix_matching = true,
       },
-    }
-
-    cmp.setup.cmdline(':', {
-      completion = { autocomplete = false },
-      sources = {
-        { name = 'cmdline' },
-      },
-      mapping = cmp.mapping.preset.cmdline {},
     })
 
-    cmp.setup.cmdline('/', {
+    cmp.setup.cmdline(":", {
+      completion = { autocomplete = false },
+      sources = {
+        { name = "cmdline" },
+      },
+      mapping = cmp.mapping.preset.cmdline({}),
+    })
+
+    cmp.setup.cmdline("/", {
       completion = { autocomplete = false },
       sources = cmp.config.sources({
-        { name = 'buffer' },
+        { name = "buffer" },
       }, {
-        { name = 'nvim_lsp_document_symbol' },
+        { name = "nvim_lsp_document_symbol" },
       }),
-      mapping = cmp.mapping.preset.cmdline {},
+      mapping = cmp.mapping.preset.cmdline({}),
     })
   end,
 }

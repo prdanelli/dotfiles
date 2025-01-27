@@ -2,7 +2,7 @@ return {
   "nvim-lualine/lualine.nvim",
   event = "VimEnter",
   config = function()
-    local highlight = require("lualine.highlight")
+    local highlight = require "lualine.highlight"
     local colors = require("config.colors").colors
     local fname = require("lualine.components.filename"):extend()
     local modules = require("lualine_require").lazy_require({ utils = "lualine.utils.utils" })
@@ -62,12 +62,12 @@ return {
       local data
       local symbols = {}
 
-      if contains(require("config.excluded_filetypes"), vim.bo.filetype) then
+      if contains(require "config.excluded_filetypes", vim.bo.filetype) then
         return
       end
 
       -- Relative path
-      data = vim.fn.expand("%:~:.")
+      data = vim.fn.expand "%:~:."
       data = modules.utils.stl_escape(data)
 
       if data == "" then
@@ -85,7 +85,7 @@ return {
       table.insert(symbols, state)
 
       -- data = data .. "" .. (#symbols > 0 and "" .. table.concat(symbols, "") or "")
-      local icon = icons[vim.fn.expand("%:e")]
+      local icon = icons[vim.fn.expand "%:e"]
       if icon then
         icon = icon.icon
       else

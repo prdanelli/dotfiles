@@ -1,37 +1,37 @@
 return { -- Autoformat
-  'stevearc/conform.nvim',
-  event = { 'BufWritePre' },
-  cmd = { 'ConformInfo' },
+  "stevearc/conform.nvim",
+  event = { "BufWritePre" },
+  cmd = { "ConformInfo" },
   keys = {
     {
-      '<leader>f',
+      "<leader>f",
       function()
-        require('conform').format { async = true, lsp_format = 'fallback' }
+        require("conform").format({ async = true, lsp_format = "fallback" })
       end,
-      mode = '',
-      desc = '[F]ormat buffer',
+      mode = "",
+      desc = "[F]ormat buffer",
     },
   },
   opts = {
     formatters_by_ft = {
-      lua = { 'stylua' },
-      ruby = { 'rubocop' },
-      eruby = { 'erb_format' },
-      css = { 'prettier' },
+      lua = { "stylua" },
+      ruby = { "rubocop" },
+      eruby = { "erb_format" },
+      css = { "prettier" },
     },
     formatters = {
       rubocop = function()
         return {
-          command = 'rubocop',
+          command = "rubocop",
           args = {
-            '--server',
-            '--fix-layout',
-            '--autocorrect-all',
-            '--format',
-            'files',
-            '--stderr',
-            '--stdin',
-            '$FILENAME',
+            "--server",
+            "--fix-layout",
+            "--autocorrect-all",
+            "--format",
+            "files",
+            "--stderr",
+            "--stdin",
+            "$FILENAME",
           },
           stdin = true,
         }
@@ -46,9 +46,9 @@ return { -- Autoformat
       local lsp_format_opt
 
       if disable_filetypes[vim.bo[bufnr].filetype] then
-        lsp_format_opt = 'never'
+        lsp_format_opt = "never"
       else
-        lsp_format_opt = 'fallback'
+        lsp_format_opt = "fallback"
       end
 
       return {

@@ -1,20 +1,20 @@
 return {
   {
-    'rmehri01/onenord.nvim',
+    "rmehri01/onenord.nvim",
     lazy = false,
     config = function()
-      local colors = require('config.colors').colors
+      local colors = require("config.colors").colors
 
-      require('onenord').setup {
+      require("onenord").setup({
         borders = true,
         fade_nc = false,
         styles = {
-          comments = 'italic',
-          strings = 'NONE',
-          keywords = 'NONE',
-          functions = 'NONE',
-          variables = 'NONE',
-          diagnostics = 'italic',
+          comments = "italic",
+          strings = "NONE",
+          keywords = "NONE",
+          functions = "NONE",
+          variables = "NONE",
+          diagnostics = "italic",
         },
         disable = {
           cursorline = false,
@@ -34,10 +34,10 @@ return {
           BlinkCmpKind = { fg = colors.grey9 },
 
           SnacksDashboardTitle = { fg = colors.cyan },
-          FidgetTask = { link = 'Comment' },
+          FidgetTask = { link = "Comment" },
 
           -- FZF Lua
-          FzfLuaHeaderText = { link = 'Comment' },
+          FzfLuaHeaderText = { link = "Comment" },
           FzfLuaFzfBorder = { fg = colors.magenta },
           FzfLuaBorder = { fg = colors.magenta },
           FzfLuaHelpBorder = { fg = colors.magenta },
@@ -46,15 +46,15 @@ return {
           NormalFloat = { fg = colors.magenta },
 
           -- Snack Dashboard
-          SnacksDashboardHeader = { link = 'Comment' },
-          SnacksDashboardFooter = { link = 'Comment' },
-          SnacksDashboardDesc = { link = 'Comment' },
-          SnacksDashboardIcon = { link = 'Comment' },
-          SnacksDashboardFile = { link = 'Comment' },
-          SnacksDashboardSpecial = { link = 'Comment' },
-          SnacksDashboardKey = { link = 'Comment' },
+          SnacksDashboardHeader = { link = "Comment" },
+          SnacksDashboardFooter = { link = "Comment" },
+          SnacksDashboardDesc = { link = "Comment" },
+          SnacksDashboardIcon = { link = "Comment" },
+          SnacksDashboardFile = { link = "Comment" },
+          SnacksDashboardSpecial = { link = "Comment" },
+          SnacksDashboardKey = { link = "Comment" },
 
-          SnacksPickerDir = { link = 'Comment' },
+          SnacksPickerDir = { link = "Comment" },
 
           -- Snack index line scope
           SnacksIndentScope = { fg = colors.grey11 },
@@ -69,9 +69,9 @@ return {
           Folded = { fg = colors.grey10 },
 
           -- LSP Document Highlights
-          LspReferenceText = { bg = colors.grey11, style = 'none' },
-          LspReferenceRead = { link = 'LspReferenceText', style = 'none' },
-          LspReferenceWrite = { link = 'LspReferenceText', style = 'none' },
+          LspReferenceText = { bg = colors.grey11, style = "none" },
+          LspReferenceRead = { link = "LspReferenceText", style = "none" },
+          LspReferenceWrite = { link = "LspReferenceText", style = "none" },
 
           -- Better Quick List
           BqfPreviewFloat = { bg = colors.bg },
@@ -109,14 +109,14 @@ return {
           StatusLineNC = { bg = colors.bg },
           StatusLineTerm = { bg = colors.bg },
         },
-      }
+      })
     end,
   },
   -- Configure LazyVim to load gruvbox
   {
-    'LazyVim/LazyVim',
+    "LazyVim/LazyVim",
     opts = {
-      colorscheme = 'onenord',
+      colorscheme = "onenord",
     },
   },
 }

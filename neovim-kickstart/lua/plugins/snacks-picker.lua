@@ -1,17 +1,17 @@
 ---@module "snacks"
 return {
-  'folke/snacks.nvim',
+  "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
   opts = {
     picker = {
-      prompt = ' ',
+      prompt = " ",
       sources = {},
       layout = {
         cycle = true,
         --- Use the default layout or vertical if the window is too narrow
         preset = function()
-          return vim.o.columns >= 120 and 'default' or 'vertical'
+          return vim.o.columns >= 120 and "default" or "vertical"
         end,
       },
       matcher = {
@@ -28,7 +28,7 @@ return {
       },
       sort = {
         -- default sort is by score, text length and index
-        fields = { 'score:desc', '#text', 'idx' },
+        fields = { "score:desc", "#text", "idx" },
       },
       ui_select = true, -- replace `vim.ui.select` with the snacks picker
       formatters = {
@@ -65,50 +65,50 @@ return {
         -- input window
         input = {
           keys = {
-            ['<Esc>'] = { 'close', mode = { 'i', 'n' } },
-            ['<C-c>'] = { 'close', mode = { 'i', 'n' } },
+            ["<Esc>"] = { "close", mode = { "i", "n" } },
+            ["<C-c>"] = { "close", mode = { "i", "n" } },
             -- to close the picker on ESC instead of going to normal mode,
             -- add the following keymap to your config
             -- ["<Esc>"] = { "close", mode = { "n", "i" } },
-            ['<CR>'] = { 'confirm', mode = { 'n', 'i' } },
-            ['G'] = 'list_bottom',
-            ['gg'] = 'list_top',
-            ['j'] = 'list_down',
-            ['k'] = 'list_up',
-            ['/'] = 'toggle_focus',
-            ['q'] = 'close',
-            ['?'] = 'toggle_help',
-            ['<a-d>'] = { 'inspect', mode = { 'n', 'i' } },
-            ['<c-a>'] = { 'select_all', mode = { 'n', 'i' } },
-            ['<a-m>'] = { 'toggle_maximize', mode = { 'i', 'n' } },
-            ['<a-p>'] = { 'toggle_preview', mode = { 'i', 'n' } },
-            ['<a-w>'] = { 'cycle_win', mode = { 'i', 'n' } },
-            ['<C-w>'] = { '<c-s-w>', mode = { 'i' }, expr = true, desc = 'delete word' },
-            ['<C-Up>'] = { 'history_back', mode = { 'i', 'n' } },
-            ['<C-Down>'] = { 'history_forward', mode = { 'i', 'n' } },
-            ['<Tab>'] = { 'select_and_next', mode = { 'i', 'n' } },
-            ['<S-Tab>'] = { 'select_and_prev', mode = { 'i', 'n' } },
-            ['<Down>'] = { 'list_down', mode = { 'i', 'n' } },
-            ['<Up>'] = { 'list_up', mode = { 'i', 'n' } },
-            ['<c-j>'] = { 'list_down', mode = { 'i', 'n' } },
-            ['<c-k>'] = { 'list_up', mode = { 'i', 'n' } },
-            ['<c-n>'] = { 'list_down', mode = { 'i', 'n' } },
-            ['<c-p>'] = { 'list_up', mode = { 'i', 'n' } },
-            ['<c-l>'] = { 'preview_scroll_left', mode = { 'i', 'n' } },
-            ['<c-h>'] = { 'preview_scroll_right', mode = { 'i', 'n' } },
-            ['<c-b>'] = { 'preview_scroll_up', mode = { 'i', 'n' } },
-            ['<c-d>'] = { 'list_scroll_down', mode = { 'i', 'n' } },
-            ['<c-f>'] = { 'preview_scroll_down', mode = { 'i', 'n' } },
-            ['<c-g>'] = { 'toggle_live', mode = { 'i', 'n' } },
-            ['<c-u>'] = { 'list_scroll_up', mode = { 'i', 'n' } },
-            ['<ScrollWheelDown>'] = { 'list_scroll_wheel_down', mode = { 'i', 'n' } },
-            ['<ScrollWheelUp>'] = { 'list_scroll_wheel_up', mode = { 'i', 'n' } },
-            ['<c-v>'] = { 'edit_vsplit', mode = { 'i', 'n' } },
-            ['<c-s>'] = { 'edit_split', mode = { 'i', 'n' } },
-            ['<c-q>'] = { 'qflist', mode = { 'i', 'n' } },
-            ['<a-i>'] = { 'toggle_ignored', mode = { 'i', 'n' } },
-            ['<a-h>'] = { 'toggle_hidden', mode = { 'i', 'n' } },
-            ['<a-f>'] = { 'toggle_follow', mode = { 'i', 'n' } },
+            ["<CR>"] = { "confirm", mode = { "n", "i" } },
+            ["G"] = "list_bottom",
+            ["gg"] = "list_top",
+            ["j"] = "list_down",
+            ["k"] = "list_up",
+            ["/"] = "toggle_focus",
+            ["q"] = "close",
+            ["?"] = "toggle_help",
+            ["<a-d>"] = { "inspect", mode = { "n", "i" } },
+            ["<c-a>"] = { "select_all", mode = { "n", "i" } },
+            ["<a-m>"] = { "toggle_maximize", mode = { "i", "n" } },
+            ["<a-p>"] = { "toggle_preview", mode = { "i", "n" } },
+            ["<a-w>"] = { "cycle_win", mode = { "i", "n" } },
+            ["<C-w>"] = { "<c-s-w>", mode = { "i" }, expr = true, desc = "delete word" },
+            ["<C-Up>"] = { "history_back", mode = { "i", "n" } },
+            ["<C-Down>"] = { "history_forward", mode = { "i", "n" } },
+            ["<Tab>"] = { "select_and_next", mode = { "i", "n" } },
+            ["<S-Tab>"] = { "select_and_prev", mode = { "i", "n" } },
+            ["<Down>"] = { "list_down", mode = { "i", "n" } },
+            ["<Up>"] = { "list_up", mode = { "i", "n" } },
+            ["<c-j>"] = { "list_down", mode = { "i", "n" } },
+            ["<c-k>"] = { "list_up", mode = { "i", "n" } },
+            ["<c-n>"] = { "list_down", mode = { "i", "n" } },
+            ["<c-p>"] = { "list_up", mode = { "i", "n" } },
+            ["<c-l>"] = { "preview_scroll_left", mode = { "i", "n" } },
+            ["<c-h>"] = { "preview_scroll_right", mode = { "i", "n" } },
+            ["<c-b>"] = { "preview_scroll_up", mode = { "i", "n" } },
+            ["<c-d>"] = { "list_scroll_down", mode = { "i", "n" } },
+            ["<c-f>"] = { "preview_scroll_down", mode = { "i", "n" } },
+            ["<c-g>"] = { "toggle_live", mode = { "i", "n" } },
+            ["<c-u>"] = { "list_scroll_up", mode = { "i", "n" } },
+            ["<ScrollWheelDown>"] = { "list_scroll_wheel_down", mode = { "i", "n" } },
+            ["<ScrollWheelUp>"] = { "list_scroll_wheel_up", mode = { "i", "n" } },
+            ["<c-v>"] = { "edit_vsplit", mode = { "i", "n" } },
+            ["<c-s>"] = { "edit_split", mode = { "i", "n" } },
+            ["<c-q>"] = { "qflist", mode = { "i", "n" } },
+            ["<a-i>"] = { "toggle_ignored", mode = { "i", "n" } },
+            ["<a-h>"] = { "toggle_hidden", mode = { "i", "n" } },
+            ["<a-f>"] = { "toggle_follow", mode = { "i", "n" } },
           },
           b = {
             minipairs_disable = true,
@@ -117,54 +117,54 @@ return {
         -- result list window
         list = {
           keys = {
-            ['<CR>'] = 'confirm',
-            ['gg'] = 'list_top',
-            ['G'] = 'list_bottom',
-            ['i'] = 'focus_input',
-            ['j'] = 'list_down',
-            ['k'] = 'list_up',
-            ['q'] = 'close',
-            ['<Tab>'] = 'select_and_next',
-            ['<S-Tab>'] = 'select_and_prev',
-            ['<Down>'] = 'list_down',
-            ['<Up>'] = 'list_up',
-            ['<a-d>'] = 'inspect',
-            ['<c-d>'] = 'list_scroll_down',
-            ['<c-u>'] = 'list_scroll_up',
-            ['zt'] = 'list_scroll_top',
-            ['zb'] = 'list_scroll_bottom',
-            ['zz'] = 'list_scroll_center',
-            ['/'] = 'toggle_focus',
-            ['<ScrollWheelDown>'] = 'list_scroll_wheel_down',
-            ['<ScrollWheelUp>'] = 'list_scroll_wheel_up',
-            ['<c-a>'] = 'select_all',
-            ['<c-f>'] = 'preview_scroll_down',
-            ['<c-b>'] = 'preview_scroll_up',
-            ['<c-l>'] = 'preview_scroll_right',
-            ['<c-h>'] = 'preview_scroll_left',
-            ['<c-v>'] = 'edit_vsplit',
-            ['<c-s>'] = 'edit_split',
-            ['<c-j>'] = 'list_down',
-            ['<c-k>'] = 'list_up',
-            ['<c-n>'] = 'list_down',
-            ['<c-p>'] = 'list_up',
-            ['<a-w>'] = 'cycle_win',
-            ['<Esc>'] = 'close',
+            ["<CR>"] = "confirm",
+            ["gg"] = "list_top",
+            ["G"] = "list_bottom",
+            ["i"] = "focus_input",
+            ["j"] = "list_down",
+            ["k"] = "list_up",
+            ["q"] = "close",
+            ["<Tab>"] = "select_and_next",
+            ["<S-Tab>"] = "select_and_prev",
+            ["<Down>"] = "list_down",
+            ["<Up>"] = "list_up",
+            ["<a-d>"] = "inspect",
+            ["<c-d>"] = "list_scroll_down",
+            ["<c-u>"] = "list_scroll_up",
+            ["zt"] = "list_scroll_top",
+            ["zb"] = "list_scroll_bottom",
+            ["zz"] = "list_scroll_center",
+            ["/"] = "toggle_focus",
+            ["<ScrollWheelDown>"] = "list_scroll_wheel_down",
+            ["<ScrollWheelUp>"] = "list_scroll_wheel_up",
+            ["<c-a>"] = "select_all",
+            ["<c-f>"] = "preview_scroll_down",
+            ["<c-b>"] = "preview_scroll_up",
+            ["<c-l>"] = "preview_scroll_right",
+            ["<c-h>"] = "preview_scroll_left",
+            ["<c-v>"] = "edit_vsplit",
+            ["<c-s>"] = "edit_split",
+            ["<c-j>"] = "list_down",
+            ["<c-k>"] = "list_up",
+            ["<c-n>"] = "list_down",
+            ["<c-p>"] = "list_up",
+            ["<a-w>"] = "cycle_win",
+            ["<Esc>"] = "close",
           },
           wo = {
             conceallevel = 2,
-            concealcursor = 'nvc',
+            concealcursor = "nvc",
           },
         },
         -- preview window
         preview = {
           keys = {
-            ['<Esc>'] = 'close',
-            ['q'] = 'close',
-            ['i'] = 'focus_input',
-            ['<ScrollWheelDown>'] = 'list_scroll_wheel_down',
-            ['<ScrollWheelUp>'] = 'list_scroll_wheel_up',
-            ['<a-w>'] = 'cycle_win',
+            ["<Esc>"] = "close",
+            ["q"] = "close",
+            ["i"] = "focus_input",
+            ["<ScrollWheelDown>"] = "list_scroll_wheel_down",
+            ["<ScrollWheelUp>"] = "list_scroll_wheel_up",
+            ["<a-w>"] = "cycle_win",
           },
         },
       },
@@ -173,73 +173,73 @@ return {
           enabled = true, -- show file icons
         },
         keymaps = {
-          nowait = '󰓅 ',
+          nowait = "󰓅 ",
         },
         indent = {
-          vertical = '│ ',
-          middle = '├╴',
-          last = '└╴',
+          vertical = "│ ",
+          middle = "├╴",
+          last = "└╴",
         },
         undo = {
-          saved = ' ',
+          saved = " ",
         },
         ui = {
-          live = '󰐰 ',
-          hidden = 'h',
-          ignored = 'i',
-          follow = 'f',
-          selected = '● ',
-          unselected = '○ ',
+          live = "󰐰 ",
+          hidden = "h",
+          ignored = "i",
+          follow = "f",
+          selected = "● ",
+          unselected = "○ ",
           -- selected = " ",
         },
         git = {
-          commit = '󰜘 ',
+          commit = "󰜘 ",
         },
         diagnostics = {
-          Error = ' ',
-          Warn = ' ',
-          Hint = ' ',
-          Info = ' ',
+          Error = " ",
+          Warn = " ",
+          Hint = " ",
+          Info = " ",
         },
         kinds = {
-          Array = ' ',
-          Boolean = '󰨙 ',
-          Class = ' ',
-          Color = ' ',
-          Control = ' ',
-          Collapsed = ' ',
-          Constant = '󰏿 ',
-          Constructor = ' ',
-          Copilot = ' ',
-          Enum = ' ',
-          EnumMember = ' ',
-          Event = ' ',
-          Field = ' ',
-          File = ' ',
-          Folder = ' ',
-          Function = '󰊕 ',
-          Interface = ' ',
-          Key = ' ',
-          Keyword = ' ',
-          Method = '󰊕 ',
-          Module = ' ',
-          Namespace = '󰦮 ',
-          Null = ' ',
-          Number = '󰎠 ',
-          Object = ' ',
-          Operator = ' ',
-          Package = ' ',
-          Property = ' ',
-          Reference = ' ',
-          Snippet = '󱄽 ',
-          String = ' ',
-          Struct = '󰆼 ',
-          Text = ' ',
-          TypeParameter = ' ',
-          Unit = ' ',
-          Unknown = ' ',
-          Value = ' ',
-          Variable = '󰀫 ',
+          Array = " ",
+          Boolean = "󰨙 ",
+          Class = " ",
+          Color = " ",
+          Control = " ",
+          Collapsed = " ",
+          Constant = "󰏿 ",
+          Constructor = " ",
+          Copilot = " ",
+          Enum = " ",
+          EnumMember = " ",
+          Event = " ",
+          Field = " ",
+          File = " ",
+          Folder = " ",
+          Function = "󰊕 ",
+          Interface = " ",
+          Key = " ",
+          Keyword = " ",
+          Method = "󰊕 ",
+          Module = " ",
+          Namespace = "󰦮 ",
+          Null = " ",
+          Number = "󰎠 ",
+          Object = " ",
+          Operator = " ",
+          Package = " ",
+          Property = " ",
+          Reference = " ",
+          Snippet = "󱄽 ",
+          String = " ",
+          Struct = "󰆼 ",
+          Text = " ",
+          TypeParameter = " ",
+          Unit = " ",
+          Unknown = " ",
+          Value = " ",
+          Variable = "󰀫 ",
         },
       },
       debug = {
@@ -250,81 +250,81 @@ return {
   },
   keys = {
     {
-      '<leader><leader>',
+      "<leader><leader>",
       function()
-        Snacks.picker.buffers {
+        Snacks.picker.buffers({
           layout = {
-            preset = 'ivy',
+            preset = "ivy",
           },
-        }
+        })
       end,
-      desc = 'Buffers',
+      desc = "Buffers",
     },
     {
-      '<leader>sf',
+      "<leader>sf",
       function()
         Snacks.picker.files()
       end,
-      desc = 'Find Files',
+      desc = "Find Files",
     },
     {
-      '<leader>sG',
+      "<leader>sG",
       function()
         Snacks.picker.git_files()
       end,
-      desc = 'Find Git Files',
+      desc = "Find Git Files",
     },
     {
-      '<leader>sr',
+      "<leader>sr",
       function()
         Snacks.picker.recent()
       end,
-      desc = 'Recent',
+      desc = "Recent",
     },
     -- git
     {
-      '<leader>gc',
+      "<leader>gc",
       function()
         Snacks.picker.git_log()
       end,
-      desc = 'Git Log',
+      desc = "Git Log",
     },
     {
-      '<leader>gs',
+      "<leader>gs",
       function()
         Snacks.picker.git_status()
       end,
-      desc = 'Git Status',
+      desc = "Git Status",
     },
     -- Grep
     {
-      '<leader>sb',
+      "<leader>sb",
       function()
         Snacks.picker.lines()
       end,
-      desc = 'Buffer Lines',
+      desc = "Buffer Lines",
     },
     {
-      '<leader>sB',
+      "<leader>sB",
       function()
         Snacks.picker.grep_buffers()
       end,
-      desc = 'Grep Open Buffers',
+      desc = "Grep Open Buffers",
     },
     {
-      '<leader>sg',
+      "<leader>sg",
       function()
         Snacks.picker.grep()
       end,
-      desc = 'Grep',
+      desc = "Grep",
     },
     {
-      '<leader>sw',
+      "<leader>sw",
       function()
         Snacks.picker.grep_word()
       end,
-      desc = 'Visual selection or word',
-      mode = { 'n', 'x' },
+      desc = "Visual selection or word",
+      mode = { "n", "x" },
     },
     -- search
     {
@@ -332,149 +332,149 @@ return {
       function()
         Snacks.picker.registers()
       end,
-      desc = 'Registers',
+      desc = "Registers",
     },
     {
-      '<leader>sa',
+      "<leader>sa",
       function()
         Snacks.picker.autocmds()
       end,
-      desc = 'Autocmds',
+      desc = "Autocmds",
     },
     {
-      '<leader>sc',
+      "<leader>sc",
       function()
         Snacks.picker.command_history()
       end,
-      desc = 'Command History',
+      desc = "Command History",
     },
     {
-      '<leader>sC',
+      "<leader>sC",
       function()
         Snacks.picker.commands()
       end,
-      desc = 'Commands',
+      desc = "Commands",
     },
     {
-      '<leader>sd',
+      "<leader>sd",
       function()
         Snacks.picker.diagnostics()
       end,
-      desc = 'Diagnostics',
+      desc = "Diagnostics",
     },
     {
-      '<leader>sh',
+      "<leader>sh",
       function()
         Snacks.picker.help()
       end,
-      desc = 'Help Pages',
+      desc = "Help Pages",
     },
     {
-      '<leader>sH',
+      "<leader>sH",
       function()
         Snacks.picker.highlights()
       end,
-      desc = 'Highlights',
+      desc = "Highlights",
     },
     {
-      '<leader>sj',
+      "<leader>sj",
       function()
         Snacks.picker.jumps()
       end,
-      desc = 'Jumps',
+      desc = "Jumps",
     },
     {
-      '<leader>sk',
+      "<leader>sk",
       function()
         Snacks.picker.keymaps()
       end,
-      desc = 'Keymaps',
+      desc = "Keymaps",
     },
     {
-      '<leader>sl',
+      "<leader>sl",
       function()
         Snacks.picker.loclist()
       end,
-      desc = 'Location List',
+      desc = "Location List",
     },
     {
-      '<leader>sM',
+      "<leader>sM",
       function()
         Snacks.picker.man()
       end,
-      desc = 'Man Pages',
+      desc = "Man Pages",
     },
     {
-      '<leader>sm',
+      "<leader>sm",
       function()
         Snacks.picker.marks()
       end,
-      desc = 'Marks',
+      desc = "Marks",
     },
     {
-      '<leader>sR',
+      "<leader>sR",
       function()
         Snacks.picker.resume()
       end,
-      desc = 'Resume',
+      desc = "Resume",
     },
     {
-      '<leader>sq',
+      "<leader>sq",
       function()
         Snacks.picker.qflist()
       end,
-      desc = 'Quickfix List',
+      desc = "Quickfix List",
     },
     {
-      '<leader>uC',
+      "<leader>uC",
       function()
         Snacks.picker.colorschemes()
       end,
-      desc = 'Colorschemes',
+      desc = "Colorschemes",
     },
     {
-      '<leader>qp',
+      "<leader>qp",
       function()
         Snacks.picker.projects()
       end,
-      desc = 'Projects',
+      desc = "Projects",
     },
     -- LSP
     {
-      'gd',
+      "gd",
       function()
         Snacks.picker.lsp_definitions()
       end,
-      desc = 'Goto Definition',
+      desc = "Goto Definition",
     },
     {
-      'gr',
+      "gr",
       function()
         Snacks.picker.lsp_references()
       end,
       nowait = true,
-      desc = 'References',
+      desc = "References",
     },
     {
-      'gI',
+      "gI",
       function()
         Snacks.picker.lsp_implementations()
       end,
-      desc = 'Goto Implementation',
+      desc = "Goto Implementation",
     },
     {
-      'gy',
+      "gy",
       function()
         Snacks.picker.lsp_type_definitions()
       end,
-      desc = 'Goto T[y]pe Definition',
+      desc = "Goto T[y]pe Definition",
     },
     {
-      '<leader>ss',
+      "<leader>ss",
       function()
         Snacks.picker.lsp_symbols()
       end,
-      desc = 'LSP Symbols',
+      desc = "LSP Symbols",
     },
   },
 }
