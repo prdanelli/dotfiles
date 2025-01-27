@@ -1,3 +1,8 @@
+call_parentheses = "Always"
+column_width = 120
 indent_type = "Spaces"
 indent_width = 2
-column_width = 120
+quote_style = AutoPreferDouble
+syntax = "All"
+[sort_requires]
+enabled = true
