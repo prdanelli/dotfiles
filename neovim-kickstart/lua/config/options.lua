@@ -4,13 +4,6 @@ local g = vim.g
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- LazyVim root dir detection
--- Each entry can be:
--- * the name of a detector function like `lsp` or `cwd`
--- * a pattern or array of patterns like `.git` or `lua`.
--- * a function with signature `function(buf) -> string|string[]`
-g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
-
 -- Show the current document symbols location from Trouble in lualine
 g.trouble_lualine = true -- You can disable this for a buffer by setting `vim.b.trouble_lualine = false`
 g.snacks_animate = false
@@ -18,7 +11,6 @@ g.editorconfig = false
 g.ruby_host_prog = "/Users/paul/.asdf/shims/neovim-ruby-host" -- avoid needing to install this in every project
 g.have_nerd_font = true -- Set to true if you have a Nerd Font installed and selected in the terminal
 g.markdown_recommended_style = 0 -- Fix markdown indentation settings
-g.autoformat = true -- LazyVim auto format
 
 opt.autowrite = true -- Enable auto write
 -- only set clipboard if not in ssh, to make sure the OSC 52
