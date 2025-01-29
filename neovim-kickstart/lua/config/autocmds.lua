@@ -1,20 +1,19 @@
+local function augroup(name)
+  return vim.api.nvim_create_augroup("local_" .. name, { clear = true })
+end
+
 -- Highlight when yanking (copying) text Try it with `yap` in normal mode - See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd("TextYankPost", {
-  desc = "Highlight when yanking (copying) text",
-  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+  group = augroup "highlight_yank",
   callback = function()
-    vim.highlight.on_yank()
+    (vim.hl or vim.highlight).on_yank()
   end,
 })
 
--- Editing --
-vim.api.nvim_create_augroup("_editing", { clear = true })
-
--- Enable spell check and word wrap for certain file types
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  group = "_editing",
-  pattern = { "gitcommit", "markdown", "txt" },
-  desc = "Enable spell checking and text wrapping for certain filetypes",
+-- Wrap and check for spell in text filetypes
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup "wrap_spell",
+  pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
@@ -23,7 +22,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 
 -- Prevent IndentLine from hiding ``` in markdown files
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  group = "_editing",
+  group = augroup "editing",
   pattern = { "markdown" },
   callback = function()
     vim.g["indentLine_enabled"] = 0
@@ -31,43 +30,72 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
--- Formatting --
-vim.api.nvim_create_augroup("_formatting", { clear = true })
+-- Check if we need to reload the file when it changed
+vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
+  group = augroup "checktime",
+  callback = function()
+    if vim.o.buftype ~= "nofile" then
+      vim.cmd "checktime"
+    end
+  end,
+})
+
+-- Close different buffers with `q`
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup "close_with_q",
+  pattern = {
+    "PlenaryTestPopup",
+    "checkhealth",
+    "dbout",
+    "gitsigns-blame",
+    "grug-far",
+    "help",
+    "lspinfo",
+    "neotest-output",
+    "neotest-output-panel",
+    "neotest-summary",
+    "notify",
+    "qf",
+    "spectre_panel",
+    "startuptime",
+    "tsplayground",
+  },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.schedule(function()
+      vim.keymap.set("n", "q", function()
+        vim.cmd "close"
+        pcall(vim.api.nvim_buf_delete, event.buf, { force = true })
+      end, {
+        buffer = event.buf,
+        silent = true,
+        desc = "Quit buffer",
+      })
+    end)
+  end,
+})
 
 -- Adjust how text is formatted
 vim.api.nvim_create_autocmd("BufWinEnter", {
-  group = "_formatting",
+  group = augroup "formatting",
   pattern = "*",
   callback = function()
     vim.cmd "set formatoptions-=cro"
   end,
 })
 
--- Misc --
-vim.api.nvim_create_augroup("_general", { clear = true })
-
--- Close different buffers with `q`
+-- Make it easier to close man-files when opened inline
 vim.api.nvim_create_autocmd("FileType", {
-  group = "_general",
-  pattern = "qf,help,man,lspinfo,startuptime,neotest-summary",
-  callback = function()
-    vim.cmd "nnoremap <silent><buffer> q :close<cr>"
+  group = augroup "man_unlisted",
+  pattern = { "man" },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
   end,
 })
 
--- Don't list quick list in buffer list and so bnext etc dont toggle to it
--- vim.api.nvim_create_autocmd("FileType", {
---   group = "_general",
---   pattern = "qf",
---   callback = function()
---     vim.cmd("set nobuflisted")
---   end,
--- })
-
 -- Run resize methods when window size is changes
 vim.api.nvim_create_autocmd("VimResized", {
-  group = "_general",
-  pattern = "*",
+  group = augroup "general",
   callback = function()
     local current_tab = vim.fn.tabpagenr()
 
@@ -76,36 +104,31 @@ vim.api.nvim_create_autocmd("VimResized", {
   end,
 })
 
+-- Fix conceallevel for json files
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = augroup "json_conceal",
+  pattern = { "json", "jsonc", "json5" },
+  callback = function()
+    vim.opt_local.conceallevel = 0
+  end,
+})
+
 -- Auto create dir when saving a file, in case some intermediate directory does not exist
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  group = "_general",
+  group = augroup "auto_create_dir",
   callback = function(event)
-    if event.match:match "^%w%w+://" then
+    if event.match:match "^%w%w+:[\\/][\\/]" then
       return
     end
-    local file = vim.loop.fs_realpath(event.match) or event.match
+    local file = vim.uv.fs_realpath(event.match) or event.match
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
 })
 
--- Lazy --
-local lazy_loaded, _ = pcall(require, "lazy")
-if lazy_loaded then
-  vim.api.nvim_create_augroup("_lazy", { clear = true })
-
-  vim.api.nvim_create_autocmd("FileType", {
-    group = "_lazy",
-    pattern = "lazy",
-    callback = function()
-      vim.cmd "setlocal nonumber colorcolumn= | autocmd BufUnload set colorcolumn=80,120"
-    end,
-  })
-end
-
 local colorizer_loaded, _ = pcall(require, "colorizer")
 if colorizer_loaded then
   vim.api.nvim_create_autocmd("FileType", {
-    group = "_lazy",
+    group = augroup "colorizer",
     pattern = "lazy",
     callback = function()
       vim.cmd "ColorizerDetachFromBuffer"
@@ -114,11 +137,9 @@ if colorizer_loaded then
 end
 
 -- Ruby --
-vim.api.nvim_create_augroup("_ruby", { clear = true })
-
 -- Set Active Admin .arb files to be ruby files
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  group = "_ruby",
+  group = augroup "ruby",
   pattern = "*.html.arb,*.html.slim",
   callback = function()
     vim.cmd "setfiletype ruby"
@@ -126,30 +147,11 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 -- SHKD --
-vim.api.nvim_create_augroup("_skhd", { clear = true })
-
 -- Set Active Admin .arb files to be ruby files
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  group = "_skhd",
+  group = augroup "_skhd",
   pattern = "skhdrc",
   callback = function()
     vim.cmd "setfiletype bash"
-  end,
-})
-
--- https://www.reddit.com/r/neovim/comments/1ehidxy/you_can_remove_padding_around_neovim_instance/?share_id=m2Zef0slsNr9lKQNDSYaC&utm_content=2&utm_medium=ios_app&utm_name=iossmf&utm_source=share&utm_term=22
-vim.api.nvim_create_autocmd({ "UIEnter", "ColorScheme" }, {
-  callback = function()
-    local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
-    if not normal.bg then
-      return
-    end
-    io.write(string.format("\027]11;#%06x\027\\", normal.bg))
-  end,
-})
-
-vim.api.nvim_create_autocmd("UILeave", {
-  callback = function()
-    io.write "\027]111\027\\"
   end,
 })
