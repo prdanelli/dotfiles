@@ -1,6 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
-  event = "VimEnter",
+  -- event = "VimEnter",
   config = function()
     local highlight = require "lualine.highlight"
     local colors = require("config.colors").colors
@@ -121,7 +121,20 @@ return {
       sections = {
         lualine_a = { "mode" },
         lualine_b = { "branch" },
-        lualine_c = {},
+        lualine_c = {
+          {
+            "macro",
+            fmt = function()
+              local reg = vim.fn.reg_recording()
+
+              if reg ~= "" then
+                return "@" .. reg
+              end
+            end,
+            color = { fg = colors.yellow },
+            draw_empty = false,
+          },
+        },
         lualine_x = { fname },
         lualine_y = { "diff" },
         lualine_z = {},
