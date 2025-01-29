@@ -4,6 +4,7 @@ M.colors = {
   bg_light = "#353b49",
   bg = "#2e3440",
   fg = "#ECEFF4",
+  fg_dark = "#6C7A96",
   red = "#bf616a",
   orange = "#d08770",
   orange_washed = "#dfac9c",
