@@ -87,8 +87,8 @@ return {
           WhichKeyValue = { fg = colors.grey7 },
 
           -- Color columns
-          VirtColumn = { bg = colors.bg, fg = colors.grey13 },
-          NonText = { fg = colors.grey13 },
+          VirtColumn = { bg = colors.bg, fg = colors.grey14 },
+          VirtColumnNonText = { fg = colors.grey13 },
 
           --
           IblIndent = { fg = colors.grey13 },

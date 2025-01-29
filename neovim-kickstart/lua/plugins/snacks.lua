@@ -4,6 +4,7 @@ return {
   lazy = false,
   opts = {
     bigfile = { enabled = true },
+    bufdelete = { enabled = true },
     lazygit = { enabled = false },
     indent = {
       enabled = true,
@@ -19,5 +20,6 @@ return {
     statuscolumn = { enabled = true },
     words = { enabled = true },
     zen = { enabled = true },
+    toggle = { enabled = true },
   },
 }

@@ -16,8 +16,6 @@ return { -- Autoformat
     formatters_by_ft = {
       lua = { "stylua" },
       ruby = { "rubocop" },
-      eruby = { "erb_format" },
-      css = { "prettier" },
     },
     formatters = {
       rubocop = function()

@@ -7,7 +7,7 @@ return {
       enabled = true,
       char = "┃",
       virtcolumn = "",
-      highlight = "NonText",
+      highlight = "VirtColumnNonText",
       exclude = {
         filetypes = {
           "lspinfo",
