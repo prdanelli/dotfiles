@@ -104,6 +104,18 @@ Snacks.toggle.scroll():map "<leader>uS"
 Snacks.toggle.profiler():map "<leader>dpp"
 Snacks.toggle.profiler_highlights():map "<leader>dph"
 
+map({ "n", "x" }, "<leader>gB", function()
+  Snacks.gitbrowse()
+end, { desc = "Git Browse (open)" })
+map({ "n", "x" }, "<leader>gY", function()
+  Snacks.gitbrowse({
+    open = function(url)
+      vim.fn.setreg("+", url)
+    end,
+    notify = false,
+  })
+end, { desc = "Git Browse (copy)" })
+
 -------------------------------------------------------------------------------
 -- Splits
 -------------------------------------------------------------------------------
@@ -123,7 +135,7 @@ map("n", "<M-Right>", ":vertical resize +2<CR>", opts)
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
-map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "[Q]uickfix list" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which

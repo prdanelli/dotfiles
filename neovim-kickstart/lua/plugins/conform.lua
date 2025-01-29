@@ -1,23 +1,31 @@
-return { -- Autoformat
+return {
   "stevearc/conform.nvim",
   event = { "BufWritePre" },
   cmd = { "ConformInfo" },
   keys = {
     {
-      "<leader>f",
+      "<leader>cf",
       function()
-        require("conform").format({ async = true, lsp_format = "fallback" })
+        require("conform").format()
       end,
       mode = "",
       desc = "[F]ormat buffer",
     },
   },
   opts = {
+    default_format_opts = {
+      timeout_ms = 3000,
+      async = false, -- not recommended to change
+      quiet = false, -- not recommended to change
+      lsp_format = "fallback", -- not recommended to change
+    },
     formatters_by_ft = {
+      sh = { "shfmt" },
       lua = { "stylua" },
       ruby = { "rubocop" },
     },
     formatters = {
+      injected = { options = { ignore_errors = true } },
       rubocop = function()
         return {
           command = "rubocop",

@@ -5,21 +5,18 @@ return {
   opts = {
     bigfile = { enabled = true },
     bufdelete = { enabled = true },
-    lazygit = { enabled = false },
-    indent = {
-      enabled = true,
-      animate = {
-        enabled = false,
-      },
-    },
+    indent = { enabled = false },
     input = { enabled = true },
+    git = { enabled = true },
+    gitbrowse = { enabled = true },
     notifier = { enabled = true },
     quickfile = { enabled = true },
+    rename = { enabled = true },
     scope = { enabled = true },
     scroll = { enabled = true },
     statuscolumn = { enabled = true },
+    toggle = { enabled = true },
     words = { enabled = true },
     zen = { enabled = true },
-    toggle = { enabled = true },
   },
 }

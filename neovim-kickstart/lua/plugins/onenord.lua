@@ -80,11 +80,12 @@ return {
 
           -- Whichkey
           WhichKeyFloat = { bg = colors.grey14 },
-          WhichKey = { fg = colors.magenta },
+          WhichKey = { fg = colors.yellow },
           WhichKeyGroup = { fg = colors.grey7 },
-          WhichKeySeparator = { fg = colors.grey12 },
+          WhichKeySeparator = { link = "Comment" },
           WhichKeyDesc = { fg = colors.grey7 },
           WhichKeyValue = { fg = colors.grey7 },
+          WhichKeyBorder = { fg = colors.magenta, bg = colors.bg },
 
           -- Color columns
           VirtColumn = { bg = colors.bg, fg = colors.grey14 },
