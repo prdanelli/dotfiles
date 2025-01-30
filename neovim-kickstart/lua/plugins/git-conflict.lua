@@ -20,12 +20,12 @@ return {
       },
     })
 
-    vim.keymap.set("n", "<leader>go", "<cmd>GitConflictChooseOurs<cr>", { desc = "Conflict - Choose Ours" })
-    vim.keymap.set("n", "<leader>gt", "<cmd>GitConflictChooseTheirs<cr>", { desc = "Conflict - Choose Theirs" })
-    vim.keymap.set("n", "<leader>gb", "<cmd>GitConflictChooseBoth<cr>", { desc = "Conflict - Choose Both" })
-    vim.keymap.set("n", "<leader>g0", "<cmd>GitConflictChooseNone<cr>", { desc = "Conflict - Choose None" })
-    vim.keymap.set("n", "<leader>gq", "<cmd>GitConflictListQf<cr>", { desc = "Conflict - Quicklist" })
-    vim.keymap.set("n", "<leader>gn", "<cmd>GitConflictNextConflict<cr>", { desc = "Conflict - Goto Next" })
-    vim.keymap.set("n", "<leader>gp", "<cmd>GitConflictPrevConflict<cr>", { desc = "Conflict - Goto Previous" })
+    vim.keymap.set("n", "<leader>go", "<cmd>GitConflictChooseOurs<cr>", { desc = "Pick [O]urs" })
+    vim.keymap.set("n", "<leader>gt", "<cmd>GitConflictChooseTheirs<cr>", { desc = "Pick [T]heirs" })
+    vim.keymap.set("n", "<leader>gb", "<cmd>GitConflictChooseBoth<cr>", { desc = "Pick [B]oth" })
+    vim.keymap.set("n", "<leader>g0", "<cmd>GitConflictChooseNone<cr>", { desc = "Pick N[0]ne" })
+    vim.keymap.set("n", "<leader>xc", "<cmd>GitConflictListQf<cr>", { desc = "[C]onflict - Quicklist" })
+    vim.keymap.set("n", "<leader>gn", "<cmd>GitConflictNextConflict<cr>", { desc = "[N]ext Conflict" })
+    vim.keymap.set("n", "<leader>gp", "<cmd>GitConflictPrevConflict<cr>", { desc = "[P]revious Conflict" })
   end,
 }
