@@ -23,8 +23,8 @@ return {
         file_pos = true, -- support patterns like `file:line:col` and `file:line`
         -- the bonusses below, possibly require string concatenation and path normalization,
         -- so this can have a performance impact for large lists and increase memory usage
-        cwd_bonus = false, -- give bonus for matching files in the cwd
-        frecency = false, -- frecency bonus
+        cwd_bonus = true, -- give bonus for matching files in the cwd
+        frecency = true, -- frecency bonus
       },
       sort = {
         -- default sort is by score, text length and index
@@ -250,22 +250,51 @@ return {
   },
   keys = {
     {
-      "<leader><leader>",
+      "<leader>sb",
       function()
         Snacks.picker.buffers({
+          finder = "buffers",
+          format = "buffer",
+          unloaded = true,
+          current = true,
+          sort_lastused = true,
           layout = {
-            preset = "ivy",
+            preview = false,
+            layout = {
+              box = "vertical",
+              backdrop = false,
+              height = 0.3,
+              width = 0.1,
+              border = "none",
+              title_pos = "left",
+            },
+          },
+          win = {
+            input = {
+              keys = {
+                ["dd"] = "bufdelete",
+                ["<c-x>"] = { "bufdelete", mode = { "n", "i" } },
+              },
+            },
+            list = { keys = { ["dd"] = "bufdelete" } },
           },
         })
       end,
       desc = "Buffers",
     },
     {
-      "<leader>sf",
+      "<leader><leader>",
       function()
-        Snacks.picker.files()
+        Snacks.picker.files({ layout = { preset = "ivy", hidden = true } })
       end,
       desc = "[F]iles",
+    },
+    {
+      "<leader>st",
+      function()
+        Snacks.picker.explorer({ hidden = true })
+      end,
+      desc = "[T]ree",
     },
     {
       "<leader>sG",
@@ -298,11 +327,11 @@ return {
     },
     -- Grep
     {
-      "<leader>sb",
+      "<leader>sl",
       function()
         Snacks.picker.lines()
       end,
-      desc = "[B]uffer Lines",
+      desc = "Buffer [L]ines",
     },
     {
       "<leader>sB",
@@ -326,7 +355,6 @@ return {
       desc = "[W]ord",
       mode = { "n", "x" },
     },
-    -- search
     {
       '<leader>s"',
       function()
@@ -391,7 +419,7 @@ return {
       desc = "[K]eymaps",
     },
     {
-      "<leader>sl",
+      "<leader>sL",
       function()
         Snacks.picker.loclist()
       end,
