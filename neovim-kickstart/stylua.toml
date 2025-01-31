@@ -1,4 +1,6 @@
 quote_style = "AutoPreferDouble"
+collapse_simple_statement = "Never"
+space_after_function_names = "Never"
 call_parentheses = "NoSingleString"
 column_width = 120
 indent_type = "Spaces"
