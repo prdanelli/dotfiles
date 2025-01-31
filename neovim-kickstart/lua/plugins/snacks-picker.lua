@@ -13,6 +13,10 @@ return {
         preset = function()
           return vim.o.columns >= 120 and "default" or "vertical"
         end,
+        layout = {
+          backdrop = 70,
+          title_pos = "left",
+        },
       },
       matcher = {
         fuzzy = true, -- use fuzzy matching
@@ -261,22 +265,17 @@ return {
           layout = {
             preview = false,
             layout = {
-              box = "vertical",
-              backdrop = false,
+              box = "horizontal",
               height = 0.3,
               width = 0.1,
-              border = "none",
-              title_pos = "left",
             },
           },
           win = {
             input = {
               keys = {
-                ["dd"] = "bufdelete",
                 ["<c-x>"] = { "bufdelete", mode = { "n", "i" } },
               },
             },
-            list = { keys = { ["dd"] = "bufdelete" } },
           },
         })
       end,
@@ -285,7 +284,7 @@ return {
     {
       "<leader><leader>",
       function()
-        Snacks.picker.files({ layout = { preset = "ivy", hidden = true } })
+        Snacks.picker.files({ finder = "files", layout = { preset = "ivy", hidden = true } })
       end,
       desc = "[F]iles",
     },
@@ -310,7 +309,6 @@ return {
       end,
       desc = "[R]ecent",
     },
-    -- git
     {
       "<leader>gc",
       function()
@@ -325,7 +323,6 @@ return {
       end,
       desc = "Git [S]tatus",
     },
-    -- Grep
     {
       "<leader>sl",
       function()
