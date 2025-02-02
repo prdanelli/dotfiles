@@ -27,13 +27,6 @@ return {
           -- Todo = { fg = colors.yellow, bg = colors.none, style = "bold,italic" },
           -- DiagnosticError = { link = "LspDiagnosticsDefaultError" },
 
-          -- Blink
-          BlinkCmpMenuBorder = { fg = colors.magenta },
-          BlinkCmpMenu = { bg = colors.bg },
-          BlinkCmpMenuSelection = { bg = colors.grey12 },
-          BlinkCmpKind = { fg = colors.grey9 },
-
-          SnacksDashboardTitle = { fg = colors.cyan },
           FidgetTask = { link = "Comment" },
 
           -- FZF Lua
@@ -43,9 +36,10 @@ return {
           FzfLuaHelpBorder = { fg = colors.magenta },
           FzfLuaPreviewBorder = { fg = colors.magenta },
 
-          NormalFloat = { fg = colors.magenta },
+          NormalFloat = { fg = colors.magenta, bg = colors.bg_light },
 
           -- Snack Dashboard
+          SnacksDashboardTitle = { fg = colors.cyan },
           SnacksDashboardHeader = { link = "Comment" },
           SnacksDashboardFooter = { link = "Comment" },
           SnacksDashboardDesc = { link = "Comment" },
@@ -54,7 +48,22 @@ return {
           SnacksDashboardSpecial = { link = "Comment" },
           SnacksDashboardKey = { link = "Comment" },
 
+          -- Snack Picker
           SnacksPickerDir = { link = "Comment" },
+
+          SnacksPickerBoxTitle = { bg = colors.bg_light, fg = colors.fg_dark },
+          SnacksPickerBoxBorder = { fg = colors.bg_light, bg = colors.bg_light },
+
+          SnacksPickerListTitle = { bg = colors.bg_light, fg = colors.fg_dark },
+          SnacksPickerListBorder = { fg = colors.bg_light, bg = colors.bg_light },
+
+          SnacksPickerInput = { bg = colors.grey13 },
+          SnacksPickerInputTitle = { bg = colors.bg_light, fg = colors.fg_dark },
+          SnacksPickerInputBorder = { fg = colors.bg_light, bg = colors.bg_light },
+
+          SnacksPickerPreview = { bg = colors.grey13 },
+          SnacksPickerPreviewTitle = { bg = colors.bg_light, fg = colors.fg_dark },
+          SnacksPickerPreviewBorder = { fg = colors.bg_light, bg = colors.bg_light },
 
           -- Snack index line scope
           SnacksIndentScope = { fg = colors.grey11 },
