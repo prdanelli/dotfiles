@@ -27,6 +27,11 @@ return {
           -- Todo = { fg = colors.yellow, bg = colors.none, style = "bold,italic" },
           -- DiagnosticError = { link = "LspDiagnosticsDefaultError" },
 
+          -- Blink
+          BlinkCmpMenuBorder = { fg = colors.magenta },
+          BlinkCmpMenu = { bg = colors.bg_light },
+
+          -- Fidget
           FidgetTask = { link = "Comment" },
 
           -- FZF Lua
