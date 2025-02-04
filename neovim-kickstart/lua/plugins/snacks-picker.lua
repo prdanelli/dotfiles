@@ -284,7 +284,7 @@ return {
     {
       "<leader><leader>",
       function()
-        Snacks.picker.files({ finder = "files", layout = { preset = "ivy", hidden = true } })
+        Snacks.picker.files({ finder = "files", hidden = true, layout = { preset = "ivy" } })
       end,
       desc = "[F]iles",
     },
@@ -298,7 +298,7 @@ return {
     {
       "<leader>sG",
       function()
-        Snacks.picker.git_files()
+        Snacks.picker.git_files({ finder = "git_files", hidden = true, show_empty = false })
       end,
       desc = "[G]it Files",
     },
@@ -347,7 +347,7 @@ return {
     {
       "<leader>sw",
       function()
-        Snacks.picker.grep_word()
+        Snacks.picker.grep_word({ hidden = true })
       end,
       desc = "[W]ord",
       mode = { "n", "x" },
