@@ -5,7 +5,6 @@ return {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     { "j-hui/fidget.nvim", opts = {} }, -- Useful status updates for LSP.
-    "hrsh7th/cmp-nvim-lsp", -- Allows extra capabilities provided by nvim-cmp
   },
   opts = {
     diagnostics = {
@@ -52,9 +51,6 @@ return {
     setup = {},
   },
   config = function()
-    ---@module "snacks"
-    ---@module "vim"
-
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
       callback = function(event)
@@ -146,17 +142,11 @@ return {
     })
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+
+    -- Blink
+    capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities())
 
     local servers = {
-      ruby_lsp = {
-        cmd = { vim.fn.expand "/Users/paul/.asdf/shims/ruby-lsp" },
-        root_dir = function(fname)
-          return require("lspconfig").util.root_pattern("Gemfile", ".git")(fname) or vim.fn.getcwd()
-        end,
-        formatter = "none",
-      },
-      rubocop = {},
       lua_ls = {
         settings = {
           Lua = {
@@ -216,8 +206,6 @@ return {
               -- "${3rd}/luv/library"
               -- "${3rd}/busted/library",
             },
-            -- or pull in all of 'runtimepath'. NOTE: this is a lot slower and will cause issues when working on your own configuration (see https://github.com/neovim/nvim-lspconfig/issues/3189)
-            -- library = vim.api.nvim_get_runtime_file("", true)
           },
         })
       end,

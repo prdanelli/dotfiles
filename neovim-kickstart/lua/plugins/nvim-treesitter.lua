@@ -8,21 +8,16 @@ return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   main = "nvim-treesitter.configs", -- Sets main module to use for opts
-  dependencies = {
-    "RRethy/nvim-treesitter-endwise",
-  },
   opts = {
     auto_install = true,
     ensure_installed = {
       "bash",
       "diff",
       "lua",
-      "ruby",
       "regex",
       "sql",
       "vim",
       "vimdoc",
-      "yaml",
     },
     highlight = {
       enable = true,
