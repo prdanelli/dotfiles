@@ -81,6 +81,7 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath "state" .. "/sessions/" -- directory where session files are saved
 vim.opt.undolevels = 10000
+vim.opt.diffopt = "filler,internal,closeoff,algorithm:histogram,context:5,linematch:60,algorithm:histogram"
 
 -- Ensure I dont freak out by hitting the cap w when exiting
 vim.cmd [[
