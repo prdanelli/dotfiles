@@ -67,7 +67,7 @@ return {
       end
 
       -- Relative path
-      data = vim.fn.expand "%:~:."
+      data = vim.fn.expand "%:t"
       data = modules.utils.stl_escape(data)
 
       if data == "" then
