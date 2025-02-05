@@ -262,14 +262,7 @@ return {
           unloaded = true,
           current = true,
           sort_lastused = true,
-          layout = {
-            preview = false,
-            layout = {
-              box = "horizontal",
-              height = 0.3,
-              width = 0.1,
-            },
-          },
+          layout = "select",
           win = {
             input = {
               keys = {
