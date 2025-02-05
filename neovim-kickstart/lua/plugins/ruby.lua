@@ -133,7 +133,10 @@ return {
       local capabilities = vim.lsp.protocol.make_client_capabilities()
 
       -- Blink
-      capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities())
+      local loaded, blink = pcall(require, "blink.cmp")
+      if loaded then
+        capabilities = vim.tbl_deep_extend("force", capabilities, blink.get_lsp_capabilities())
+      end
 
       local servers = {
         ruby_lsp = {
