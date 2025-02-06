@@ -78,10 +78,11 @@ vim.opt.mousescroll = "ver:1,hor:0"
 vim.opt.breakindent = true -- Enable break indent
 vim.opt.list = true -- Sets how neovim will display certain whitespace characters in the editor. See `:help 'list'` and `:help 'listchars'`
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
-vim.opt.undofile = true
-vim.opt.undodir = vim.fn.stdpath "state" .. "/sessions/" -- directory where session files are saved
-vim.opt.undolevels = 10000
 vim.opt.diffopt = "filler,internal,closeoff,algorithm:histogram,context:5,linematch:60,algorithm:histogram"
+
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.stdpath "state" .. "/undo/" 
+vim.opt.undolevels = 10000
 
 -- Ensure I dont freak out by hitting the cap w when exiting
 vim.cmd [[
