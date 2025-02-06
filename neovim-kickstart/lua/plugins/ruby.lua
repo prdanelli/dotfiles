@@ -18,7 +18,6 @@ return {
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
         "ruby-lsp",
-        "rubocop",
       })
     end,
   },
@@ -133,8 +132,8 @@ return {
       local capabilities = vim.lsp.protocol.make_client_capabilities()
 
       -- Blink
-      local loaded, blink = pcall(require, "blink.cmp")
-      if loaded then
+      local blink_loaded, blink = pcall(require, "blink.cmp")
+      if blink_loaded then
         capabilities = vim.tbl_deep_extend("force", capabilities, blink.get_lsp_capabilities())
       end
 
@@ -148,8 +147,11 @@ return {
         },
       }
 
-      local ensure_installed = vim.tbl_keys(servers or {})
-      require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+      local mason_loaded, mason = pcall(require, "mason-tool-installer")
+      if mason_loaded then
+        local ensure_installed = vim.tbl_keys(servers or {})
+        mason.setup({ ensure_installed = ensure_installed })
+      end
 
       require("mason-lspconfig").setup({
         handlers = {
