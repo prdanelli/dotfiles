@@ -27,21 +27,14 @@ return {
           -- Todo = { fg = colors.yellow, bg = colors.none, style = "bold,italic" },
           -- DiagnosticError = { link = "LspDiagnosticsDefaultError" },
 
+          NormalFloat = { fg = colors.magenta, bg = colors.bg_light },
+
           -- Blink
           BlinkCmpMenuBorder = { fg = colors.magenta },
           BlinkCmpMenu = { bg = colors.bg_light },
 
           -- Fidget
           FidgetTask = { link = "Comment" },
-
-          -- FZF Lua
-          FzfLuaHeaderText = { link = "Comment" },
-          FzfLuaFzfBorder = { fg = colors.magenta },
-          FzfLuaBorder = { fg = colors.magenta },
-          FzfLuaHelpBorder = { fg = colors.magenta },
-          FzfLuaPreviewBorder = { fg = colors.magenta },
-
-          NormalFloat = { fg = colors.magenta, bg = colors.bg_light },
 
           -- Snack Dashboard
           SnacksDashboardTitle = { fg = colors.cyan },
@@ -56,19 +49,20 @@ return {
           -- Snack Picker
           SnacksPickerDir = { link = "Comment" },
 
-          SnacksPickerBoxTitle = { bg = colors.bg_light, fg = colors.fg_dark },
-          SnacksPickerBoxBorder = { fg = colors.bg_light, bg = colors.bg_light },
+          SnacksPickerBoxTitle = { bg = colors.bg, fg = colors.fg_dark },
+          SnacksPickerBoxBorder = { fg = colors.bg, bg = colors.bg },
 
-          SnacksPickerListTitle = { bg = colors.bg_light, fg = colors.fg_dark },
-          SnacksPickerListBorder = { fg = colors.bg_light, bg = colors.bg_light },
+          SnacksPickerList = { bg = colors.bg },
+          SnacksPickerListTitle = { bg = colors.bg, fg = colors.fg_dark },
+          SnacksPickerListBorder = { bg = colors.bg, fg = colors.bg },
 
-          SnacksPickerInput = { bg = colors.grey13 },
-          SnacksPickerInputTitle = { bg = colors.bg_light, fg = colors.fg_dark },
-          SnacksPickerInputBorder = { fg = colors.bg_light, bg = colors.bg_light },
+          SnacksPickerInput = { bg = colors.bg },
+          SnacksPickerInputTitle = { bg = colors.bg, fg = colors.fg_dark },
+          SnacksPickerInputBorder = { bg = colors.bg, fg = colors.bg },
 
-          SnacksPickerPreview = { bg = colors.grey13 },
-          SnacksPickerPreviewTitle = { bg = colors.bg_light, fg = colors.fg_dark },
-          SnacksPickerPreviewBorder = { fg = colors.bg_light, bg = colors.bg_light },
+          SnacksPickerPreview = { bg = colors.bg },
+          SnacksPickerPreviewTitle = { bg = colors.bg, fg = colors.fg_dark },
+          SnacksPickerPreviewBorder = { bg = colors.bg, fg = colors.bg },
 
           -- Snack index line scope
           SnacksIndentScope = { fg = colors.grey11 },

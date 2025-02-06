@@ -6,16 +6,38 @@ return {
   opts = {
     picker = {
       prompt = " ",
+      hidden = true,
+      backdrop = 50,
       sources = {},
       layout = {
         cycle = true,
-        --- Use the default layout or vertical if the window is too narrow
         preset = function()
           return vim.o.columns >= 120 and "default" or "vertical"
         end,
         layout = {
-          backdrop = 70,
           title_pos = "left",
+          backdrop = 80,
+        },
+      },
+      layouts = {
+        mivy = {
+          layout = {
+            box = "vertical",
+            row = -1,
+            width = 0,
+            height = 0.5,
+            border = "top",
+            title = "",
+            {
+              box = "horizontal",
+              {
+                box = "vertical",
+                { win = "input", height = 2 },
+                { win = "list" },
+              },
+              { win = "preview", title = "{preview}", width = 0.70 },
+            },
+          },
         },
       },
       matcher = {
@@ -34,7 +56,7 @@ return {
         -- default sort is by score, text length and index
         fields = { "score:desc", "#text", "idx" },
       },
-      ui_select = true, -- replace `vim.ui.select` with the snacks picker
+      ui_select = true,
       formatters = {
         text = {
           ft = nil, ---@type string? filetype for highlighting
@@ -66,7 +88,6 @@ return {
         reuse_win = false, -- reuse an existing window if the buffer is already open
       },
       win = {
-        -- input window
         input = {
           keys = {
             ["<Esc>"] = { "close", mode = { "i", "n" } },
@@ -118,7 +139,6 @@ return {
             minipairs_disable = true,
           },
         },
-        -- result list window
         list = {
           keys = {
             ["<CR>"] = "confirm",
@@ -160,7 +180,6 @@ return {
             concealcursor = "nvc",
           },
         },
-        -- preview window
         preview = {
           keys = {
             ["<Esc>"] = "close",
@@ -262,7 +281,9 @@ return {
           unloaded = true,
           current = true,
           sort_lastused = true,
-          layout = "select",
+          layout = {
+            preset = "select",
+          },
           win = {
             input = {
               keys = {
@@ -277,7 +298,11 @@ return {
     {
       "<leader><leader>",
       function()
-        Snacks.picker.files({ finder = "files", hidden = true, layout = { preset = "ivy" } })
+        Snacks.picker.files({
+          finder = "files",
+          hidden = true,
+          layout = { preset = "mivy" },
+        })
       end,
       desc = "[F]iles",
     },
@@ -319,7 +344,7 @@ return {
     {
       "<leader>sl",
       function()
-        Snacks.picker.lines()
+        Snacks.picker.lines({ finder = "lines", hidden = true, show_empty = false })
       end,
       desc = "Buffer [L]ines",
     },
@@ -457,7 +482,6 @@ return {
       end,
       desc = "[P]rojects",
     },
-    -- LSP
     {
       "gd",
       function()
