@@ -14,7 +14,7 @@ return {
   },
   opts = {
     default_format_opts = {
-      timeout_ms = 3000,
+      timeout_ms = 5000,
       async = false, -- not recommended to change
       quiet = false, -- not recommended to change
       lsp_format = "fallback", -- not recommended to change
@@ -40,6 +40,8 @@ return {
             "$FILENAME",
           },
           stdin = true,
+          cwd = require("conform.util").root_file "Gemfile",
+          require_cwd = true,
         }
       end,
     },
@@ -58,7 +60,7 @@ return {
       end
 
       return {
-        timeout_ms = 500,
+        timeout_ms = 1000,
         lsp_format = lsp_format_opt,
       }
     end,
