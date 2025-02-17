@@ -1,7 +1,9 @@
 require "config.options"
-require "config.commands"
 require "config.lazy"
+
+require "config.commands"
 require "config.keymaps"
+
 require "config.autocmds"
 require "config.health"
 
