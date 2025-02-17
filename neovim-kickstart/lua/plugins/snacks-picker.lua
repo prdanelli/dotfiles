@@ -11,23 +11,18 @@ return {
       sources = {},
       layout = {
         cycle = true,
-        preset = function()
-          return vim.o.columns >= 120 and "default" or "vertical"
-        end,
-        layout = {
-          title_pos = "left",
-          backdrop = 80,
-        },
+        preset = "mivy",
       },
       layouts = {
         mivy = {
           layout = {
             box = "vertical",
+            backdrop = 50,
             row = -1,
             width = 0,
             height = 0.5,
             border = "top",
-            title = "",
+            title = "{title} {live} {flags}",
             {
               box = "horizontal",
               {
@@ -35,7 +30,7 @@ return {
                 { win = "input", height = 2 },
                 { win = "list" },
               },
-              { win = "preview", title = "{preview}", width = 0.70 },
+              { win = "preview", title = "{preview}", width = vim.o.columns <= 125 and 0.7 or 0.55 },
             },
           },
         },
@@ -276,13 +271,10 @@ return {
       "<leader>sb",
       function()
         Snacks.picker.buffers({
-          finder = "buffers",
-          format = "buffer",
           unloaded = true,
           current = true,
-          sort_lastused = true,
           layout = {
-            preset = "select",
+            preset = "mivy",
           },
           win = {
             input = {
@@ -314,18 +306,20 @@ return {
       desc = "[T]ree",
     },
     {
-      "<leader>sG",
-      function()
-        Snacks.picker.git_files({ finder = "git_files", hidden = true, show_empty = false })
-      end,
-      desc = "[G]it Files",
-    },
-    {
       "<leader>sr",
       function()
         Snacks.picker.recent()
       end,
       desc = "[R]ecent",
+    },
+
+    -- Git
+    {
+      "<leader>sG",
+      function()
+        Snacks.picker.git_files({ finder = "git_files", hidden = true, show_empty = false })
+      end,
+      desc = "[G]it Files",
     },
     {
       "<leader>gc",
@@ -341,10 +335,12 @@ return {
       end,
       desc = "Git [S]tatus",
     },
+
+    -- Buffer
     {
       "<leader>sl",
       function()
-        Snacks.picker.lines({ finder = "lines", hidden = true, show_empty = false })
+        Snacks.picker.lines({})
       end,
       desc = "Buffer [L]ines",
     },
@@ -355,6 +351,8 @@ return {
       end,
       desc = "Grep Open [B]uffers",
     },
+
+    -- Grep
     {
       "<leader>sg",
       function()
@@ -365,11 +363,58 @@ return {
     {
       "<leader>sw",
       function()
-        Snacks.picker.grep_word({ hidden = true })
+        Snacks.picker.grep_word()
       end,
       desc = "[W]ord",
       mode = { "n", "x" },
     },
+
+    -- LSP
+    {
+      "<leader>sd",
+      function()
+        Snacks.picker.diagnostics()
+      end,
+      desc = "[D]iagnostics",
+    },
+    {
+      "gd",
+      function()
+        Snacks.picker.lsp_definitions()
+      end,
+      desc = "Goto [D]efinition",
+    },
+    {
+      "gr",
+      function()
+        Snacks.picker.lsp_references()
+      end,
+      nowait = true,
+      desc = "[R]eferences",
+    },
+    {
+      "gI",
+      function()
+        Snacks.picker.lsp_implementations()
+      end,
+      desc = "Goto [I]mplementation",
+    },
+    {
+      "gy",
+      function()
+        Snacks.picker.lsp_type_definitions()
+      end,
+      desc = "Goto T[y]pe Definition",
+    },
+    {
+      "<leader>ss",
+      function()
+        Snacks.picker.lsp_symbols()
+      end,
+      desc = "LSP [S]ymbols",
+    },
+
+    -- Neovim
     {
       '<leader>s"',
       function()
@@ -397,13 +442,6 @@ return {
         Snacks.picker.commands()
       end,
       desc = "[C]ommands",
-    },
-    {
-      "<leader>sd",
-      function()
-        Snacks.picker.diagnostics()
-      end,
-      desc = "[D]iagnostics",
     },
     {
       "<leader>sh",
@@ -455,13 +493,6 @@ return {
       desc = "[M]arks",
     },
     {
-      "<leader>sR",
-      function()
-        Snacks.picker.resume()
-      end,
-      desc = "[R]esume",
-    },
-    {
       "<leader>sq",
       function()
         Snacks.picker.qflist()
@@ -475,48 +506,21 @@ return {
       end,
       desc = "C[o]lorschemes",
     },
+
+    -- Internal
+    {
+      "<leader>sR",
+      function()
+        Snacks.picker.resume()
+      end,
+      desc = "[R]esume",
+    },
     {
       "<leader>sp",
       function()
         Snacks.picker.projects()
       end,
       desc = "[P]rojects",
-    },
-    {
-      "gd",
-      function()
-        Snacks.picker.lsp_definitions()
-      end,
-      desc = "Goto [D]efinition",
-    },
-    {
-      "gr",
-      function()
-        Snacks.picker.lsp_references()
-      end,
-      nowait = true,
-      desc = "[R]eferences",
-    },
-    {
-      "gI",
-      function()
-        Snacks.picker.lsp_implementations()
-      end,
-      desc = "Goto [I]mplementation",
-    },
-    {
-      "gy",
-      function()
-        Snacks.picker.lsp_type_definitions()
-      end,
-      desc = "Goto T[y]pe Definition",
-    },
-    {
-      "<leader>ss",
-      function()
-        Snacks.picker.lsp_symbols()
-      end,
-      desc = "LSP [S]ymbols",
     },
   },
 }
