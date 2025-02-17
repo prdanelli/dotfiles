@@ -14,8 +14,8 @@ source "$CONFIG_DIR/scripts/config.sh"
 sketchybar --bar \
   position=top \
   height=35 \
-  color=$BG_80 \
-  border_color=$MAGENTA_DARK_40 \
+  color=$BG_60 \
+  border_color=$BG \
   corner_radius=9 \
   blur_radius=15 \
   border_width=3 \
