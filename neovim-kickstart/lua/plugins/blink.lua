@@ -46,20 +46,6 @@ return {
     },
     sources = {
       default = { "lsp", "buffer", "path", "snippets" },
-      -- compat = {}, -- adding any nvim-cmp sources here will enable them with blink.compat
-      cmdline = {},
-      -- providers = {
-      --   buffer = {
-      --     opts = {
-      --       -- Buffer completion from all open buffers
-      --       get_bufnrs = function()
-      --         return vim.tbl_filter(function(bufnr)
-      --           return vim.bo[bufnr].buftype == ""
-      --         end, vim.api.nvim_list_bufs())
-      --       end,
-      --     },
-      --   },
-      -- },
     },
     keymap = {
       preset = "enter",
