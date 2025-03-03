@@ -1,0 +1,10 @@
+quote_style = "AutoPreferDouble"
+collapse_simple_statement = "Never"
+space_after_function_names = "Never"
+call_parentheses = "Always"
+column_width = 120
+indent_type = "Spaces"
+indent_width = 2
+syntax = "All"
+[sort_requires]
+enabled = true
