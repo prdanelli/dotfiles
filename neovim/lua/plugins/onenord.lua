@@ -117,6 +117,11 @@ return {
           StatusLine = { bg = colors.bg },
           StatusLineNC = { bg = colors.bg },
           StatusLineTerm = { bg = colors.bg },
+
+          -- Noice
+          NoicePopup = { bg = colors.bg_dark },
+          NoicePopupMenu = { bg = colors.bg_dark },
+          NoiceCmdlinePopupBorder = { fg = colors.magenta },
         },
       })
     end,

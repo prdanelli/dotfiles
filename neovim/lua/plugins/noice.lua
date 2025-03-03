@@ -35,6 +35,11 @@ return {
         opts = { skip = true },
         view = "notify",
       },
+      -- always route any messages with more than 20 lines to the split view
+      {
+        view = "split",
+        filter = { event = "msg_show", min_height = 20 },
+      },
     },
     -- you can enable a preset for easier configuration
     presets = {
