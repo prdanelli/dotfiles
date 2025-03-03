@@ -6,7 +6,7 @@
 local opts = { silent = true }
 local map = vim.keymap.set
 
-map("n", "<leader>d", "<cmd>Snacks.dashboard.open()<cr>", { desc = "[D]ashboard", silent = true })
+-- map("n", "<leader>d", "<cmd>Snacks.dashboard.open()<cr>", { desc = "[D]ashboard", silent = true })
 map("n", "<leader>\\", "<cmd>vsplit<cr>", { desc = "Vertical Split", silent = true })
 map("n", "<leader>-", "<cmd>split<cr>", { desc = "Horizontal Split", silent = true })
 
@@ -84,25 +84,28 @@ map("v", ">", ">gv")
 map("n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" })
 map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" })
 
-Snacks.toggle.option("spell", { name = "Spelling" }):map "<leader>us"
-Snacks.toggle.option("wrap", { name = "Wrap" }):map "<leader>uw"
-Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map "<leader>uL"
-Snacks.toggle.diagnostics():map "<leader>ud"
-Snacks.toggle.line_number():map "<leader>ul"
-Snacks.toggle
-  .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2, name = "Conceal Level" })
-  :map "<leader>uc"
-Snacks.toggle
-  .option("showtabline", { off = 0, on = vim.o.showtabline > 0 and vim.o.showtabline or 2, name = "Tabline" })
-  :map "<leader>uA"
-Snacks.toggle.treesitter():map "<leader>uT"
-Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map "<leader>ub"
-Snacks.toggle.dim():map "<leader>uD"
-Snacks.toggle.animate():map "<leader>ua"
-Snacks.toggle.indent():map "<leader>ug"
-Snacks.toggle.scroll():map "<leader>uS"
-Snacks.toggle.profiler():map "<leader>dpp"
-Snacks.toggle.profiler_highlights():map "<leader>dph"
+local snacks_loaded, _ = pcall(require, "snacks")
+if snacks_loaded then
+  Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
+  Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
+  Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
+  Snacks.toggle.diagnostics():map("<leader>ud")
+  Snacks.toggle.line_number():map("<leader>ul")
+  Snacks.toggle
+    .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2, name = "Conceal Level" })
+    :map("<leader>uc")
+  Snacks.toggle
+    .option("showtabline", { off = 0, on = vim.o.showtabline > 0 and vim.o.showtabline or 2, name = "Tabline" })
+    :map("<leader>uA")
+  Snacks.toggle.treesitter():map("<leader>uT")
+  Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
+  Snacks.toggle.dim():map("<leader>uD")
+  Snacks.toggle.animate():map("<leader>ua")
+  Snacks.toggle.indent():map("<leader>ug")
+  Snacks.toggle.scroll():map("<leader>uS")
+  Snacks.toggle.profiler():map("<leader>dpp")
+  Snacks.toggle.profiler_highlights():map("<leader>dph")
+end
 
 map({ "n", "x" }, "<leader>gB", function()
   Snacks.gitbrowse()
