@@ -104,4 +104,3 @@ ulimit -Sn 10240 # Increase the default number of sockers (helps with rspec test
 ################################################################################
 
 eval "$(starship init zsh)"
-eval "$(fzf --zsh)"

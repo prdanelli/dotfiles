@@ -80,9 +80,6 @@ function docker-attach() {
 # ASDF
 alias asdf:versions="nvim /Users/paul/.tool-versions"
 
-# FZF
-alias fzf='fzf --color=light --no-bold --margin="0,2,0,2" --padding="0,2,0,2" --no-separator --info="right" --pointer="-" --prompt="Search: " '
-
 # Rails
 alias rails:routes="dcr rails routes | fzf -e"
 

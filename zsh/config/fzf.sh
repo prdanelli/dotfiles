@@ -1,3 +1,29 @@
+eval "$(fzf --zsh)"
+
+# Exports
+
+# CTRL-Y to copy the command into clipboard using pbcopy
+export FZF_CTRL_R_OPTS="
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'CTRL-Y to copy into clipboard'"
+
+# Preview file content using bat (https://github.com/sharkdp/bat)
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'
+  --height=50%"
+
+# Print tree structure in the preview window
+export FZF_ALT_C_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'tree -C {}'"
+
+# export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git --exclude .DS_STORE'
+
+export FZF_DEFAULT_OPTS="--preview 'fzf-preview.sh {}' --padding=0% --color='dark,fg:magenta' --layout=reverse --border-label=' Search ' --info=hidden --prompt='▶ ' --pointer='▶' --marker='♡' --padding 0,1 --border --style=full --no-scrollbar --bind 'focus:transform-preview-label:[[ -n {} ]] && printf \" %s \" {}' --color=dark --color 'border:#464f62,label:#6c7a96' --color 'input-border:#464f62,input-label:#ffcccc' --color 'gutter:#353b49' --color 'current-bg:#353b49' --color 'current-hl:#ebcb8b' --color 'list-fg:#6c7a96' --color 'pointer:#ebcb8b'"
+
 # tm - create new tmux session, or switch to existing one. Works from within tmux too. (@bag-man)
 # `tm` will allow you to select your tmux session via fzf.
 # `tm irc` will attach to the irc session (if it exists), else it will create it.
