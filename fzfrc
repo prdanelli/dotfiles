@@ -1,0 +1,25 @@
+--multi
+--bind='ctrl-o:become($EDITOR {})'
+--bind 'p:toggle-preview'
+--preview 'fzf-preview.sh {}'
+--padding=0% --color='dark,fg:magenta'
+--layout=reverse
+--border-label=' Search '
+--info=hidden
+--prompt='▶ '
+--pointer='▶'
+--marker=''
+--padding 0,1
+--border
+--style=full
+--no-scrollbar
+--bind 'focus:transform-preview-label:[[ -n {} ]] && printf \" %s \" {}'
+--color=dark
+--color 'border:#464f62,label:#6c7a96'
+--color 'input-border:#464f62,input-label:#ffcccc'
+--color 'gutter:#353b49'
+--color 'current-bg:#353b49'
+--color 'current-hl:#ebcb8b'
+--color 'list-fg:#6c7a96'
+--color 'pointer:#ebcb8b'
+--color 'marker:#ebcb8b'
