@@ -17,6 +17,7 @@ Link dotbot paths and run `brew bundle --file .Brewfile`
   - LSP
   - Treesitter
 + ZSH
++ FZF
 + Starship Prompt
 + LazyGit
 + Homebrew
@@ -28,6 +29,9 @@ Link dotbot paths and run `brew bundle --file .Brewfile`
 ![Neovim](https://github.com/user-attachments/assets/1e079905-ed3b-41a0-9589-0a16ab6f9c84)
 
 ![Tmux, Neovim and Lazygit](https://github.com/user-attachments/assets/35deebbf-0b3e-4469-81c8-0b734036fffd)
+
+![FZF Floating interface](https://github.com/user-attachments/assets/96ccf3d3-333d-4427-822c-91d185231a2e)
+
 
 ## Yabai
 
