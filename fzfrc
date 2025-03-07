@@ -11,13 +11,16 @@
 --pointer='▶'
 --marker=''
 --padding 0,1
+--margin 1,1
 --border
 --style=full
 --no-scrollbar
 --bind 'focus:transform-preview-label:[[ -n {} ]] && printf \" %s \" {}'
 --color=dark
---color 'border:#464f62,label:#6c7a96'
+--color 'border:#2e3440,label:#434c5e'
 --color 'input-border:#464f62,input-label:#ffcccc'
+--color 'preview-border:#464f62,input-label:#ffcccc'
+--color 'list-border:#464f62,input-label:#ffcccc'
 --color 'gutter:#353b49'
 --color 'current-bg:#353b49'
 --color 'current-hl:#ebcb8b'
