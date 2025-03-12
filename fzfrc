@@ -11,7 +11,7 @@
 --pointer='▶'
 --marker=''
 --padding 0,1
---margin 1,1
+--margin 0,0
 --border
 --style=full
 --no-scrollbar
