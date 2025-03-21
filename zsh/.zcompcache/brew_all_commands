@@ -1,0 +1,4 @@
+list=( ${(Q)"${(z)$(<<\EO:list
+'bundle' 'services'
+EO:list
+)}"} )
