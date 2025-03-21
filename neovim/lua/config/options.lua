@@ -5,8 +5,6 @@ vim.schedule(
   end
 )
 
-vim.opt.foldlevel = 99
-vim.opt.foldmethod = "indent"
 vim.opt.undofile = true -- Save undo history
 vim.opt.undolevels = 10000
 vim.opt.undoreload = 10000
@@ -69,9 +67,6 @@ vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
 vim.opt.winminwidth = 5 -- Minimum window width
 vim.opt.wrap = true -- Disable line wrap
 vim.opt.smoothscroll = true
-vim.opt.foldexpr = "v:lua.require'lazyvim.util'.ui.foldexpr()"
-vim.opt.foldmethod = "expr"
-vim.opt.foldtext = ""
 vim.opt.backup = false -- creates a backup file
 vim.opt.iskeyword:append({ "_", "-" })
 vim.opt.whichwrap:append("<>[]hl") -- go to previous/next line with h,l
@@ -85,6 +80,9 @@ vim.opt.mousescroll = "ver:1,hor:0"
 vim.opt.breakindent = true -- Enable break indent
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.diffopt = "filler,internal,closeoff,algorithm:histogram,context:5,linematch:60,algorithm:histogram"
+
+vim.opt.foldlevel = 99
+vim.opt.foldmethod = "indent"
 
 local loaded, _ = pcall(require, "snacks")
 if loaded then
