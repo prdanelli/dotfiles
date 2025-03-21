@@ -409,7 +409,6 @@ return {
       end,
       desc = "[R]ecent",
     },
-
     -- Git
     {
       "<leader>sG",
@@ -432,7 +431,6 @@ return {
       end,
       desc = "Git [S]tatus",
     },
-
     -- Buffer
     {
       "<leader>sl",
@@ -448,7 +446,6 @@ return {
       end,
       desc = "Grep Open [B]uffers",
     },
-
     -- Grep
     {
       "<leader>sg",
@@ -465,7 +462,6 @@ return {
       desc = "[W]ord",
       mode = { "n", "x" },
     },
-
     -- LSP
     {
       "<leader>sd",
@@ -510,7 +506,6 @@ return {
       end,
       desc = "LSP [S]ymbols",
     },
-
     -- Neovim
     {
       '<leader>s"',
@@ -603,7 +598,6 @@ return {
       end,
       desc = "C[o]lorschemes",
     },
-
     -- Internal
     {
       "<leader>sR",
