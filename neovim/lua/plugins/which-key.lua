@@ -67,6 +67,7 @@ return {
       },
     },
     spec = {
+      { "<esc>", hidden = true },
       { "<leader>a", group = "[A]vante" },
       { "<leader>b", group = "[B]uffers" },
       { "<leader>c", group = "[C]ode", mode = { "n", "x" } },
