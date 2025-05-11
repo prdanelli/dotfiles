@@ -14,6 +14,7 @@ return {
       "bash",
       "diff",
       "lua",
+      "markdown",
       "regex",
       "sql",
       "vim",
