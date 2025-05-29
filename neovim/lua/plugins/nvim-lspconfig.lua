@@ -142,8 +142,10 @@ return {
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-    -- Blink
-    capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities())
+    local blink_loaded, blink = pcall(require, "blink.cmp")
+    if blink_loaded then
+      capabilities = vim.tbl_deep_extend("force", capabilities, blink.get_lsp_capabilities())
+    end
 
     local servers = {
       lua_ls = {
@@ -167,6 +169,7 @@ return {
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       "stylua",
+      "bashls",
     })
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
