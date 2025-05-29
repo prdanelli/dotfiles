@@ -69,7 +69,7 @@ return {
           show_header_separator = false, -- Show header separators in the chat buffer? Set this to false if you're using an external markdown formatting plugin
           separator = "─", -- The separator between the different messages in the chat buffer
           show_references = true, -- Show references (from slash commands and variables) in the chat buffer?
-          show_settings = false, -- Show LLM settings at the top of the chat buffer?
+          show_settings = true, -- Show LLM settings at the top of the chat buffer?
           show_token_count = true, -- Show the token count for each response?
           start_in_insert_mode = true, -- Open the chat buffer in insert mode?
         },
