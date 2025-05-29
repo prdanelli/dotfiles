@@ -20,7 +20,7 @@ require("lazy").setup({
   concurrency = 50,
   install = { colorscheme = { "onenord" } },
   checker = { enabled = true, notify = false },
-  ui = { size = { width = 0.6, height = 0.6 } },
+  ui = { size = { width = 0.7, height = 0.7 } },
   performance = {
     rtp = {
       disabled_plugins = {
