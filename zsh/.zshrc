@@ -36,6 +36,9 @@ autoload -Uz colors && colors
 ################################################################################
 
 autoload -Uz compinit
+
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 zmodload zsh/complist
@@ -68,16 +71,10 @@ zsh_add_config "config/fzf.sh"
 
 zsh_add_file "$HOME/Dev/secrets.sh" # Shhhh, don't commit secrets
 
-################################################################################
-# ASDF Packages
-################################################################################
-
-. "$HOME/.asdf/asdf.sh"
-
 # Ensure Ruby is loaded above, before trying to add Ruby Gems to PATH
-if which ruby >/dev/null && which gem >/dev/null; then
-  PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-fi
+# if which ruby >/dev/null && which gem >/dev/null; then
+#   PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+# fi
 
 ################################################################################
 # Key bindings
@@ -104,3 +101,5 @@ ulimit -Sn 10240 # Increase the default number of sockers (helps with rspec test
 ################################################################################
 
 eval "$(starship init zsh)"
+
+. $(brew --prefix asdf)/libexec/asdf.sh

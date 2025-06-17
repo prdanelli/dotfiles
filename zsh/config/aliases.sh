@@ -77,9 +77,6 @@ function docker-attach() {
   docker attach $(docker-compose ps -q $1)
 }
 
-# ASDF
-alias asdf:versions="nvim /Users/paul/.tool-versions"
-
 # Rails
 alias rails:routes="dcr rails routes | fzf -e"
 
